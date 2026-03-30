@@ -1,0 +1,74 @@
+# ── Python ────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+*.egg-info/
+dist/
+build/
+*.db
+*.db-journal
+
+# ── Alembic ───────────────────────────────────────────────
+alembic/versions/__pycache__/
+
+# ── Test & coverage ───────────────────────────────────────
+.pytest_cache/
+.coverage
+coverage.xml
+htmlcov/
+tests/
+**/tests/
+test_*.py
+*_test.py
+*.spec.ts
+*.spec.tsx
+*.test.ts
+*.test.tsx
+!backend/tests/
+!backend/tests/*.py
+!frontend/src/**/*.test.ts
+!frontend/src/**/*.test.tsx
+
+# ── Logs & temp ───────────────────────────────────────────
+*.log
+*.tmp
+*.bak
+
+# ── Node / Frontend ───────────────────────────────────────
+node_modules/
+dist/
+.next/
+.nuxt/
+*.tsbuildinfo
+
+# ── Local env & secrets ───────────────────────────────────
+.env
+.env.*
+!.env.example
+
+# ── Editor & OS ───────────────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+.DS_Store
+Thumbs.db
+
+# ── Benchmark auto-generated reports ─────────────────────
+backend/benchmark
+backend/media/
+
+# ── Project-specific ──────────────────────────────────────
+.codex
+.claude
+.planning
+Preview-brief.md
+uv.lock
+docs
+.worktrees/
+
+# Dolt database files (added by bd init)
+.dolt/
+openspec
+.beads/
