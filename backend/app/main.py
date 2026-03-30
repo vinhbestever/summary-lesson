@@ -1,9 +1,11 @@
 import os
 
+import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
+from app.ingest import build_report_url_from_lesson_id, fetch_report_text_from_url
 from app.llm import summarize_report
 from app.schemas import SummaryRequest, SummaryResponse
 
@@ -27,6 +29,20 @@ def generate_summary(report_text: str) -> dict:
     return summarize_report(report_text)
 
 
+def resolve_report_text(payload: SummaryRequest) -> str:
+    if payload.report_text:
+        return payload.report_text
+
+    if payload.report_url:
+        return fetch_report_text_from_url(payload.report_url)
+
+    if payload.lesson_id:
+        report_url = build_report_url_from_lesson_id(payload.lesson_id)
+        return fetch_report_text_from_url(report_url)
+
+    raise ValueError('No report input was provided')
+
+
 @app.get('/health')
 def health() -> dict[str, str]:
     return {'status': 'ok'}
@@ -35,11 +51,14 @@ def health() -> dict[str, str]:
 @app.post('/api/v1/summaries', response_model=SummaryResponse)
 def create_summary(payload: SummaryRequest) -> SummaryResponse:
     try:
-        summary = generate_summary(payload.report_text)
+        report_text = resolve_report_text(payload)
+        summary = generate_summary(report_text)
     except RuntimeError as exc:
         raise HTTPException(status_code=500, detail=str(exc)) from exc
+    except httpx.HTTPError as exc:
+        raise HTTPException(status_code=502, detail=f'Failed to load report: {exc}') from exc
     except ValueError as exc:
-        raise HTTPException(status_code=502, detail=f'Invalid LLM response: {exc}') from exc
+        raise HTTPException(status_code=502, detail=f'Invalid summarization input/output: {exc}') from exc
     except Exception as exc:
         raise HTTPException(status_code=500, detail='Unexpected summarization error') from exc
 

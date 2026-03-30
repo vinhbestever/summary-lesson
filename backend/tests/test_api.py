@@ -35,3 +35,35 @@ def test_create_summary_returns_expected_schema(monkeypatch) -> None:
 def test_create_summary_rejects_blank_report_text() -> None:
     response = client.post('/api/v1/summaries', json={'report_text': '   '})
     assert response.status_code == 422
+
+
+def test_create_summary_accepts_report_url(monkeypatch) -> None:
+    monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lay tu URL')
+    monkeypatch.setattr(
+        'app.main.generate_summary',
+        lambda _: {
+            'overall_summary': 'Tom tat URL',
+            'key_points': ['A'],
+            'action_items': ['B'],
+        },
+    )
+
+    response = client.post('/api/v1/summaries', json={'report_url': 'https://example.com/report'})
+    assert response.status_code == 200
+    assert response.json()['overall_summary'] == 'Tom tat URL'
+
+
+def test_create_summary_accepts_lesson_id(monkeypatch) -> None:
+    monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lay tu lesson id')
+    monkeypatch.setattr(
+        'app.main.generate_summary',
+        lambda _: {
+            'overall_summary': 'Tom tat lesson',
+            'key_points': ['A'],
+            'action_items': ['B'],
+        },
+    )
+
+    response = client.post('/api/v1/summaries', json={'lesson_id': '3724970'})
+    assert response.status_code == 200
+    assert response.json()['overall_summary'] == 'Tom tat lesson'

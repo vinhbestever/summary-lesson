@@ -119,6 +119,17 @@
   background: #fffeff;
 }
 
+.summary-form input {
+  width: 100%;
+  border: 1px solid #d8d0e3;
+  border-radius: 12px;
+  font: inherit;
+  padding: 0.65rem 0.8rem;
+  margin-top: 0.15rem;
+  margin-bottom: 0.45rem;
+  background: #fffeff;
+}
+
 .summary-form button {
   margin-top: 0.9rem;
   border: none;

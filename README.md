@@ -47,11 +47,12 @@ Frontend mac dinh: `http://localhost:5173`
 - `GET /health`
 - `POST /api/v1/summaries`
 
-Request:
+Request (co the gui `report_text` hoac `report_url` hoac `lesson_id`):
 
 ```json
 {
   "report_text": "Noi dung bao cao",
+  "report_url": "https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3724970",
   "lesson_id": "TRIAL_LESSON_10_11"
 }
 ```

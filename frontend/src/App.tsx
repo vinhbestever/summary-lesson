@@ -23,6 +23,8 @@ const reportLinks = [
 
 function App() {
   const [reportText, setReportText] = useState('')
+  const [reportUrl, setReportUrl] = useState('')
+  const [lessonId, setLessonId] = useState('')
   const [summary, setSummary] = useState<SummaryPayload | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState(false)
@@ -37,8 +39,12 @@ function App() {
     setError(null)
     setSummary(null)
 
-    if (!reportText.trim()) {
-      setError('Vui long nhap noi dung bao cao truoc khi tom tat.')
+    const normalizedReportText = reportText.trim()
+    const normalizedReportUrl = reportUrl.trim()
+    const normalizedLessonId = lessonId.trim()
+
+    if (!normalizedReportText && !normalizedReportUrl && !normalizedLessonId) {
+      setError('Vui long nhap report_text, report_url hoac lesson_id.')
       return
     }
 
@@ -49,7 +55,11 @@ function App() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ report_text: reportText }),
+        body: JSON.stringify({
+          report_text: normalizedReportText || undefined,
+          report_url: normalizedReportUrl || undefined,
+          lesson_id: normalizedLessonId || undefined,
+        }),
       })
 
       if (!response.ok) {
@@ -97,6 +107,22 @@ function App() {
             onChange={(event) => setReportText(event.target.value)}
             placeholder="Nhap report text..."
             rows={8}
+          />
+          <label htmlFor="report-url">Report URL (tu chon)</label>
+          <input
+            id="report-url"
+            value={reportUrl}
+            onChange={(event) => setReportUrl(event.target.value)}
+            placeholder="https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=..."
+            type="url"
+          />
+          <label htmlFor="lesson-id">Lesson ID (tu chon)</label>
+          <input
+            id="lesson-id"
+            value={lessonId}
+            onChange={(event) => setLessonId(event.target.value)}
+            placeholder="3724970"
+            type="text"
           />
           <button type="submit" disabled={loading}>
             {loading ? 'Dang tom tat...' : 'Tom tat bao cao'}
