@@ -156,6 +156,115 @@ def _normalize_date_range(value: Any) -> dict[str, str] | None:
     }
 
 
+def _parse_lesson_root(raw_json_text: str) -> dict[str, Any]:
+    try:
+        parsed = json.loads(raw_json_text)
+    except json.JSONDecodeError:
+        return {}
+    if isinstance(parsed, dict):
+        return parsed
+    if isinstance(parsed, list) and parsed and isinstance(parsed[0], dict):
+        return parsed[0]
+    return {}
+
+
+def _as_float(value: Any) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _as_int(value: Any) -> int | None:
+    try:
+        return int(float(value))
+    except (TypeError, ValueError):
+        return None
+
+
+def _avg(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return sum(values) / len(values)
+
+
+def _build_portfolio_input_context(lessons_payload: list[dict[str, str]]) -> dict[str, Any]:
+    lesson_summaries: list[dict[str, Any]] = []
+    pronunciation_scores: list[float] = []
+    speaking_turns: list[float] = []
+    speaking_coverage_values: list[float] = []
+    reaction_times: list[float] = []
+    completion_percent_values: list[float] = []
+
+    for item in lessons_payload:
+        lesson_id = _normalize_text(item.get('lesson_id', ''), fallback='unknown')
+        source_file = _normalize_text(item.get('source_file', ''), fallback='unknown')
+        root = _parse_lesson_root(item.get('raw_json_text', ''))
+        achievements = root.get('achievements') if isinstance(root, dict) else {}
+        achievements = achievements if isinstance(achievements, dict) else {}
+        stats = achievements.get('stats') if isinstance(achievements.get('stats'), dict) else {}
+        pronunciation = achievements.get('pronunciation') if isinstance(achievements.get('pronunciation'), dict) else {}
+
+        speaking_turn_count = _as_int(stats.get('speakingTurnCount'))
+        speaking_coverage = _as_float(stats.get('speakingCoverage'))
+        reaction_time_ms = _as_float(stats.get('averageReactionTimeMs'))
+        completion_percent = _as_float(stats.get('sectionsCompletionPercent'))
+        average_pronunciation_score = _as_float(pronunciation.get('averagePronunciationScore'))
+        teacher_comment = _normalize_text(stats.get('teacherComment'))
+        session_summary = _normalize_text(stats.get('sessionSummary'))
+        trial_comment = _normalize_text(stats.get('trialComment'))
+
+        if speaking_turn_count is not None:
+            speaking_turns.append(float(speaking_turn_count))
+        if speaking_coverage is not None:
+            speaking_coverage_values.append(speaking_coverage)
+        if reaction_time_ms is not None:
+            reaction_times.append(reaction_time_ms)
+        if completion_percent is not None:
+            completion_percent_values.append(completion_percent)
+        if average_pronunciation_score is not None:
+            pronunciation_scores.append(average_pronunciation_score)
+
+        lesson_summaries.append(
+            {
+                'lesson_id': lesson_id,
+                'source_file': source_file,
+                'speaking_turn_count': speaking_turn_count,
+                'speaking_coverage': speaking_coverage,
+                'average_reaction_time_ms': reaction_time_ms,
+                'sections_completion_percent': completion_percent,
+                'average_pronunciation_score': average_pronunciation_score,
+                'teacher_comment': teacher_comment,
+                'session_summary': session_summary,
+                'trial_comment': trial_comment,
+            }
+        )
+
+    evidence_highlights = []
+    for summary in lesson_summaries:
+        lesson_ref = f"{summary['lesson_id']} ({summary['source_file']})"
+        pronunciation_text = summary['average_pronunciation_score']
+        speaking_turn_text = summary['speaking_turn_count']
+        reaction_text = summary['average_reaction_time_ms']
+        completion_text = summary['sections_completion_percent']
+        evidence_highlights.append(
+            f"{lesson_ref}: pronunciation={pronunciation_text}, speaking_turns={speaking_turn_text}, reaction_ms={reaction_text}, completion={completion_text}"
+        )
+
+    return {
+        'total_lessons': len(lesson_summaries),
+        'lesson_summaries': lesson_summaries,
+        'aggregates': {
+            'pronunciation_score_avg': _avg(pronunciation_scores),
+            'speaking_turn_avg': _avg(speaking_turns),
+            'speaking_coverage_avg': _avg(speaking_coverage_values),
+            'reaction_time_avg_ms': _avg(reaction_times),
+            'sections_completion_percent_avg': _avg(completion_percent_values),
+        },
+        'evidence_highlights': evidence_highlights,
+    }
+
+
 def _build_fallback_next_lesson_plan(priorities: list[dict[str, str]]) -> list[dict[str, Any]]:
     default_by_skill = {
         'pronunciation': {'step': 'Luyen phat am theo cum tu kho voi shadowing', 'duration_minutes': 12},
@@ -230,6 +339,7 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
 def _build_portfolio_feedback_messages(
     lessons_payload: list[dict[str, str]], portfolio_label: str | None
 ) -> list[dict[str, str]]:
+    context = _build_portfolio_input_context(lessons_payload)
     system_prompt = (
         'Ban la giao vien tieng Anh tieu hoc co kinh nghiem, gioi tong hop tien trinh hoc theo nhieu buoi. '
         'Nhiem vu: dua tren danh sach du lieu lesson, hay danh gia tong quan qua trinh hoc. '
@@ -240,13 +350,20 @@ def _build_portfolio_feedback_messages(
         'skill_trends(participation, pronunciation, vocabulary, grammar, reaction_confidence), '
         'top_strengths, top_priorities, study_plan_2_weeks, parent_message. '
         'Moi skill_trend gom current_level, trend(improving|stable|declining|mixed|insufficient_data), evidence, recommendation. '
-        'top_priorities toi da 3 muc va chi dung skill trong [pronunciation, vocabulary, grammar, reaction_confidence, participation], '
+        'overall_assessment phai dai 10-14 cau va bat buoc theo khung: hien trang -> bang chung -> tac dong -> can thiep. '
+        'Moi evidence trong skill_trends phai co reference lesson_id hoac source_file. '
+        'top_strengths can 4-6 y, moi y co it nhat 1 bang chung dinh luong hoac hanh vi cu the. '
+        'top_priorities uu tien dung 3 muc va chi dung skill trong [pronunciation, vocabulary, grammar, reaction_confidence, participation], '
         'priority trong [high, medium, low]. '
-        'study_plan_2_weeks la cac buoc hanh dong cu the theo tuan cho be.'
+        'Moi muc top_priorities phai co reason 3-4 cau, target do duoc trong 2 tuan va coach_tip co tan suat luyen tap. '
+        'study_plan_2_weeks can 6-8 buoc hanh dong, duration_minutes trong khoang 8-20, co tan suat ro rang theo tuan. '
+        'parent_message phai 6-8 cau, huong dan phu huynh theo tuan, khong duoc chung chung. '
+        'cam cau chung chung nhu "can co gang them", "tiep tuc phat huy" neu khong co bang chung va hanh dong cu the.'
     )
     user_payload = {
         'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
         'total_lessons': len(lessons_payload),
+        'portfolio_context': context,
         'lessons': lessons_payload,
     }
     return [

@@ -406,6 +406,58 @@ def test_generate_portfolio_feedback_normalizes_output(monkeypatch) -> None:
     assert result['top_priorities'][0]['skill'] == 'pronunciation'
 
 
+def test_build_portfolio_input_context_extracts_lesson_metrics() -> None:
+    from app.llm import _build_portfolio_input_context
+
+    lessons_payload = [
+        {
+            'lesson_id': '3724970',
+            'source_file': 'lesson_3724970.json',
+            'raw_json_text': '{"achievements":{"stats":{"speakingTurnCount":45,"averageReactionTimeMs":1543,"sectionsCompletionPercent":71,"teacherComment":"Can cai thien phat am"},"pronunciation":{"averagePronunciationScore":38.67}}}',
+        },
+        {
+            'lesson_id': 'TRIAL_LESSON_10_11',
+            'source_file': 'lesson_TRIAL_LESSON_10_11.json',
+            'raw_json_text': '[{"achievements":{"stats":{"speakingTurnCount":20,"averageReactionTimeMs":2000.2,"sectionsCompletionPercent":57,"teacherComment":"Phat am kha on"},"pronunciation":{"averagePronunciationScore":86.26}}}]',
+        },
+    ]
+
+    context = _build_portfolio_input_context(lessons_payload)
+
+    assert context['total_lessons'] == 2
+    assert len(context['lesson_summaries']) == 2
+    assert context['lesson_summaries'][0]['lesson_id'] == '3724970'
+    assert context['lesson_summaries'][1]['lesson_id'] == 'TRIAL_LESSON_10_11'
+    assert context['aggregates']['speaking_turn_avg'] >= 30
+    assert context['aggregates']['reaction_time_avg_ms'] >= 1500
+    assert len(context['evidence_highlights']) >= 2
+
+
+def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
+    import json
+
+    from app.llm import _build_portfolio_feedback_messages
+
+    lessons_payload = [
+        {
+            'lesson_id': '3724970',
+            'source_file': 'lesson_3724970.json',
+            'raw_json_text': '{"achievements":{"stats":{"speakingTurnCount":45},"pronunciation":{"averagePronunciationScore":38.67}}}',
+        }
+    ]
+
+    messages = _build_portfolio_feedback_messages(lessons_payload, portfolio_label='Tong hop toan bo')
+    system_prompt = messages[0]['content']
+    user_payload = json.loads(messages[1]['content'])
+
+    assert 'overall_assessment phai dai 10-14 cau' in system_prompt
+    assert 'top_priorities uu tien dung 3 muc' in system_prompt
+    assert 'study_plan_2_weeks can 6-8 buoc' in system_prompt
+    assert 'cam cau chung chung' in system_prompt
+    assert 'portfolio_context' in user_payload
+    assert user_payload['portfolio_context']['total_lessons'] == 1
+
+
 def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
 
