@@ -36,3 +36,25 @@ def load_lesson_json_from_local_data(lesson_id: str) -> str | None:
     if not data_path.exists():
         return None
     return data_path.read_text(encoding='utf-8').strip()
+
+
+def load_all_lessons_json_from_local_data() -> list[dict[str, str]]:
+    repo_root = Path(__file__).resolve().parents[2]
+    data_dir = repo_root / 'data'
+    if not data_dir.exists():
+        return []
+
+    items: list[dict[str, str]] = []
+    for data_path in sorted(data_dir.glob('lesson_*.json')):
+        raw_json_text = data_path.read_text(encoding='utf-8').strip()
+        if not raw_json_text:
+            continue
+        lesson_id = data_path.stem.replace('lesson_', '', 1)
+        items.append(
+            {
+                'lesson_id': lesson_id,
+                'source_file': data_path.name,
+                'raw_json_text': raw_json_text,
+            }
+        )
+    return items

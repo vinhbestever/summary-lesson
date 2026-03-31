@@ -83,6 +83,22 @@ def test_resolve_report_text_prefers_local_lesson_json(monkeypatch) -> None:
     assert resolved == '{"reportId":"abc"}'
 
 
+def test_load_all_lessons_json_from_local_data_returns_sorted_items() -> None:
+    from app.ingest import load_all_lessons_json_from_local_data
+
+    items = load_all_lessons_json_from_local_data()
+
+    assert len(items) >= 2
+    assert all('lesson_id' in item for item in items)
+    assert all('source_file' in item for item in items)
+    assert all('raw_json_text' in item for item in items)
+    assert all(item['raw_json_text'].strip() for item in items)
+
+    source_files = [item['source_file'] for item in items]
+    assert source_files == sorted(source_files)
+    assert any(item['lesson_id'] == '3724970' for item in items)
+
+
 def _feedback_payload() -> dict:
     return {
         'lesson_label': 'Lesson 1',
