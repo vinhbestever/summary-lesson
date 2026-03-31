@@ -112,6 +112,7 @@ function MarkdownView({ content }: { content: string }) {
 
 function App() {
   const [feedbackMode, setFeedbackMode] = useState<'lesson' | 'portfolio' | null>(null)
+  const [activeFeedbackLabel, setActiveFeedbackLabel] = useState('')
   const [feedbackMarkdown, setFeedbackMarkdown] = useState('')
   const [feedbackError, setFeedbackError] = useState<string | null>(null)
   const [feedbackLoadingId, setFeedbackLoadingId] = useState<string | null>(null)
@@ -125,9 +126,11 @@ function App() {
     () => normalizeMarkdownLineBreaks(feedbackMarkdown),
     [feedbackMarkdown],
   )
+  const lessonCount = reportLinks.length
 
   const handleGenerateFeedback = async (lessonId: string, lessonLabel: string) => {
     setFeedbackMode('lesson')
+    setActiveFeedbackLabel(lessonLabel)
     setFeedbackError(null)
     setFeedbackLoadingId(lessonId)
     setFeedbackStreamingStatus('Dang bat dau tao nhan xet...')
@@ -209,6 +212,7 @@ function App() {
 
   const handleGeneratePortfolioFeedback = async () => {
     setFeedbackMode('portfolio')
+    setActiveFeedbackLabel('Tong hop tat ca buoi hoc')
     setFeedbackError(null)
     setFeedbackLoadingId('portfolio')
     setFeedbackStreamingStatus('Dang bat dau tao nhan xet chung...')
@@ -292,66 +296,111 @@ function App() {
         <div className="hero__header">
           <p className="hero__eyebrow">Bao cao sau buoi hoc</p>
           <h1>RinoDigi Lesson Feedback</h1>
+          <p className="hero__subtitle">
+            Khong gian xem buoi hoc va nhan xet duoc toi uu cho tre: de nhin, de tim, de theo doi tien bo.
+          </p>
+        </div>
+        <div className="hero__stats" aria-label="Thong ke">
+          <article className="hero-stat">
+            <p className="hero-stat__label">Tong buoi hoc</p>
+            <p className="hero-stat__value">{lessonCount}</p>
+          </article>
+          <article className="hero-stat">
+            <p className="hero-stat__label">Trang thai</p>
+            <p className="hero-stat__value hero-stat__value--small">
+              {feedbackLoadingId ? 'Dang tao nhan xet' : 'San sang'}
+            </p>
+          </article>
         </div>
       </section>
 
-      <section className="report-options" aria-label="Report options">
-        {reportLinks.length === 0 && <p className="feedback">Chua co du lieu buoi hoc trong thu muc data.</p>}
-        {reportLinks.map((item) => (
-          <article key={item.lessonId} className="report-card">
-            <a className="report-card__link" href={item.href} target="_blank" rel="noopener noreferrer">
-              <span className="report-card__title">{item.label}</span>
-              <span className="report-card__detail">{item.detail}</span>
-            </a>
+      <div className="layout">
+        <section className="report-options" aria-label="Report options">
+          <header className="section-head">
+            <h2>Danh sach buoi hoc</h2>
+            <p>Chon buoi hoc de xem nhanh bao cao hoac tao nhan xet AI.</p>
+          </header>
+          {reportLinks.length === 0 && (
+            <p className="feedback">Chua co du lieu buoi hoc trong thu muc data.</p>
+          )}
+          {reportLinks.map((item, index) => (
+            <article
+              key={item.lessonId}
+              className={`report-card ${activeFeedbackLabel === item.label ? 'report-card--active' : ''}`}
+            >
+              <p className="report-card__order">Buoi {index + 1}</p>
+              <a className="report-card__link" href={item.href} target="_blank" rel="noopener noreferrer">
+                <span className="report-card__title">{item.label}</span>
+                <span className="report-card__detail">{item.detail}</span>
+              </a>
+              <div className="report-card__actions">
+                <a
+                  className="report-card__open"
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Xem bao cao
+                </a>
+                <button
+                  type="button"
+                  className="report-card__feedback-button"
+                  onClick={() => handleGenerateFeedback(item.lessonId, item.label)}
+                  disabled={feedbackLoadingId !== null}
+                >
+                  Nhan xet
+                </button>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="lesson-feedback-panel" aria-label="Lesson feedback">
+          <header className="section-head section-head--feedback">
+            <h2>Ket qua nhan xet</h2>
+            <p>Tap trung hien thi noi dung de giao vien va phu huynh de doc.</p>
             <button
               type="button"
-              className="report-card__feedback-button"
-              onClick={() => handleGenerateFeedback(item.lessonId, item.label)}
+              className="portfolio-action__button"
+              onClick={handleGeneratePortfolioFeedback}
               disabled={feedbackLoadingId !== null}
             >
-              Nhan xet
+              Nhan xet chung
             </button>
-          </article>
-        ))}
-      </section>
+          </header>
 
-      <section className="portfolio-action" aria-label="Portfolio feedback action">
-        <button
-          type="button"
-          className="portfolio-action__button"
-          onClick={handleGeneratePortfolioFeedback}
-          disabled={feedbackLoadingId !== null}
-        >
-          Nhan xet chung
-        </button>
-      </section>
+          {feedbackLoadingId && (
+            <article className="streaming-visual">
+              <div className="streaming-visual__head">
+                <p className="feedback">{feedbackStreamingStatus ?? 'Dang tao nhan xet...'}</p>
+                <p className="streaming-visual__meta">Dang nhan du lieu stream...</p>
+              </div>
+              <div className="streaming-progress" aria-hidden="true">
+                <span />
+              </div>
+              <p className="streaming-visual__context">
+                Dang xu ly: <strong>{activeFeedbackLabel}</strong>
+              </p>
+              {feedbackMarkdown && (
+                <article className="summary-result">
+                  <MarkdownView content={formattedMarkdown} />
+                </article>
+              )}
+            </article>
+          )}
 
-      <section className="lesson-feedback-panel" aria-label="Lesson feedback">
-        {feedbackLoadingId && (
-          <article className="streaming-visual">
-            <div className="streaming-visual__head">
-              <p className="feedback">{feedbackStreamingStatus ?? 'Dang tao nhan xet...'}</p>
-              <p className="streaming-visual__meta">Dang nhan du lieu stream...</p>
-            </div>
-            <div className="streaming-progress" aria-hidden="true">
-              <span />
-            </div>
-            {feedbackMarkdown && (
-              <article className="summary-result">
-                <MarkdownView content={formattedMarkdown} />
-              </article>
-            )}
-          </article>
-        )}
+          {feedbackError && <p className="feedback feedback--error">{feedbackError}</p>}
 
-        {feedbackError && <p className="feedback feedback--error">{feedbackError}</p>}
-
-        {!feedbackLoadingId && feedbackMarkdown && (
-          <article className="summary-result" data-testid={`markdown-result-${feedbackMode ?? 'none'}`}>
-            <MarkdownView content={formattedMarkdown} />
-          </article>
-        )}
-      </section>
+          {!feedbackLoadingId && feedbackMarkdown && (
+            <article className="summary-result" data-testid={`markdown-result-${feedbackMode ?? 'none'}`}>
+              <p className="summary-result__context">
+                Dang hien thi: <strong>{activeFeedbackLabel}</strong>
+              </p>
+              <MarkdownView content={formattedMarkdown} />
+            </article>
+          )}
+        </section>
+      </div>
     </main>
   )
 }

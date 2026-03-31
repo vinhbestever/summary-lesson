@@ -407,8 +407,10 @@ def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
     user_payload = json.loads(messages[1]['content'])
 
     assert 'Chỉ trả về markdown' in system_prompt
-    assert '## Kế hoạch 2 tuần' in system_prompt
+    assert '## Lộ trình học tháng tới' in system_prompt
     assert '## Ưu tiên can thiệp' in system_prompt
+    assert '## Xu hướng tiến bộ' in system_prompt
+    assert '## Phong cách học hiện tại' in system_prompt
     assert 'portfolio_context' in user_payload
     assert user_payload['portfolio_context']['total_lessons'] == 1
 
