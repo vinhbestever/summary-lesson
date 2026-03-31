@@ -1,4 +1,4 @@
-import { fireEvent, render, screen, waitFor } from '@testing-library/react'
+import { cleanup, fireEvent, render, screen, waitFor } from '@testing-library/react'
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest'
 
 import App from './App'
@@ -9,6 +9,7 @@ describe('App', () => {
   })
 
   afterEach(() => {
+    cleanup()
     vi.unstubAllGlobals()
   })
 
@@ -82,7 +83,7 @@ describe('App', () => {
     render(<App />)
     fireEvent.click(screen.getAllByRole('button', { name: /nhan xet ai/i })[0])
 
-    expect(screen.getByText(/dang tao nhan xet/i)).toBeInTheDocument()
+    expect(screen.getByText(/dang bat dau tao nhan xet/i)).toBeInTheDocument()
     resolveRequest?.({
       ok: true,
       json: async () => ({

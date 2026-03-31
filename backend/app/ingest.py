@@ -1,4 +1,5 @@
 import re
+from pathlib import Path
 
 import httpx
 
@@ -27,3 +28,11 @@ def fetch_report_text_from_url(report_url: str) -> str:
 
 def build_report_url_from_lesson_id(lesson_id: str) -> str:
     return RINOEDU_REPORT_URL.format(lesson_id=lesson_id)
+
+
+def load_lesson_json_from_local_data(lesson_id: str) -> str | None:
+    repo_root = Path(__file__).resolve().parents[2]
+    data_path = repo_root / 'data' / f'lesson_{lesson_id}.json'
+    if not data_path.exists():
+        return None
+    return data_path.read_text(encoding='utf-8').strip()

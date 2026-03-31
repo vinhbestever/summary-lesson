@@ -1,6 +1,7 @@
 from fastapi.testclient import TestClient
 
-from app.main import app
+from app.main import app, resolve_report_text
+from app.schemas import SummaryRequest
 
 
 client = TestClient(app)
@@ -67,6 +68,19 @@ def test_create_summary_accepts_lesson_id(monkeypatch) -> None:
     response = client.post('/api/v1/summaries', json={'lesson_id': '3724970'})
     assert response.status_code == 200
     assert response.json()['overall_summary'] == 'Tom tat lesson'
+
+
+def test_resolve_report_text_prefers_local_lesson_json(monkeypatch) -> None:
+    monkeypatch.setattr('app.main.load_lesson_json_from_local_data', lambda lesson_id: '{"reportId":"abc"}')
+
+    def _unexpected_fetch(_: str) -> str:
+        raise AssertionError('Should not call remote fetch when local lesson json exists')
+
+    monkeypatch.setattr('app.main.fetch_report_text_from_url', _unexpected_fetch)
+
+    payload = SummaryRequest(lesson_id='3724970')
+    resolved = resolve_report_text(payload)
+    assert resolved == '{"reportId":"abc"}'
 
 
 def _feedback_payload() -> dict:
@@ -170,6 +184,98 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
     assert result['lesson_label'] == 'Lesson 1'
 
 
+def test_generate_lesson_feedback_filters_invalid_priority_improvements(monkeypatch) -> None:
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+
+    class _FakeCompletions:
+        @staticmethod
+        def create(**kwargs):
+            class _Message:
+                content = (
+                    '{"lesson_label":"Lesson 1","teacher_tone":"warm_encouraging","overall_comment":"ok",'
+                    '"session_breakdown":{"participation":{"score":80,"comment":"ok","evidence":["e1"]},'
+                    '"pronunciation":{"score":70,"comment":"ok","evidence":["e2"]},'
+                    '"vocabulary":{"score":75,"comment":"ok","evidence":["e3"]},'
+                    '"grammar":{"score":78,"comment":"ok","evidence":["e4"]},'
+                    '"reaction_confidence":{"score":82,"comment":"ok","evidence":["e5"]}},'
+                    '"strengths":["s1"],'
+                    '"priority_improvements":[{"skill":"chua du du lieu","priority":"chua du du lieu","current_state":"c",'
+                    '"target_next_lesson":"t","coach_tip":"tip"},'
+                    '{"skill":"pronunciation","priority":"high","current_state":"c2","target_next_lesson":"t2","coach_tip":"tip2"}],'
+                    '"next_lesson_plan":[{"step":"step1","duration_minutes":10}],"parent_message":"msg"}'
+                )
+
+            class _Choice:
+                message = _Message()
+
+            class _Response:
+                choices = [_Choice()]
+
+            return _Response()
+
+    class _FakeChat:
+        completions = _FakeCompletions()
+
+    class _FakeOpenAI:
+        def __init__(self, api_key: str):
+            assert api_key == 'test-key'
+            self.chat = _FakeChat()
+
+    monkeypatch.setattr('app.llm.OpenAI', _FakeOpenAI)
+
+    from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
+
+    result = generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
+    assert len(result['priority_improvements']) == 1
+    assert result['priority_improvements'][0]['skill'] == 'pronunciation'
+    assert result['priority_improvements'][0]['priority'] == 'high'
+
+
+def test_generate_lesson_feedback_fills_next_plan_when_empty(monkeypatch) -> None:
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+
+    class _FakeCompletions:
+        @staticmethod
+        def create(**kwargs):
+            class _Message:
+                content = (
+                    '{"lesson_label":"Lesson 1","teacher_tone":"warm_encouraging","overall_comment":"ok",'
+                    '"session_breakdown":{"participation":{"score":80,"comment":"ok","evidence":["e1"]},'
+                    '"pronunciation":{"score":70,"comment":"ok","evidence":["e2"]},'
+                    '"vocabulary":{"score":75,"comment":"ok","evidence":["e3"]},'
+                    '"grammar":{"score":78,"comment":"ok","evidence":["e4"]},'
+                    '"reaction_confidence":{"score":82,"comment":"ok","evidence":["e5"]}},'
+                    '"strengths":["s1"],'
+                    '"priority_improvements":[{"skill":"pronunciation","priority":"high","current_state":"c",'
+                    '"target_next_lesson":"t","coach_tip":"tip"}],'
+                    '"next_lesson_plan":[],"parent_message":"msg"}'
+                )
+
+            class _Choice:
+                message = _Message()
+
+            class _Response:
+                choices = [_Choice()]
+
+            return _Response()
+
+    class _FakeChat:
+        completions = _FakeCompletions()
+
+    class _FakeOpenAI:
+        def __init__(self, api_key: str):
+            assert api_key == 'test-key'
+            self.chat = _FakeChat()
+
+    monkeypatch.setattr('app.llm.OpenAI', _FakeOpenAI)
+
+    from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
+
+    result = generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
+    assert len(result['next_lesson_plan']) >= 1
+    assert result['next_lesson_plan'][0]['step']
+
+
 def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
     monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lesson id')
     monkeypatch.setattr('app.main.generate_lesson_feedback', lambda _text, _label: _feedback_payload(), raising=False)
@@ -202,3 +308,18 @@ def test_create_lesson_feedback_returns_500_when_llm_invalid(monkeypatch) -> Non
     monkeypatch.setattr('app.main.generate_lesson_feedback', _raise_invalid, raising=False)
     response = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970'})
     assert response.status_code in [500, 502]
+
+
+def test_create_lesson_feedback_stream_returns_events(monkeypatch) -> None:
+    monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lesson id')
+
+    def _fake_stream(_text, _label):
+        yield {'type': 'status', 'message': 'Dang phan tich'}
+        yield {'type': 'result', 'data': _feedback_payload()}
+
+    monkeypatch.setattr('app.main.stream_lesson_feedback', _fake_stream, raising=False)
+    response = client.post('/api/v1/lesson-feedback/stream', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
+    assert response.status_code == 200
+    assert 'event: status' in response.text
+    assert 'event: result' in response.text
+    assert 'event: done' in response.text

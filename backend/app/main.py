@@ -1,12 +1,15 @@
 import os
+import json
 
 import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import StreamingResponse
 
-from app.ingest import build_report_url_from_lesson_id, fetch_report_text_from_url
+from app.ingest import build_report_url_from_lesson_id, fetch_report_text_from_url, load_lesson_json_from_local_data
 from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
+from app.llm import stream_lesson_feedback as stream_lesson_feedback_from_llm
 from app.llm import summarize_report
 from app.schemas import (
     LessonFeedbackRequest,
@@ -40,6 +43,10 @@ def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) 
     return generate_lesson_feedback_from_llm(report_text, lesson_label)
 
 
+def stream_lesson_feedback(report_text: str, lesson_label: str | None = None):
+    return stream_lesson_feedback_from_llm(report_text, lesson_label)
+
+
 def resolve_report_text(payload: ReportInputRequest) -> str:
     if payload.report_text:
         return payload.report_text
@@ -48,6 +55,9 @@ def resolve_report_text(payload: ReportInputRequest) -> str:
         return fetch_report_text_from_url(payload.report_url)
 
     if payload.lesson_id:
+        local_lesson_json = load_lesson_json_from_local_data(payload.lesson_id)
+        if local_lesson_json:
+            return local_lesson_json
         report_url = build_report_url_from_lesson_id(payload.lesson_id)
         return fetch_report_text_from_url(report_url)
 
@@ -91,6 +101,39 @@ def create_lesson_feedback(payload: LessonFeedbackRequest) -> LessonFeedbackResp
         raise HTTPException(status_code=500, detail='Unexpected lesson feedback error') from exc
 
     return LessonFeedbackResponse(**feedback)
+
+
+def _format_sse_event(event_name: str, data: dict) -> str:
+    return f'event: {event_name}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n'
+
+
+@app.post('/api/v1/lesson-feedback/stream')
+def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingResponse:
+    try:
+        report_text = resolve_report_text(payload)
+    except httpx.HTTPError as exc:
+        raise HTTPException(status_code=502, detail=f'Failed to load report: {exc}') from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=500, detail=f'Invalid lesson feedback input/output: {exc}') from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail='Unexpected lesson feedback error') from exc
+
+    def event_generator():
+        try:
+            for event in stream_lesson_feedback(report_text, payload.lesson_label):
+                event_type = str(event.get('type', 'status'))
+                yield _format_sse_event(event_type, event)
+        except Exception as exc:
+            yield _format_sse_event('error', {'type': 'error', 'message': str(exc)})
+        yield _format_sse_event('done', {'type': 'done'})
+
+    return StreamingResponse(
+        event_generator(),
+        media_type='text/event-stream',
+        headers={'Cache-Control': 'no-cache', 'Connection': 'keep-alive'},
+    )
 
 
 if __name__ == '__main__':
