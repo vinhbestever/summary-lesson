@@ -7,7 +7,6 @@ from openai import OpenAI
 VALID_PRIORITY_SKILLS = {'pronunciation', 'vocabulary', 'grammar', 'reaction_confidence', 'participation'}
 VALID_PRIORITIES = {'high', 'medium', 'low'}
 VALID_TRENDS = {'improving', 'stable', 'declining', 'mixed', 'insufficient_data'}
-FRIENDLY_MISSING_DATA_TEXT = 'Du lieu hien tai chua du de ket luan ro, can theo doi them 1-2 buoi nua.'
 
 
 def summarize_report(report_text: str) -> dict[str, Any]:
@@ -111,13 +110,11 @@ def _normalize_trend(value: Any) -> str:
 def _normalize_skill_trend(value: Any) -> dict[str, Any]:
     source = value if isinstance(value, dict) else {}
     evidence = _normalize_string_list(source.get('evidence'))
-    if not evidence:
-        evidence = ['chua du du lieu']
     return {
-        'current_level': _normalize_text(source.get('current_level')),
+        'current_level': _normalize_text(source.get('current_level'), fallback=''),
         'trend': _normalize_trend(source.get('trend')),
         'evidence': evidence,
-        'recommendation': _normalize_text(source.get('recommendation')),
+        'recommendation': _normalize_text(source.get('recommendation'), fallback=''),
     }
 
 
@@ -130,17 +127,17 @@ def _normalize_portfolio_priority_item(value: Any) -> dict[str, str] | None:
     return {
         'skill': skill,
         'priority': priority,
-        'reason': _normalize_text(source.get('reason')),
-        'next_2_weeks_target': _normalize_text(source.get('next_2_weeks_target')),
-        'coach_tip': _normalize_text(source.get('coach_tip')),
+        'reason': _normalize_text(source.get('reason'), fallback=''),
+        'next_2_weeks_target': _normalize_text(source.get('next_2_weeks_target'), fallback=''),
+        'coach_tip': _normalize_text(source.get('coach_tip'), fallback=''),
     }
 
 
 def _normalize_study_plan_item(value: Any) -> dict[str, Any]:
     source = value if isinstance(value, dict) else {}
     return {
-        'step': _normalize_text(source.get('step')),
-        'frequency': _normalize_text(source.get('frequency')),
+        'step': _normalize_text(source.get('step'), fallback=''),
+        'frequency': _normalize_text(source.get('frequency'), fallback=''),
         'duration_minutes': _normalize_score(source.get('duration_minutes')),
     }
 
@@ -152,19 +149,9 @@ def _normalize_date_range(value: Any) -> dict[str, str] | None:
     if not from_date and not to_date:
         return None
     return {
-        'from_date': from_date or 'Khong co moc thoi gian trong du lieu nguon',
-        'to_date': to_date or 'Khong co moc thoi gian trong du lieu nguon',
+        'from_date': from_date,
+        'to_date': to_date,
     }
-
-
-def _soften_portfolio_missing_data_text(value: Any) -> Any:
-    if isinstance(value, str):
-        return value.replace('chua du du lieu', FRIENDLY_MISSING_DATA_TEXT)
-    if isinstance(value, list):
-        return [_soften_portfolio_missing_data_text(item) for item in value]
-    if isinstance(value, dict):
-        return {key: _soften_portfolio_missing_data_text(item) for key, item in value.items()}
-    return value
 
 
 def _parse_lesson_root(raw_json_text: str) -> dict[str, Any]:
@@ -357,7 +344,10 @@ def _build_portfolio_feedback_messages(
         'Tranh van phong qua hoc thuat; neu dung thuat ngu chuyen mon thi giai thich ngan gon bang ngon ngu doi thuong. '
         'Nhiem vu: dua tren danh sach du lieu lesson, hay danh gia tong quan qua trinh hoc. '
         'Chi tra ve JSON hop le, khong markdown, khong van ban ngoai JSON. '
-        'Neu thieu du lieu, ghi ro "chua du du lieu". '
+        'Tuyet doi khong duoc bịa du lieu. '
+        'Neu thieu du lieu, hay viet nhan dinh co dieu kien dua tren du lieu gan nhat, '
+        'dong thoi neu ro gioi han du lieu trong evidence hoac reason. '
+        'Khong duoc tra ve chuoi "chua du du lieu". '
         'Bat buoc output co cac truong: '
         'portfolio_label, total_lessons, date_range(from_date,to_date), overall_assessment, '
         'skill_trends(participation, pronunciation, vocabulary, grammar, reaction_confidence), '
@@ -460,24 +450,14 @@ def _normalize_portfolio_feedback_payload(
     if not isinstance(study_plan, list):
         study_plan = []
     normalized_plan = [_normalize_study_plan_item(item) for item in study_plan]
-    if not normalized_plan:
-        normalized_plan = [
-            {
-                'step': 'On tap tu vung theo chu de gan day',
-                'frequency': '4 buoi/tuan',
-                'duration_minutes': 10,
-            }
-        ]
 
     strengths = _normalize_string_list(parsed.get('top_strengths'))
-    if not strengths:
-        strengths = ['chua du du lieu']
 
     payload = {
         'portfolio_label': _normalize_text(parsed.get('portfolio_label'), fallback=portfolio_label or 'Tong hop qua trinh hoc'),
         'total_lessons': _normalize_score(parsed.get('total_lessons')) or len(lessons_payload),
         'date_range': _normalize_date_range(parsed.get('date_range')),
-        'overall_assessment': _normalize_text(parsed.get('overall_assessment')),
+        'overall_assessment': _normalize_text(parsed.get('overall_assessment'), fallback=''),
         'skill_trends': {
             'participation': _normalize_skill_trend(skill_trends.get('participation')),
             'pronunciation': _normalize_skill_trend(skill_trends.get('pronunciation')),
@@ -488,9 +468,9 @@ def _normalize_portfolio_feedback_payload(
         'top_strengths': strengths,
         'top_priorities': normalized_priorities,
         'study_plan_2_weeks': normalized_plan,
-        'parent_message': _normalize_text(parsed.get('parent_message')),
+        'parent_message': _normalize_text(parsed.get('parent_message'), fallback=''),
     }
-    return _soften_portfolio_missing_data_text(payload)
+    return payload
 
 
 def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) -> dict[str, Any]:

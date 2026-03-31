@@ -454,6 +454,7 @@ def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
     assert 'top_priorities uu tien dung 3 muc' in system_prompt
     assert 'study_plan_2_weeks can 6-8 buoc' in system_prompt
     assert 'cam cau chung chung' in system_prompt
+    assert 'Khong duoc tra ve chuoi "chua du du lieu"' in system_prompt
     assert 'portfolio_context' in user_payload
     assert user_payload['portfolio_context']['total_lessons'] == 1
 
@@ -515,7 +516,7 @@ def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
     assert result_events[0]['data']['portfolio_label'] == 'Tong hop'
 
 
-def test_generate_portfolio_feedback_softens_missing_data_text(monkeypatch) -> None:
+def test_generate_portfolio_feedback_does_not_inject_fake_fallback_data(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
 
     class _FakeCompletions:
@@ -524,19 +525,19 @@ def test_generate_portfolio_feedback_softens_missing_data_text(monkeypatch) -> N
             class _Message:
                 content = (
                     '{"portfolio_label":"Tong hop","total_lessons":2,'
-                    '"date_range":{"from_date":"chua du du lieu","to_date":"chua du du lieu"},'
-                    '"overall_assessment":"chua du du lieu",'
+                    '"date_range":{"from_date":"","to_date":""},'
+                    '"overall_assessment":"Du lieu con thieu o mot so muc, can theo doi them de ket luan chac chan.",'
                     '"skill_trends":{'
-                    '"participation":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
-                    '"pronunciation":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
-                    '"vocabulary":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
-                    '"grammar":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
-                    '"reaction_confidence":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"}'
+                    '"participation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                    '"pronunciation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                    '"vocabulary":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                    '"grammar":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                    '"reaction_confidence":{"current_level":"","trend":"stable","evidence":[],"recommendation":""}'
                     '},'
-                    '"top_strengths":["chua du du lieu"],'
-                    '"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"chua du du lieu","next_2_weeks_target":"chua du du lieu","coach_tip":"chua du du lieu"}],'
-                    '"study_plan_2_weeks":[{"step":"chua du du lieu","frequency":"chua du du lieu","duration_minutes":10}],'
-                    '"parent_message":"chua du du lieu"}'
+                    '"top_strengths":[],'
+                    '"top_priorities":[],'
+                    '"study_plan_2_weeks":[],'
+                    '"parent_message":"Can bo sung du lieu o cac buoi tiep theo de co ke hoach sat hon."}'
                 )
 
             class _Choice:
@@ -560,9 +561,9 @@ def test_generate_portfolio_feedback_softens_missing_data_text(monkeypatch) -> N
     from app.llm import generate_portfolio_feedback
 
     result = generate_portfolio_feedback([{'lesson_id': '1', 'raw_json_text': '{}', 'source_file': 'lesson_1.json'}])
-    serialized = str(result)
-    assert 'chua du du lieu' not in serialized
-    assert 'Du lieu hien tai chua du de ket luan ro' in serialized
+    assert result['top_strengths'] == []
+    assert result['top_priorities'] == []
+    assert result['study_plan_2_weeks'] == []
 
 
 def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
