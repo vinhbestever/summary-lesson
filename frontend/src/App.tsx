@@ -10,14 +10,14 @@ type SummaryPayload = {
 
 const reportLinks = [
   {
-    label: 'Trial Lesson 10_11',
-    href: 'https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=TRIAL_LESSON_10_11',
-    detail: 'Bao cao hoc thu',
+    label: 'Lesson 1',
+    href: 'https://rinoedu.ai/bao-cao-sau-buoi-hoc?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxMTY5MTUiLCJpYXQiOjE3NzA0NzQ0ODQsImV4cCI6MTgwMjAxMDQ4NH0.bWMnciHCaUJ0sm7AS0Q3_wzuCo2udbU480tNG5lxO8c&erp_lesson_id=3724970',
+    detail: 'Buổi học chào hỏi',
   },
   {
-    label: 'Lesson 3724970',
-    href: 'https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3724970',
-    detail: 'Bao cao buoi hoc chi tiet',
+    label: 'Lesson 2',
+    href: 'https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=TRIAL_LESSON_10_11&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0NjU3NDEiLCJpYXQiOjE3NzIxNTcwOTksImV4cCI6MTgwMzY5MzA5OX0.JEHtb_OS2C027eQrz1JuYiZBpgeA693xt2HAj5Sxp4s',
+    detail: 'Buổi học về các nước',
   },
 ]
 
@@ -82,8 +82,7 @@ function App() {
       <section className="hero">
         <div className="hero__header">
           <p className="hero__eyebrow">Bao cao sau buoi hoc</p>
-          <h1>RinoEdu Lesson Summary</h1>
-          <p className="hero__subtitle">Chon nhanh bao cao mau hoac dan noi dung de tom tat bang LLM.</p>
+          <h1>RinoDigi Lesson</h1>
         </div>
       </section>
 
@@ -94,63 +93,6 @@ function App() {
             <span className="report-card__detail">{item.detail}</span>
           </a>
         ))}
-      </section>
-
-      <section className="summary-box" aria-label="Summary lab">
-        <div className="quote-card">"Dan noi dung bao cao de he thong tong hop thong tin chinh va ke hoach tiep theo."</div>
-
-        <form className="summary-form" onSubmit={handleSubmit}>
-          <label htmlFor="report-text">Noi dung bao cao</label>
-          <textarea
-            id="report-text"
-            value={reportText}
-            onChange={(event) => setReportText(event.target.value)}
-            placeholder="Nhap report text..."
-            rows={8}
-          />
-          <label htmlFor="report-url">Report URL (tu chon)</label>
-          <input
-            id="report-url"
-            value={reportUrl}
-            onChange={(event) => setReportUrl(event.target.value)}
-            placeholder="https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=..."
-            type="url"
-          />
-          <label htmlFor="lesson-id">Lesson ID (tu chon)</label>
-          <input
-            id="lesson-id"
-            value={lessonId}
-            onChange={(event) => setLessonId(event.target.value)}
-            placeholder="3724970"
-            type="text"
-          />
-          <button type="submit" disabled={loading}>
-            {loading ? 'Dang tom tat...' : 'Tom tat bao cao'}
-          </button>
-        </form>
-
-        {error && <p className="feedback feedback--error">{error}</p>}
-
-        {summary && (
-          <article className="summary-result">
-            <h2>Tong hop</h2>
-            <p>{summary.overall_summary}</p>
-
-            <h3>Y chinh</h3>
-            <ul>
-              {summary.key_points.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-
-            <h3>Hanh dong de xuat</h3>
-            <ul>
-              {summary.action_items.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </article>
-        )}
       </section>
     </main>
   )

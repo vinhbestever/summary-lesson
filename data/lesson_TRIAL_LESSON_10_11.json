@@ -1,0 +1,454 @@
+[
+  {
+    "reportId": "69a035c5c35c50ae4ee0d530",
+    "sessionId": "69a029b0c35c50ae4ee0a1d6",
+    "completion": {
+      "isCompletedByReportRules": true,
+      "reasons": [
+        "GRAMMAR_SECTION_COMPLETED",
+        "VOCABULARY_SECTION_COMPLETED"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 20,
+        "totalCups": 53,
+        "averageReactionTimeMs": 2000.2,
+        "practiceAccuracyPercent": 94,
+        "sectionsCompletionPercent": 57,
+        "speakingTargetCount": 44,
+        "speakingCoverage": 0.45,
+        "reactionTag": null,
+        "teacherComment": "Bé đã hoàn thành buổi học, phát âm khá ổn, nhưng cần cố gắng thêm nhé.",
+        "sessionSummary": "Buổi học diễn ra thành công.",
+        "trialComment": "Con học siêu say mê. Cô tin con sẽ tỏa sáng!",
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": true,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": true,
+          "immediateExit": false
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 20,
+        "averagePronunciationScore": 86.26,
+        "averageGrammarScore": null,
+        "goodVocabularyCount": 5,
+        "goodGrammarCount": 3,
+        "totalVocabularyCount": 5,
+        "totalGrammarCount": 3,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [
+        {
+          "word": "Britain",
+          "attemptCount": 2,
+          "averageScore": 91.5,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3d3vl9-cc49b6ad-audio.wav",
+          "bestResultId": "69a02a2cc35c50ae4ee0a37b",
+          "assessments": {
+            "mask": "1111111"
+          },
+          "resultIds": [
+            "69a02a2cc35c50ae4ee0a37b",
+            "69a02bdcc35c50ae4ee0aa34"
+          ]
+        },
+        {
+          "word": "Thailand",
+          "attemptCount": 3,
+          "averageScore": 66.67,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3dcmut-b48724f0-audio.wav",
+          "bestResultId": "69a02bc5c35c50ae4ee0a9eb",
+          "assessments": {
+            "mask": "111111111"
+          },
+          "resultIds": [
+            "69a02a40c35c50ae4ee0a397",
+            "69a02bc5c35c50ae4ee0a9eb",
+            "69a02a38c35c50ae4ee0a38d"
+          ]
+        },
+        {
+          "word": "Canada",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3ddgtp-607cbe0d-audio.wav",
+          "bestResultId": "69a02becf27f0653c9313966",
+          "assessments": {
+            "mask": "1111111"
+          },
+          "resultIds": [
+            "69a02a74f27f0653c93133a2",
+            "69a02bcdf27f0653c9313900",
+            "69a02becf27f0653c9313966"
+          ]
+        },
+        {
+          "word": "Japan",
+          "attemptCount": 1,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3d5n65-1dddddf8-audio.wav",
+          "bestResultId": "69a02a7ec35c50ae4ee0a4e4",
+          "assessments": {
+            "mask": "11111"
+          },
+          "resultIds": [
+            "69a02a7ec35c50ae4ee0a4e4"
+          ]
+        },
+        {
+          "word": "Singapore",
+          "attemptCount": 4,
+          "averageScore": 75,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3ddn67-c03aad61-audio.wav",
+          "bestResultId": "69a02bf4c35c50ae4ee0aa8e",
+          "assessments": {
+            "mask": "1111111111"
+          },
+          "resultIds": [
+            "69a02a88c35c50ae4ee0a536",
+            "69a02bd4c35c50ae4ee0aa1e",
+            "69a02bf4c35c50ae4ee0aa8e",
+            "69a02be4f27f0653c931394e"
+          ]
+        }
+      ],
+      "grammar": [
+        {
+          "pattern": "Where are you from?",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3dbihy-7096418a-audio.wav",
+          "bestResultId": "69a02b90c35c50ae4ee0a946",
+          "assessments": {
+            "mask": "11111 111 111 11111"
+          },
+          "resultIds": [
+            "69a02b74f27f0653c93137bf",
+            "69a02b90c35c50ae4ee0a946"
+          ]
+        },
+        {
+          "pattern": "I'm from Japan.",
+          "attemptCount": 2,
+          "averageScore": 76.67,
+          "bestScore": 83.33333333333333,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3db5le-5397236d-audio.wav",
+          "bestResultId": "69a02b80c35c50ae4ee0a881",
+          "assessments": {
+            "mask": "110 1111 111111"
+          },
+          "resultIds": [
+            "69a02b80c35c50ae4ee0a881",
+            "69a02bbdf27f0653c93138d8"
+          ]
+        },
+        {
+          "pattern": "I'm from Thailand.",
+          "attemptCount": 2,
+          "averageScore": 83.17,
+          "bestScore": 83.33333333333333,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3dbqzs-55e38d73-audio.wav",
+          "bestResultId": "69a02b9bf27f0653c9313864",
+          "assessments": {
+            "mask": "110 1111 111111111"
+          },
+          "resultIds": [
+            "69a02b9bf27f0653c9313864",
+            "69a02bb5f27f0653c93138cd"
+          ]
+        }
+      ]
+    },
+    "targets": {
+      "vocabulary": [
+        "Britain",
+        "Thailand",
+        "Canada",
+        "Japan",
+        "Singapore"
+      ],
+      "grammar": [
+        "Where are you from?",
+        "I'm from Japan.",
+        "I'm from Thailand."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "DEFAULT",
+        "trialCommentRule": "HIGH_PRONUNCIATION",
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+      },
+      "name": "Countries",
+      "description": "Bé từ 10 - 11 tuổi",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/06/collaborator/mk21egsi-e1d21865-brainstorm-ch.png",
+      "lmsCourseId": "933",
+      "lmsSectionId": "78143"
+    }
+  },
+  {
+    "reportId": "69a0f8ab6605b9da75e08d50",
+    "sessionId": "69a0377bc35c50ae4ee0e6bc",
+    "completion": {
+      "isCompletedByReportRules": true,
+      "reasons": [
+        "GRAMMAR_SECTION_COMPLETED",
+        "VOCABULARY_SECTION_COMPLETED"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 18,
+        "totalCups": 45,
+        "averageReactionTimeMs": 1171.41,
+        "practiceAccuracyPercent": 90,
+        "sectionsCompletionPercent": 57,
+        "speakingTargetCount": 44,
+        "speakingCoverage": 0.41,
+        "reactionTag": null,
+        "teacherComment": "Bé đã hoàn thành buổi học, phát âm khá ổn, nhưng cần cố gắng thêm nhé.",
+        "sessionSummary": "Buổi học diễn ra thành công.",
+        "trialComment": "Con học siêu say mê. Cô tin con sẽ tỏa sáng!",
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": true,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": true,
+          "immediateExit": false
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 18,
+        "averagePronunciationScore": 98.53,
+        "averageGrammarScore": null,
+        "goodVocabularyCount": 5,
+        "goodGrammarCount": 3,
+        "totalVocabularyCount": 5,
+        "totalGrammarCount": 3,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [
+        {
+          "word": "Britain",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fip24-fde3c082-audio.wav",
+          "bestResultId": "69a039fff27f0653c9318e96",
+          "assessments": {
+            "mask": "11111111"
+          },
+          "resultIds": [
+            "69a03809c35c50ae4ee0ebf2",
+            "69a039fff27f0653c9318e96"
+          ]
+        },
+        {
+          "word": "Thailand",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fi0y5-7baf9bef-audio.wav",
+          "bestResultId": "69a039e0c35c50ae4ee1016e",
+          "assessments": {
+            "mask": "111111111"
+          },
+          "resultIds": [
+            "69a03814f27f0653c93179d0",
+            "69a039e0c35c50ae4ee1016e"
+          ]
+        },
+        {
+          "word": "Canada",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fj4eg-646dd3ab-audio.wav",
+          "bestResultId": "69a03a13c35c50ae4ee10302",
+          "assessments": {
+            "mask": "1111111"
+          },
+          "resultIds": [
+            "69a0386ec35c50ae4ee0f029",
+            "69a039eaf27f0653c9318da6",
+            "69a03a13c35c50ae4ee10302"
+          ]
+        },
+        {
+          "word": "Japan",
+          "attemptCount": 1,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fadf5-20d9d0ef-audio.wav",
+          "bestResultId": "69a0387af27f0653c9317d85",
+          "assessments": {
+            "mask": "11111"
+          },
+          "resultIds": [
+            "69a0387af27f0653c9317d85"
+          ]
+        },
+        {
+          "word": "Singapore",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fiwj0-7e5791d7-audio.wav",
+          "bestResultId": "69a03a09c35c50ae4ee102c4",
+          "assessments": {
+            "mask": "1111111111"
+          },
+          "resultIds": [
+            "69a03888f27f0653c9317ece",
+            "69a039f4c35c50ae4ee10214",
+            "69a03a09c35c50ae4ee102c4"
+          ]
+        }
+      ],
+      "grammar": [
+        {
+          "pattern": "Where are you from?",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fgr5j-20bfce51-audio.wav",
+          "bestResultId": "69a039a4c35c50ae4ee0fe36",
+          "assessments": {
+            "mask": "11111 111 111 11111"
+          },
+          "resultIds": [
+            "69a0398bf27f0653c9318979",
+            "69a039a4c35c50ae4ee0fe36"
+          ]
+        },
+        {
+          "pattern": "I'm from Japan.",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fhrub-af71556e-audio.wav",
+          "bestResultId": "69a039d4c35c50ae4ee10100",
+          "assessments": {
+            "mask": "111 1111 111111"
+          },
+          "resultIds": [
+            "69a0399af27f0653c9318a02",
+            "69a039d4c35c50ae4ee10100"
+          ]
+        },
+        {
+          "pattern": "I'm from Thailand.",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/26/admin/mm3fhljk-131f111e-audio.wav",
+          "bestResultId": "69a039ccc35c50ae4ee100b5",
+          "assessments": {
+            "mask": "111 1111 111111111"
+          },
+          "resultIds": [
+            "69a039aff27f0653c9318b6b",
+            "69a039ccc35c50ae4ee100b5"
+          ]
+        }
+      ]
+    },
+    "targets": {
+      "vocabulary": [
+        "Britain",
+        "Thailand",
+        "Canada",
+        "Japan",
+        "Singapore"
+      ],
+      "grammar": [
+        "Where are you from?",
+        "I'm from Japan.",
+        "I'm from Thailand."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "DEFAULT",
+        "trialCommentRule": "HIGH_PRONUNCIATION",
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+      },
+      "name": "Countries",
+      "description": "Bé từ 10 - 11 tuổi",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/06/collaborator/mk21egsi-e1d21865-brainstorm-ch.png",
+      "lmsCourseId": "933",
+      "lmsSectionId": "78143"
+    }
+  }
+]

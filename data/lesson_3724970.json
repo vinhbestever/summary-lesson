@@ -1,0 +1,236 @@
+{
+  "reportId": "69874bb96107d676b6abafd2",
+  "sessionId": "69873ffc6107d676b6ab7c9d",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 45,
+      "totalCups": 22,
+      "averageReactionTimeMs": 1543,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 71,
+      "speakingTargetCount": 51,
+      "speakingCoverage": 0.88,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Bé đã hoàn thành buổi học, cần cải thiện phát âm hơn. Hãy cố gắng cho buổi sau bé nhé.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 45,
+      "averagePronunciationScore": 38.67,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 0,
+      "goodGrammarCount": 1,
+      "totalVocabularyCount": 7,
+      "totalGrammarCount": 5,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "alligator",
+        "attemptCount": 5,
+        "averageScore": 0,
+        "bestScore": null,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "698741240b8640e5d56ca8ad",
+        "resultIds": [
+          "698741240b8640e5d56ca8ad",
+          "6987412d6107d676b6ab80b8",
+          "698744626107d676b6ab920f",
+          "6987446c6107d676b6ab9245",
+          "698744b26107d676b6ab9389"
+        ]
+      },
+      {
+        "word": "ant",
+        "attemptCount": 6,
+        "averageScore": 5.5,
+        "bestScore": 33,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcd6a4p-44812121-audio.wav",
+        "bestResultId": "698741510b8640e5d56ca9df",
+        "assessments": {
+          "mask": "010"
+        },
+        "resultIds": [
+          "698741510b8640e5d56ca9df",
+          "698741380b8640e5d56ca8fa",
+          "698741540b8640e5d56ca9e9",
+          "6987448c0b8640e5d56cbdcf",
+          "698744946107d676b6ab9305",
+          "698744ac0b8640e5d56cbe5a"
+        ]
+      },
+      {
+        "word": "apple",
+        "attemptCount": 4,
+        "averageScore": 0,
+        "bestScore": null,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "698741600b8640e5d56caa28",
+        "resultIds": [
+          "698741600b8640e5d56caa28",
+          "698741640b8640e5d56caa42",
+          "698744236107d676b6ab9043",
+          "698744c20b8640e5d56cbfea"
+        ]
+      },
+      {
+        "word": "hi",
+        "attemptCount": 4,
+        "averageScore": 0,
+        "bestScore": null,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "698742376107d676b6ab85d4",
+        "resultIds": [
+          "698742376107d676b6ab85d4",
+          "6987423f6107d676b6ab8607",
+          "698742646107d676b6ab86d4",
+          "6987426b0b8640e5d56cb011"
+        ]
+      },
+      {
+        "word": "hello",
+        "attemptCount": 3,
+        "averageScore": 0,
+        "bestScore": null,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "6987427d0b8640e5d56cb098",
+        "resultIds": [
+          "6987427d0b8640e5d56cb098",
+          "698742856107d676b6ab8804",
+          "698744bd6107d676b6ab93cb"
+        ]
+      },
+      {
+        "word": "bye",
+        "attemptCount": 2,
+        "averageScore": 0,
+        "bestScore": null,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "698743a20b8640e5d56cb837",
+        "resultIds": [
+          "698743a20b8640e5d56cb837",
+          "698743ac6107d676b6ab8df4"
+        ]
+      },
+      {
+        "word": "goodbye",
+        "attemptCount": 2,
+        "averageScore": 0,
+        "bestScore": null,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "698743b40b8640e5d56cb8a8",
+        "resultIds": [
+          "698743b40b8640e5d56cb8a8",
+          "698743b90b8640e5d56cb8cb"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Nice to meet you!",
+        "attemptCount": 4,
+        "averageScore": 18.75,
+        "bestScore": 75,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "6987435f0b8640e5d56cb6af",
+        "assessments": {
+          "mask": "0000 11 1111 111"
+        },
+        "resultIds": [
+          "6987435f0b8640e5d56cb6af",
+          "6987436a0b8640e5d56cb6f6",
+          "6987436f0b8640e5d56cb70f",
+          "698744b76107d676b6ab93a6"
+        ]
+      },
+      {
+        "pattern": "Goodbye!",
+        "attemptCount": 2,
+        "averageScore": 0,
+        "bestScore": null,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/07/admin/mlcdhjcx-92ecc4bb-audio.wav",
+        "bestResultId": "698743b40b8640e5d56cb8a8",
+        "resultIds": [
+          "698743b40b8640e5d56cb8a8",
+          "698743b90b8640e5d56cb8cb"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "ant",
+      "apple",
+      "alligator",
+      "hi",
+      "hello",
+      "bye",
+      "goodbye"
+    ],
+    "grammar": [
+      "what's your name?",
+      "Nice to meet you!",
+      "Nice to meet you, too!",
+      "I'm Bitu",
+      "Goodbye!"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Kịch bản",
+    "description": "Kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/10/collaborator/mfdscklt-5b50eed8-3.png",
+    "lmsCourseId": "892",
+    "lmsSectionId": "75224"
+  }
+}
