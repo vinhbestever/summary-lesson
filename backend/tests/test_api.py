@@ -515,6 +515,56 @@ def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
     assert result_events[0]['data']['portfolio_label'] == 'Tong hop'
 
 
+def test_generate_portfolio_feedback_softens_missing_data_text(monkeypatch) -> None:
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+
+    class _FakeCompletions:
+        @staticmethod
+        def create(**kwargs):
+            class _Message:
+                content = (
+                    '{"portfolio_label":"Tong hop","total_lessons":2,'
+                    '"date_range":{"from_date":"chua du du lieu","to_date":"chua du du lieu"},'
+                    '"overall_assessment":"chua du du lieu",'
+                    '"skill_trends":{'
+                    '"participation":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
+                    '"pronunciation":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
+                    '"vocabulary":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
+                    '"grammar":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"},'
+                    '"reaction_confidence":{"current_level":"chua du du lieu","trend":"stable","evidence":["chua du du lieu"],"recommendation":"chua du du lieu"}'
+                    '},'
+                    '"top_strengths":["chua du du lieu"],'
+                    '"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"chua du du lieu","next_2_weeks_target":"chua du du lieu","coach_tip":"chua du du lieu"}],'
+                    '"study_plan_2_weeks":[{"step":"chua du du lieu","frequency":"chua du du lieu","duration_minutes":10}],'
+                    '"parent_message":"chua du du lieu"}'
+                )
+
+            class _Choice:
+                message = _Message()
+
+            class _Response:
+                choices = [_Choice()]
+
+            return _Response()
+
+    class _FakeChat:
+        completions = _FakeCompletions()
+
+    class _FakeOpenAI:
+        def __init__(self, api_key: str):
+            assert api_key == 'test-key'
+            self.chat = _FakeChat()
+
+    monkeypatch.setattr('app.llm.OpenAI', _FakeOpenAI)
+
+    from app.llm import generate_portfolio_feedback
+
+    result = generate_portfolio_feedback([{'lesson_id': '1', 'raw_json_text': '{}', 'source_file': 'lesson_1.json'}])
+    serialized = str(result)
+    assert 'chua du du lieu' not in serialized
+    assert 'Du lieu hien tai chua du de ket luan ro' in serialized
+
+
 def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
     monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lesson id')
     monkeypatch.setattr('app.main.generate_lesson_feedback', lambda _text, _label: _feedback_payload(), raising=False)

@@ -7,6 +7,7 @@ from openai import OpenAI
 VALID_PRIORITY_SKILLS = {'pronunciation', 'vocabulary', 'grammar', 'reaction_confidence', 'participation'}
 VALID_PRIORITIES = {'high', 'medium', 'low'}
 VALID_TRENDS = {'improving', 'stable', 'declining', 'mixed', 'insufficient_data'}
+FRIENDLY_MISSING_DATA_TEXT = 'Du lieu hien tai chua du de ket luan ro, can theo doi them 1-2 buoi nua.'
 
 
 def summarize_report(report_text: str) -> dict[str, Any]:
@@ -151,9 +152,19 @@ def _normalize_date_range(value: Any) -> dict[str, str] | None:
     if not from_date and not to_date:
         return None
     return {
-        'from_date': from_date or 'chua du du lieu',
-        'to_date': to_date or 'chua du du lieu',
+        'from_date': from_date or 'Khong co moc thoi gian trong du lieu nguon',
+        'to_date': to_date or 'Khong co moc thoi gian trong du lieu nguon',
     }
+
+
+def _soften_portfolio_missing_data_text(value: Any) -> Any:
+    if isinstance(value, str):
+        return value.replace('chua du du lieu', FRIENDLY_MISSING_DATA_TEXT)
+    if isinstance(value, list):
+        return [_soften_portfolio_missing_data_text(item) for item in value]
+    if isinstance(value, dict):
+        return {key: _soften_portfolio_missing_data_text(item) for key, item in value.items()}
+    return value
 
 
 def _parse_lesson_root(raw_json_text: str) -> dict[str, Any]:
@@ -462,7 +473,7 @@ def _normalize_portfolio_feedback_payload(
     if not strengths:
         strengths = ['chua du du lieu']
 
-    return {
+    payload = {
         'portfolio_label': _normalize_text(parsed.get('portfolio_label'), fallback=portfolio_label or 'Tong hop qua trinh hoc'),
         'total_lessons': _normalize_score(parsed.get('total_lessons')) or len(lessons_payload),
         'date_range': _normalize_date_range(parsed.get('date_range')),
@@ -479,6 +490,7 @@ def _normalize_portfolio_feedback_payload(
         'study_plan_2_weeks': normalized_plan,
         'parent_message': _normalize_text(parsed.get('parent_message')),
     }
+    return _soften_portfolio_missing_data_text(payload)
 
 
 def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) -> dict[str, Any]:
