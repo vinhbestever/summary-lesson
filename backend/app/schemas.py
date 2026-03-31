@@ -46,6 +46,16 @@ class LessonFeedbackRequest(ReportInputRequest):
         return self
 
 
+class PortfolioFeedbackRequest(BaseModel):
+    portfolio_label: str | None = None
+
+    @model_validator(mode='after')
+    def normalize_label(self):
+        if self.portfolio_label:
+            self.portfolio_label = self.portfolio_label.strip()
+        return self
+
+
 class SessionCriterion(BaseModel):
     score: int = Field(ge=0, le=100)
     comment: str

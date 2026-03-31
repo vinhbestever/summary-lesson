@@ -7,13 +7,22 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import StreamingResponse
 
-from app.ingest import build_report_url_from_lesson_id, fetch_report_text_from_url, load_lesson_json_from_local_data
+from app.ingest import (
+    build_report_url_from_lesson_id,
+    fetch_report_text_from_url,
+    load_all_lessons_json_from_local_data,
+    load_lesson_json_from_local_data,
+)
 from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
+from app.llm import generate_portfolio_feedback as generate_portfolio_feedback_from_llm
 from app.llm import stream_lesson_feedback as stream_lesson_feedback_from_llm
+from app.llm import stream_portfolio_feedback as stream_portfolio_feedback_from_llm
 from app.llm import summarize_report
 from app.schemas import (
     LessonFeedbackRequest,
     LessonFeedbackResponse,
+    PortfolioFeedbackRequest,
+    PortfolioFeedbackResponse,
     ReportInputRequest,
     SummaryRequest,
     SummaryResponse,
@@ -45,6 +54,14 @@ def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) 
 
 def stream_lesson_feedback(report_text: str, lesson_label: str | None = None):
     return stream_lesson_feedback_from_llm(report_text, lesson_label)
+
+
+def generate_portfolio_feedback(lessons_payload: list[dict], portfolio_label: str | None = None) -> dict:
+    return generate_portfolio_feedback_from_llm(lessons_payload, portfolio_label)
+
+
+def stream_portfolio_feedback(lessons_payload: list[dict], portfolio_label: str | None = None):
+    return stream_portfolio_feedback_from_llm(lessons_payload, portfolio_label)
 
 
 def resolve_report_text(payload: ReportInputRequest) -> str:
@@ -123,6 +140,54 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
     def event_generator():
         try:
             for event in stream_lesson_feedback(report_text, payload.lesson_label):
+                event_type = str(event.get('type', 'status'))
+                yield _format_sse_event(event_type, event)
+        except Exception as exc:
+            yield _format_sse_event('error', {'type': 'error', 'message': str(exc)})
+        yield _format_sse_event('done', {'type': 'done'})
+
+    return StreamingResponse(
+        event_generator(),
+        media_type='text/event-stream',
+        headers={'Cache-Control': 'no-cache', 'Connection': 'keep-alive'},
+    )
+
+
+@app.post('/api/v1/portfolio-feedback', response_model=PortfolioFeedbackResponse)
+def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PortfolioFeedbackResponse:
+    try:
+        lessons_payload = load_all_lessons_json_from_local_data()
+        if not lessons_payload:
+            raise HTTPException(status_code=400, detail='Khong tim thay du lieu lesson trong /data')
+        feedback = generate_portfolio_feedback(lessons_payload, payload.portfolio_label)
+    except HTTPException:
+        raise
+    except ValueError as exc:
+        raise HTTPException(status_code=500, detail=f'Invalid portfolio feedback input/output: {exc}') from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail='Unexpected portfolio feedback error') from exc
+
+    return PortfolioFeedbackResponse(**feedback)
+
+
+@app.post('/api/v1/portfolio-feedback/stream')
+def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> StreamingResponse:
+    try:
+        lessons_payload = load_all_lessons_json_from_local_data()
+        if not lessons_payload:
+            raise HTTPException(status_code=400, detail='Khong tim thay du lieu lesson trong /data')
+    except HTTPException:
+        raise
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail='Unexpected portfolio feedback error') from exc
+
+    def event_generator():
+        try:
+            for event in stream_portfolio_feedback(lessons_payload, payload.portfolio_label):
                 event_type = str(event.get('type', 'status'))
                 yield _format_sse_event(event_type, event)
         except Exception as exc:

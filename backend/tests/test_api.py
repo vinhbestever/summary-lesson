@@ -510,3 +510,47 @@ def test_create_lesson_feedback_stream_returns_events(monkeypatch) -> None:
     assert 'event: status' in response.text
     assert 'event: result' in response.text
     assert 'event: done' in response.text
+
+
+def test_create_portfolio_feedback_success(monkeypatch) -> None:
+    monkeypatch.setattr(
+        'app.main.load_all_lessons_json_from_local_data',
+        lambda: [{'lesson_id': '3724970', 'source_file': 'lesson_3724970.json', 'raw_json_text': '{"ok":true}'}],
+    )
+    monkeypatch.setattr(
+        'app.main.generate_portfolio_feedback',
+        lambda _lessons, _label: _portfolio_feedback_payload(),
+        raising=False,
+    )
+
+    response = client.post('/api/v1/portfolio-feedback', json={'portfolio_label': 'Tong hop toan bo'})
+    assert response.status_code == 200
+    body = response.json()
+    assert body['portfolio_label'] == 'Tong hop toan bo buoi hoc'
+    assert body['total_lessons'] == 2
+    assert 'skill_trends' in body
+
+
+def test_create_portfolio_feedback_stream_returns_events(monkeypatch) -> None:
+    monkeypatch.setattr(
+        'app.main.load_all_lessons_json_from_local_data',
+        lambda: [{'lesson_id': '3724970', 'source_file': 'lesson_3724970.json', 'raw_json_text': '{"ok":true}'}],
+    )
+
+    def _fake_stream(_lessons, _label):
+        yield {'type': 'status', 'message': 'Dang phan tich'}
+        yield {'type': 'result', 'data': _portfolio_feedback_payload()}
+
+    monkeypatch.setattr('app.main.stream_portfolio_feedback', _fake_stream, raising=False)
+    response = client.post('/api/v1/portfolio-feedback/stream', json={'portfolio_label': 'Tong hop toan bo'})
+    assert response.status_code == 200
+    assert 'event: status' in response.text
+    assert 'event: result' in response.text
+    assert 'event: done' in response.text
+
+
+def test_create_portfolio_feedback_returns_400_when_no_local_lesson(monkeypatch) -> None:
+    monkeypatch.setattr('app.main.load_all_lessons_json_from_local_data', lambda: [])
+
+    response = client.post('/api/v1/portfolio-feedback', json={})
+    assert response.status_code == 400
