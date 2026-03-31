@@ -405,7 +405,7 @@ function App() {
               key={item.lessonId}
               className={`report-card ${activeFeedbackLabel === item.label ? 'report-card--active' : ''}`}
             >
-              <p className="report-card__order">Buoi {index + 1}</p>
+              <p className="report-card__order">Buoi {lessonCount - index}</p>
               <a className="report-card__link" href={item.href} target="_blank" rel="noopener noreferrer">
                 <span className="report-card__title">{item.label}</span>
                 <span className="report-card__detail">{item.detail}</span>

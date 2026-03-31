@@ -70,6 +70,23 @@ describe('App', () => {
     }
   })
 
+  it('shows lesson order from highest to lowest', () => {
+    const { container } = render(<App />)
+
+    const orderNodes = Array.from(container.querySelectorAll('.report-card__order'))
+    expect(orderNodes.length).toBeGreaterThan(1)
+
+    const orders = orderNodes
+      .map((node) => node.textContent?.match(/\d+/)?.[0] ?? '')
+      .map((value) => Number(value))
+      .filter((value) => Number.isFinite(value))
+
+    expect(orders.length).toBe(orderNodes.length)
+    for (let i = 0; i < orders.length - 1; i += 1) {
+      expect(orders[i]).toBeGreaterThan(orders[i + 1])
+    }
+  })
+
   it('renders lesson markdown from raw sse chunks', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([
