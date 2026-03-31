@@ -760,3 +760,77 @@ def test_portfolio_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
     assert 'event: chunk' in body
     assert 'data: # Tong ket' in body
     assert 'event: done' in body
+
+
+def test_generate_lesson_feedback_returns_markdown_text(monkeypatch) -> None:
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+
+    class _FakeCompletions:
+        @staticmethod
+        def create(**kwargs):
+            class _Message:
+                content = '# Nhan xet\n\n- Con tien bo'
+
+            class _Choice:
+                message = _Message()
+
+            class _Response:
+                choices = [_Choice()]
+
+            return _Response()
+
+    class _FakeChat:
+        completions = _FakeCompletions()
+
+    class _FakeOpenAI:
+        def __init__(self, api_key: str):
+            assert api_key == 'test-key'
+            self.chat = _FakeChat()
+
+    monkeypatch.setattr('app.llm.OpenAI', _FakeOpenAI)
+
+    from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
+
+    result = generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
+    assert isinstance(result, str)
+    assert result.startswith('#')
+
+
+def test_stream_lesson_feedback_yields_text_chunks(monkeypatch) -> None:
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+
+    class _Delta:
+        def __init__(self, content):
+            self.content = content
+
+    class _ChoiceDelta:
+        def __init__(self, content):
+            self.delta = _Delta(content)
+
+    class _Chunk:
+        def __init__(self, content):
+            self.choices = [_ChoiceDelta(content)]
+
+    class _FakeCompletions:
+        @staticmethod
+        def create(**kwargs):
+            if kwargs.get('stream'):
+                return iter([_Chunk('## Tong quan'), _Chunk('\n- Con tien bo')])
+            raise AssertionError('Expected stream=True')
+
+    class _FakeChat:
+        completions = _FakeCompletions()
+
+    class _FakeOpenAI:
+        def __init__(self, api_key: str):
+            assert api_key == 'test-key'
+            self.chat = _FakeChat()
+
+    monkeypatch.setattr('app.llm.OpenAI', _FakeOpenAI)
+
+    from app.llm import stream_lesson_feedback as stream_lesson_feedback_from_llm
+
+    events = list(stream_lesson_feedback_from_llm('report', lesson_label='Lesson 1'))
+    chunk_events = [event for event in events if event.get('type') == 'chunk']
+    assert chunk_events
+    assert isinstance(chunk_events[0].get('content'), str)
