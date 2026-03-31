@@ -688,3 +688,75 @@ def test_create_portfolio_feedback_returns_400_when_no_local_lesson(monkeypatch)
 
     response = client.post('/api/v1/portfolio-feedback', json={})
     assert response.status_code == 400
+
+
+def test_create_lesson_feedback_returns_markdown(monkeypatch) -> None:
+    monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung bao cao')
+    monkeypatch.setattr(
+        'app.main.generate_lesson_feedback',
+        lambda _text, _label: '# Nhan xet\n\n- Noi dung',
+        raising=False,
+    )
+
+    response = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
+
+    assert response.status_code == 200
+    assert response.headers['content-type'].startswith('text/markdown')
+    assert '# Nhan xet' in response.text
+
+
+def test_create_portfolio_feedback_returns_markdown(monkeypatch) -> None:
+    monkeypatch.setattr(
+        'app.main.load_all_lessons_json_from_local_data',
+        lambda: [{'lesson_id': '1', 'source_file': 'a.json', 'raw_json_text': '{}'}],
+    )
+    monkeypatch.setattr(
+        'app.main.generate_portfolio_feedback',
+        lambda _payload, _label: '# Tong ket\n\n- Noi dung',
+        raising=False,
+    )
+
+    response = client.post('/api/v1/portfolio-feedback', json={'portfolio_label': 'Tong hop'})
+
+    assert response.status_code == 200
+    assert response.headers['content-type'].startswith('text/markdown')
+    assert '# Tong ket' in response.text
+
+
+def test_lesson_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
+    monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung')
+
+    def _fake_stream(_text, _label):
+        yield {'type': 'status', 'message': 'Dang tao'}
+        yield {'type': 'chunk', 'content': '# Nhan xet'}
+
+    monkeypatch.setattr('app.main.stream_lesson_feedback', _fake_stream, raising=False)
+
+    response = client.post('/api/v1/lesson-feedback/stream', json={'lesson_id': '3724970'})
+
+    assert response.status_code == 200
+    body = response.text
+    assert 'event: chunk' in body
+    assert 'data: # Nhan xet' in body
+    assert 'event: done' in body
+
+
+def test_portfolio_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
+    monkeypatch.setattr(
+        'app.main.load_all_lessons_json_from_local_data',
+        lambda: [{'lesson_id': '1', 'source_file': 'a.json', 'raw_json_text': '{}'}],
+    )
+
+    def _fake_stream(_payload, _label):
+        yield {'type': 'status', 'message': 'Dang tao'}
+        yield {'type': 'chunk', 'content': '# Tong ket'}
+
+    monkeypatch.setattr('app.main.stream_portfolio_feedback', _fake_stream, raising=False)
+
+    response = client.post('/api/v1/portfolio-feedback/stream', json={'portfolio_label': 'Tong hop'})
+
+    assert response.status_code == 200
+    body = response.text
+    assert 'event: chunk' in body
+    assert 'data: # Tong ket' in body
+    assert 'event: done' in body
