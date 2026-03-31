@@ -7,6 +7,12 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.responses import PlainTextResponse, StreamingResponse
 
+from app.feedback_cache import (
+    lesson_feedback_cache_key,
+    portfolio_feedback_cache_key,
+    read_feedback_cache,
+    write_feedback_cache,
+)
 from app.ingest import (
     build_report_url_from_lesson_id,
     fetch_report_text_from_url,
@@ -100,9 +106,15 @@ def create_summary(payload: SummaryRequest) -> SummaryResponse:
 
 @app.post('/api/v1/lesson-feedback', response_class=PlainTextResponse)
 def create_lesson_feedback(payload: LessonFeedbackRequest) -> PlainTextResponse:
+    cache_key = lesson_feedback_cache_key(payload.lesson_id, payload.report_text, payload.report_url, payload.lesson_label)
+    cached_markdown = read_feedback_cache(cache_key)
+    if cached_markdown is not None:
+        return PlainTextResponse(content=cached_markdown, media_type='text/markdown')
+
     try:
         report_text = resolve_report_text(payload)
         feedback = generate_lesson_feedback(report_text, payload.lesson_label)
+        write_feedback_cache(cache_key, feedback)
     except httpx.HTTPError as exc:
         raise HTTPException(status_code=502, detail=f'Failed to load report: {exc}') from exc
     except ValueError as exc:
@@ -123,6 +135,20 @@ def _format_sse_event(event_name: str, data: str) -> str:
 
 @app.post('/api/v1/lesson-feedback/stream')
 def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingResponse:
+    cache_key = lesson_feedback_cache_key(payload.lesson_id, payload.report_text, payload.report_url, payload.lesson_label)
+    cached_markdown = read_feedback_cache(cache_key)
+    if cached_markdown is not None:
+        def cached_event_generator():
+            yield _format_sse_event('status', 'Dang tai noi dung nhan xet tu cache...')
+            yield _format_sse_event('chunk', cached_markdown)
+            yield _format_sse_event('done', 'done')
+
+        return StreamingResponse(
+            cached_event_generator(),
+            media_type='text/event-stream',
+            headers={'Cache-Control': 'no-cache', 'Connection': 'keep-alive'},
+        )
+
     try:
         report_text = resolve_report_text(payload)
     except httpx.HTTPError as exc:
@@ -135,21 +161,30 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
         raise HTTPException(status_code=500, detail='Unexpected lesson feedback error') from exc
 
     def event_generator():
+        chunk_buffer: list[str] = []
+        stream_failed = False
         try:
             for event in stream_lesson_feedback(report_text, payload.lesson_label):
                 event_type = str(event.get('type', 'status'))
                 if event_type == 'status':
                     yield _format_sse_event(event_type, str(event.get('message', '')))
                 elif event_type == 'chunk':
-                    yield _format_sse_event(event_type, str(event.get('content', '')))
+                    chunk_content = str(event.get('content', ''))
+                    if chunk_content:
+                        chunk_buffer.append(chunk_content)
+                    yield _format_sse_event(event_type, chunk_content)
                 elif event_type == 'error':
+                    stream_failed = True
                     yield _format_sse_event(event_type, str(event.get('message', '')))
                 elif event_type == 'result':
                     yield _format_sse_event(event_type, json.dumps(event.get('data', {}), ensure_ascii=False))
                 else:
                     yield _format_sse_event(event_type, json.dumps(event, ensure_ascii=False))
         except Exception as exc:
+            stream_failed = True
             yield _format_sse_event('error', str(exc))
+        if not stream_failed:
+            write_feedback_cache(cache_key, ''.join(chunk_buffer))
         yield _format_sse_event('done', 'done')
 
     return StreamingResponse(
@@ -161,11 +196,17 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
 
 @app.post('/api/v1/portfolio-feedback', response_class=PlainTextResponse)
 def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PlainTextResponse:
+    cache_key = portfolio_feedback_cache_key()
+    cached_markdown = read_feedback_cache(cache_key)
+    if cached_markdown is not None:
+        return PlainTextResponse(content=cached_markdown, media_type='text/markdown')
+
     try:
         lessons_payload = load_all_lessons_json_from_local_data()
         if not lessons_payload:
             raise HTTPException(status_code=400, detail='Khong tim thay du lieu lesson trong /data')
         feedback = generate_portfolio_feedback(lessons_payload, payload.portfolio_label)
+        write_feedback_cache(cache_key, feedback)
     except HTTPException:
         raise
     except ValueError as exc:
@@ -180,6 +221,20 @@ def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PlainTextRes
 
 @app.post('/api/v1/portfolio-feedback/stream')
 def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> StreamingResponse:
+    cache_key = portfolio_feedback_cache_key()
+    cached_markdown = read_feedback_cache(cache_key)
+    if cached_markdown is not None:
+        def cached_event_generator():
+            yield _format_sse_event('status', 'Dang tai noi dung nhan xet tu cache...')
+            yield _format_sse_event('chunk', cached_markdown)
+            yield _format_sse_event('done', 'done')
+
+        return StreamingResponse(
+            cached_event_generator(),
+            media_type='text/event-stream',
+            headers={'Cache-Control': 'no-cache', 'Connection': 'keep-alive'},
+        )
+
     try:
         lessons_payload = load_all_lessons_json_from_local_data()
         if not lessons_payload:
@@ -192,21 +247,30 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
         raise HTTPException(status_code=500, detail='Unexpected portfolio feedback error') from exc
 
     def event_generator():
+        chunk_buffer: list[str] = []
+        stream_failed = False
         try:
             for event in stream_portfolio_feedback(lessons_payload, payload.portfolio_label):
                 event_type = str(event.get('type', 'status'))
                 if event_type == 'status':
                     yield _format_sse_event(event_type, str(event.get('message', '')))
                 elif event_type == 'chunk':
-                    yield _format_sse_event(event_type, str(event.get('content', '')))
+                    chunk_content = str(event.get('content', ''))
+                    if chunk_content:
+                        chunk_buffer.append(chunk_content)
+                    yield _format_sse_event(event_type, chunk_content)
                 elif event_type == 'error':
+                    stream_failed = True
                     yield _format_sse_event(event_type, str(event.get('message', '')))
                 elif event_type == 'result':
                     yield _format_sse_event(event_type, json.dumps(event.get('data', {}), ensure_ascii=False))
                 else:
                     yield _format_sse_event(event_type, json.dumps(event, ensure_ascii=False))
         except Exception as exc:
+            stream_failed = True
             yield _format_sse_event('error', str(exc))
+        if not stream_failed:
+            write_feedback_cache(cache_key, ''.join(chunk_buffer))
         yield _format_sse_event('done', 'done')
 
     return StreamingResponse(

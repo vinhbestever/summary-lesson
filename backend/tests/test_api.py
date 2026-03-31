@@ -564,6 +564,42 @@ def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
     assert '# Nhan xet buoi hoc - Lesson 1' in response.text
 
 
+def test_create_lesson_feedback_uses_cache_when_available(monkeypatch) -> None:
+    from app.feedback_cache import lesson_feedback_cache_key, write_feedback_cache
+
+    cache_key = lesson_feedback_cache_key('3724970', None, None, 'Lesson 1')
+    write_feedback_cache(cache_key, '# Cached lesson markdown')
+
+    def _should_not_call(_text, _label):
+        raise AssertionError('LLM should not be called on cache hit')
+
+    monkeypatch.setattr('app.main.generate_lesson_feedback', _should_not_call, raising=False)
+
+    response = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
+    assert response.status_code == 200
+    assert response.text.strip() == '# Cached lesson markdown'
+
+
+def test_create_lesson_feedback_writes_cache_and_reuses(monkeypatch) -> None:
+    call_count = {'count': 0}
+    monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lesson id')
+
+    def _fake_generate(_text, _label):
+        call_count['count'] += 1
+        return '# Generated lesson markdown'
+
+    monkeypatch.setattr('app.main.generate_lesson_feedback', _fake_generate, raising=False)
+
+    first = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
+    second = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
+
+    assert first.status_code == 200
+    assert second.status_code == 200
+    assert first.text.strip() == '# Generated lesson markdown'
+    assert second.text.strip() == '# Generated lesson markdown'
+    assert call_count['count'] == 1
+
+
 def test_create_lesson_feedback_returns_400_when_no_input() -> None:
     response = client.post('/api/v1/lesson-feedback', json={'lesson_label': 'Lesson 1'})
     assert response.status_code == 422
@@ -604,6 +640,26 @@ def test_create_lesson_feedback_stream_returns_events(monkeypatch) -> None:
     assert 'event: done' in response.text
 
 
+def test_create_lesson_feedback_stream_uses_cache_when_available(monkeypatch) -> None:
+    from app.feedback_cache import lesson_feedback_cache_key, write_feedback_cache
+
+    cache_key = lesson_feedback_cache_key('3724970', None, None, 'Lesson 1')
+    write_feedback_cache(cache_key, '# Cached stream lesson markdown')
+
+    def _should_not_stream(_text, _label):
+        raise AssertionError('LLM stream should not be called on cache hit')
+        yield {'type': 'chunk', 'content': 'unreachable'}
+
+    monkeypatch.setattr('app.main.stream_lesson_feedback', _should_not_stream, raising=False)
+
+    response = client.post('/api/v1/lesson-feedback/stream', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
+    assert response.status_code == 200
+    assert 'event: status' in response.text
+    assert 'cache' in response.text.lower()
+    assert 'data: # Cached stream lesson markdown' in response.text
+    assert 'event: done' in response.text
+
+
 def test_create_portfolio_feedback_success(monkeypatch) -> None:
     monkeypatch.setattr(
         'app.main.load_all_lessons_json_from_local_data',
@@ -619,6 +675,21 @@ def test_create_portfolio_feedback_success(monkeypatch) -> None:
     assert response.status_code == 200
     assert response.headers['content-type'].startswith('text/markdown')
     assert '# Nhan xet chung qua trinh hoc' in response.text
+
+
+def test_create_portfolio_feedback_uses_cache_when_available(monkeypatch) -> None:
+    from app.feedback_cache import portfolio_feedback_cache_key, write_feedback_cache
+
+    write_feedback_cache(portfolio_feedback_cache_key(), '# Cached portfolio markdown')
+
+    def _should_not_call(_payload, _label):
+        raise AssertionError('LLM should not be called on cache hit')
+
+    monkeypatch.setattr('app.main.generate_portfolio_feedback', _should_not_call, raising=False)
+
+    response = client.post('/api/v1/portfolio-feedback', json={'portfolio_label': 'Tong hop toan bo'})
+    assert response.status_code == 200
+    assert response.text.strip() == '# Cached portfolio markdown'
 
 
 def test_create_portfolio_feedback_stream_returns_events(monkeypatch) -> None:
@@ -637,6 +708,31 @@ def test_create_portfolio_feedback_stream_returns_events(monkeypatch) -> None:
     assert 'event: status' in response.text
     assert 'event: result' in response.text
     assert 'event: done' in response.text
+
+
+def test_create_portfolio_feedback_stream_writes_cache_and_reuses(monkeypatch) -> None:
+    monkeypatch.setattr(
+        'app.main.load_all_lessons_json_from_local_data',
+        lambda: [{'lesson_id': '3724970', 'source_file': 'lesson_3724970.json', 'raw_json_text': '{"ok":true}'}],
+    )
+    call_count = {'count': 0}
+
+    def _fake_stream(_lessons, _label):
+        call_count['count'] += 1
+        yield {'type': 'status', 'message': 'Dang tao'}
+        yield {'type': 'chunk', 'content': '# Generated portfolio markdown'}
+
+    monkeypatch.setattr('app.main.stream_portfolio_feedback', _fake_stream, raising=False)
+
+    first = client.post('/api/v1/portfolio-feedback/stream', json={'portfolio_label': 'Tong hop toan bo'})
+    second = client.post('/api/v1/portfolio-feedback/stream', json={'portfolio_label': 'Tong hop toan bo'})
+
+    assert first.status_code == 200
+    assert second.status_code == 200
+    assert 'data: # Generated portfolio markdown' in first.text
+    assert 'cache' in second.text.lower()
+    assert 'data: # Generated portfolio markdown' in second.text
+    assert call_count['count'] == 1
 
 
 def test_create_portfolio_feedback_returns_400_when_no_local_lesson(monkeypatch) -> None:
