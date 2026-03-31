@@ -356,6 +356,113 @@ def test_generate_lesson_feedback_fills_next_plan_when_empty(monkeypatch) -> Non
     assert result['next_lesson_plan'][0]['step']
 
 
+def test_generate_portfolio_feedback_normalizes_output(monkeypatch) -> None:
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+
+    class _FakeCompletions:
+        @staticmethod
+        def create(**kwargs):
+            class _Message:
+                content = (
+                    '{"portfolio_label":"Tong hop","total_lessons":2,'
+                    '"date_range":{"from_date":"2026-03-01","to_date":"2026-03-31"},'
+                    '"overall_assessment":"Tien bo on dinh",'
+                    '"skill_trends":{'
+                    '"participation":{"current_level":"kha","trend":"improving","evidence":["e1"],"recommendation":"r1"},'
+                    '"pronunciation":{"current_level":"tb","trend":"stable","evidence":["e2"],"recommendation":"r2"},'
+                    '"vocabulary":{"current_level":"kha","trend":"improving","evidence":["e3"],"recommendation":"r3"},'
+                    '"grammar":{"current_level":"tb","trend":"mixed","evidence":["e4"],"recommendation":"r4"},'
+                    '"reaction_confidence":{"current_level":"kha","trend":"improving","evidence":["e5"],"recommendation":"r5"}'
+                    '},'
+                    '"top_strengths":["s1"],'
+                    '"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],'
+                    '"study_plan_2_weeks":[{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10}],'
+                    '"parent_message":"msg"}'
+                )
+
+            class _Choice:
+                message = _Message()
+
+            class _Response:
+                choices = [_Choice()]
+
+            return _Response()
+
+    class _FakeChat:
+        completions = _FakeCompletions()
+
+    class _FakeOpenAI:
+        def __init__(self, api_key: str):
+            assert api_key == 'test-key'
+            self.chat = _FakeChat()
+
+    monkeypatch.setattr('app.llm.OpenAI', _FakeOpenAI)
+
+    from app.llm import generate_portfolio_feedback
+
+    result = generate_portfolio_feedback([{'lesson_id': '1', 'raw_json_text': '{}', 'source_file': 'lesson_1.json'}])
+    assert result['total_lessons'] == 2
+    assert result['skill_trends']['participation']['trend'] == 'improving'
+    assert result['top_priorities'][0]['skill'] == 'pronunciation'
+
+
+def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
+    monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+
+    class _Delta:
+        def __init__(self, content):
+            self.content = content
+
+    class _Choice:
+        def __init__(self, content):
+            self.delta = _Delta(content)
+
+    class _Chunk:
+        def __init__(self, content):
+            self.choices = [_Choice(content)]
+
+    class _FakeCompletions:
+        @staticmethod
+        def create(**kwargs):
+            if kwargs.get('stream'):
+                return iter(
+                    [
+                        _Chunk(
+                            '{"portfolio_label":"Tong hop","total_lessons":2,'
+                            '"date_range":{"from_date":"2026-03-01","to_date":"2026-03-31"},'
+                            '"overall_assessment":"Tien bo on dinh","skill_trends":{"participation":{"current_level":"kha","trend":"improving","evidence":["e1"],"recommendation":"r1"},'
+                            '"pronunciation":{"current_level":"tb","trend":"stable","evidence":["e2"],"recommendation":"r2"},'
+                            '"vocabulary":{"current_level":"kha","trend":"improving","evidence":["e3"],"recommendation":"r3"},'
+                            '"grammar":{"current_level":"tb","trend":"mixed","evidence":["e4"],"recommendation":"r4"},'
+                            '"reaction_confidence":{"current_level":"kha","trend":"improving","evidence":["e5"],"recommendation":"r5"}},'
+                            '"top_strengths":["s1"],"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],'
+                            '"study_plan_2_weeks":[{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10}],'
+                            '"parent_message":"msg"}'
+                        )
+                    ]
+                )
+            raise AssertionError('Expected stream=True')
+
+    class _FakeChat:
+        completions = _FakeCompletions()
+
+    class _FakeOpenAI:
+        def __init__(self, api_key: str):
+            assert api_key == 'test-key'
+            self.chat = _FakeChat()
+
+    monkeypatch.setattr('app.llm.OpenAI', _FakeOpenAI)
+
+    from app.llm import stream_portfolio_feedback
+
+    events = list(stream_portfolio_feedback([{'lesson_id': '1', 'raw_json_text': '{}', 'source_file': 'lesson_1.json'}]))
+    assert events[0]['type'] == 'status'
+    assert any(event['type'] == 'chunk' for event in events)
+    result_events = [event for event in events if event['type'] == 'result']
+    assert len(result_events) == 1
+    assert result_events[0]['data']['portfolio_label'] == 'Tong hop'
+
+
 def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
     monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lesson id')
     monkeypatch.setattr('app.main.generate_lesson_feedback', lambda _text, _label: _feedback_payload(), raising=False)
