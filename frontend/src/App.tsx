@@ -1,75 +1,7 @@
 import { useMemo, useState } from 'react'
+import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import './App.css'
-
-type SessionCriterion = {
-  score: number
-  comment: string
-  evidence: string[]
-}
-
-type LessonFeedbackPayload = {
-  lesson_label: string
-  teacher_tone: string
-  overall_comment: string
-  session_breakdown: {
-    participation: SessionCriterion
-    pronunciation: SessionCriterion
-    vocabulary: SessionCriterion
-    grammar: SessionCriterion
-    reaction_confidence: SessionCriterion
-  }
-  strengths: string[]
-  priority_improvements: Array<{
-    skill: string
-    priority: string
-    current_state: string
-    target_next_lesson: string
-    coach_tip: string
-  }>
-  next_lesson_plan: Array<{
-    step: string
-    duration_minutes: number
-  }>
-  parent_message: string
-}
-
-type SkillTrend = {
-  current_level: string
-  trend: string
-  evidence: string[]
-  recommendation: string
-}
-
-type PortfolioFeedbackPayload = {
-  portfolio_label: string
-  total_lessons: number
-  date_range: {
-    from_date: string
-    to_date: string
-  } | null
-  overall_assessment: string
-  skill_trends: {
-    participation: SkillTrend
-    pronunciation: SkillTrend
-    vocabulary: SkillTrend
-    grammar: SkillTrend
-    reaction_confidence: SkillTrend
-  }
-  top_strengths: string[]
-  top_priorities: Array<{
-    skill: string
-    priority: string
-    reason: string
-    next_2_weeks_target: string
-    coach_tip: string
-  }>
-  study_plan_2_weeks: Array<{
-    step: string
-    frequency: string
-    duration_minutes: number
-  }>
-  parent_message: string
-}
 
 type ReportLink = {
   label: string
@@ -129,85 +61,51 @@ const reportLinks: ReportLink[] = Object.entries(lessonReportFiles)
   .filter((item): item is ReportLink => item !== null)
   .sort((a, b) => a.lessonId.localeCompare(b.lessonId))
 
-const LESSON_STREAM_SECTION_LABELS: Array<{ key: string; label: string }> = [
-  { key: 'overall_comment', label: 'Tong quan buoi hoc' },
-  { key: 'session_breakdown', label: 'Phan tich ky nang' },
-  { key: 'strengths', label: 'Diem manh' },
-  { key: 'priority_improvements', label: 'Uu tien cai thien' },
-  { key: 'next_lesson_plan', label: 'Ke hoach buoi sau' },
-  { key: 'parent_message', label: 'Loi nhan phu huynh' },
-]
-
-const PORTFOLIO_STREAM_SECTION_LABELS: Array<{ key: string; label: string }> = [
-  { key: 'overall_assessment', label: 'Tong quan qua trinh' },
-  { key: 'skill_trends', label: 'Xu huong ky nang' },
-  { key: 'top_strengths', label: 'Diem manh' },
-  { key: 'top_priorities', label: 'Uu tien can thiep' },
-  { key: 'study_plan_2_weeks', label: 'Ke hoach 2 tuan' },
-  { key: 'parent_message', label: 'Loi nhan phu huynh' },
-]
-
-function extractJsonStringField(raw: string, key: string): string | null {
-  const pattern = new RegExp(`"${key}"\\s*:\\s*"([^"\\\\]*(?:\\\\.[^"\\\\]*)*)"`)
-  const match = raw.match(pattern)
-  if (!match?.[1]) {
-    return null
-  }
-  return match[1].replace(/\\"/g, '"').replace(/\\n/g, '\n').trim()
+type ParsedSseEvent = {
+  eventName: string
+  eventData: string
 }
 
-function extractJsonStringArray(raw: string, key: string): string[] {
-  const arrayPattern = new RegExp(`"${key}"\\s*:\\s*\\[([\\s\\S]*?)\\]`)
-  const match = raw.match(arrayPattern)
-  if (!match?.[1]) {
-    return []
+function parseSseEvent(rawEvent: string): ParsedSseEvent {
+  const lines = rawEvent.split('\n')
+  let eventName = ''
+  const dataLines: string[] = []
+
+  for (const line of lines) {
+    if (line.startsWith('event:')) {
+      eventName = line.slice(6).trim()
+    } else if (line.startsWith('data:')) {
+      const raw = line.slice(5)
+      dataLines.push(raw.startsWith(' ') ? raw.slice(1) : raw)
+    }
   }
-  const values = [...match[1].matchAll(/"([^"\\]*(?:\\.[^"\\]*)*)"/g)].map((item) =>
-    item[1].replace(/\\"/g, '"').replace(/\\n/g, '\n').trim(),
+
+  return {
+    eventName,
+    eventData: dataLines.join('\n'),
+  }
+}
+
+function MarkdownView({ content }: { content: string }) {
+  return (
+    <ReactMarkdown
+      remarkPlugins={[remarkGfm]}
+      skipHtml
+      components={{
+        a: ({ ...props }) => <a {...props} target="_blank" rel="noopener noreferrer" />,
+      }}
+    >
+      {content}
+    </ReactMarkdown>
   )
-  return values.filter(Boolean)
 }
 
 function App() {
   const [feedbackMode, setFeedbackMode] = useState<'lesson' | 'portfolio' | null>(null)
-  const [feedback, setFeedback] = useState<LessonFeedbackPayload | null>(null)
-  const [portfolioFeedback, setPortfolioFeedback] = useState<PortfolioFeedbackPayload | null>(null)
+  const [feedbackMarkdown, setFeedbackMarkdown] = useState('')
   const [feedbackError, setFeedbackError] = useState<string | null>(null)
   const [feedbackLoadingId, setFeedbackLoadingId] = useState<string | null>(null)
   const [feedbackStreamingStatus, setFeedbackStreamingStatus] = useState<string | null>(null)
-  const [feedbackStreamingText, setFeedbackStreamingText] = useState('')
-
-  const streamSections = useMemo(() => {
-    if (feedbackMode === 'portfolio') {
-      return PORTFOLIO_STREAM_SECTION_LABELS
-    }
-    return LESSON_STREAM_SECTION_LABELS
-  }, [feedbackMode])
-
-  const streamSectionStates = useMemo(() => {
-    return streamSections.map((section) => {
-      const appeared = feedbackStreamingText.includes(`"${section.key}"`)
-      return {
-        ...section,
-        state: appeared ? 'done' : 'pending',
-      }
-    })
-  }, [feedbackStreamingText, streamSections])
-
-  const overallPreview = useMemo(() => {
-    const key = feedbackMode === 'portfolio' ? 'overall_assessment' : 'overall_comment'
-    return extractJsonStringField(feedbackStreamingText, key)
-  }, [feedbackMode, feedbackStreamingText])
-
-  const strengthsPreview = useMemo(() => {
-    const key = feedbackMode === 'portfolio' ? 'top_strengths' : 'strengths'
-    return extractJsonStringArray(feedbackStreamingText, key).slice(0, 3)
-  }, [feedbackMode, feedbackStreamingText])
-
-  const parentPreview = useMemo(
-    () => extractJsonStringField(feedbackStreamingText, 'parent_message'),
-    [feedbackStreamingText],
-  )
 
   const apiBaseUrl = useMemo(
     () => import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000',
@@ -217,11 +115,9 @@ function App() {
   const handleGenerateFeedback = async (lessonId: string, lessonLabel: string) => {
     setFeedbackMode('lesson')
     setFeedbackError(null)
-    setFeedback(null)
-    setPortfolioFeedback(null)
     setFeedbackLoadingId(lessonId)
     setFeedbackStreamingStatus('Dang bat dau tao nhan xet...')
-    setFeedbackStreamingText('')
+    setFeedbackMarkdown('')
 
     try {
       const response = await fetch(`${apiBaseUrl}/api/v1/lesson-feedback/stream`, {
@@ -253,8 +149,8 @@ function App() {
         if (!fallbackResponse.ok) {
           throw new Error('Chua tao duoc nhan xet. Vui long thu lai.')
         }
-        const payload = (await fallbackResponse.json()) as LessonFeedbackPayload
-        setFeedback(payload)
+        const markdown = (await fallbackResponse.text()).trim()
+        setFeedbackMarkdown(markdown)
         return
       }
 
@@ -273,41 +169,21 @@ function App() {
         buffer = events.pop() ?? ''
 
         for (const rawEvent of events) {
-          const lines = rawEvent.split('\n')
-          let eventName = ''
-          let eventData = ''
-          for (const line of lines) {
-            if (line.startsWith('event:')) {
-              eventName = line.slice(6).trim()
-            } else if (line.startsWith('data:')) {
-              eventData += line.slice(5).trim()
-            }
-          }
+          const { eventName, eventData } = parseSseEvent(rawEvent)
 
           if (!eventData) {
             continue
           }
 
-          const parsed = JSON.parse(eventData) as {
-            type: string
-            message?: string
-            content?: string
-            data?: LessonFeedbackPayload
-          }
-
-          if (eventName === 'status' && parsed.message) {
-            setFeedbackStreamingStatus(parsed.message)
+          if (eventName === 'status') {
+            setFeedbackStreamingStatus(eventData)
           } else if (eventName === 'chunk') {
             setFeedbackStreamingStatus('Dang tao noi dung nhan xet...')
-            const chunkContent = parsed.content
-            if (chunkContent) {
-              setFeedbackStreamingText((previous) => previous + chunkContent)
-            }
-          } else if (eventName === 'result' && parsed.data) {
-            setFeedback(parsed.data)
-            setFeedbackStreamingStatus('Da hoan tat nhan xet.')
+            setFeedbackMarkdown((previous) => previous + eventData)
           } else if (eventName === 'error') {
-            throw new Error(parsed.message ?? 'Chua tao duoc nhan xet. Vui long thu lai.')
+            throw new Error(eventData || 'Chua tao duoc nhan xet. Vui long thu lai.')
+          } else if (eventName === 'done') {
+            setFeedbackStreamingStatus('Da hoan tat nhan xet.')
           }
         }
       }
@@ -322,11 +198,9 @@ function App() {
   const handleGeneratePortfolioFeedback = async () => {
     setFeedbackMode('portfolio')
     setFeedbackError(null)
-    setFeedback(null)
-    setPortfolioFeedback(null)
     setFeedbackLoadingId('portfolio')
     setFeedbackStreamingStatus('Dang bat dau tao nhan xet chung...')
-    setFeedbackStreamingText('')
+    setFeedbackMarkdown('')
 
     try {
       const response = await fetch(`${apiBaseUrl}/api/v1/portfolio-feedback/stream`, {
@@ -356,8 +230,8 @@ function App() {
         if (!fallbackResponse.ok) {
           throw new Error('Chua tao duoc nhan xet. Vui long thu lai.')
         }
-        const payload = (await fallbackResponse.json()) as PortfolioFeedbackPayload
-        setPortfolioFeedback(payload)
+        const markdown = (await fallbackResponse.text()).trim()
+        setFeedbackMarkdown(markdown)
         return
       }
 
@@ -376,41 +250,21 @@ function App() {
         buffer = events.pop() ?? ''
 
         for (const rawEvent of events) {
-          const lines = rawEvent.split('\n')
-          let eventName = ''
-          let eventData = ''
-          for (const line of lines) {
-            if (line.startsWith('event:')) {
-              eventName = line.slice(6).trim()
-            } else if (line.startsWith('data:')) {
-              eventData += line.slice(5).trim()
-            }
-          }
+          const { eventName, eventData } = parseSseEvent(rawEvent)
 
           if (!eventData) {
             continue
           }
 
-          const parsed = JSON.parse(eventData) as {
-            type: string
-            message?: string
-            content?: string
-            data?: PortfolioFeedbackPayload
-          }
-
-          if (eventName === 'status' && parsed.message) {
-            setFeedbackStreamingStatus(parsed.message)
+          if (eventName === 'status') {
+            setFeedbackStreamingStatus(eventData)
           } else if (eventName === 'chunk') {
             setFeedbackStreamingStatus('Dang tao noi dung nhan xet...')
-            const chunkContent = parsed.content
-            if (chunkContent) {
-              setFeedbackStreamingText((previous) => previous + chunkContent)
-            }
-          } else if (eventName === 'result' && parsed.data) {
-            setPortfolioFeedback(parsed.data)
-            setFeedbackStreamingStatus('Da hoan tat nhan xet.')
+            setFeedbackMarkdown((previous) => previous + eventData)
           } else if (eventName === 'error') {
-            throw new Error(parsed.message ?? 'Chua tao duoc nhan xet. Vui long thu lai.')
+            throw new Error(eventData || 'Chua tao duoc nhan xet. Vui long thu lai.')
+          } else if (eventName === 'done') {
+            setFeedbackStreamingStatus('Da hoan tat nhan xet.')
           }
         }
       }
@@ -472,39 +326,6 @@ function App() {
             <div className="streaming-progress" aria-hidden="true">
               <span />
             </div>
-            <div className="streaming-section-chips">
-              {streamSectionStates.map((section) => (
-                <span key={section.key} className={`stream-chip stream-chip--${section.state}`}>
-                  {section.label}
-                </span>
-              ))}
-            </div>
-            {(overallPreview || strengthsPreview.length > 0 || parentPreview) && (
-              <div className="streaming-live-cards">
-                {overallPreview && (
-                  <section className="stream-card">
-                    <h4>Tong quan dang tao</h4>
-                    <p>{overallPreview}</p>
-                  </section>
-                )}
-                {strengthsPreview.length > 0 && (
-                  <section className="stream-card">
-                    <h4>Diem manh dang tao</h4>
-                    <ul>
-                      {strengthsPreview.map((item) => (
-                        <li key={item}>{item}</li>
-                      ))}
-                    </ul>
-                  </section>
-                )}
-                {parentPreview && (
-                  <section className="stream-card">
-                    <h4>Loi nhan phu huynh dang tao</h4>
-                    <p>{parentPreview}</p>
-                  </section>
-                )}
-              </div>
-            )}
             <div className="streaming-skeleton">
               <div className="streaming-skeleton__block streaming-skeleton__block--large" />
               <div className="streaming-skeleton__grid">
@@ -516,101 +337,19 @@ function App() {
               <div className="streaming-skeleton__block" />
               <div className="streaming-skeleton__block" />
             </div>
+            {feedbackMarkdown && (
+              <div className="summary-result">
+                <MarkdownView content={feedbackMarkdown} />
+              </div>
+            )}
           </article>
         )}
+
         {feedbackError && <p className="feedback feedback--error">{feedbackError}</p>}
 
-        {feedbackMode === 'lesson' && feedback && (
-          <article className="summary-result">
-            <h2>Nhan xet buoi hoc - {feedback.lesson_label}</h2>
-            <p>{feedback.overall_comment}</p>
-
-            <h3>Danh gia tung muc</h3>
-            <ul className="feedback-score-list">
-              <li>Participation: {feedback.session_breakdown.participation.score}</li>
-              <li>Pronunciation: {feedback.session_breakdown.pronunciation.score}</li>
-              <li>Vocabulary: {feedback.session_breakdown.vocabulary.score}</li>
-              <li>Grammar: {feedback.session_breakdown.grammar.score}</li>
-              <li>Reaction confidence: {feedback.session_breakdown.reaction_confidence.score}</li>
-            </ul>
-
-            <h3>Diem manh</h3>
-            <ul>
-              {feedback.strengths.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-
-            <h3>Uu tien cai thien</h3>
-            <ul>
-              {feedback.priority_improvements.map((item, index) => (
-                <li key={`${item.skill}-${index}`}>
-                  {item.skill}: {item.coach_tip}
-                </li>
-              ))}
-            </ul>
-
-            <h3>Ke hoach buoi sau</h3>
-            <ul>
-              {feedback.next_lesson_plan.map((item, index) => (
-                <li key={`${item.step}-${index}`}>
-                  {item.step} ({item.duration_minutes} phut)
-                </li>
-              ))}
-            </ul>
-
-            <h3>Loi nhan phu huynh</h3>
-            <p>{feedback.parent_message}</p>
-          </article>
-        )}
-
-        {feedbackMode === 'portfolio' && portfolioFeedback && (
-          <article className="summary-result">
-            <h2>Nhan xet chung qua trinh hoc</h2>
-            <p>Tong so buoi: {portfolioFeedback.total_lessons}</p>
-            {portfolioFeedback.date_range && (
-              <p>
-                Khoang thoi gian: {portfolioFeedback.date_range.from_date} - {portfolioFeedback.date_range.to_date}
-              </p>
-            )}
-            <p>{portfolioFeedback.overall_assessment}</p>
-
-            <h3>Xu huong ky nang</h3>
-            <ul>
-              <li>Participation: {portfolioFeedback.skill_trends.participation.trend}</li>
-              <li>Pronunciation: {portfolioFeedback.skill_trends.pronunciation.trend}</li>
-              <li>Vocabulary: {portfolioFeedback.skill_trends.vocabulary.trend}</li>
-              <li>Grammar: {portfolioFeedback.skill_trends.grammar.trend}</li>
-              <li>Reaction confidence: {portfolioFeedback.skill_trends.reaction_confidence.trend}</li>
-            </ul>
-
-            <h3>Diem manh</h3>
-            <ul>
-              {portfolioFeedback.top_strengths.map((point) => (
-                <li key={point}>{point}</li>
-              ))}
-            </ul>
-
-            <h3>Uu tien can thiep</h3>
-            <ul>
-              {portfolioFeedback.top_priorities.map((item, index) => (
-                <li key={`${item.skill}-${index}`}>
-                  {item.skill}: {item.coach_tip}
-                </li>
-              ))}
-            </ul>
-
-            <h3>Ke hoach 2 tuan</h3>
-            <ul>
-              {portfolioFeedback.study_plan_2_weeks.map((item, index) => (
-                <li key={`${item.step}-${index}`}>
-                  {item.step} - {item.frequency} ({item.duration_minutes} phut)
-                </li>
-              ))}
-            </ul>
-
-            <h3>Loi nhan phu huynh</h3>
-            <p>{portfolioFeedback.parent_message}</p>
+        {!feedbackLoadingId && feedbackMarkdown && (
+          <article className="summary-result" data-testid={`markdown-result-${feedbackMode ?? 'none'}`}>
+            <MarkdownView content={feedbackMarkdown} />
           </article>
         )}
       </section>

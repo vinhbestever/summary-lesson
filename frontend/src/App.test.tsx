@@ -48,12 +48,12 @@ describe('App', () => {
     expect(reportLinks.length).toBeGreaterThan(2)
   })
 
-  it('requests lesson feedback and renders shared panel', async () => {
+  it('renders lesson markdown from raw sse chunks', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([
-        'event: status\ndata: {"type":"status","message":"Dang phan tich"}',
-        'event: result\ndata: {"type":"result","data":{"lesson_label":"TRIAL_LESSON_OVER_7","teacher_tone":"warm_encouraging","overall_comment":"Con hoc rat tap trung.","session_breakdown":{"participation":{"score":85,"comment":"Tot","evidence":["20 luot noi"]},"pronunciation":{"score":72,"comment":"Kha","evidence":["Diem 72"]},"vocabulary":{"score":80,"comment":"Tot","evidence":["5 tu"]},"grammar":{"score":78,"comment":"On","evidence":["3 cau"]},"reaction_confidence":{"score":88,"comment":"Nhanh","evidence":["2s"]}},"strengths":["Tu tin","Nho tu tot"],"priority_improvements":[{"skill":"pronunciation","priority":"high","current_state":"Am cuoi con yeu","target_next_lesson":"Dat 80+","coach_tip":"Luyen 10 phut/ngay"}],"next_lesson_plan":[{"step":"On tu","duration_minutes":8}],"parent_message":"Con dang tien bo rat tot."}}',
-        'event: done\ndata: {"type":"done"}',
+        'event: status\ndata: Dang phan tich',
+        'event: chunk\ndata: # Nhan xet buoi hoc - TRIAL_LESSON_OVER_7\ndata: \ndata: ## Tong quan\ndata: \ndata: Con hoc rat tap trung.',
+        'event: done\ndata: done',
       ]),
     )
     vi.stubGlobal('fetch', fetchMock)
@@ -70,15 +70,17 @@ describe('App', () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
     const requestBody = JSON.parse(fetchMock.mock.calls[0][1].body as string)
     expect(requestBody).toMatchObject({ lesson_id: 'TRIAL_LESSON_OVER_7' })
-    expect(await screen.findByRole('heading', { name: /nhan xet buoi hoc - trial_lesson_over_7/i })).toBeInTheDocument()
+    expect(
+      await screen.findByRole('heading', { name: /nhan xet buoi hoc - trial_lesson_over_7/i }),
+    ).toBeInTheDocument()
     expect(screen.getByText(/con hoc rat tap trung/i)).toBeInTheDocument()
   })
 
   it('shows loading state while requesting lesson feedback', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([
-        'event: status\ndata: {"type":"status","message":"Dang bat dau tao nhan xet..."}',
-        'event: done\ndata: {"type":"done"}',
+        'event: status\ndata: Dang bat dau tao nhan xet...',
+        'event: done\ndata: done',
       ]),
     )
     vi.stubGlobal('fetch', fetchMock)
@@ -103,12 +105,12 @@ describe('App', () => {
     expect(await screen.findByText(/chua tao duoc nhan xet\. vui long thu lai\./i)).toBeInTheDocument()
   })
 
-  it('requests portfolio feedback stream and renders portfolio panel', async () => {
+  it('renders portfolio markdown from raw sse chunks', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([
-        'event: status\ndata: {"type":"status","message":"Dang phan tich tong hop"}',
-        'event: result\ndata: {"type":"result","data":{"portfolio_label":"Tong hop toan bo buoi hoc","total_lessons":2,"date_range":{"from_date":"2026-03-01","to_date":"2026-03-31"},"overall_assessment":"Tien bo on dinh qua cac buoi.","skill_trends":{"participation":{"current_level":"kha","trend":"improving","evidence":["e1"],"recommendation":"r1"},"pronunciation":{"current_level":"tb","trend":"stable","evidence":["e2"],"recommendation":"r2"},"vocabulary":{"current_level":"kha","trend":"improving","evidence":["e3"],"recommendation":"r3"},"grammar":{"current_level":"tb","trend":"mixed","evidence":["e4"],"recommendation":"r4"},"reaction_confidence":{"current_level":"kha","trend":"improving","evidence":["e5"],"recommendation":"r5"}},"top_strengths":["Tu tin"],"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],"study_plan_2_weeks":[{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10}],"parent_message":"Con dang tien bo rat tot."}}',
-        'event: done\ndata: {"type":"done"}',
+        'event: status\ndata: Dang phan tich tong hop',
+        'event: chunk\ndata: # Nhan xet chung qua trinh hoc\ndata: \ndata: ## Tong quan qua trinh\ndata: \ndata: Tien bo on dinh qua cac buoi.',
+        'event: done\ndata: done',
       ]),
     )
     vi.stubGlobal('fetch', fetchMock)
@@ -119,7 +121,24 @@ describe('App', () => {
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
     expect(fetchMock.mock.calls[0][0]).toContain('/api/v1/portfolio-feedback/stream')
     expect(await screen.findByRole('heading', { name: /nhan xet chung qua trinh hoc/i })).toBeInTheDocument()
-    expect(screen.getByText(/tong so buoi: 2/i)).toBeInTheDocument()
     expect(screen.getByText(/tien bo on dinh qua cac buoi/i)).toBeInTheDocument()
+  })
+
+  it('does not render raw html from markdown content', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich',
+        'event: chunk\ndata: # Nhan xet\ndata: \ndata: <script>alert(1)</script>\ndata: Noi dung an toan',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    const { container } = render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: /nhan xet/i })[0])
+
+    await screen.findByRole('heading', { name: /nhan xet/i })
+    expect(container.querySelector('script')).toBeNull()
+    expect(screen.getByText(/noi dung an toan/i)).toBeInTheDocument()
   })
 })
