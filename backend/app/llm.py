@@ -378,45 +378,23 @@ def _build_fallback_next_lesson_plan(priorities: list[dict[str, str]]) -> list[d
 
 def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) -> list[dict[str, str]]:
     system_prompt = (
-        'Ban la giao vien tieng Anh tieu hoc nhieu kinh nghiem, giong dieu am ap va khich le, '
-        'nhung phan tich phai sau va co tinh chuyen mon. '
-        'Nhiem vu: viet nhan xet chi tiet cho 1 buoi hoc dua tren du lieu lesson duoc cung cap. '
-        'Chi tra ve JSON hop le, khong markdown, khong van ban ngoai JSON. '
-        'Moi nhan xet phai bam sat du lieu dau vao, khong suy dien. '
-        'Neu thieu du lieu cho mot y, ghi ro "chua du du lieu". '
-        'Voi moi ky nang, can neu: hien trang, bang chung du lieu, anh huong den hoc tap, '
-        'va hanh dong cai thien cu the. '
-        'Phan tich can so sanh duoc diem manh va diem can cai thien giua pronunciation, vocabulary, grammar, '
-        'participation, reaction_confidence; neu co the hay chi ra mau loi lap lai va muc do on dinh/dao dong. '
-        'overall_comment phai dai 6-10 cau. '
-        'Moi comment trong session_breakdown phai chi tiet toi thieu 4 cau. '
-        'strengths can it nhat 3 y cu the. '
-        'priority_improvements toi da 3 muc, sap xep theo uu tien, '
-        'moi muc can co muc tieu do duoc cho buoi sau. '
-        'Chi duoc dung skill trong [pronunciation, vocabulary, grammar, reaction_confidence, participation] '
-        'va priority trong [high, medium, low]. '
-        'Output bat buoc co cac truong: lesson_label, teacher_tone, overall_comment, '
-        'session_breakdown(participation, pronunciation, vocabulary, grammar, reaction_confidence), '
-        'strengths, priority_improvements, next_lesson_plan, parent_message. '
-        'Moi muc trong session_breakdown co score(0-100), comment, evidence(array string). '
-        'parent_message phai 4-6 cau, tich cuc va co huong dan phu huynh dong hanh. '
-        'Rang buoc bat buoc cho next_lesson_plan: '
-        '1) Luon la array dung 3 phan tu, khong duoc rong. '
-        '2) Moi phan tu la object co day du 2 khoa: step (string), duration_minutes (integer). '
-        '3) duration_minutes trong khoang 5-20 va tong 3 muc trong khoang 25-35 phut. '
-        '4) Noi dung phai lien ket truc tiep voi priority_improvements; neu thieu du lieu van phai de xuat ke hoach cu the, khong duoc de [] hay null. '
-        '5) Truoc khi tra ve, tu kiem tra lai JSON hop le va next_lesson_plan da dung 3 muc.'
+        'Ban la giao vien tieng Anh tieu hoc nhieu kinh nghiem, giong dieu am ap va khich le. '
+        'Nhiem vu: viet nhan xet buoi hoc bang markdown tieng Viet, ngan gon, ro rang, bam sat du lieu duoc cung cap. '
+        'Chi tra ve markdown, khong tra ve JSON, khong code block. '
+        'Su dung heading va bullet list theo cau truc sau: '
+        '# Nhan xet buoi hoc - <lesson_label>; '
+        '## Tong quan; '
+        '## Danh gia tung ky nang; '
+        '## Diem manh; '
+        '## Uu tien cai thien; '
+        '## Ke hoach buoi sau; '
+        '## Loi nhan phu huynh. '
+        'Neu thieu du lieu cho y nao, ghi ro "chua du du lieu".'
     )
     user_payload = {
         'lesson_label': lesson_label or 'Lesson',
         'lesson_data': report_text,
-        'output_contract': {
-            'next_lesson_plan_required_shape': [
-                {'step': 'Mo ta hanh dong cu the cho buoi sau', 'duration_minutes': 10},
-                {'step': 'Mo ta hanh dong cu the cho buoi sau', 'duration_minutes': 10},
-                {'step': 'Mo ta hanh dong cu the cho buoi sau', 'duration_minutes': 10},
-            ]
-        },
+        'format': 'markdown',
     }
     return [
         {'role': 'system', 'content': system_prompt},
@@ -430,42 +408,23 @@ def _build_portfolio_feedback_messages(
     context = _build_portfolio_input_context(lessons_payload)
     system_prompt = (
         'Ban la giao vien tieng Anh tieu hoc co kinh nghiem, gioi tong hop tien trinh hoc theo nhieu buoi. '
-        'Giong van can than thien, gan gui, de hieu voi phu huynh Viet Nam, xung ho tu nhien nhu "con", "be". '
-        'Tranh van phong qua hoc thuat; neu dung thuat ngu chuyen mon thi giai thich ngan gon bang ngon ngu doi thuong. '
-        'Nhiem vu: dua tren danh sach du lieu lesson, hay danh gia tong quan qua trinh hoc. '
-        'Chi tra ve JSON hop le, khong markdown, khong van ban ngoai JSON. '
-        'Tuyet doi khong duoc bịa du lieu. '
-        'Neu thieu du lieu, hay viet nhan dinh co dieu kien dua tren du lieu gan nhat, '
-        'dong thoi neu ro gioi han du lieu trong evidence hoac reason. '
-        'Khong duoc tra ve chuoi "chua du du lieu". '
-        'Bat buoc output co cac truong: '
-        'portfolio_label, total_lessons, date_range(from_date,to_date), overall_assessment, '
-        'skill_trends(participation, pronunciation, vocabulary, grammar, reaction_confidence), '
-        'top_strengths, top_priorities, study_plan_2_weeks, parent_message. '
-        'Moi skill_trend gom current_level, trend(improving|stable|declining|mixed|insufficient_data), evidence, recommendation. '
-        'overall_assessment phai dai 10-14 cau va bat buoc theo khung: hien trang -> bang chung -> tac dong -> can thiep. '
-        'Moi evidence trong skill_trends phai co reference lesson_id hoac source_file. '
-        'top_strengths can 4-6 y, moi y co it nhat 1 bang chung dinh luong hoac hanh vi cu the. '
-        'top_priorities uu tien dung 3 muc va chi dung skill trong [pronunciation, vocabulary, grammar, reaction_confidence, participation], '
-        'priority trong [high, medium, low]. '
-        'Moi muc top_priorities phai co reason 3-4 cau, target do duoc trong 2 tuan va coach_tip co tan suat luyen tap. '
-        'study_plan_2_weeks can 6-8 buoc hanh dong, duration_minutes trong khoang 8-20, co tan suat ro rang theo tuan, '
-        'bat buoc khong rong va phai map truc tiep den planning_hints/weak_skill_signals trong portfolio_context. '
-        'Moi buoc can neu ro muc tieu ky nang duoc tac dong (co the ghi trong step). '
-        'parent_message phai 6-8 cau, huong dan phu huynh theo tuan, giu am sac khich le tich cuc, khong gay ap luc cho con. '
-        'Cau van ngan gon, ro rang, uu tien dong tu hanh dong cu the de phu huynh de ap dung tai nha. '
-        'cam cau chung chung nhu "can co gang them", "tiep tuc phat huy" neu khong co bang chung va hanh dong cu the.'
+        'Nhiem vu: viet nhan xet tong hop bang markdown tieng Viet, than thien, de hieu voi phu huynh. '
+        'Chi tra ve markdown, khong JSON, khong code block. '
+        'Su dung heading va bullet list theo cau truc sau: '
+        '# Nhan xet chung qua trinh hoc; '
+        '## Tong quan qua trinh; '
+        '## Xu huong ky nang; '
+        '## Diem manh; '
+        '## Uu tien can thiep; '
+        '## Ke hoach 2 tuan; '
+        '## Loi nhan phu huynh. '
+        'Moi nhan dinh phai bam sat du lieu; neu thieu du lieu thi ghi ro "chua du du lieu".'
     )
     user_payload = {
         'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
         'total_lessons': len(lessons_payload),
         'portfolio_context': context,
-        'writing_style': {
-            'tone': 'than_thien_gan_gui_phu_huynh',
-            'audience': 'phu_huynh_hoc_sinh_tieu_hoc',
-            'sentence_style': 'cau_ngan_ro_rang_de_hieu',
-            'avoid': ['qua_hoc_thuat', 'chung_chung', 'phat_bieu_khong_co_bang_chung'],
-        },
+        'format': 'markdown',
         'lessons': lessons_payload,
     }
     return [
@@ -565,7 +524,7 @@ def _normalize_portfolio_feedback_payload(
     return payload
 
 
-def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) -> dict[str, Any]:
+def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) -> str:
     api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
         raise RuntimeError('OPENAI_API_KEY is missing')
@@ -575,20 +534,15 @@ def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) 
 
     completion = client.chat.completions.create(
         model=model,
-        response_format={'type': 'json_object'},
         messages=_build_lesson_feedback_messages(report_text, lesson_label),
         temperature=0.2,
     )
 
     content = completion.choices[0].message.content
-    if not content:
+    markdown = (content or '').strip()
+    if not markdown:
         raise ValueError('LLM returned an empty response')
-
-    parsed = json.loads(content)
-    if not isinstance(parsed, dict):
-        raise ValueError('LLM output is not a JSON object')
-
-    return _normalize_lesson_feedback_payload(parsed, lesson_label)
+    return markdown
 
 
 def stream_lesson_feedback(report_text: str, lesson_label: str | None = None):
@@ -600,35 +554,28 @@ def stream_lesson_feedback(report_text: str, lesson_label: str | None = None):
     model = os.getenv('OPENAI_MODEL', 'gpt-4.1-mini')
     stream = client.chat.completions.create(
         model=model,
-        response_format={'type': 'json_object'},
         messages=_build_lesson_feedback_messages(report_text, lesson_label),
         temperature=0.2,
         stream=True,
     )
 
     yield {'type': 'status', 'message': 'Dang phan tich du lieu buoi hoc...'}
-    chunks: list[str] = []
+    has_content = False
     for chunk in stream:
         if not chunk.choices:
             continue
         delta = chunk.choices[0].delta.content
         if not delta:
             continue
-        chunks.append(delta)
+        has_content = True
         yield {'type': 'chunk', 'content': delta}
-
-    content = ''.join(chunks).strip()
-    if not content:
+    if not has_content:
         raise ValueError('LLM returned an empty response')
-    parsed = json.loads(content)
-    if not isinstance(parsed, dict):
-        raise ValueError('LLM output is not a JSON object')
-    yield {'type': 'result', 'data': _normalize_lesson_feedback_payload(parsed, lesson_label)}
 
 
 def generate_portfolio_feedback(
     lessons_payload: list[dict[str, str]], portfolio_label: str | None = None
-) -> dict[str, Any]:
+) -> str:
     api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
         raise RuntimeError('OPENAI_API_KEY is missing')
@@ -636,16 +583,16 @@ def generate_portfolio_feedback(
     client = OpenAI(api_key=api_key)
     model = os.getenv('OPENAI_MODEL', 'gpt-4.1-mini')
 
-    messages = _build_portfolio_feedback_messages(lessons_payload, portfolio_label)
-    parsed = _request_json_completion(client, model, messages)
-    normalized = _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)
-
-    if not _has_actionable_portfolio_plan(normalized):
-        repair_messages = _build_portfolio_plan_repair_messages(lessons_payload, portfolio_label, normalized)
-        repaired = _request_json_completion(client, model, repair_messages)
-        normalized = _normalize_portfolio_feedback_payload(repaired, lessons_payload, portfolio_label)
-
-    return normalized
+    completion = client.chat.completions.create(
+        model=model,
+        messages=_build_portfolio_feedback_messages(lessons_payload, portfolio_label),
+        temperature=0.2,
+    )
+    content = completion.choices[0].message.content
+    markdown = (content or '').strip()
+    if not markdown:
+        raise ValueError('LLM returned an empty response')
+    return markdown
 
 
 def stream_portfolio_feedback(lessons_payload: list[dict[str, str]], portfolio_label: str | None = None):
@@ -657,31 +604,20 @@ def stream_portfolio_feedback(lessons_payload: list[dict[str, str]], portfolio_l
     model = os.getenv('OPENAI_MODEL', 'gpt-4.1-mini')
     stream = client.chat.completions.create(
         model=model,
-        response_format={'type': 'json_object'},
         messages=_build_portfolio_feedback_messages(lessons_payload, portfolio_label),
         temperature=0.2,
         stream=True,
     )
 
     yield {'type': 'status', 'message': 'Dang phan tich tong hop tat ca buoi hoc...'}
-    chunks: list[str] = []
+    has_content = False
     for chunk in stream:
         if not chunk.choices:
             continue
         delta = chunk.choices[0].delta.content
         if not delta:
             continue
-        chunks.append(delta)
+        has_content = True
         yield {'type': 'chunk', 'content': delta}
-
-    content = ''.join(chunks).strip()
-    parsed = _parse_json_object_or_raise(content)
-    normalized = _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)
-
-    if not _has_actionable_portfolio_plan(normalized):
-        yield {'type': 'status', 'message': 'Dang bo sung ke hoach 2 tuan theo du lieu dau vao...'}
-        repair_messages = _build_portfolio_plan_repair_messages(lessons_payload, portfolio_label, normalized)
-        repaired = _request_json_completion(client, model, repair_messages)
-        normalized = _normalize_portfolio_feedback_payload(repaired, lessons_payload, portfolio_label)
-
-    yield {'type': 'result', 'data': normalized}
+    if not has_content:
+        raise ValueError('LLM returned an empty response')

@@ -193,24 +193,19 @@ def test_portfolio_feedback_response_schema() -> None:
     assert payload.top_priorities[0].skill == 'pronunciation'
 
 
-def test_create_lesson_feedback_returns_schema(monkeypatch) -> None:
+def test_create_lesson_feedback_returns_markdown_text_response(monkeypatch) -> None:
     monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung bao cao')
-    monkeypatch.setattr('app.main.generate_lesson_feedback', lambda _text, _label: _feedback_payload(), raising=False)
+    monkeypatch.setattr(
+        'app.main.generate_lesson_feedback',
+        lambda _text, _label: '# Nhan xet buoi hoc - Lesson 1\n\n## Tong quan\n\n- Con hoc rat tap trung.',
+        raising=False,
+    )
 
     response = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
 
     assert response.status_code == 200
-    body = response.json()
-    assert body['lesson_label'] == 'Lesson 1'
-    assert body['teacher_tone'] == 'warm_encouraging'
-    assert body['overall_comment']
-    for key in ['participation', 'pronunciation', 'vocabulary', 'grammar', 'reaction_confidence']:
-        assert key in body['session_breakdown']
-        assert 0 <= body['session_breakdown'][key]['score'] <= 100
-    assert isinstance(body['strengths'], list)
-    assert isinstance(body['priority_improvements'], list)
-    assert isinstance(body['next_lesson_plan'], list)
-    assert isinstance(body['parent_message'], str)
+    assert response.headers['content-type'].startswith('text/markdown')
+    assert '# Nhan xet buoi hoc - Lesson 1' in response.text
 
 
 def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
@@ -260,30 +255,18 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
 
     system_prompt = captured['messages'][0]['content'].lower()
     assert 'am ap' in system_prompt
-    assert result['teacher_tone'] == 'warm_encouraging'
-    assert result['lesson_label'] == 'Lesson 1'
+    assert isinstance(result, str)
+    assert result
 
 
-def test_generate_lesson_feedback_filters_invalid_priority_improvements(monkeypatch) -> None:
+def test_generate_lesson_feedback_returns_plain_markdown_text(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
 
     class _FakeCompletions:
         @staticmethod
         def create(**kwargs):
             class _Message:
-                content = (
-                    '{"lesson_label":"Lesson 1","teacher_tone":"warm_encouraging","overall_comment":"ok",'
-                    '"session_breakdown":{"participation":{"score":80,"comment":"ok","evidence":["e1"]},'
-                    '"pronunciation":{"score":70,"comment":"ok","evidence":["e2"]},'
-                    '"vocabulary":{"score":75,"comment":"ok","evidence":["e3"]},'
-                    '"grammar":{"score":78,"comment":"ok","evidence":["e4"]},'
-                    '"reaction_confidence":{"score":82,"comment":"ok","evidence":["e5"]}},'
-                    '"strengths":["s1"],'
-                    '"priority_improvements":[{"skill":"chua du du lieu","priority":"chua du du lieu","current_state":"c",'
-                    '"target_next_lesson":"t","coach_tip":"tip"},'
-                    '{"skill":"pronunciation","priority":"high","current_state":"c2","target_next_lesson":"t2","coach_tip":"tip2"}],'
-                    '"next_lesson_plan":[{"step":"step1","duration_minutes":10}],"parent_message":"msg"}'
-                )
+                content = '# Nhan xet buoi hoc - Lesson 1\n\n- Con tien bo'
 
             class _Choice:
                 message = _Message()
@@ -306,30 +289,18 @@ def test_generate_lesson_feedback_filters_invalid_priority_improvements(monkeypa
     from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
 
     result = generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
-    assert len(result['priority_improvements']) == 1
-    assert result['priority_improvements'][0]['skill'] == 'pronunciation'
-    assert result['priority_improvements'][0]['priority'] == 'high'
+    assert isinstance(result, str)
+    assert result.startswith('#')
 
 
-def test_generate_lesson_feedback_fills_next_plan_when_empty(monkeypatch) -> None:
+def test_generate_lesson_feedback_raises_on_empty_response(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
 
     class _FakeCompletions:
         @staticmethod
         def create(**kwargs):
             class _Message:
-                content = (
-                    '{"lesson_label":"Lesson 1","teacher_tone":"warm_encouraging","overall_comment":"ok",'
-                    '"session_breakdown":{"participation":{"score":80,"comment":"ok","evidence":["e1"]},'
-                    '"pronunciation":{"score":70,"comment":"ok","evidence":["e2"]},'
-                    '"vocabulary":{"score":75,"comment":"ok","evidence":["e3"]},'
-                    '"grammar":{"score":78,"comment":"ok","evidence":["e4"]},'
-                    '"reaction_confidence":{"score":82,"comment":"ok","evidence":["e5"]}},'
-                    '"strengths":["s1"],'
-                    '"priority_improvements":[{"skill":"pronunciation","priority":"high","current_state":"c",'
-                    '"target_next_lesson":"t","coach_tip":"tip"}],'
-                    '"next_lesson_plan":[],"parent_message":"msg"}'
-                )
+                content = ''
 
             class _Choice:
                 message = _Message()
@@ -351,34 +322,20 @@ def test_generate_lesson_feedback_fills_next_plan_when_empty(monkeypatch) -> Non
 
     from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
 
-    result = generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
-    assert len(result['next_lesson_plan']) >= 1
-    assert result['next_lesson_plan'][0]['step']
+    import pytest
+
+    with pytest.raises(ValueError, match='empty response'):
+        generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
 
 
-def test_generate_portfolio_feedback_normalizes_output(monkeypatch) -> None:
+def test_generate_portfolio_feedback_returns_markdown_text(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
 
     class _FakeCompletions:
         @staticmethod
         def create(**kwargs):
             class _Message:
-                content = (
-                    '{"portfolio_label":"Tong hop","total_lessons":2,'
-                    '"date_range":{"from_date":"2026-03-01","to_date":"2026-03-31"},'
-                    '"overall_assessment":"Tien bo on dinh",'
-                    '"skill_trends":{'
-                    '"participation":{"current_level":"kha","trend":"improving","evidence":["e1"],"recommendation":"r1"},'
-                    '"pronunciation":{"current_level":"tb","trend":"stable","evidence":["e2"],"recommendation":"r2"},'
-                    '"vocabulary":{"current_level":"kha","trend":"improving","evidence":["e3"],"recommendation":"r3"},'
-                    '"grammar":{"current_level":"tb","trend":"mixed","evidence":["e4"],"recommendation":"r4"},'
-                    '"reaction_confidence":{"current_level":"kha","trend":"improving","evidence":["e5"],"recommendation":"r5"}'
-                    '},'
-                    '"top_strengths":["s1"],'
-                    '"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],'
-                    '"study_plan_2_weeks":[{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10}],'
-                    '"parent_message":"msg"}'
-                )
+                content = '# Nhan xet chung qua trinh hoc\n\n- Tong quan tien bo on dinh'
 
             class _Choice:
                 message = _Message()
@@ -401,9 +358,8 @@ def test_generate_portfolio_feedback_normalizes_output(monkeypatch) -> None:
     from app.llm import generate_portfolio_feedback
 
     result = generate_portfolio_feedback([{'lesson_id': '1', 'raw_json_text': '{}', 'source_file': 'lesson_1.json'}])
-    assert result['total_lessons'] == 2
-    assert result['skill_trends']['participation']['trend'] == 'improving'
-    assert result['top_priorities'][0]['skill'] == 'pronunciation'
+    assert isinstance(result, str)
+    assert result.startswith('#')
 
 
 def test_build_portfolio_input_context_extracts_lesson_metrics() -> None:
@@ -450,16 +406,14 @@ def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
     system_prompt = messages[0]['content']
     user_payload = json.loads(messages[1]['content'])
 
-    assert 'overall_assessment phai dai 10-14 cau' in system_prompt
-    assert 'top_priorities uu tien dung 3 muc' in system_prompt
-    assert 'study_plan_2_weeks can 6-8 buoc' in system_prompt
-    assert 'cam cau chung chung' in system_prompt
-    assert 'Khong duoc tra ve chuoi "chua du du lieu"' in system_prompt
+    assert 'Chi tra ve markdown' in system_prompt
+    assert '## Ke hoach 2 tuan' in system_prompt
+    assert '## Uu tien can thiep' in system_prompt
     assert 'portfolio_context' in user_payload
     assert user_payload['portfolio_context']['total_lessons'] == 1
 
 
-def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
+def test_stream_portfolio_feedback_emits_chunk_events(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
 
     class _Delta:
@@ -517,11 +471,10 @@ def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
     assert events[0]['type'] == 'status'
     assert any(event['type'] == 'chunk' for event in events)
     result_events = [event for event in events if event['type'] == 'result']
-    assert len(result_events) == 1
-    assert result_events[0]['data']['portfolio_label'] == 'Tong hop'
+    assert len(result_events) == 0
 
 
-def test_generate_portfolio_feedback_retries_when_plan_empty(monkeypatch) -> None:
+def test_generate_portfolio_feedback_single_call_no_repair(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
     call_count = {'count': 0}
 
@@ -592,18 +545,21 @@ def test_generate_portfolio_feedback_retries_when_plan_empty(monkeypatch) -> Non
     from app.llm import generate_portfolio_feedback
 
     result = generate_portfolio_feedback([{'lesson_id': '1', 'raw_json_text': '{}', 'source_file': 'lesson_1.json'}])
-    assert call_count['count'] == 2
-    assert len(result['study_plan_2_weeks']) >= 4
-    assert 'speaking turn' in result['study_plan_2_weeks'][1]['step'].lower()
+    assert call_count['count'] == 1
+    assert isinstance(result, str)
 
 
 def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
     monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung lesson id')
-    monkeypatch.setattr('app.main.generate_lesson_feedback', lambda _text, _label: _feedback_payload(), raising=False)
+    monkeypatch.setattr(
+        'app.main.generate_lesson_feedback',
+        lambda _text, _label: '# Nhan xet buoi hoc - Lesson 1\n\n- Noi dung',
+        raising=False,
+    )
 
     response = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
     assert response.status_code == 200
-    assert response.json()['lesson_label'] == 'Lesson 1'
+    assert '# Nhan xet buoi hoc - Lesson 1' in response.text
 
 
 def test_create_lesson_feedback_returns_400_when_no_input() -> None:
@@ -653,16 +609,14 @@ def test_create_portfolio_feedback_success(monkeypatch) -> None:
     )
     monkeypatch.setattr(
         'app.main.generate_portfolio_feedback',
-        lambda _lessons, _label: _portfolio_feedback_payload(),
+        lambda _lessons, _label: '# Nhan xet chung qua trinh hoc\n\n- Tong so buoi: 2',
         raising=False,
     )
 
     response = client.post('/api/v1/portfolio-feedback', json={'portfolio_label': 'Tong hop toan bo'})
     assert response.status_code == 200
-    body = response.json()
-    assert body['portfolio_label'] == 'Tong hop toan bo buoi hoc'
-    assert body['total_lessons'] == 2
-    assert 'skill_trends' in body
+    assert response.headers['content-type'].startswith('text/markdown')
+    assert '# Nhan xet chung qua trinh hoc' in response.text
 
 
 def test_create_portfolio_feedback_stream_returns_events(monkeypatch) -> None:
