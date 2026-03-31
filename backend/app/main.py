@@ -6,8 +6,15 @@ from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 
 from app.ingest import build_report_url_from_lesson_id, fetch_report_text_from_url
+from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
 from app.llm import summarize_report
-from app.schemas import SummaryRequest, SummaryResponse
+from app.schemas import (
+    LessonFeedbackRequest,
+    LessonFeedbackResponse,
+    ReportInputRequest,
+    SummaryRequest,
+    SummaryResponse,
+)
 
 load_dotenv()
 
@@ -29,7 +36,11 @@ def generate_summary(report_text: str) -> dict:
     return summarize_report(report_text)
 
 
-def resolve_report_text(payload: SummaryRequest) -> str:
+def generate_lesson_feedback(report_text: str, lesson_label: str | None = None) -> dict:
+    return generate_lesson_feedback_from_llm(report_text, lesson_label)
+
+
+def resolve_report_text(payload: ReportInputRequest) -> str:
     if payload.report_text:
         return payload.report_text
 
@@ -63,6 +74,23 @@ def create_summary(payload: SummaryRequest) -> SummaryResponse:
         raise HTTPException(status_code=500, detail='Unexpected summarization error') from exc
 
     return SummaryResponse(**summary)
+
+
+@app.post('/api/v1/lesson-feedback', response_model=LessonFeedbackResponse)
+def create_lesson_feedback(payload: LessonFeedbackRequest) -> LessonFeedbackResponse:
+    try:
+        report_text = resolve_report_text(payload)
+        feedback = generate_lesson_feedback(report_text, payload.lesson_label)
+    except httpx.HTTPError as exc:
+        raise HTTPException(status_code=502, detail=f'Failed to load report: {exc}') from exc
+    except ValueError as exc:
+        raise HTTPException(status_code=500, detail=f'Invalid lesson feedback input/output: {exc}') from exc
+    except RuntimeError as exc:
+        raise HTTPException(status_code=500, detail=str(exc)) from exc
+    except Exception as exc:
+        raise HTTPException(status_code=500, detail='Unexpected lesson feedback error') from exc
+
+    return LessonFeedbackResponse(**feedback)
 
 
 if __name__ == '__main__':
