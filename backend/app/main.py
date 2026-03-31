@@ -5,7 +5,7 @@ import httpx
 from dotenv import load_dotenv
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
-from fastapi.responses import StreamingResponse
+from fastapi.responses import PlainTextResponse, StreamingResponse
 
 from app.ingest import (
     build_report_url_from_lesson_id,
@@ -20,9 +20,7 @@ from app.llm import stream_portfolio_feedback as stream_portfolio_feedback_from_
 from app.llm import summarize_report
 from app.schemas import (
     LessonFeedbackRequest,
-    LessonFeedbackResponse,
     PortfolioFeedbackRequest,
-    PortfolioFeedbackResponse,
     ReportInputRequest,
     SummaryRequest,
     SummaryResponse,
@@ -103,8 +101,8 @@ def create_summary(payload: SummaryRequest) -> SummaryResponse:
     return SummaryResponse(**summary)
 
 
-@app.post('/api/v1/lesson-feedback', response_model=LessonFeedbackResponse)
-def create_lesson_feedback(payload: LessonFeedbackRequest) -> LessonFeedbackResponse:
+@app.post('/api/v1/lesson-feedback', response_class=PlainTextResponse)
+def create_lesson_feedback(payload: LessonFeedbackRequest) -> PlainTextResponse:
     try:
         report_text = resolve_report_text(payload)
         feedback = generate_lesson_feedback(report_text, payload.lesson_label)
@@ -117,7 +115,7 @@ def create_lesson_feedback(payload: LessonFeedbackRequest) -> LessonFeedbackResp
     except Exception as exc:
         raise HTTPException(status_code=500, detail='Unexpected lesson feedback error') from exc
 
-    return LessonFeedbackResponse(**feedback)
+    return PlainTextResponse(content=feedback, media_type='text/markdown')
 
 
 def _format_sse_event(event_name: str, data: dict) -> str:
@@ -153,8 +151,8 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
     )
 
 
-@app.post('/api/v1/portfolio-feedback', response_model=PortfolioFeedbackResponse)
-def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PortfolioFeedbackResponse:
+@app.post('/api/v1/portfolio-feedback', response_class=PlainTextResponse)
+def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PlainTextResponse:
     try:
         lessons_payload = load_all_lessons_json_from_local_data()
         if not lessons_payload:
@@ -169,7 +167,7 @@ def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PortfolioFee
     except Exception as exc:
         raise HTTPException(status_code=500, detail='Unexpected portfolio feedback error') from exc
 
-    return PortfolioFeedbackResponse(**feedback)
+    return PlainTextResponse(content=feedback, media_type='text/markdown')
 
 
 @app.post('/api/v1/portfolio-feedback/stream')
