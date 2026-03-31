@@ -33,6 +33,44 @@ type LessonFeedbackPayload = {
   parent_message: string
 }
 
+type SkillTrend = {
+  current_level: string
+  trend: string
+  evidence: string[]
+  recommendation: string
+}
+
+type PortfolioFeedbackPayload = {
+  portfolio_label: string
+  total_lessons: number
+  date_range: {
+    from_date: string
+    to_date: string
+  } | null
+  overall_assessment: string
+  skill_trends: {
+    participation: SkillTrend
+    pronunciation: SkillTrend
+    vocabulary: SkillTrend
+    grammar: SkillTrend
+    reaction_confidence: SkillTrend
+  }
+  top_strengths: string[]
+  top_priorities: Array<{
+    skill: string
+    priority: string
+    reason: string
+    next_2_weeks_target: string
+    coach_tip: string
+  }>
+  study_plan_2_weeks: Array<{
+    step: string
+    frequency: string
+    duration_minutes: number
+  }>
+  parent_message: string
+}
+
 const reportLinks = [
   {
     label: 'Trial Lesson 10_11',
@@ -48,12 +86,21 @@ const reportLinks = [
   },
 ]
 
-const STREAM_SECTION_LABELS: Array<{ key: string; label: string }> = [
+const LESSON_STREAM_SECTION_LABELS: Array<{ key: string; label: string }> = [
   { key: 'overall_comment', label: 'Tong quan buoi hoc' },
   { key: 'session_breakdown', label: 'Phan tich ky nang' },
   { key: 'strengths', label: 'Diem manh' },
   { key: 'priority_improvements', label: 'Uu tien cai thien' },
   { key: 'next_lesson_plan', label: 'Ke hoach buoi sau' },
+  { key: 'parent_message', label: 'Loi nhan phu huynh' },
+]
+
+const PORTFOLIO_STREAM_SECTION_LABELS: Array<{ key: string; label: string }> = [
+  { key: 'overall_assessment', label: 'Tong quan qua trinh' },
+  { key: 'skill_trends', label: 'Xu huong ky nang' },
+  { key: 'top_strengths', label: 'Diem manh' },
+  { key: 'top_priorities', label: 'Uu tien can thiep' },
+  { key: 'study_plan_2_weeks', label: 'Ke hoach 2 tuan' },
   { key: 'parent_message', label: 'Loi nhan phu huynh' },
 ]
 
@@ -79,28 +126,41 @@ function extractJsonStringArray(raw: string, key: string): string[] {
 }
 
 function App() {
+  const [feedbackMode, setFeedbackMode] = useState<'lesson' | 'portfolio' | null>(null)
   const [feedback, setFeedback] = useState<LessonFeedbackPayload | null>(null)
+  const [portfolioFeedback, setPortfolioFeedback] = useState<PortfolioFeedbackPayload | null>(null)
   const [feedbackError, setFeedbackError] = useState<string | null>(null)
   const [feedbackLoadingId, setFeedbackLoadingId] = useState<string | null>(null)
   const [feedbackStreamingStatus, setFeedbackStreamingStatus] = useState<string | null>(null)
   const [feedbackStreamingText, setFeedbackStreamingText] = useState('')
+
+  const streamSections = useMemo(() => {
+    if (feedbackMode === 'portfolio') {
+      return PORTFOLIO_STREAM_SECTION_LABELS
+    }
+    return LESSON_STREAM_SECTION_LABELS
+  }, [feedbackMode])
+
   const streamSectionStates = useMemo(() => {
-    return STREAM_SECTION_LABELS.map((section) => {
+    return streamSections.map((section) => {
       const appeared = feedbackStreamingText.includes(`"${section.key}"`)
       return {
         ...section,
         state: appeared ? 'done' : 'pending',
       }
     })
-  }, [feedbackStreamingText])
-  const overallPreview = useMemo(
-    () => extractJsonStringField(feedbackStreamingText, 'overall_comment'),
-    [feedbackStreamingText],
-  )
-  const strengthsPreview = useMemo(
-    () => extractJsonStringArray(feedbackStreamingText, 'strengths').slice(0, 3),
-    [feedbackStreamingText],
-  )
+  }, [feedbackStreamingText, streamSections])
+
+  const overallPreview = useMemo(() => {
+    const key = feedbackMode === 'portfolio' ? 'overall_assessment' : 'overall_comment'
+    return extractJsonStringField(feedbackStreamingText, key)
+  }, [feedbackMode, feedbackStreamingText])
+
+  const strengthsPreview = useMemo(() => {
+    const key = feedbackMode === 'portfolio' ? 'top_strengths' : 'strengths'
+    return extractJsonStringArray(feedbackStreamingText, key).slice(0, 3)
+  }, [feedbackMode, feedbackStreamingText])
+
   const parentPreview = useMemo(
     () => extractJsonStringField(feedbackStreamingText, 'parent_message'),
     [feedbackStreamingText],
@@ -112,8 +172,10 @@ function App() {
   )
 
   const handleGenerateFeedback = async (lessonId: string, lessonLabel: string) => {
+    setFeedbackMode('lesson')
     setFeedbackError(null)
     setFeedback(null)
+    setPortfolioFeedback(null)
     setFeedbackLoadingId(lessonId)
     setFeedbackStreamingStatus('Dang bat dau tao nhan xet...')
     setFeedbackStreamingText('')
@@ -214,6 +276,109 @@ function App() {
     }
   }
 
+  const handleGeneratePortfolioFeedback = async () => {
+    setFeedbackMode('portfolio')
+    setFeedbackError(null)
+    setFeedback(null)
+    setPortfolioFeedback(null)
+    setFeedbackLoadingId('portfolio')
+    setFeedbackStreamingStatus('Dang bat dau tao nhan xet chung...')
+    setFeedbackStreamingText('')
+
+    try {
+      const response = await fetch(`${apiBaseUrl}/api/v1/portfolio-feedback/stream`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          portfolio_label: 'Tong hop toan bo buoi hoc',
+        }),
+      })
+
+      if (!response.ok) {
+        throw new Error('Chua tao duoc nhan xet. Vui long thu lai.')
+      }
+
+      if (!response.body) {
+        const fallbackResponse = await fetch(`${apiBaseUrl}/api/v1/portfolio-feedback`, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            portfolio_label: 'Tong hop toan bo buoi hoc',
+          }),
+        })
+        if (!fallbackResponse.ok) {
+          throw new Error('Chua tao duoc nhan xet. Vui long thu lai.')
+        }
+        const payload = (await fallbackResponse.json()) as PortfolioFeedbackPayload
+        setPortfolioFeedback(payload)
+        return
+      }
+
+      const reader = response.body.getReader()
+      const decoder = new TextDecoder()
+      let buffer = ''
+
+      while (true) {
+        const { done, value } = await reader.read()
+        if (done) {
+          break
+        }
+        buffer += decoder.decode(value, { stream: true })
+
+        const events = buffer.split('\n\n')
+        buffer = events.pop() ?? ''
+
+        for (const rawEvent of events) {
+          const lines = rawEvent.split('\n')
+          let eventName = ''
+          let eventData = ''
+          for (const line of lines) {
+            if (line.startsWith('event:')) {
+              eventName = line.slice(6).trim()
+            } else if (line.startsWith('data:')) {
+              eventData += line.slice(5).trim()
+            }
+          }
+
+          if (!eventData) {
+            continue
+          }
+
+          const parsed = JSON.parse(eventData) as {
+            type: string
+            message?: string
+            content?: string
+            data?: PortfolioFeedbackPayload
+          }
+
+          if (eventName === 'status' && parsed.message) {
+            setFeedbackStreamingStatus(parsed.message)
+          } else if (eventName === 'chunk') {
+            setFeedbackStreamingStatus('Dang tao noi dung nhan xet...')
+            const chunkContent = parsed.content
+            if (chunkContent) {
+              setFeedbackStreamingText((previous) => previous + chunkContent)
+            }
+          } else if (eventName === 'result' && parsed.data) {
+            setPortfolioFeedback(parsed.data)
+            setFeedbackStreamingStatus('Da hoan tat nhan xet.')
+          } else if (eventName === 'error') {
+            throw new Error(parsed.message ?? 'Chua tao duoc nhan xet. Vui long thu lai.')
+          }
+        }
+      }
+    } catch (_requestError) {
+      setFeedbackError('Chua tao duoc nhan xet. Vui long thu lai.')
+      setFeedbackStreamingStatus(null)
+    } finally {
+      setFeedbackLoadingId(null)
+    }
+  }
+
   return (
     <main className="page">
       <section className="hero">
@@ -240,6 +405,17 @@ function App() {
             </button>
           </article>
         ))}
+      </section>
+
+      <section className="portfolio-action" aria-label="Portfolio feedback action">
+        <button
+          type="button"
+          className="portfolio-action__button"
+          onClick={handleGeneratePortfolioFeedback}
+          disabled={feedbackLoadingId !== null}
+        >
+          Nhan xet chung
+        </button>
       </section>
 
       <section className="lesson-feedback-panel" aria-label="Lesson feedback">
@@ -300,7 +476,7 @@ function App() {
         )}
         {feedbackError && <p className="feedback feedback--error">{feedbackError}</p>}
 
-        {feedback && (
+        {feedbackMode === 'lesson' && feedback && (
           <article className="summary-result">
             <h2>Nhan xet buoi hoc - {feedback.lesson_label}</h2>
             <p>{feedback.overall_comment}</p>
@@ -343,8 +519,57 @@ function App() {
             <p>{feedback.parent_message}</p>
           </article>
         )}
-      </section>
 
+        {feedbackMode === 'portfolio' && portfolioFeedback && (
+          <article className="summary-result">
+            <h2>Nhan xet chung qua trinh hoc</h2>
+            <p>Tong so buoi: {portfolioFeedback.total_lessons}</p>
+            {portfolioFeedback.date_range && (
+              <p>
+                Khoang thoi gian: {portfolioFeedback.date_range.from_date} - {portfolioFeedback.date_range.to_date}
+              </p>
+            )}
+            <p>{portfolioFeedback.overall_assessment}</p>
+
+            <h3>Xu huong ky nang</h3>
+            <ul>
+              <li>Participation: {portfolioFeedback.skill_trends.participation.trend}</li>
+              <li>Pronunciation: {portfolioFeedback.skill_trends.pronunciation.trend}</li>
+              <li>Vocabulary: {portfolioFeedback.skill_trends.vocabulary.trend}</li>
+              <li>Grammar: {portfolioFeedback.skill_trends.grammar.trend}</li>
+              <li>Reaction confidence: {portfolioFeedback.skill_trends.reaction_confidence.trend}</li>
+            </ul>
+
+            <h3>Diem manh</h3>
+            <ul>
+              {portfolioFeedback.top_strengths.map((point) => (
+                <li key={point}>{point}</li>
+              ))}
+            </ul>
+
+            <h3>Uu tien can thiep</h3>
+            <ul>
+              {portfolioFeedback.top_priorities.map((item, index) => (
+                <li key={`${item.skill}-${index}`}>
+                  {item.skill}: {item.coach_tip}
+                </li>
+              ))}
+            </ul>
+
+            <h3>Ke hoach 2 tuan</h3>
+            <ul>
+              {portfolioFeedback.study_plan_2_weeks.map((item, index) => (
+                <li key={`${item.step}-${index}`}>
+                  {item.step} - {item.frequency} ({item.duration_minutes} phut)
+                </li>
+              ))}
+            </ul>
+
+            <h3>Loi nhan phu huynh</h3>
+            <p>{portfolioFeedback.parent_message}</p>
+          </article>
+        )}
+      </section>
     </main>
   )
 }

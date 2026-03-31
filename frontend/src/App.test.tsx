@@ -101,4 +101,24 @@ describe('App', () => {
 
     expect(await screen.findByText(/chua tao duoc nhan xet\. vui long thu lai\./i)).toBeInTheDocument()
   })
+
+  it('requests portfolio feedback stream and renders portfolio panel', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: {"type":"status","message":"Dang phan tich tong hop"}',
+        'event: result\ndata: {"type":"result","data":{"portfolio_label":"Tong hop toan bo buoi hoc","total_lessons":2,"date_range":{"from_date":"2026-03-01","to_date":"2026-03-31"},"overall_assessment":"Tien bo on dinh qua cac buoi.","skill_trends":{"participation":{"current_level":"kha","trend":"improving","evidence":["e1"],"recommendation":"r1"},"pronunciation":{"current_level":"tb","trend":"stable","evidence":["e2"],"recommendation":"r2"},"vocabulary":{"current_level":"kha","trend":"improving","evidence":["e3"],"recommendation":"r3"},"grammar":{"current_level":"tb","trend":"mixed","evidence":["e4"],"recommendation":"r4"},"reaction_confidence":{"current_level":"kha","trend":"improving","evidence":["e5"],"recommendation":"r5"}},"top_strengths":["Tu tin"],"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],"study_plan_2_weeks":[{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10}],"parent_message":"Con dang tien bo rat tot."}}',
+        'event: done\ndata: {"type":"done"}',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: /nhan xet chung/i }))
+
+    await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
+    expect(fetchMock.mock.calls[0][0]).toContain('/api/v1/portfolio-feedback/stream')
+    expect(await screen.findByRole('heading', { name: /nhan xet chung qua trinh hoc/i })).toBeInTheDocument()
+    expect(screen.getByText(/tong so buoi: 2/i)).toBeInTheDocument()
+    expect(screen.getByText(/tien bo on dinh qua cac buoi/i)).toBeInTheDocument()
+  })
 })

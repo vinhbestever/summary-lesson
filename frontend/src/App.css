@@ -105,6 +105,28 @@
   cursor: not-allowed;
 }
 
+.portfolio-action {
+  max-width: 900px;
+  margin: 0.8rem auto 0;
+  padding: 0 1rem;
+}
+
+.portfolio-action__button {
+  border: none;
+  border-radius: 12px;
+  background: var(--accent);
+  color: #fff;
+  padding: 0.6rem 1rem;
+  font: inherit;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.portfolio-action__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
 .lesson-feedback-panel {
   max-width: 900px;
   margin: 1.2rem auto 0;
