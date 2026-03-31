@@ -129,6 +129,70 @@ def _feedback_payload() -> dict:
     }
 
 
+def _portfolio_feedback_payload() -> dict:
+    return {
+        'portfolio_label': 'Tong hop toan bo buoi hoc',
+        'total_lessons': 2,
+        'date_range': {'from_date': '2026-03-01', 'to_date': '2026-03-31'},
+        'overall_assessment': 'Hoc vien tien bo on dinh qua cac buoi.',
+        'skill_trends': {
+            'participation': {
+                'current_level': 'kha',
+                'trend': 'improving',
+                'evidence': ['Tang so luot phat bieu'],
+                'recommendation': 'Duy tri hoi dap ngan moi ngay',
+            },
+            'pronunciation': {
+                'current_level': 'trung binh',
+                'trend': 'stable',
+                'evidence': ['Con bo sot am cuoi o 1 so tu'],
+                'recommendation': 'Luyen shadowing 10 phut',
+            },
+            'vocabulary': {
+                'current_level': 'kha',
+                'trend': 'improving',
+                'evidence': ['Nho va dung duoc nhieu tu moi'],
+                'recommendation': 'On tap bang flashcard',
+            },
+            'grammar': {
+                'current_level': 'trung binh kha',
+                'trend': 'mixed',
+                'evidence': ['Dung tot cau don, nham o thi hien tai tiep dien'],
+                'recommendation': 'On 1 diem ngu phap moi buoi',
+            },
+            'reaction_confidence': {
+                'current_level': 'kha',
+                'trend': 'improving',
+                'evidence': ['Thoi gian phan hoi nhanh hon'],
+                'recommendation': 'Luyen phan xa theo tinh huong',
+            },
+        },
+        'top_strengths': ['Tu tin phat bieu', 'Nho tu nhanh'],
+        'top_priorities': [
+            {
+                'skill': 'pronunciation',
+                'priority': 'high',
+                'reason': 'Am cuoi chua on dinh',
+                'next_2_weeks_target': 'Dat do chinh xac am cuoi >= 80%',
+                'coach_tip': 'Luyen cap toi thieu 10 phut moi ngay',
+            }
+        ],
+        'study_plan_2_weeks': [
+            {'step': 'On tu theo chu de', 'frequency': '4 buoi/tuan', 'duration_minutes': 10}
+        ],
+        'parent_message': 'Con dang tien bo tot, gia dinh tiep tuc dong hanh.',
+    }
+
+
+def test_portfolio_feedback_response_schema() -> None:
+    from app.schemas import PortfolioFeedbackResponse
+
+    payload = PortfolioFeedbackResponse(**_portfolio_feedback_payload())
+    assert payload.total_lessons == 2
+    assert payload.skill_trends.participation.trend == 'improving'
+    assert payload.top_priorities[0].skill == 'pronunciation'
+
+
 def test_create_lesson_feedback_returns_schema(monkeypatch) -> None:
     monkeypatch.setattr('app.main.resolve_report_text', lambda payload: 'Noi dung bao cao')
     monkeypatch.setattr('app.main.generate_lesson_feedback', lambda _text, _label: _feedback_payload(), raising=False)
