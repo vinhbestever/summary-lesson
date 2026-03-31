@@ -86,6 +86,16 @@ function parseSseEvent(rawEvent: string): ParsedSseEvent {
   }
 }
 
+function normalizeMarkdownLineBreaks(raw: string): string {
+  if (!raw.trim()) {
+    return ''
+  }
+
+  return raw
+    .replace(/([.!?])\s*-\s+/g, '$1\n- ')
+    .replace(/\n-\s*\n-/g, '\n- ')
+}
+
 function MarkdownView({ content }: { content: string }) {
   return (
     <ReactMarkdown
@@ -110,6 +120,10 @@ function App() {
   const apiBaseUrl = useMemo(
     () => import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:8000',
     [],
+  )
+  const formattedMarkdown = useMemo(
+    () => normalizeMarkdownLineBreaks(feedbackMarkdown),
+    [feedbackMarkdown],
   )
 
   const handleGenerateFeedback = async (lessonId: string, lessonLabel: string) => {
@@ -171,15 +185,13 @@ function App() {
         for (const rawEvent of events) {
           const { eventName, eventData } = parseSseEvent(rawEvent)
 
-          if (!eventData) {
-            continue
-          }
-
           if (eventName === 'status') {
-            setFeedbackStreamingStatus(eventData)
+            if (eventData) {
+              setFeedbackStreamingStatus(eventData)
+            }
           } else if (eventName === 'chunk') {
             setFeedbackStreamingStatus('Dang tao noi dung nhan xet...')
-            setFeedbackMarkdown((previous) => previous + eventData)
+            setFeedbackMarkdown((previous) => previous + (eventData || '\n'))
           } else if (eventName === 'error') {
             throw new Error(eventData || 'Chua tao duoc nhan xet. Vui long thu lai.')
           } else if (eventName === 'done') {
@@ -252,15 +264,13 @@ function App() {
         for (const rawEvent of events) {
           const { eventName, eventData } = parseSseEvent(rawEvent)
 
-          if (!eventData) {
-            continue
-          }
-
           if (eventName === 'status') {
-            setFeedbackStreamingStatus(eventData)
+            if (eventData) {
+              setFeedbackStreamingStatus(eventData)
+            }
           } else if (eventName === 'chunk') {
             setFeedbackStreamingStatus('Dang tao noi dung nhan xet...')
-            setFeedbackMarkdown((previous) => previous + eventData)
+            setFeedbackMarkdown((previous) => previous + (eventData || '\n'))
           } else if (eventName === 'error') {
             throw new Error(eventData || 'Chua tao duoc nhan xet. Vui long thu lai.')
           } else if (eventName === 'done') {
@@ -326,21 +336,10 @@ function App() {
             <div className="streaming-progress" aria-hidden="true">
               <span />
             </div>
-            <div className="streaming-skeleton">
-              <div className="streaming-skeleton__block streaming-skeleton__block--large" />
-              <div className="streaming-skeleton__grid">
-                <div className="streaming-skeleton__block" />
-                <div className="streaming-skeleton__block" />
-                <div className="streaming-skeleton__block" />
-                <div className="streaming-skeleton__block" />
-              </div>
-              <div className="streaming-skeleton__block" />
-              <div className="streaming-skeleton__block" />
-            </div>
             {feedbackMarkdown && (
-              <div className="summary-result">
-                <MarkdownView content={feedbackMarkdown} />
-              </div>
+              <article className="summary-result">
+                <MarkdownView content={formattedMarkdown} />
+              </article>
             )}
           </article>
         )}
@@ -349,7 +348,7 @@ function App() {
 
         {!feedbackLoadingId && feedbackMarkdown && (
           <article className="summary-result" data-testid={`markdown-result-${feedbackMode ?? 'none'}`}>
-            <MarkdownView content={feedbackMarkdown} />
+            <MarkdownView content={formattedMarkdown} />
           </article>
         )}
       </section>

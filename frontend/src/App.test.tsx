@@ -73,6 +73,7 @@ describe('App', () => {
     expect(
       await screen.findByRole('heading', { name: /nhan xet buoi hoc - trial_lesson_over_7/i }),
     ).toBeInTheDocument()
+    expect(await screen.findByRole('heading', { name: /tong quan/i })).toBeInTheDocument()
     expect(screen.getByText(/con hoc rat tap trung/i)).toBeInTheDocument()
   })
 

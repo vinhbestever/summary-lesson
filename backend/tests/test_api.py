@@ -254,7 +254,7 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
     result = generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
 
     system_prompt = captured['messages'][0]['content'].lower()
-    assert 'am ap' in system_prompt
+    assert 'ấm áp' in system_prompt
     assert isinstance(result, str)
     assert result
 
@@ -406,9 +406,9 @@ def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
     system_prompt = messages[0]['content']
     user_payload = json.loads(messages[1]['content'])
 
-    assert 'Chi tra ve markdown' in system_prompt
-    assert '## Ke hoach 2 tuan' in system_prompt
-    assert '## Uu tien can thiep' in system_prompt
+    assert 'Chỉ trả về markdown' in system_prompt
+    assert '## Kế hoạch 2 tuần' in system_prompt
+    assert '## Ưu tiên can thiệp' in system_prompt
     assert 'portfolio_context' in user_payload
     assert user_payload['portfolio_context']['total_lessons'] == 1
 

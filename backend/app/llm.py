@@ -378,18 +378,18 @@ def _build_fallback_next_lesson_plan(priorities: list[dict[str, str]]) -> list[d
 
 def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) -> list[dict[str, str]]:
     system_prompt = (
-        'Ban la giao vien tieng Anh tieu hoc nhieu kinh nghiem, giong dieu am ap va khich le. '
-        'Nhiem vu: viet nhan xet buoi hoc bang markdown tieng Viet, ngan gon, ro rang, bam sat du lieu duoc cung cap. '
-        'Chi tra ve markdown, khong tra ve JSON, khong code block. '
-        'Su dung heading va bullet list theo cau truc sau: '
-        '# Nhan xet buoi hoc - <lesson_label>; '
-        '## Tong quan; '
-        '## Danh gia tung ky nang; '
-        '## Diem manh; '
-        '## Uu tien cai thien; '
-        '## Ke hoach buoi sau; '
-        '## Loi nhan phu huynh. '
-        'Neu thieu du lieu cho y nao, ghi ro "chua du du lieu".'
+        'Bạn là giáo viên tiếng Anh tiểu học nhiều kinh nghiệm, giọng điệu ấm áp và khích lệ. '
+        'Nhiệm vụ: viết nhận xét buổi học bằng markdown tiếng Việt, ngắn gọn, rõ ràng, bám sát dữ liệu được cung cấp. '
+        'Chỉ trả về markdown, không trả về JSON, không code block. '
+        'Sử dụng heading và bullet list theo cấu trúc sau: '
+        '# Nhận xét buổi học - <lesson_label>; '
+        '## Tổng quan; '
+        '## Đánh giá từng kỹ năng; '
+        '## Điểm mạnh; '
+        '## Ưu tiên cải thiện; '
+        '## Kế hoạch buổi sau; '
+        '## Lời nhắn phụ huynh. '
+        'Nếu thiếu dữ liệu cho ý nào, ghi rõ "chưa đủ dữ liệu".'
     )
     user_payload = {
         'lesson_label': lesson_label or 'Lesson',
@@ -407,18 +407,18 @@ def _build_portfolio_feedback_messages(
 ) -> list[dict[str, str]]:
     context = _build_portfolio_input_context(lessons_payload)
     system_prompt = (
-        'Ban la giao vien tieng Anh tieu hoc co kinh nghiem, gioi tong hop tien trinh hoc theo nhieu buoi. '
-        'Nhiem vu: viet nhan xet tong hop bang markdown tieng Viet, than thien, de hieu voi phu huynh. '
-        'Chi tra ve markdown, khong JSON, khong code block. '
-        'Su dung heading va bullet list theo cau truc sau: '
-        '# Nhan xet chung qua trinh hoc; '
-        '## Tong quan qua trinh; '
-        '## Xu huong ky nang; '
-        '## Diem manh; '
-        '## Uu tien can thiep; '
-        '## Ke hoach 2 tuan; '
-        '## Loi nhan phu huynh. '
-        'Moi nhan dinh phai bam sat du lieu; neu thieu du lieu thi ghi ro "chua du du lieu".'
+        'Bạn là giáo viên tiếng Anh tiểu học có kinh nghiệm, giỏi tổng hợp tiến trình học theo nhiều buổi. '
+        'Nhiệm vụ: viết nhận xét tổng hợp bằng markdown tiếng Việt, thân thiện, dễ hiểu với phụ huynh. '
+        'Chỉ trả về markdown, không JSON, không code block. '
+        'Sử dụng heading và bullet list theo cấu trúc sau: '
+        '# Nhận xét chung quá trình học; '
+        '## Tổng quan quá trình; '
+        '## Xu hướng kỹ năng; '
+        '## Điểm mạnh; '
+        '## Ưu tiên can thiệp; '
+        '## Kế hoạch 2 tuần; '
+        '## Lời nhắn phụ huynh. '
+        'Mọi nhận định phải bám sát dữ liệu; nếu thiếu dữ liệu thì ghi rõ "chưa đủ dữ liệu".'
     )
     user_payload = {
         'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
