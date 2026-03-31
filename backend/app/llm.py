@@ -145,11 +145,24 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'session_breakdown(participation, pronunciation, vocabulary, grammar, reaction_confidence), '
         'strengths, priority_improvements, next_lesson_plan, parent_message. '
         'Moi muc trong session_breakdown co score(0-100), comment, evidence(array string). '
-        'parent_message phai 4-6 cau, tich cuc va co huong dan phu huynh dong hanh.'
+        'parent_message phai 4-6 cau, tich cuc va co huong dan phu huynh dong hanh. '
+        'Rang buoc bat buoc cho next_lesson_plan: '
+        '1) Luon la array dung 3 phan tu, khong duoc rong. '
+        '2) Moi phan tu la object co day du 2 khoa: step (string), duration_minutes (integer). '
+        '3) duration_minutes trong khoang 5-20 va tong 3 muc trong khoang 25-35 phut. '
+        '4) Noi dung phai lien ket truc tiep voi priority_improvements; neu thieu du lieu van phai de xuat ke hoach cu the, khong duoc de [] hay null. '
+        '5) Truoc khi tra ve, tu kiem tra lai JSON hop le va next_lesson_plan da dung 3 muc.'
     )
     user_payload = {
         'lesson_label': lesson_label or 'Lesson',
         'lesson_data': report_text,
+        'output_contract': {
+            'next_lesson_plan_required_shape': [
+                {'step': 'Mo ta hanh dong cu the cho buoi sau', 'duration_minutes': 10},
+                {'step': 'Mo ta hanh dong cu the cho buoi sau', 'duration_minutes': 10},
+                {'step': 'Mo ta hanh dong cu the cho buoi sau', 'duration_minutes': 10},
+            ]
+        },
     }
     return [
         {'role': 'system', 'content': system_prompt},
