@@ -232,5 +232,11 @@
     "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/10/collaborator/mfdscklt-5b50eed8-3.png",
     "lmsCourseId": "892",
     "lmsSectionId": "75224"
+  },
+  "lessonTime": {
+    "lessonStartTime": "",
+    "lessonEndTime": "",
+    "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+    "erpLessonId": "3724970"
   }
 }

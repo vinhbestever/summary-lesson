@@ -377,6 +377,14 @@ def _build_fallback_next_lesson_plan(priorities: list[dict[str, str]]) -> list[d
 
 
 def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) -> list[dict[str, str]]:
+    lesson_input: Any = report_text
+    try:
+        parsed = json.loads(report_text)
+        if isinstance(parsed, (dict, list)):
+            lesson_input = parsed
+    except (json.JSONDecodeError, TypeError):
+        lesson_input = report_text
+
     system_prompt = (
         'Bạn là giáo viên tiếng Anh tiểu học nhiều kinh nghiệm, giọng điệu ấm áp và khích lệ. '
         'Nhiệm vụ: viết nhận xét buổi học bằng markdown tiếng Việt, ngắn gọn, rõ ràng, bám sát dữ liệu được cung cấp. '
@@ -384,16 +392,25 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'Sử dụng heading và bullet list theo cấu trúc sau: '
         '# Nhận xét buổi học - <lesson_label>; '
         '## Tổng quan; '
+        '## So sánh buổi gần đây; '
         '## Đánh giá từng kỹ năng; '
         '## Điểm mạnh; '
         '## Ưu tiên cải thiện; '
         '## Kế hoạch buổi sau; '
         '## Lời nhắn phụ huynh. '
+        'Dữ liệu đầu vào có thể gồm current_lesson_data và lesson_progress_context (recent_lessons tối đa 2 buổi gần nhất). '
+        'Nếu lesson_progress_context.progress_context.is_first_lesson=true hoặc thiếu dữ liệu thời gian, '
+        'hãy coi đây là buổi học đầu tiên, KHÔNG suy diễn tiến bộ theo lịch sử, và ghi rõ "chưa đủ dữ liệu" ở phần cần so sánh. '
+        'Nếu có recent_lessons, bắt buộc có bullet bắt đầu bằng "- So sánh buổi gần đây: " trong mục "## So sánh buổi gần đây". '
+        'Nếu recent_lessons có 2 buổi thì bullet này phải nhắc rõ cả 2 lesson_id; nếu có 1 buổi thì phải nhắc rõ lesson_id của buổi đó. '
+        'Nội dung so sánh phải nêu điểm tiến bộ/khác biệt gần đây và chỉ dựa trên dữ liệu thực tế. '
+        'Khi so sánh, ưu tiên nhắc rõ nội dung học giữa các buổi: script_name/chủ đề, target vocabulary, target grammar, '
+        'và từ/cấu trúc còn yếu lặp lại (nếu có). Không chỉ nêu số liệu chung chung. '
         'Nếu thiếu dữ liệu cho ý nào, ghi rõ "chưa đủ dữ liệu".'
     )
     user_payload = {
         'lesson_label': lesson_label or 'Lesson',
-        'lesson_data': report_text,
+        'lesson_input': lesson_input,
         'format': 'markdown',
     }
     return [

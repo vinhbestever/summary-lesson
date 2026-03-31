@@ -203,6 +203,14 @@
   font-size: 0.93rem;
 }
 
+.report-card__time {
+  display: block;
+  margin-top: 0.3rem;
+  color: #255f75;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
 .report-card__actions {
   margin-top: 0.72rem;
   display: flex;

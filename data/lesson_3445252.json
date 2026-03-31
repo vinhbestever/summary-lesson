@@ -100,6 +100,12 @@
       "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/03/collaborator/mga6db0m-2a76166b-fix-level-5---unit-1a---lesson.png",
       "lmsCourseId": "896",
       "lmsSectionId": "75206"
+    },
+    "lessonTime": {
+      "lessonStartTime": "2025-10-08 20:00:00",
+      "lessonEndTime": "2025-10-08 20:25:00",
+      "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+      "erpLessonId": "3445252"
     }
   },
   {
@@ -352,6 +358,12 @@
       "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/03/collaborator/mga6db0m-2a76166b-fix-level-5---unit-1a---lesson.png",
       "lmsCourseId": "896",
       "lmsSectionId": "75206"
+    },
+    "lessonTime": {
+      "lessonStartTime": "2025-10-08 20:00:00",
+      "lessonEndTime": "2025-10-08 20:25:00",
+      "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+      "erpLessonId": "3445252"
     }
   }
 ]

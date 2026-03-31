@@ -347,5 +347,11 @@
     "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/30/collaborator/ml0n05gl-04761383-topic.png",
     "lmsCourseId": "896",
     "lmsSectionId": "78312"
+  },
+  "lessonTime": {
+    "lessonStartTime": "2026-03-03 18:00:00",
+    "lessonEndTime": "2026-03-03 22:00:00",
+    "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+    "erpLessonId": "3766995"
   }
 }

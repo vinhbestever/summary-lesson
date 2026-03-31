@@ -158,5 +158,11 @@
     "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/04/collaborator/mhk9ibqd-b3d5d22c-brainstorm-ch.png",
     "lmsCourseId": "896",
     "lmsSectionId": "76906"
+  },
+  "lessonTime": {
+    "lessonStartTime": "2025-12-24 18:00:00",
+    "lessonEndTime": "2025-12-24 22:00:00",
+    "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+    "erpLessonId": "3605593"
   }
 }

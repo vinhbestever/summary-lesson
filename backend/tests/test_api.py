@@ -1,3 +1,5 @@
+import json
+
 from fastapi.testclient import TestClient
 
 from app.main import app, resolve_report_text
@@ -254,9 +256,25 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
     result = generate_lesson_feedback_from_llm('Noi dung report', lesson_label='Lesson 1')
 
     system_prompt = captured['messages'][0]['content'].lower()
+    user_payload = json.loads(captured['messages'][1]['content'])
     assert 'ấm áp' in system_prompt
+    assert 'recent_lessons' in system_prompt
+    assert 'buổi học đầu tiên' in system_prompt
+    assert 'so sánh buổi gần đây' in system_prompt
+    assert '## so sánh buổi gần đây' in system_prompt
+    assert isinstance(user_payload.get('lesson_input'), str)
     assert isinstance(result, str)
     assert result
+
+
+def test_build_lesson_feedback_messages_parses_json_input_payload() -> None:
+    from app.llm import _build_lesson_feedback_messages
+
+    messages = _build_lesson_feedback_messages('{"current_lesson_data":{"a":1}}', lesson_label='Lesson 1')
+    payload = json.loads(messages[1]['content'])
+
+    assert isinstance(payload.get('lesson_input'), dict)
+    assert payload['lesson_input']['current_lesson_data']['a'] == 1
 
 
 def test_generate_lesson_feedback_returns_plain_markdown_text(monkeypatch) -> None:
@@ -562,6 +580,13 @@ def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
     response = client.post('/api/v1/lesson-feedback', json={'lesson_id': '3724970', 'lesson_label': 'Lesson 1'})
     assert response.status_code == 200
     assert '# Nhan xet buoi hoc - Lesson 1' in response.text
+
+
+def test_lesson_feedback_cache_key_uses_version_prefix() -> None:
+    from app.feedback_cache import lesson_feedback_cache_key
+
+    key = lesson_feedback_cache_key('3724970', None, None, 'Lesson 1')
+    assert key.startswith('lesson_v5_')
 
 
 def test_create_lesson_feedback_uses_cache_when_available(monkeypatch) -> None:
@@ -886,3 +911,91 @@ def test_stream_lesson_feedback_yields_text_chunks(monkeypatch) -> None:
     chunk_events = [event for event in events if event.get('type') == 'chunk']
     assert chunk_events
     assert isinstance(chunk_events[0].get('content'), str)
+
+
+def test_build_lesson_progress_context_marks_first_when_current_time_missing() -> None:
+    from app.main import _build_lesson_progress_context
+
+    context = _build_lesson_progress_context('{"achievements":{"stats":{"speakingTurnCount":10}}}', '3724970')
+
+    assert context['progress_context']['is_first_lesson'] is True
+    assert context['progress_context']['reason'] == 'missing_current_lesson_time'
+    assert context['recent_lessons'] == []
+
+
+def test_build_lesson_progress_context_uses_two_most_recent_previous_lessons(monkeypatch) -> None:
+    from app.main import _build_lesson_progress_context
+
+    lessons_payload = [
+        {
+            'lesson_id': '1',
+            'source_file': 'lesson_1.json',
+            'raw_json_text': '{"lessonTime":{"lessonStartTime":"2025-10-01 20:00:00"}}',
+        },
+        {
+            'lesson_id': '2',
+            'source_file': 'lesson_2.json',
+            'raw_json_text': '{"lessonTime":{"lessonStartTime":"2025-10-02 20:00:00"}}',
+        },
+        {
+            'lesson_id': '3',
+            'source_file': 'lesson_3.json',
+            'raw_json_text': '{"lessonTime":{"lessonStartTime":"2025-10-03 20:00:00"}}',
+        },
+        {
+            'lesson_id': '4',
+            'source_file': 'lesson_4.json',
+            'raw_json_text': '{"lessonTime":{"lessonStartTime":"2025-10-04 20:00:00"}}',
+        },
+    ]
+    monkeypatch.setattr('app.main.load_all_lessons_json_from_local_data', lambda: lessons_payload)
+
+    current_report_text = '{"lessonTime":{"lessonStartTime":"2025-10-04 20:00:00"}}'
+    context = _build_lesson_progress_context(current_report_text, '4')
+
+    recent_ids = [item['lesson_id'] for item in context['recent_lessons']]
+    assert context['progress_context']['is_first_lesson'] is False
+    assert recent_ids == ['3', '2']
+
+
+def test_create_lesson_feedback_passes_recent_lesson_context_to_llm(monkeypatch) -> None:
+    captured = {'input_text': ''}
+
+    monkeypatch.setattr(
+        'app.main.resolve_report_text',
+        lambda payload: '{"lessonTime":{"lessonStartTime":"2025-10-04 20:00:00"},'
+        '"achievements":{"stats":{"speakingTurnCount":30}}}',
+    )
+    monkeypatch.setattr(
+        'app.main.load_all_lessons_json_from_local_data',
+        lambda: [
+            {
+                'lesson_id': '3',
+                'source_file': 'lesson_3.json',
+                'raw_json_text': '{"lessonTime":{"lessonStartTime":"2025-10-03 20:00:00"},'
+                '"achievements":{"stats":{"speakingTurnCount":20}}}',
+            },
+            {
+                'lesson_id': '2',
+                'source_file': 'lesson_2.json',
+                'raw_json_text': '{"lessonTime":{"lessonStartTime":"2025-10-02 20:00:00"},'
+                '"achievements":{"stats":{"speakingTurnCount":18}}}',
+            },
+        ],
+    )
+
+    def _fake_generate(input_text, _label):
+        captured['input_text'] = input_text
+        return '# Nhan xet'
+
+    monkeypatch.setattr('app.main.generate_lesson_feedback', _fake_generate, raising=False)
+
+    response = client.post('/api/v1/lesson-feedback', json={'lesson_id': '4', 'lesson_label': 'Lesson 4'})
+    assert response.status_code == 200
+
+    sent_payload = json.loads(captured['input_text'])
+    assert 'current_lesson_data' in sent_payload
+    assert 'lesson_progress_context' in sent_payload
+    assert isinstance(sent_payload['current_lesson_data'], dict)
+    assert len(sent_payload['lesson_progress_context']['recent_lessons']) == 2
+    assert sent_payload['lesson_progress_context']['progress_context']['is_first_lesson'] is False

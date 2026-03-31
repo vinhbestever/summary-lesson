@@ -48,6 +48,28 @@ describe('App', () => {
     expect(reportLinks.length).toBeGreaterThan(2)
   })
 
+  it('shows lesson time and keeps lessons sorted by latest start time first', () => {
+    render(<App />)
+
+    const timeNodes = screen.getAllByTestId('report-card-time')
+    expect(timeNodes.length).toBeGreaterThan(0)
+    expect(timeNodes.some((node) => /thoi gian hoc:/i.test(node.textContent ?? ''))).toBe(true)
+
+    const timestamps = timeNodes
+      .map((node) => node.getAttribute('data-start-time') ?? '')
+      .filter((value) => value.length > 0)
+      .map((value) => {
+        const normalized = value.replace(' ', 'T')
+        return Number(new Date(normalized))
+      })
+      .filter((value) => Number.isFinite(value))
+
+    expect(timestamps.length).toBeGreaterThan(1)
+    for (let i = 0; i < timestamps.length - 1; i += 1) {
+      expect(timestamps[i]).toBeGreaterThanOrEqual(timestamps[i + 1])
+    }
+  })
+
   it('renders lesson markdown from raw sse chunks', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([

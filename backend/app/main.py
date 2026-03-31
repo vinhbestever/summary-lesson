@@ -1,5 +1,7 @@
 import json
 import os
+from datetime import datetime
+from typing import Any
 
 import httpx
 from dotenv import load_dotenv
@@ -82,6 +84,158 @@ def resolve_report_text(payload: ReportInputRequest) -> str:
     raise ValueError('No report input was provided')
 
 
+def _parse_lesson_root(raw_json_text: str) -> dict[str, Any]:
+    try:
+        parsed = json.loads(raw_json_text)
+    except json.JSONDecodeError:
+        return {}
+
+    if isinstance(parsed, dict):
+        return parsed
+    if isinstance(parsed, list) and parsed and isinstance(parsed[0], dict):
+        return parsed[0]
+    return {}
+
+
+def _parse_lesson_time_to_timestamp(value: str | None) -> float | None:
+    if not value:
+        return None
+    normalized = value.replace(' ', 'T')
+    try:
+        return datetime.fromisoformat(normalized).timestamp()
+    except ValueError:
+        return None
+
+
+def _extract_lesson_snapshot(raw_json_text: str, lesson_id: str, source_file: str) -> dict[str, Any]:
+    root = _parse_lesson_root(raw_json_text)
+    lesson_time = root.get('lessonTime') if isinstance(root.get('lessonTime'), dict) else {}
+    achievements = root.get('achievements') if isinstance(root.get('achievements'), dict) else {}
+    stats = achievements.get('stats') if isinstance(achievements.get('stats'), dict) else {}
+    pronunciation = (
+        achievements.get('pronunciation') if isinstance(achievements.get('pronunciation'), dict) else {}
+    )
+    vocabulary_attempts = achievements.get('vocabulary') if isinstance(achievements.get('vocabulary'), list) else []
+    grammar_attempts = achievements.get('grammar') if isinstance(achievements.get('grammar'), list) else []
+    targets = root.get('targets') if isinstance(root.get('targets'), dict) else {}
+    target_vocabulary = targets.get('vocabulary') if isinstance(targets.get('vocabulary'), list) else []
+    target_grammar = targets.get('grammar') if isinstance(targets.get('grammar'), list) else []
+    script_metadata = root.get('scriptMetadata') if isinstance(root.get('scriptMetadata'), dict) else {}
+
+    start_time = lesson_time.get('lessonStartTime') if isinstance(lesson_time, dict) else None
+    end_time = lesson_time.get('lessonEndTime') if isinstance(lesson_time, dict) else None
+
+    weak_vocabulary = sorted(
+        [
+            {
+                'word': str(item.get('word', '')).strip(),
+                'average_score': item.get('averageScore'),
+            }
+            for item in vocabulary_attempts
+            if isinstance(item, dict) and str(item.get('word', '')).strip()
+        ],
+        key=lambda item: float(item.get('average_score') or 0),
+    )[:3]
+
+    return {
+        'lesson_id': lesson_id,
+        'source_file': source_file,
+        'script_name': script_metadata.get('name'),
+        'lesson_time': {
+            'lesson_start_time': start_time,
+            'lesson_end_time': end_time,
+        },
+        'targets': {
+            'vocabulary': [str(item).strip() for item in target_vocabulary if str(item).strip()],
+            'grammar': [str(item).strip() for item in target_grammar if str(item).strip()],
+        },
+        'stats': {
+            'speaking_turn_count': stats.get('speakingTurnCount'),
+            'average_reaction_time_ms': stats.get('averageReactionTimeMs'),
+            'sections_completion_percent': stats.get('sectionsCompletionPercent'),
+            'average_pronunciation_score': pronunciation.get('averagePronunciationScore'),
+            'teacher_comment': stats.get('teacherComment'),
+            'session_summary': stats.get('sessionSummary'),
+        },
+        'skill_evidence': {
+            'weak_vocabulary': weak_vocabulary,
+            'vocabulary_attempt_count': len(vocabulary_attempts),
+            'grammar_attempt_count': len(grammar_attempts),
+        },
+        'time_sort_key': _parse_lesson_time_to_timestamp(start_time),
+    }
+
+
+def _build_lesson_progress_context(current_report_text: str, lesson_id: str | None) -> dict[str, Any]:
+    current_id = (lesson_id or '').strip()
+    if not current_id:
+        return {
+            'current_lesson': _extract_lesson_snapshot(current_report_text, 'unknown', 'request_input'),
+            'recent_lessons': [],
+            'progress_context': {
+                'is_first_lesson': True,
+                'reason': 'current_lesson_not_identified',
+                'comparison_basis': 'lessonTime.lessonStartTime',
+            },
+        }
+
+    current_snapshot = _extract_lesson_snapshot(current_report_text, current_id, f'lesson_{current_id}.json')
+    current_time_sort_key = current_snapshot.get('time_sort_key')
+    if current_time_sort_key is None:
+        return {
+            'current_lesson': current_snapshot,
+            'recent_lessons': [],
+            'progress_context': {
+                'is_first_lesson': True,
+                'reason': 'missing_current_lesson_time',
+                'comparison_basis': 'lessonTime.lessonStartTime',
+            },
+        }
+
+    lesson_items = load_all_lessons_json_from_local_data()
+    previous_lessons: list[dict[str, Any]] = []
+    for item in lesson_items:
+        candidate_id = str(item.get('lesson_id', '')).strip()
+        if not candidate_id or candidate_id == current_id:
+            continue
+        snapshot = _extract_lesson_snapshot(
+            item.get('raw_json_text', ''),
+            candidate_id,
+            str(item.get('source_file', '')),
+        )
+        candidate_time_sort_key = snapshot.get('time_sort_key')
+        if candidate_time_sort_key is None:
+            continue
+        if candidate_time_sort_key < current_time_sort_key:
+            previous_lessons.append(snapshot)
+
+    previous_lessons.sort(key=lambda item: item.get('time_sort_key') or 0, reverse=True)
+    recent_lessons = previous_lessons[:2]
+
+    return {
+        'current_lesson': current_snapshot,
+        'recent_lessons': recent_lessons,
+        'progress_context': {
+            'is_first_lesson': len(recent_lessons) == 0,
+            'reason': 'no_previous_lessons' if len(recent_lessons) == 0 else 'has_recent_lessons',
+            'comparison_basis': 'lessonTime.lessonStartTime',
+        },
+    }
+
+
+def _build_lesson_feedback_input_text(current_report_text: str, lesson_id: str | None) -> str:
+    current_lesson_data: Any = current_report_text
+    parsed_current = _parse_lesson_root(current_report_text)
+    if parsed_current:
+        current_lesson_data = parsed_current
+
+    payload = {
+        'current_lesson_data': current_lesson_data,
+        'lesson_progress_context': _build_lesson_progress_context(current_report_text, lesson_id),
+    }
+    return json.dumps(payload, ensure_ascii=False)
+
+
 @app.get('/health')
 def health() -> dict[str, str]:
     return {'status': 'ok'}
@@ -113,7 +267,8 @@ def create_lesson_feedback(payload: LessonFeedbackRequest) -> PlainTextResponse:
 
     try:
         report_text = resolve_report_text(payload)
-        feedback = generate_lesson_feedback(report_text, payload.lesson_label)
+        lesson_feedback_input_text = _build_lesson_feedback_input_text(report_text, payload.lesson_id)
+        feedback = generate_lesson_feedback(lesson_feedback_input_text, payload.lesson_label)
         write_feedback_cache(cache_key, feedback)
     except httpx.HTTPError as exc:
         raise HTTPException(status_code=502, detail=f'Failed to load report: {exc}') from exc
@@ -151,6 +306,7 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
 
     try:
         report_text = resolve_report_text(payload)
+        lesson_feedback_input_text = _build_lesson_feedback_input_text(report_text, payload.lesson_id)
     except httpx.HTTPError as exc:
         raise HTTPException(status_code=502, detail=f'Failed to load report: {exc}') from exc
     except ValueError as exc:
@@ -164,7 +320,7 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
         chunk_buffer: list[str] = []
         stream_failed = False
         try:
-            for event in stream_lesson_feedback(report_text, payload.lesson_label):
+            for event in stream_lesson_feedback(lesson_feedback_input_text, payload.lesson_label):
                 event_type = str(event.get('type', 'status'))
                 if event_type == 'status':
                     yield _format_sse_event(event_type, str(event.get('message', '')))

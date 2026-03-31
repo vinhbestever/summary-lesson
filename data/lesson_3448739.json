@@ -98,6 +98,12 @@
       "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/10/collaborator/mfdoq3r9-225baac7-3.png",
       "lmsCourseId": "896",
       "lmsSectionId": "75207"
+    },
+    "lessonTime": {
+      "lessonStartTime": "2025-10-13 20:00:00",
+      "lessonEndTime": "2025-10-13 20:25:00",
+      "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+      "erpLessonId": "3448739"
     }
   },
   {
@@ -327,6 +333,12 @@
       "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/10/collaborator/mfdoq3r9-225baac7-3.png",
       "lmsCourseId": "896",
       "lmsSectionId": "75207"
+    },
+    "lessonTime": {
+      "lessonStartTime": "2025-10-13 20:00:00",
+      "lessonEndTime": "2025-10-13 20:25:00",
+      "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+      "erpLessonId": "3448739"
     }
   }
 ]

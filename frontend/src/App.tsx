@@ -8,11 +8,19 @@ type ReportLink = {
   href: string
   lessonId: string
   detail: string
+  lessonStartTime: string | null
+  lessonEndTime: string | null
+  sortTimestamp: number | null
+  timeLabel: string
 }
 
 type ReportPayload = {
   scriptMetadata?: {
     name?: string
+  }
+  lessonTime?: {
+    lessonStartTime?: string | null
+    lessonEndTime?: string | null
   }
 }
 
@@ -40,6 +48,57 @@ function toPrimaryReport(payload: unknown): ReportPayload {
   return (payload ?? {}) as ReportPayload
 }
 
+function parseDateTimeValue(value: string | null | undefined): Date | null {
+  if (!value) {
+    return null
+  }
+
+  const normalized = value.includes('T') ? value : value.replace(' ', 'T')
+  const parsed = new Date(normalized)
+  if (Number.isNaN(parsed.getTime())) {
+    return null
+  }
+  return parsed
+}
+
+function formatLessonTimeLabel(start: string | null, end: string | null): string {
+  const startDate = parseDateTimeValue(start)
+  const endDate = parseDateTimeValue(end)
+
+  if (!startDate) {
+    return 'Chua co thoi gian buoi hoc'
+  }
+
+  const formatter = new Intl.DateTimeFormat('vi-VN', {
+    day: '2-digit',
+    month: '2-digit',
+    year: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+    hour12: false,
+  })
+
+  const startLabel = formatter.format(startDate)
+  if (!endDate) {
+    return `Thoi gian hoc: ${startLabel}`
+  }
+
+  const endHour = String(endDate.getHours()).padStart(2, '0')
+  const endMinute = String(endDate.getMinutes()).padStart(2, '0')
+  return `Thoi gian hoc: ${startLabel} - ${endHour}:${endMinute}`
+}
+
+function compareLessonIdDesc(a: string, b: string): number {
+  const aNum = Number(a)
+  const bNum = Number(b)
+
+  if (!Number.isNaN(aNum) && !Number.isNaN(bNum)) {
+    return bNum - aNum
+  }
+
+  return b.localeCompare(a)
+}
+
 const reportLinks: ReportLink[] = Object.entries(lessonReportFiles)
   .map(([filePath, payload]) => {
     const lessonId = extractLessonId(filePath)
@@ -50,16 +109,34 @@ const reportLinks: ReportLink[] = Object.entries(lessonReportFiles)
     const scriptName = primaryReport.scriptMetadata?.name
     const attemptCount = Array.isArray(payload) ? payload.length : 1
     const detailPrefix = attemptCount > 1 ? `${attemptCount} lan hoc` : '1 lan hoc'
+    const lessonStartTime = primaryReport.lessonTime?.lessonStartTime ?? null
+    const lessonEndTime = primaryReport.lessonTime?.lessonEndTime ?? null
+    const sortTimestamp = parseDateTimeValue(lessonStartTime)?.getTime() ?? null
 
     return {
       lessonId,
       label: `Lesson ${lessonId}`,
       detail: scriptName ? `${detailPrefix} - ${scriptName}` : detailPrefix,
       href: `https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=${encodeURIComponent(lessonId)}&token=${reportToken}`,
+      lessonStartTime,
+      lessonEndTime,
+      sortTimestamp,
+      timeLabel: formatLessonTimeLabel(lessonStartTime, lessonEndTime),
     }
   })
   .filter((item): item is ReportLink => item !== null)
-  .sort((a, b) => a.lessonId.localeCompare(b.lessonId))
+  .sort((a, b) => {
+    if (a.sortTimestamp !== null && b.sortTimestamp !== null) {
+      return b.sortTimestamp - a.sortTimestamp
+    }
+    if (a.sortTimestamp !== null) {
+      return -1
+    }
+    if (b.sortTimestamp !== null) {
+      return 1
+    }
+    return compareLessonIdDesc(a.lessonId, b.lessonId)
+  })
 
 type ParsedSseEvent = {
   eventName: string
@@ -332,6 +409,13 @@ function App() {
               <a className="report-card__link" href={item.href} target="_blank" rel="noopener noreferrer">
                 <span className="report-card__title">{item.label}</span>
                 <span className="report-card__detail">{item.detail}</span>
+                <span
+                  className="report-card__time"
+                  data-testid="report-card-time"
+                  data-start-time={item.lessonStartTime ?? ''}
+                >
+                  {item.timeLabel}
+                </span>
               </a>
               <div className="report-card__actions">
                 <a
