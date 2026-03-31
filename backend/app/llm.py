@@ -259,8 +259,98 @@ def _build_portfolio_input_context(lessons_payload: list[dict[str, str]]) -> dic
             'reaction_time_avg_ms': _avg(reaction_times),
             'sections_completion_percent_avg': _avg(completion_percent_values),
         },
+        'planning_hints': {
+            'weak_skill_signals': [
+                {
+                    'skill': 'pronunciation',
+                    'signal': 'Trung binh diem phat am duoi 70 hoac dao dong lon giua cac buoi',
+                    'target_2_weeks': 'Tang do on dinh diem phat am qua bai shadowing ngan hang ngay',
+                },
+                {
+                    'skill': 'participation',
+                    'signal': 'Speaking turn hoac speaking coverage chua on dinh',
+                    'target_2_weeks': 'Tang so luot noi thanh cau day du trong moi buoi',
+                },
+                {
+                    'skill': 'reaction_confidence',
+                    'signal': 'Average reaction time cao hoac phan xa chua deu',
+                    'target_2_weeks': 'Cai thien toc do hoi dap theo tinh huong gan gui',
+                },
+                {
+                    'skill': 'vocabulary',
+                    'signal': 'Dau hieu lap lai loi tu vung/ghi nho tu moi chua ben',
+                    'target_2_weeks': 'Cung co tu vung theo chu de bang on tap cach quang',
+                },
+                {
+                    'skill': 'grammar',
+                    'signal': 'Co mau cau sai lap lai hoac do chinh xac cau chua on dinh',
+                    'target_2_weeks': 'On mau cau trong tam va van dung vao hoi dap ngan',
+                },
+            ],
+            'must_link_plan_to_context': True,
+        },
         'evidence_highlights': evidence_highlights,
     }
+
+
+def _has_actionable_portfolio_plan(payload: dict[str, Any]) -> bool:
+    plan = payload.get('study_plan_2_weeks')
+    if not isinstance(plan, list) or len(plan) < 4:
+        return False
+    valid_items = 0
+    for item in plan:
+        if not isinstance(item, dict):
+            continue
+        step = str(item.get('step', '')).strip()
+        frequency = str(item.get('frequency', '')).strip()
+        duration = _normalize_score(item.get('duration_minutes'))
+        if step and frequency and duration > 0:
+            valid_items += 1
+    return valid_items >= 4
+
+
+def _parse_json_object_or_raise(raw_content: str) -> dict[str, Any]:
+    if not raw_content:
+        raise ValueError('LLM returned an empty response')
+    parsed = json.loads(raw_content)
+    if not isinstance(parsed, dict):
+        raise ValueError('LLM output is not a JSON object')
+    return parsed
+
+
+def _request_json_completion(client: OpenAI, model: str, messages: list[dict[str, str]]) -> dict[str, Any]:
+    completion = client.chat.completions.create(
+        model=model,
+        response_format={'type': 'json_object'},
+        messages=messages,
+        temperature=0.2,
+    )
+    content = completion.choices[0].message.content
+    return _parse_json_object_or_raise(content or '')
+
+
+def _build_portfolio_plan_repair_messages(
+    lessons_payload: list[dict[str, str]], portfolio_label: str | None, current_output: dict[str, Any]
+) -> list[dict[str, str]]:
+    context = _build_portfolio_input_context(lessons_payload)
+    system_prompt = (
+        'Ban dang sua output JSON nhan xet tong hop. '
+        'Yeu cau bat buoc: khong doi schema, khong bịa du lieu. '
+        'Tap trung sua top_priorities va study_plan_2_weeks dua tren portfolio_context va evidence_highlights. '
+        'study_plan_2_weeks bat buoc 6-8 buoc, moi buoc phai co step cu the, frequency ro rang, duration_minutes 8-20. '
+        'Moi buoc can lien ket toi it nhat 1 focus skill co trong planning_hints. '
+        'Khong duoc de rong.'
+    )
+    user_payload = {
+        'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
+        'portfolio_context': context,
+        'current_output': current_output,
+        'task': 'Rebuild full JSON with the same schema, but regenerate top_priorities and study_plan_2_weeks to be actionable and data-grounded.',
+    }
+    return [
+        {'role': 'system', 'content': system_prompt},
+        {'role': 'user', 'content': json.dumps(user_payload, ensure_ascii=False)},
+    ]
 
 
 def _build_fallback_next_lesson_plan(priorities: list[dict[str, str]]) -> list[dict[str, Any]]:
@@ -359,7 +449,9 @@ def _build_portfolio_feedback_messages(
         'top_priorities uu tien dung 3 muc va chi dung skill trong [pronunciation, vocabulary, grammar, reaction_confidence, participation], '
         'priority trong [high, medium, low]. '
         'Moi muc top_priorities phai co reason 3-4 cau, target do duoc trong 2 tuan va coach_tip co tan suat luyen tap. '
-        'study_plan_2_weeks can 6-8 buoc hanh dong, duration_minutes trong khoang 8-20, co tan suat ro rang theo tuan. '
+        'study_plan_2_weeks can 6-8 buoc hanh dong, duration_minutes trong khoang 8-20, co tan suat ro rang theo tuan, '
+        'bat buoc khong rong va phai map truc tiep den planning_hints/weak_skill_signals trong portfolio_context. '
+        'Moi buoc can neu ro muc tieu ky nang duoc tac dong (co the ghi trong step). '
         'parent_message phai 6-8 cau, huong dan phu huynh theo tuan, giu am sac khich le tich cuc, khong gay ap luc cho con. '
         'Cau van ngan gon, ro rang, uu tien dong tu hanh dong cu the de phu huynh de ap dung tai nha. '
         'cam cau chung chung nhu "can co gang them", "tiep tuc phat huy" neu khong co bang chung va hanh dong cu the.'
@@ -544,22 +636,16 @@ def generate_portfolio_feedback(
     client = OpenAI(api_key=api_key)
     model = os.getenv('OPENAI_MODEL', 'gpt-4.1-mini')
 
-    completion = client.chat.completions.create(
-        model=model,
-        response_format={'type': 'json_object'},
-        messages=_build_portfolio_feedback_messages(lessons_payload, portfolio_label),
-        temperature=0.2,
-    )
+    messages = _build_portfolio_feedback_messages(lessons_payload, portfolio_label)
+    parsed = _request_json_completion(client, model, messages)
+    normalized = _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)
 
-    content = completion.choices[0].message.content
-    if not content:
-        raise ValueError('LLM returned an empty response')
+    if not _has_actionable_portfolio_plan(normalized):
+        repair_messages = _build_portfolio_plan_repair_messages(lessons_payload, portfolio_label, normalized)
+        repaired = _request_json_completion(client, model, repair_messages)
+        normalized = _normalize_portfolio_feedback_payload(repaired, lessons_payload, portfolio_label)
 
-    parsed = json.loads(content)
-    if not isinstance(parsed, dict):
-        raise ValueError('LLM output is not a JSON object')
-
-    return _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)
+    return normalized
 
 
 def stream_portfolio_feedback(lessons_payload: list[dict[str, str]], portfolio_label: str | None = None):
@@ -589,9 +675,13 @@ def stream_portfolio_feedback(lessons_payload: list[dict[str, str]], portfolio_l
         yield {'type': 'chunk', 'content': delta}
 
     content = ''.join(chunks).strip()
-    if not content:
-        raise ValueError('LLM returned an empty response')
-    parsed = json.loads(content)
-    if not isinstance(parsed, dict):
-        raise ValueError('LLM output is not a JSON object')
-    yield {'type': 'result', 'data': _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)}
+    parsed = _parse_json_object_or_raise(content)
+    normalized = _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)
+
+    if not _has_actionable_portfolio_plan(normalized):
+        yield {'type': 'status', 'message': 'Dang bo sung ke hoach 2 tuan theo du lieu dau vao...'}
+        repair_messages = _build_portfolio_plan_repair_messages(lessons_payload, portfolio_label, normalized)
+        repaired = _request_json_completion(client, model, repair_messages)
+        normalized = _normalize_portfolio_feedback_payload(repaired, lessons_payload, portfolio_label)
+
+    yield {'type': 'result', 'data': normalized}

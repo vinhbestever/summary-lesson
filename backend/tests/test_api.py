@@ -489,7 +489,12 @@ def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
                             '"grammar":{"current_level":"tb","trend":"mixed","evidence":["e4"],"recommendation":"r4"},'
                             '"reaction_confidence":{"current_level":"kha","trend":"improving","evidence":["e5"],"recommendation":"r5"}},'
                             '"top_strengths":["s1"],"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],'
-                            '"study_plan_2_weeks":[{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10}],'
+                            '"study_plan_2_weeks":['
+                            '{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10},'
+                            '{"step":"Luyen am cuoi","frequency":"4 buoi/tuan","duration_minutes":12},'
+                            '{"step":"Luyen hoi dap","frequency":"3 buoi/tuan","duration_minutes":10},'
+                            '{"step":"On grammar","frequency":"3 buoi/tuan","duration_minutes":10}'
+                            '],'
                             '"parent_message":"msg"}'
                         )
                     ]
@@ -516,29 +521,55 @@ def test_stream_portfolio_feedback_emits_result_event(monkeypatch) -> None:
     assert result_events[0]['data']['portfolio_label'] == 'Tong hop'
 
 
-def test_generate_portfolio_feedback_does_not_inject_fake_fallback_data(monkeypatch) -> None:
+def test_generate_portfolio_feedback_retries_when_plan_empty(monkeypatch) -> None:
     monkeypatch.setenv('OPENAI_API_KEY', 'test-key')
+    call_count = {'count': 0}
 
     class _FakeCompletions:
         @staticmethod
         def create(**kwargs):
+            call_count['count'] += 1
+
             class _Message:
-                content = (
-                    '{"portfolio_label":"Tong hop","total_lessons":2,'
-                    '"date_range":{"from_date":"","to_date":""},'
-                    '"overall_assessment":"Du lieu con thieu o mot so muc, can theo doi them de ket luan chac chan.",'
-                    '"skill_trends":{'
-                    '"participation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                    '"pronunciation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                    '"vocabulary":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                    '"grammar":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                    '"reaction_confidence":{"current_level":"","trend":"stable","evidence":[],"recommendation":""}'
-                    '},'
-                    '"top_strengths":[],'
-                    '"top_priorities":[],'
-                    '"study_plan_2_weeks":[],'
-                    '"parent_message":"Can bo sung du lieu o cac buoi tiep theo de co ke hoach sat hon."}'
-                )
+                if call_count['count'] == 1:
+                    content = (
+                        '{"portfolio_label":"Tong hop","total_lessons":2,'
+                        '"date_range":{"from_date":"","to_date":""},'
+                        '"overall_assessment":"Du lieu con thieu o mot so muc, can theo doi them de ket luan chac chan.",'
+                        '"skill_trends":{'
+                        '"participation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                        '"pronunciation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                        '"vocabulary":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                        '"grammar":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                        '"reaction_confidence":{"current_level":"","trend":"stable","evidence":[],"recommendation":""}'
+                        '},'
+                        '"top_strengths":[],'
+                        '"top_priorities":[],'
+                        '"study_plan_2_weeks":[],'
+                        '"parent_message":"Can bo sung du lieu o cac buoi tiep theo de co ke hoach sat hon."}'
+                    )
+                else:
+                    content = (
+                        '{"portfolio_label":"Tong hop","total_lessons":2,'
+                        '"date_range":{"from_date":"","to_date":""},'
+                        '"overall_assessment":"Da bo sung ke hoach tu du lieu co san.",'
+                        '"skill_trends":{'
+                        '"participation":{"current_level":"kha","trend":"stable","evidence":["lesson_1 speaking turn 20"],"recommendation":"Tang luot hoi dap"},'
+                        '"pronunciation":{"current_level":"tb","trend":"stable","evidence":["lesson_1 pronunciation 65"],"recommendation":"Luyen shadowing"},'
+                        '"vocabulary":{"current_level":"kha","trend":"stable","evidence":["lesson_1 tu moi 5"],"recommendation":"On flashcard"},'
+                        '"grammar":{"current_level":"tb","trend":"stable","evidence":["lesson_1 cau mau co ban"],"recommendation":"On cau mau"},'
+                        '"reaction_confidence":{"current_level":"kha","trend":"stable","evidence":["lesson_1 reaction 1800"],"recommendation":"Luyen phan xa"}'
+                        '},'
+                        '"top_strengths":["Con phan xa kha nhanh"],'
+                        '"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"Can tang do on dinh","next_2_weeks_target":"Dat 75+","coach_tip":"10 phut moi ngay"}],'
+                        '"study_plan_2_weeks":['
+                        '{"step":"Ngay 1-2: Luyen phat am am cuoi theo shadowing","frequency":"4 buoi/tuan","duration_minutes":12},'
+                        '{"step":"Ngay 3-4: On tu vung theo speaking turn hien tai","frequency":"4 buoi/tuan","duration_minutes":10},'
+                        '{"step":"Ngay 5-6: Luyen hoi dap ngan de tang participation","frequency":"3 buoi/tuan","duration_minutes":12},'
+                        '{"step":"Ngay 7-8: Luyen pattern grammar co ban theo tinh huong","frequency":"3 buoi/tuan","duration_minutes":10}'
+                        '],'
+                        '"parent_message":"Gia dinh giup con on tap deu moi ngay."}'
+                    )
 
             class _Choice:
                 message = _Message()
@@ -561,9 +592,9 @@ def test_generate_portfolio_feedback_does_not_inject_fake_fallback_data(monkeypa
     from app.llm import generate_portfolio_feedback
 
     result = generate_portfolio_feedback([{'lesson_id': '1', 'raw_json_text': '{}', 'source_file': 'lesson_1.json'}])
-    assert result['top_strengths'] == []
-    assert result['top_priorities'] == []
-    assert result['study_plan_2_weeks'] == []
+    assert call_count['count'] == 2
+    assert len(result['study_plan_2_weeks']) >= 4
+    assert 'speaking turn' in result['study_plan_2_weeks'][1]['step'].lower()
 
 
 def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
