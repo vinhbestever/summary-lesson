@@ -47,6 +47,9 @@ Frontend mac dinh: `http://localhost:5173`
 - `GET /health`
 - `POST /api/v1/summaries`
 - `POST /api/v1/lesson-feedback`
+- `POST /api/v1/lesson-feedback/stream`
+- `POST /api/v1/portfolio-feedback`
+- `POST /api/v1/portfolio-feedback/stream`
 
 Request (co the gui `report_text` hoac `report_url` hoac `lesson_id`):
 
@@ -106,7 +109,48 @@ Response nhan xet lesson:
 }
 ```
 
+Request nhan xet chung:
+
+```json
+{
+  "portfolio_label": "Tong hop toan bo buoi hoc"
+}
+```
+
+Response nhan xet chung:
+
+```json
+{
+  "portfolio_label": "Tong hop toan bo buoi hoc",
+  "total_lessons": 2,
+  "date_range": { "from_date": "2026-03-01", "to_date": "2026-03-31" },
+  "overall_assessment": "...",
+  "skill_trends": {
+    "participation": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." },
+    "pronunciation": { "current_level": "...", "trend": "stable", "evidence": ["..."], "recommendation": "..." },
+    "vocabulary": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." },
+    "grammar": { "current_level": "...", "trend": "mixed", "evidence": ["..."], "recommendation": "..." },
+    "reaction_confidence": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." }
+  },
+  "top_strengths": ["..."],
+  "top_priorities": [
+    {
+      "skill": "pronunciation",
+      "priority": "high",
+      "reason": "...",
+      "next_2_weeks_target": "...",
+      "coach_tip": "..."
+    }
+  ],
+  "study_plan_2_weeks": [{ "step": "...", "frequency": "4 buoi/tuan", "duration_minutes": 10 }],
+  "parent_message": "..."
+}
+```
+
 UI flow:
-- Moi lesson card co nut `Nhan xet AI`.
-- Bam nut de goi `/api/v1/lesson-feedback`.
+- Moi lesson card co nut `Nhan xet`.
+- Bam nut de goi `/api/v1/lesson-feedback/stream`.
 - Ket qua hien thi o panel chung ben duoi danh sach lesson.
+- Co them nut `Nhan xet chung` ben duoi danh sach card.
+- Nut nay doc du lieu tu tat ca file `data/lesson_*.json` va goi `/api/v1/portfolio-feedback/stream`.
+- Ket qua tong hop duoc hien thi cung panel ben duoi.
