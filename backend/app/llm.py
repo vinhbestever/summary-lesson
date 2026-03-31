@@ -6,6 +6,7 @@ from openai import OpenAI
 
 VALID_PRIORITY_SKILLS = {'pronunciation', 'vocabulary', 'grammar', 'reaction_confidence', 'participation'}
 VALID_PRIORITIES = {'high', 'medium', 'low'}
+VALID_TRENDS = {'improving', 'stable', 'declining', 'mixed', 'insufficient_data'}
 
 
 def summarize_report(report_text: str) -> dict[str, Any]:
@@ -99,6 +100,62 @@ def _normalize_session_criterion(value: Any) -> dict[str, Any]:
     }
 
 
+def _normalize_trend(value: Any) -> str:
+    trend = str(value).strip()
+    if trend in VALID_TRENDS:
+        return trend
+    return 'insufficient_data'
+
+
+def _normalize_skill_trend(value: Any) -> dict[str, Any]:
+    source = value if isinstance(value, dict) else {}
+    evidence = _normalize_string_list(source.get('evidence'))
+    if not evidence:
+        evidence = ['chua du du lieu']
+    return {
+        'current_level': _normalize_text(source.get('current_level')),
+        'trend': _normalize_trend(source.get('trend')),
+        'evidence': evidence,
+        'recommendation': _normalize_text(source.get('recommendation')),
+    }
+
+
+def _normalize_portfolio_priority_item(value: Any) -> dict[str, str] | None:
+    source = value if isinstance(value, dict) else {}
+    skill = str(source.get('skill', '')).strip()
+    priority = str(source.get('priority', '')).strip()
+    if skill not in VALID_PRIORITY_SKILLS or priority not in VALID_PRIORITIES:
+        return None
+    return {
+        'skill': skill,
+        'priority': priority,
+        'reason': _normalize_text(source.get('reason')),
+        'next_2_weeks_target': _normalize_text(source.get('next_2_weeks_target')),
+        'coach_tip': _normalize_text(source.get('coach_tip')),
+    }
+
+
+def _normalize_study_plan_item(value: Any) -> dict[str, Any]:
+    source = value if isinstance(value, dict) else {}
+    return {
+        'step': _normalize_text(source.get('step')),
+        'frequency': _normalize_text(source.get('frequency')),
+        'duration_minutes': _normalize_score(source.get('duration_minutes')),
+    }
+
+
+def _normalize_date_range(value: Any) -> dict[str, str] | None:
+    source = value if isinstance(value, dict) else {}
+    from_date = _normalize_text(source.get('from_date'), fallback='').strip()
+    to_date = _normalize_text(source.get('to_date'), fallback='').strip()
+    if not from_date and not to_date:
+        return None
+    return {
+        'from_date': from_date or 'chua du du lieu',
+        'to_date': to_date or 'chua du du lieu',
+    }
+
+
 def _build_fallback_next_lesson_plan(priorities: list[dict[str, str]]) -> list[dict[str, Any]]:
     default_by_skill = {
         'pronunciation': {'step': 'Luyen phat am theo cum tu kho voi shadowing', 'duration_minutes': 12},
@@ -170,6 +227,34 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
     ]
 
 
+def _build_portfolio_feedback_messages(
+    lessons_payload: list[dict[str, str]], portfolio_label: str | None
+) -> list[dict[str, str]]:
+    system_prompt = (
+        'Ban la giao vien tieng Anh tieu hoc co kinh nghiem, gioi tong hop tien trinh hoc theo nhieu buoi. '
+        'Nhiem vu: dua tren danh sach du lieu lesson, hay danh gia tong quan qua trinh hoc. '
+        'Chi tra ve JSON hop le, khong markdown, khong van ban ngoai JSON. '
+        'Neu thieu du lieu, ghi ro "chua du du lieu". '
+        'Bat buoc output co cac truong: '
+        'portfolio_label, total_lessons, date_range(from_date,to_date), overall_assessment, '
+        'skill_trends(participation, pronunciation, vocabulary, grammar, reaction_confidence), '
+        'top_strengths, top_priorities, study_plan_2_weeks, parent_message. '
+        'Moi skill_trend gom current_level, trend(improving|stable|declining|mixed|insufficient_data), evidence, recommendation. '
+        'top_priorities toi da 3 muc va chi dung skill trong [pronunciation, vocabulary, grammar, reaction_confidence, participation], '
+        'priority trong [high, medium, low]. '
+        'study_plan_2_weeks la cac buoc hanh dong cu the theo tuan cho be.'
+    )
+    user_payload = {
+        'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
+        'total_lessons': len(lessons_payload),
+        'lessons': lessons_payload,
+    }
+    return [
+        {'role': 'system', 'content': system_prompt},
+        {'role': 'user', 'content': json.dumps(user_payload, ensure_ascii=False)},
+    ]
+
+
 def _normalize_lesson_feedback_payload(parsed: dict[str, Any], lesson_label: str | None = None) -> dict[str, Any]:
     breakdown = parsed.get('session_breakdown')
     if not isinstance(breakdown, dict):
@@ -214,6 +299,58 @@ def _normalize_lesson_feedback_payload(parsed: dict[str, Any], lesson_label: str
         'strengths': _normalize_string_list(parsed.get('strengths')),
         'priority_improvements': normalized_priorities,
         'next_lesson_plan': normalized_plan,
+        'parent_message': _normalize_text(parsed.get('parent_message')),
+    }
+
+
+def _normalize_portfolio_feedback_payload(
+    parsed: dict[str, Any], lessons_payload: list[dict[str, str]], portfolio_label: str | None = None
+) -> dict[str, Any]:
+    skill_trends = parsed.get('skill_trends')
+    if not isinstance(skill_trends, dict):
+        skill_trends = {}
+
+    top_priorities = parsed.get('top_priorities')
+    if not isinstance(top_priorities, list):
+        top_priorities = []
+    normalized_priorities: list[dict[str, str]] = []
+    for item in top_priorities[:3]:
+        normalized = _normalize_portfolio_priority_item(item)
+        if normalized is not None:
+            normalized_priorities.append(normalized)
+
+    study_plan = parsed.get('study_plan_2_weeks')
+    if not isinstance(study_plan, list):
+        study_plan = []
+    normalized_plan = [_normalize_study_plan_item(item) for item in study_plan]
+    if not normalized_plan:
+        normalized_plan = [
+            {
+                'step': 'On tap tu vung theo chu de gan day',
+                'frequency': '4 buoi/tuan',
+                'duration_minutes': 10,
+            }
+        ]
+
+    strengths = _normalize_string_list(parsed.get('top_strengths'))
+    if not strengths:
+        strengths = ['chua du du lieu']
+
+    return {
+        'portfolio_label': _normalize_text(parsed.get('portfolio_label'), fallback=portfolio_label or 'Tong hop qua trinh hoc'),
+        'total_lessons': _normalize_score(parsed.get('total_lessons')) or len(lessons_payload),
+        'date_range': _normalize_date_range(parsed.get('date_range')),
+        'overall_assessment': _normalize_text(parsed.get('overall_assessment')),
+        'skill_trends': {
+            'participation': _normalize_skill_trend(skill_trends.get('participation')),
+            'pronunciation': _normalize_skill_trend(skill_trends.get('pronunciation')),
+            'vocabulary': _normalize_skill_trend(skill_trends.get('vocabulary')),
+            'grammar': _normalize_skill_trend(skill_trends.get('grammar')),
+            'reaction_confidence': _normalize_skill_trend(skill_trends.get('reaction_confidence')),
+        },
+        'top_strengths': strengths,
+        'top_priorities': normalized_priorities,
+        'study_plan_2_weeks': normalized_plan,
         'parent_message': _normalize_text(parsed.get('parent_message')),
     }
 
@@ -277,3 +414,66 @@ def stream_lesson_feedback(report_text: str, lesson_label: str | None = None):
     if not isinstance(parsed, dict):
         raise ValueError('LLM output is not a JSON object')
     yield {'type': 'result', 'data': _normalize_lesson_feedback_payload(parsed, lesson_label)}
+
+
+def generate_portfolio_feedback(
+    lessons_payload: list[dict[str, str]], portfolio_label: str | None = None
+) -> dict[str, Any]:
+    api_key = os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        raise RuntimeError('OPENAI_API_KEY is missing')
+
+    client = OpenAI(api_key=api_key)
+    model = os.getenv('OPENAI_MODEL', 'gpt-4.1-mini')
+
+    completion = client.chat.completions.create(
+        model=model,
+        response_format={'type': 'json_object'},
+        messages=_build_portfolio_feedback_messages(lessons_payload, portfolio_label),
+        temperature=0.2,
+    )
+
+    content = completion.choices[0].message.content
+    if not content:
+        raise ValueError('LLM returned an empty response')
+
+    parsed = json.loads(content)
+    if not isinstance(parsed, dict):
+        raise ValueError('LLM output is not a JSON object')
+
+    return _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)
+
+
+def stream_portfolio_feedback(lessons_payload: list[dict[str, str]], portfolio_label: str | None = None):
+    api_key = os.getenv('OPENAI_API_KEY')
+    if not api_key:
+        raise RuntimeError('OPENAI_API_KEY is missing')
+
+    client = OpenAI(api_key=api_key)
+    model = os.getenv('OPENAI_MODEL', 'gpt-4.1-mini')
+    stream = client.chat.completions.create(
+        model=model,
+        response_format={'type': 'json_object'},
+        messages=_build_portfolio_feedback_messages(lessons_payload, portfolio_label),
+        temperature=0.2,
+        stream=True,
+    )
+
+    yield {'type': 'status', 'message': 'Dang phan tich tong hop tat ca buoi hoc...'}
+    chunks: list[str] = []
+    for chunk in stream:
+        if not chunk.choices:
+            continue
+        delta = chunk.choices[0].delta.content
+        if not delta:
+            continue
+        chunks.append(delta)
+        yield {'type': 'chunk', 'content': delta}
+
+    content = ''.join(chunks).strip()
+    if not content:
+        raise ValueError('LLM returned an empty response')
+    parsed = json.loads(content)
+    if not isinstance(parsed, dict):
+        raise ValueError('LLM output is not a JSON object')
+    yield {'type': 'result', 'data': _normalize_portfolio_feedback_payload(parsed, lessons_payload, portfolio_label)}

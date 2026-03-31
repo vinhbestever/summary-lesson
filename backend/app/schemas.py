@@ -46,6 +46,16 @@ class LessonFeedbackRequest(ReportInputRequest):
         return self
 
 
+class PortfolioFeedbackRequest(BaseModel):
+    portfolio_label: str | None = None
+
+    @model_validator(mode='after')
+    def normalize_label(self):
+        if self.portfolio_label:
+            self.portfolio_label = self.portfolio_label.strip()
+        return self
+
+
 class SessionCriterion(BaseModel):
     score: int = Field(ge=0, le=100)
     comment: str
@@ -104,4 +114,84 @@ class LessonFeedbackResponse(BaseModel):
     def validate_priority_count(cls, value: list[PriorityImprovement]) -> list[PriorityImprovement]:
         if len(value) > 3:
             raise ValueError('priority_improvements must have at most 3 items')
+        return value
+
+
+class SkillTrend(BaseModel):
+    current_level: str
+    trend: Literal['improving', 'stable', 'declining', 'mixed', 'insufficient_data']
+    evidence: list[str]
+    recommendation: str
+
+    @field_validator('current_level', 'recommendation', mode='after')
+    @classmethod
+    def strip_trend_fields(cls, value: str) -> str:
+        return value.strip()
+
+
+class PortfolioSkillTrends(BaseModel):
+    participation: SkillTrend
+    pronunciation: SkillTrend
+    vocabulary: SkillTrend
+    grammar: SkillTrend
+    reaction_confidence: SkillTrend
+
+
+class PortfolioPriorityImprovement(BaseModel):
+    skill: Literal['pronunciation', 'vocabulary', 'grammar', 'reaction_confidence', 'participation']
+    priority: Literal['high', 'medium', 'low']
+    reason: str
+    next_2_weeks_target: str
+    coach_tip: str
+
+    @field_validator('reason', 'next_2_weeks_target', 'coach_tip', mode='after')
+    @classmethod
+    def strip_priority_text(cls, value: str) -> str:
+        return value.strip()
+
+
+class StudyPlanStep(BaseModel):
+    step: str
+    frequency: str
+    duration_minutes: int = Field(ge=0, le=180)
+
+    @field_validator('step', 'frequency', mode='after')
+    @classmethod
+    def strip_study_plan_text(cls, value: str) -> str:
+        return value.strip()
+
+
+class DateRange(BaseModel):
+    from_date: str
+    to_date: str
+
+    @field_validator('from_date', 'to_date', mode='after')
+    @classmethod
+    def strip_date_fields(cls, value: str) -> str:
+        return value.strip()
+
+
+class PortfolioFeedbackResponse(BaseModel):
+    portfolio_label: str
+    total_lessons: int = Field(ge=0)
+    date_range: DateRange | None = None
+    overall_assessment: str
+    skill_trends: PortfolioSkillTrends
+    top_strengths: list[str]
+    top_priorities: list[PortfolioPriorityImprovement]
+    study_plan_2_weeks: list[StudyPlanStep]
+    parent_message: str
+
+    @field_validator('portfolio_label', 'overall_assessment', 'parent_message', mode='after')
+    @classmethod
+    def strip_portfolio_text_fields(cls, value: str) -> str:
+        return value.strip()
+
+    @field_validator('top_priorities', mode='after')
+    @classmethod
+    def validate_portfolio_priority_count(
+        cls, value: list[PortfolioPriorityImprovement]
+    ) -> list[PortfolioPriorityImprovement]:
+        if len(value) > 3:
+            raise ValueError('top_priorities must have at most 3 items')
         return value
