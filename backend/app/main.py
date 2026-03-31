@@ -1,5 +1,5 @@
-import os
 import json
+import os
 
 import httpx
 from dotenv import load_dotenv
@@ -118,8 +118,10 @@ def create_lesson_feedback(payload: LessonFeedbackRequest) -> PlainTextResponse:
     return PlainTextResponse(content=feedback, media_type='text/markdown')
 
 
-def _format_sse_event(event_name: str, data: dict) -> str:
-    return f'event: {event_name}\ndata: {json.dumps(data, ensure_ascii=False)}\n\n'
+def _format_sse_event(event_name: str, data: str) -> str:
+    data_lines = (data or '').splitlines() or ['']
+    formatted_data = '\n'.join(f'data: {line}' for line in data_lines)
+    return f'event: {event_name}\n{formatted_data}\n\n'
 
 
 @app.post('/api/v1/lesson-feedback/stream')
@@ -139,10 +141,19 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
         try:
             for event in stream_lesson_feedback(report_text, payload.lesson_label):
                 event_type = str(event.get('type', 'status'))
-                yield _format_sse_event(event_type, event)
+                if event_type == 'status':
+                    yield _format_sse_event(event_type, str(event.get('message', '')))
+                elif event_type == 'chunk':
+                    yield _format_sse_event(event_type, str(event.get('content', '')))
+                elif event_type == 'error':
+                    yield _format_sse_event(event_type, str(event.get('message', '')))
+                elif event_type == 'result':
+                    yield _format_sse_event(event_type, json.dumps(event.get('data', {}), ensure_ascii=False))
+                else:
+                    yield _format_sse_event(event_type, json.dumps(event, ensure_ascii=False))
         except Exception as exc:
-            yield _format_sse_event('error', {'type': 'error', 'message': str(exc)})
-        yield _format_sse_event('done', {'type': 'done'})
+            yield _format_sse_event('error', str(exc))
+        yield _format_sse_event('done', 'done')
 
     return StreamingResponse(
         event_generator(),
@@ -187,10 +198,19 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
         try:
             for event in stream_portfolio_feedback(lessons_payload, payload.portfolio_label):
                 event_type = str(event.get('type', 'status'))
-                yield _format_sse_event(event_type, event)
+                if event_type == 'status':
+                    yield _format_sse_event(event_type, str(event.get('message', '')))
+                elif event_type == 'chunk':
+                    yield _format_sse_event(event_type, str(event.get('content', '')))
+                elif event_type == 'error':
+                    yield _format_sse_event(event_type, str(event.get('message', '')))
+                elif event_type == 'result':
+                    yield _format_sse_event(event_type, json.dumps(event.get('data', {}), ensure_ascii=False))
+                else:
+                    yield _format_sse_event(event_type, json.dumps(event, ensure_ascii=False))
         except Exception as exc:
-            yield _format_sse_event('error', {'type': 'error', 'message': str(exc)})
-        yield _format_sse_event('done', {'type': 'done'})
+            yield _format_sse_event('error', str(exc))
+        yield _format_sse_event('done', 'done')
 
     return StreamingResponse(
         event_generator(),
