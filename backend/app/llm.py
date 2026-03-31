@@ -342,6 +342,8 @@ def _build_portfolio_feedback_messages(
     context = _build_portfolio_input_context(lessons_payload)
     system_prompt = (
         'Ban la giao vien tieng Anh tieu hoc co kinh nghiem, gioi tong hop tien trinh hoc theo nhieu buoi. '
+        'Giong van can than thien, gan gui, de hieu voi phu huynh Viet Nam, xung ho tu nhien nhu "con", "be". '
+        'Tranh van phong qua hoc thuat; neu dung thuat ngu chuyen mon thi giai thich ngan gon bang ngon ngu doi thuong. '
         'Nhiem vu: dua tren danh sach du lieu lesson, hay danh gia tong quan qua trinh hoc. '
         'Chi tra ve JSON hop le, khong markdown, khong van ban ngoai JSON. '
         'Neu thieu du lieu, ghi ro "chua du du lieu". '
@@ -357,13 +359,20 @@ def _build_portfolio_feedback_messages(
         'priority trong [high, medium, low]. '
         'Moi muc top_priorities phai co reason 3-4 cau, target do duoc trong 2 tuan va coach_tip co tan suat luyen tap. '
         'study_plan_2_weeks can 6-8 buoc hanh dong, duration_minutes trong khoang 8-20, co tan suat ro rang theo tuan. '
-        'parent_message phai 6-8 cau, huong dan phu huynh theo tuan, khong duoc chung chung. '
+        'parent_message phai 6-8 cau, huong dan phu huynh theo tuan, giu am sac khich le tich cuc, khong gay ap luc cho con. '
+        'Cau van ngan gon, ro rang, uu tien dong tu hanh dong cu the de phu huynh de ap dung tai nha. '
         'cam cau chung chung nhu "can co gang them", "tiep tuc phat huy" neu khong co bang chung va hanh dong cu the.'
     )
     user_payload = {
         'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
         'total_lessons': len(lessons_payload),
         'portfolio_context': context,
+        'writing_style': {
+            'tone': 'than_thien_gan_gui_phu_huynh',
+            'audience': 'phu_huynh_hoc_sinh_tieu_hoc',
+            'sentence_style': 'cau_ngan_ro_rang_de_hieu',
+            'avoid': ['qua_hoc_thuat', 'chung_chung', 'phat_bieu_khong_co_bang_chung'],
+        },
         'lessons': lessons_payload,
     }
     return [
