@@ -1,0 +1,295 @@
+{
+  "reportId": "69884cbb6107d676b6ac4573",
+  "sessionId": "698846580b8640e5d56d6687",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 56,
+      "totalCups": 41,
+      "averageReactionTimeMs": 1005.49,
+      "practiceAccuracyPercent": 82,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 49,
+      "speakingCoverage": 1,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 56,
+      "averagePronunciationScore": 83.36,
+      "averageGrammarScore": 64.75,
+      "goodVocabularyCount": 8,
+      "goodGrammarCount": 3,
+      "totalVocabularyCount": 8,
+      "totalGrammarCount": 3,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "grocery store",
+        "attemptCount": 10,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhvey8-2f23ae1d-audio.wav",
+        "bestResultId": "69884c590b8640e5d56d6cdf",
+        "assessments": {
+          "mask": "1111111 111111"
+        },
+        "resultIds": [
+          "6988475a0b8640e5d56d676b",
+          "698849356107d676b6ac416e",
+          "698849620b8640e5d56d69c2",
+          "698849e60b8640e5d56d6a0d",
+          "69884a3a0b8640e5d56d6a5d",
+          "69884b3c6107d676b6ac43d7",
+          "69884b810b8640e5d56d6b95",
+          "69884be60b8640e5d56d6c57",
+          "69884c4d6107d676b6ac44d9",
+          "69884c590b8640e5d56d6cdf"
+        ]
+      },
+      {
+        "word": "bakery",
+        "attemptCount": 14,
+        "averageScore": 77.14,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhw337-5d18f854-audio.wav",
+        "bestResultId": "69884c770b8640e5d56d6cf3",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "6988476d6107d676b6ac3fda",
+          "698849470b8640e5d56d6930",
+          "69884b3c6107d676b6ac43d7",
+          "69884b630b8640e5d56d6b69",
+          "69884b810b8640e5d56d6b95",
+          "69884be60b8640e5d56d6c57",
+          "69884c4d6107d676b6ac44d9",
+          "69884c590b8640e5d56d6cdf",
+          "69884c660b8640e5d56d6ce8",
+          "69884c770b8640e5d56d6cf3",
+          "69884a686107d676b6ac42d2",
+          "69884a100b8640e5d56d6a33",
+          "69884a5d6107d676b6ac42ce",
+          "69884bd40b8640e5d56d6c40"
+        ]
+      },
+      {
+        "word": "pharmacy",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldh4tcm-924ffbbd-audio.wav",
+        "bestResultId": "6988477e0b8640e5d56d678f",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "6988477e0b8640e5d56d678f"
+        ]
+      },
+      {
+        "word": "building",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhg0hf-ab13a240-audio.wav",
+        "bestResultId": "698849886107d676b6ac425a",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "6988478d6107d676b6ac3ff7",
+          "698849230b8640e5d56d6910",
+          "6988495b6107d676b6ac4245",
+          "698849886107d676b6ac425a"
+        ]
+      },
+      {
+        "word": "post office",
+        "attemptCount": 6,
+        "averageScore": 54.17,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhgiyk-3bf288b8-audio.wav",
+        "bestResultId": "698849a00b8640e5d56d69dd",
+        "assessments": {
+          "mask": "1111 111111"
+        },
+        "resultIds": [
+          "698847dd6107d676b6ac4017",
+          "698849a00b8640e5d56d69dd",
+          "698849980b8640e5d56d69d9",
+          "698849816107d676b6ac4252",
+          "698847cf6107d676b6ac400d",
+          "698849ad0b8640e5d56d69e6"
+        ]
+      },
+      {
+        "word": "restaurant",
+        "attemptCount": 3,
+        "averageScore": 70.67,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhg6na-4d680000-audio.wav",
+        "bestResultId": "698849906107d676b6ac425e",
+        "assessments": {
+          "mask": "1111111111"
+        },
+        "resultIds": [
+          "698847ef6107d676b6ac4027",
+          "698849906107d676b6ac425e",
+          "698849720b8640e5d56d69ca"
+        ]
+      },
+      {
+        "word": "sports club",
+        "attemptCount": 3,
+        "averageScore": 83.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhfd3i-edddbe74-audio.wav",
+        "bestResultId": "6988496a0b8640e5d56d69c6",
+        "assessments": {
+          "mask": "111111 1111"
+        },
+        "resultIds": [
+          "6988480f0b8640e5d56d67d2",
+          "6988496a0b8640e5d56d69c6",
+          "698848000b8640e5d56d67cb"
+        ]
+      },
+      {
+        "word": "music club",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhqsp0-648abf5f-audio.wav",
+        "bestResultId": "69884b810b8640e5d56d6b95",
+        "assessments": {
+          "mask": "11111 1111"
+        },
+        "resultIds": [
+          "6988481f0b8640e5d56d67e2",
+          "698849790b8640e5d56d69ce",
+          "69884b810b8640e5d56d6b95"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What is that building over there?",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhf1ht-abfabc85-audio.wav",
+        "bestResultId": "6988495b6107d676b6ac4245",
+        "assessments": {
+          "mask": "1111 11 1111 11111111 1111 111111"
+        },
+        "resultIds": [
+          "698849230b8640e5d56d6910",
+          "6988495b6107d676b6ac4245"
+        ]
+      },
+      {
+        "pattern": "It’s a  grocery store",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhjt7m-dd2fa301-audio.wav",
+        "bestResultId": "69884a3a0b8640e5d56d6a5d",
+        "resultIds": [
+          "698849356107d676b6ac416e",
+          "698849620b8640e5d56d69c2",
+          "698849e60b8640e5d56d6a0d",
+          "69884a3a0b8640e5d56d6a5d"
+        ]
+      },
+      {
+        "pattern": "It’s a bakery.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/08/admin/mldhelx7-9b5c16bb-audio.wav",
+        "bestResultId": "698849470b8640e5d56d6930",
+        "resultIds": [
+          "698849470b8640e5d56d6930"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "grocery store",
+      "bakery",
+      "pharmacy",
+      "building",
+      "post office",
+      "restaurant",
+      "sports club",
+      "music club"
+    ],
+    "grammar": [
+      "What is that building over there?",
+      "It’s a  grocery store",
+      "It’s a bakery."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 4B - Lesson 1",
+    "description": "Gấm 20/12",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/12/19/collaborator/mjcil1g1-7a50a7ad-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77219"
+  }
+}

@@ -1,0 +1,275 @@
+{
+  "reportId": "69494535113d0f60577e3ed8",
+  "sessionId": "69493fd4113d0f60577e2587",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 34,
+      "totalCups": 31,
+      "averageReactionTimeMs": 1061.61,
+      "practiceAccuracyPercent": 93,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 47,
+      "speakingCoverage": 0.72,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 34,
+      "averagePronunciationScore": 81.55,
+      "averageGrammarScore": 77.43,
+      "goodVocabularyCount": 6,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 6,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "boat",
+        "attemptCount": 6,
+        "averageScore": 90,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6byak-f4611f93-audio.wav",
+        "bestResultId": "6949434b1ecc2be77391d030",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "694940f51ecc2be77391c587",
+          "694942711ecc2be77391cb3a",
+          "6949434b1ecc2be77391d030",
+          "694944c11ecc2be77391d7b1",
+          "6949451d113d0f60577e3e72",
+          "6949424c113d0f60577e307c"
+        ]
+      },
+      {
+        "word": "ship",
+        "attemptCount": 3,
+        "averageScore": 98.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6bmr2-1412344d-audio.wav",
+        "bestResultId": "6949433c113d0f60577e3447",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "694940ff1ecc2be77391c59f",
+          "6949433c113d0f60577e3447",
+          "6949451d113d0f60577e3e72"
+        ]
+      },
+      {
+        "word": "plane",
+        "attemptCount": 7,
+        "averageScore": 74.86,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6aghj-6f15757c-audio.wav",
+        "bestResultId": "694943061ecc2be77391cd7f",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "694941121ecc2be77391c5ce",
+          "694943061ecc2be77391cd7f",
+          "694944df1ecc2be77391d876",
+          "69494353113d0f60577e3591",
+          "694943d91ecc2be77391d23c",
+          "694942e11ecc2be77391cca1",
+          "69494334113d0f60577e3432"
+        ]
+      },
+      {
+        "word": "helicopter",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6cfaa-2e6b3b51-audio.wav",
+        "bestResultId": "694943611ecc2be77391d068",
+        "assessments": {
+          "mask": "1111111111"
+        },
+        "resultIds": [
+          "694941411ecc2be77391c63b",
+          "69494344113d0f60577e3461",
+          "694943611ecc2be77391d068"
+        ]
+      },
+      {
+        "word": "fly",
+        "attemptCount": 7,
+        "averageScore": 99.14,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6ezon-bc164cc2-audio.wav",
+        "bestResultId": "694943d91ecc2be77391d23c",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "69494152113d0f60577e2bf2",
+          "694942e11ecc2be77391cca1",
+          "694943061ecc2be77391cd7f",
+          "69494334113d0f60577e3432",
+          "694943611ecc2be77391d068",
+          "694943d91ecc2be77391d23c",
+          "694944df1ecc2be77391d876"
+        ]
+      },
+      {
+        "word": "sail",
+        "attemptCount": 4,
+        "averageScore": 73.75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6c9te-eb179054-audio.wav",
+        "bestResultId": "6949435a1ecc2be77391d04f",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6949435a1ecc2be77391d04f",
+          "694944c11ecc2be77391d7b1",
+          "6949424c113d0f60577e307c",
+          "694942711ecc2be77391cb3a"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Can you sail a boat?",
+        "attemptCount": 2,
+        "averageScore": 85,
+        "bestScore": 90,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh67a72-768be1f2-audio.wav",
+        "bestResultId": "694942711ecc2be77391cb3a",
+        "assessments": {
+          "mask": "111 111 1001 1 11111"
+        },
+        "resultIds": [
+          "694942711ecc2be77391cb3a",
+          "6949424c113d0f60577e307c"
+        ]
+      },
+      {
+        "pattern": "Yes, I can.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6a2mc-acb87535-audio.wav",
+        "bestResultId": "694942f3113d0f60577e3324",
+        "assessments": {
+          "mask": "1111 1 1111"
+        },
+        "resultIds": [
+          "6949425d113d0f60577e30ab",
+          "694942f3113d0f60577e3324"
+        ]
+      },
+      {
+        "pattern": "No, I can’t.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh67owy-dcca6484-audio.wav",
+        "bestResultId": "69494284113d0f60577e3121",
+        "assessments": {
+          "mask": "111 1 111111"
+        },
+        "resultIds": [
+          "69494284113d0f60577e3121"
+        ]
+      },
+      {
+        "pattern": "Can you fly a plane?",
+        "attemptCount": 4,
+        "averageScore": 92.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/22/admin/mjh6aghj-6f15757c-audio.wav",
+        "bestResultId": "694943061ecc2be77391cd7f",
+        "assessments": {
+          "mask": "111 111 111 1 111111"
+        },
+        "resultIds": [
+          "694943061ecc2be77391cd7f",
+          "694943d91ecc2be77391d23c",
+          "694942e11ecc2be77391cca1",
+          "69494334113d0f60577e3432"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "helicopter",
+      "plane",
+      "boat",
+      "ship",
+      "sail",
+      "fly"
+    ],
+    "grammar": [
+      "Can you sail a boat?",
+      "No, I can’t.",
+      "Yes, I can.",
+      "Can you fly a plane?"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/04/collaborator/mhk52una-ecd0ddbd-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76905"
+  }
+}

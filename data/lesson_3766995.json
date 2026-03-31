@@ -1,0 +1,351 @@
+{
+  "reportId": "69a6e3780fa3de72796e87e6",
+  "sessionId": "69a6deed0fa3de72796e3e93",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 17,
+      "totalCups": 51,
+      "averageReactionTimeMs": 1270.06,
+      "practiceAccuracyPercent": 97,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 32,
+      "speakingCoverage": 0.53,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 17,
+      "averagePronunciationScore": 80.35,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 11,
+      "goodGrammarCount": 3,
+      "totalVocabularyCount": 38,
+      "totalGrammarCount": 17,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "grocery store",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamwwd4-e19d58f8-audio.wav",
+        "bestResultId": "69a6dfe2f58c2edf9020ed91",
+        "assessments": {
+          "mask": "1111111 11111"
+        },
+        "resultIds": [
+          "69a6dfe2f58c2edf9020ed91"
+        ]
+      },
+      {
+        "word": "street",
+        "attemptCount": 2,
+        "averageScore": 80,
+        "bestScore": 80,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamyu1l-3e8333e7-audio.wav",
+        "bestResultId": "69a6e03cf58c2edf9020f15e",
+        "assessments": {
+          "mask": "1110010"
+        },
+        "resultIds": [
+          "69a6dfea0fa3de72796e49cb",
+          "69a6e03cf58c2edf9020f15e"
+        ]
+      },
+      {
+        "word": "south",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamx92d-09d91741-audio.wav",
+        "bestResultId": "69a6dff20fa3de72796e4a25",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69a6dff20fa3de72796e4a25"
+        ]
+      },
+      {
+        "word": "go straight",
+        "attemptCount": 2,
+        "averageScore": 82.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamz0hx-91445345-audio.wav",
+        "bestResultId": "69a6e0450fa3de72796e4dd8",
+        "assessments": {
+          "mask": "11 11111111"
+        },
+        "resultIds": [
+          "69a6e0450fa3de72796e4dd8",
+          "69a6dff90fa3de72796e4a63"
+        ]
+      },
+      {
+        "word": "traffic lights",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamxk9n-f3441895-audio.wav",
+        "bestResultId": "69a6e001f58c2edf9020eed0",
+        "assessments": {
+          "mask": "1111111 111111"
+        },
+        "resultIds": [
+          "69a6e001f58c2edf9020eed0"
+        ]
+      },
+      {
+        "word": "end",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamxohm-66801c65-audio.wav",
+        "bestResultId": "69a6e0060fa3de72796e4acb",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "69a6e0060fa3de72796e4acb"
+        ]
+      },
+      {
+        "word": "gold",
+        "attemptCount": 2,
+        "averageScore": 62.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamz6qo-fbd30194-audio.wav",
+        "bestResultId": "69a6e04df58c2edf9020f215",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69a6e04df58c2edf9020f215",
+          "69a6e00ef58c2edf9020ef7a"
+        ]
+      },
+      {
+        "word": "wool",
+        "attemptCount": 1,
+        "averageScore": 0,
+        "bestScore": 0,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamy6ni-f721b96e-audio.wav",
+        "bestResultId": "69a6e01ef58c2edf9020f00d",
+        "assessments": {
+          "mask": "00000"
+        },
+        "resultIds": [
+          "69a6e01ef58c2edf9020f00d"
+        ]
+      },
+      {
+        "word": "plastic",
+        "attemptCount": 2,
+        "averageScore": 42,
+        "bestScore": 42,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamzd3g-0a7e4fb5-audio.wav",
+        "bestResultId": "69a6e0550fa3de72796e4e73",
+        "assessments": {
+          "mask": "10101000"
+        },
+        "resultIds": [
+          "69a6e0250fa3de72796e4c35",
+          "69a6e0550fa3de72796e4e73"
+        ]
+      },
+      {
+        "word": "wood",
+        "attemptCount": 1,
+        "averageScore": 66,
+        "bestScore": 66,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamyi9f-4bca1208-audio.wav",
+        "bestResultId": "69a6e02df58c2edf9020f0d9",
+        "assessments": {
+          "mask": "11100"
+        },
+        "resultIds": [
+          "69a6e02df58c2edf9020f0d9"
+        ]
+      },
+      {
+        "word": "metal",
+        "attemptCount": 1,
+        "averageScore": 80,
+        "bestScore": 80,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamyokz-d35060b0-audio.wav",
+        "bestResultId": "69a6e0350fa3de72796e4d26",
+        "assessments": {
+          "mask": "110110"
+        },
+        "resultIds": [
+          "69a6e0350fa3de72796e4d26"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Where is the grocery store ?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamwwd4-e19d58f8-audio.wav",
+        "bestResultId": "69a6dfe2f58c2edf9020ed91",
+        "assessments": {
+          "mask": "11111 11 111 1111111 11111"
+        },
+        "resultIds": [
+          "69a6dfe2f58c2edf9020ed91"
+        ]
+      },
+      {
+        "pattern": "It's in the south of the city.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamx92d-09d91741-audio.wav",
+        "bestResultId": "69a6dff20fa3de72796e4a25",
+        "assessments": {
+          "mask": "1111 11 111 11111 11 111 11111"
+        },
+        "resultIds": [
+          "69a6dff20fa3de72796e4a25"
+        ]
+      },
+      {
+        "pattern": "It's made of wood.",
+        "attemptCount": 1,
+        "averageScore": 91.5,
+        "bestScore": 91.5,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/03/admin/mmamyi9f-4bca1208-audio.wav",
+        "bestResultId": "69a6e02df58c2edf9020f0d9",
+        "assessments": {
+          "mask": "1111 1111 11 11100"
+        },
+        "resultIds": [
+          "69a6e02df58c2edf9020f0d9"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "desk",
+      "rug",
+      "pan",
+      "spoon",
+      "bottle",
+      "keep water",
+      "clean my feet",
+      "study",
+      "silver",
+      "metal",
+      "gold",
+      "wood",
+      "plastic",
+      "wool",
+      "spot",
+      "spotted",
+      "stripe",
+      "striped",
+      "bakery",
+      "grocery store",
+      "sports club",
+      "building",
+      "music club",
+      "pharmacy",
+      "restaurant",
+      "post office",
+      "street",
+      "address",
+      "turn left",
+      "go straight",
+      "end",
+      "middle",
+      "turn right",
+      "traffic lights",
+      "east",
+      "west",
+      "north",
+      "south"
+    ],
+    "grammar": [
+      "I have a pan to cook.",
+      "I have a spoon to eat rice.",
+      "What is your spoon made of?",
+      "It's made of wood.",
+      "My mom wants me to find a spotted rug.",
+      "Shall I help you find it?",
+      "What is that building over there?",
+      "It’s a grocery store",
+      "Do you know the address of the grocery store ?",
+      "It’s 68 Hang Dao street",
+      "Where is the grocery store ?",
+      "It's in the south of the city.",
+      "Do you know the way to the pharmacy?",
+      "Go straight to the end of the street.",
+      "How do I get to the bakery?",
+      "Go straight then turn right.",
+      "It's in the middle of the grocery store and the pharmacy"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit Test U3B + U4B",
+    "description": "kịch bản GAM 09/02",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/30/collaborator/ml0n05gl-04761383-topic.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "78312"
+  }
+}

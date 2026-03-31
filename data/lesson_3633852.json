@@ -1,0 +1,296 @@
+{
+  "reportId": "6959d9a2e4526c242fe18d0e",
+  "sessionId": "6959d4f4e4526c242fe186ee",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 33,
+      "totalCups": 36,
+      "averageReactionTimeMs": 1271.15,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 49,
+      "speakingCoverage": 0.67,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 33,
+      "averagePronunciationScore": 87.75,
+      "averageGrammarScore": 87,
+      "goodVocabularyCount": 8,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 8,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "stay at home",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5j9h4-d2d24256-audio.wav",
+        "bestResultId": "6959d999f33d0f136d7dbe91",
+        "assessments": {
+          "mask": "1111 11 1111"
+        },
+        "resultIds": [
+          "6959d5f2f33d0f136d7db988",
+          "6959d7f9e4526c242fe18b0e",
+          "6959d999f33d0f136d7dbe91"
+        ]
+      },
+      {
+        "word": "play sports",
+        "attemptCount": 2,
+        "averageScore": 98,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz4zn2t-a1d0d3a6-audio.wav",
+        "bestResultId": "6959d604e4526c242fe1883e",
+        "assessments": {
+          "mask": "1111 111111"
+        },
+        "resultIds": [
+          "6959d604e4526c242fe1883e",
+          "6959d980e4526c242fe18cdf"
+        ]
+      },
+      {
+        "word": "watch TV",
+        "attemptCount": 3,
+        "averageScore": 97,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5aplv-5e4bee63-audio.wav",
+        "bestResultId": "6959d809f33d0f136d7dbd1e",
+        "assessments": {
+          "mask": "11111 11"
+        },
+        "resultIds": [
+          "6959d614f33d0f136d7db9df",
+          "6959d809f33d0f136d7dbd1e",
+          "6959d96ae4526c242fe18cca"
+        ]
+      },
+      {
+        "word": "learn English",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5ajop-07ac118f-audio.wav",
+        "bestResultId": "6959d801e4526c242fe18b19",
+        "assessments": {
+          "mask": "11111 1111111"
+        },
+        "resultIds": [
+          "6959d624f33d0f136d7db9ec",
+          "6959d801e4526c242fe18b19"
+        ]
+      },
+      {
+        "word": "yesterday",
+        "attemptCount": 4,
+        "averageScore": 98,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5avih-aa6024c3-audio.wav",
+        "bestResultId": "6959d810e4526c242fe18b26",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "6959d66fe4526c242fe1890e",
+          "6959d77ff33d0f136d7dbc31",
+          "6959d810e4526c242fe18b26",
+          "6959d952e4526c242fe18cb3"
+        ]
+      },
+      {
+        "word": "today",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5j9h4-d2d24256-audio.wav",
+        "bestResultId": "6959d999f33d0f136d7dbe91",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "6959d67ff33d0f136d7dba1a",
+          "6959d8a0e4526c242fe18b7e",
+          "6959d999f33d0f136d7dbe91"
+        ]
+      },
+      {
+        "word": "tomorrow",
+        "attemptCount": 5,
+        "averageScore": 82.4,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5j1q8-7d8c4b54-audio.wav",
+        "bestResultId": "6959d98ee4526c242fe18ce9",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "6959d690f33d0f136d7dba24",
+          "6959d826f33d0f136d7dbd35",
+          "6959d98ee4526c242fe18ce9",
+          "6959d980e4526c242fe18cdf",
+          "6959d834f33d0f136d7dbd41"
+        ]
+      },
+      {
+        "word": "last night",
+        "attemptCount": 3,
+        "averageScore": 97,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz59gpc-d02bdb04-audio.wav",
+        "bestResultId": "6959d7cfe4526c242fe18a58",
+        "assessments": {
+          "mask": "1111 111111"
+        },
+        "resultIds": [
+          "6959d6a2e4526c242fe18931",
+          "6959d7cfe4526c242fe18a58",
+          "6959d96ae4526c242fe18cca"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What did you do yesterday?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz57r31-bb61e9db-audio.wav",
+        "bestResultId": "6959d77ff33d0f136d7dbc31",
+        "assessments": {
+          "mask": "1111 111 111 11 1111111111"
+        },
+        "resultIds": [
+          "6959d77ff33d0f136d7dbc31"
+        ]
+      },
+      {
+        "pattern": "I played sports.",
+        "attemptCount": 3,
+        "averageScore": 91.78,
+        "bestScore": 92,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5hque-c771cb11-audio.wav",
+        "bestResultId": "6959d952e4526c242fe18cb3",
+        "assessments": {
+          "mask": "1 111100 1111111"
+        },
+        "resultIds": [
+          "6959d952e4526c242fe18cb3",
+          "6959d790e4526c242fe18a3b",
+          "6959d817f33d0f136d7dbd28"
+        ]
+      },
+      {
+        "pattern": "What did you do last night?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz59gpc-d02bdb04-audio.wav",
+        "bestResultId": "6959d7cfe4526c242fe18a58",
+        "assessments": {
+          "mask": "1111 111 111 11 1111 111111"
+        },
+        "resultIds": [
+          "6959d7cfe4526c242fe18a58"
+        ]
+      },
+      {
+        "pattern": "I stayed at home and watched TV.",
+        "attemptCount": 2,
+        "averageScore": 92.86,
+        "bestScore": 92.85714285714286,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/04/admin/mjz5b6po-748f4448-audio.wav",
+        "bestResultId": "6959d81fe4526c242fe18b3a",
+        "assessments": {
+          "mask": "1 111110 11 1111 111 1111110 111"
+        },
+        "resultIds": [
+          "6959d7e0f33d0f136d7dbcf9",
+          "6959d81fe4526c242fe18b3a"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "stay at home",
+      "play sports",
+      "watch TV",
+      "learn English",
+      "yesterday",
+      "today",
+      "tomorrow",
+      "last night"
+    ],
+    "grammar": [
+      "What did you do yesterday?",
+      "I played sports.",
+      "What did you do last night?",
+      "I stayed at home and watched TV."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "Level 5 - Unit 2B - Lesson 1",
+    "description": "Gấm 24/11",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/19/collaborator/mi5xos0y-7e9aa08c-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77038"
+  }
+}

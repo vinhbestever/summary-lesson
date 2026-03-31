@@ -1,0 +1,201 @@
+{
+  "reportId": "6981ec4b881759ad0c4e6527",
+  "sessionId": "6981e785881759ad0c4e4ab9",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 34,
+      "totalCups": 38,
+      "averageReactionTimeMs": 1391.38,
+      "practiceAccuracyPercent": 86,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 42,
+      "speakingCoverage": 0.81,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 34,
+      "averagePronunciationScore": 87.15,
+      "averageGrammarScore": 85.71,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 2,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "spot",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/03/admin/ml6kxzm2-a7725e1b-audio.wav",
+        "bestResultId": "6981eb1f881759ad0c4e5c22",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6981e899179e414addc4958a",
+          "6981e8ad881759ad0c4e4f65",
+          "6981eb1f881759ad0c4e5c22"
+        ]
+      },
+      {
+        "word": "spotted",
+        "attemptCount": 6,
+        "averageScore": 91.67,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/03/admin/ml6kxoa4-213a5db9-audio.wav",
+        "bestResultId": "6981eb10881759ad0c4e5bb1",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "6981e8bc881759ad0c4e4fca",
+          "6981ea64881759ad0c4e583c",
+          "6981eab1881759ad0c4e597e",
+          "6981eb01179e414addc4a1b2",
+          "6981eb10881759ad0c4e5bb1",
+          "6981e8d0881759ad0c4e5015"
+        ]
+      },
+      {
+        "word": "stripe",
+        "attemptCount": 4,
+        "averageScore": 85,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/03/admin/ml6ky4je-e2bf70e2-audio.wav",
+        "bestResultId": "6981eb25881759ad0c4e5c48",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "6981e8e0179e414addc496e9",
+          "6981e8f1881759ad0c4e50c4",
+          "6981eb25881759ad0c4e5c48",
+          "6981eb32179e414addc4a39a"
+        ]
+      },
+      {
+        "word": "striped",
+        "attemptCount": 6,
+        "averageScore": 69,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/03/admin/ml6kmduu-d7c90c7d-audio.wav",
+        "bestResultId": "6981e902179e414addc49781",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "6981e902179e414addc49781",
+          "6981e914179e414addc497c4",
+          "6981eab1881759ad0c4e597e",
+          "6981eb08881759ad0c4e5b75",
+          "6981eb17179e414addc4a2ef",
+          "6981ea64881759ad0c4e583c"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Shall I help you find it?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/03/admin/ml6kx6w9-da5966a8-audio.wav",
+        "bestResultId": "6981eaf9179e414addc4a17e",
+        "assessments": {
+          "mask": "11111 1 1111 111 1111 111"
+        },
+        "resultIds": [
+          "6981eaf9179e414addc4a17e"
+        ]
+      },
+      {
+        "pattern": "My mom wants me to find a spotted rug.",
+        "attemptCount": 1,
+        "averageScore": 80.56,
+        "bestScore": 80.55555555555556,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/03/admin/ml6kxclc-d88af500-audio.wav",
+        "bestResultId": "6981eb01179e414addc4a1b2",
+        "assessments": {
+          "mask": "11 111 11111 11 11 0100 1 1111111 0000"
+        },
+        "resultIds": [
+          "6981eb01179e414addc4a1b2"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "spot",
+      "spotted",
+      "stripe",
+      "striped"
+    ],
+    "grammar": [
+      "Shall I help you find it?",
+      "My mom wants me to find a spotted rug."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 3B - Lesson 5",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/12/11/collaborator/mj158hnu-28e0c063-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77145"
+  }
+}

@@ -71,20 +71,63 @@ type PortfolioFeedbackPayload = {
   parent_message: string
 }
 
-const reportLinks = [
-  {
-    label: 'Trial Lesson 10_11',
-    href: 'https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=TRIAL_LESSON_10_11&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjE0NjU3NDEiLCJpYXQiOjE3NzIxNTcwOTksImV4cCI6MTgwMzY5MzA5OX0.JEHtb_OS2C027eQrz1JuYiZBpgeA693xt2HAj5Sxp4s',
-    lessonId: 'TRIAL_LESSON_10_11',
-    detail: 'Bao cao hoc thu',
-  },
-  {
-    label: 'Lesson 3724970',
-    href: 'https://rinoedu.ai/bao-cao-sau-buoi-hoc?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjIxMTY5MTUiLCJpYXQiOjE3NzA0NzQ0ODQsImV4cCI6MTgwMjAxMDQ4NH0.bWMnciHCaUJ0sm7AS0Q3_wzuCo2udbU480tNG5lxO8c&erp_lesson_id=3724970',
-    lessonId: '3724970',
-    detail: 'Bao cao buoi hoc chi tiet',
-  },
-]
+type ReportLink = {
+  label: string
+  href: string
+  lessonId: string
+  detail: string
+}
+
+type ReportPayload = {
+  scriptMetadata?: {
+    name?: string
+  }
+}
+
+const lessonReportFiles = import.meta.glob('../../data/lesson_*.json', {
+  eager: true,
+  import: 'default',
+}) as Record<string, unknown>
+
+const reportToken =
+  import.meta.env.VITE_REPORT_TOKEN ??
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U'
+
+function extractLessonId(filePath: string): string | null {
+  const matched = filePath.match(/lesson_(.+)\.json$/)
+  if (!matched?.[1]) {
+    return null
+  }
+  return matched[1]
+}
+
+function toPrimaryReport(payload: unknown): ReportPayload {
+  if (Array.isArray(payload)) {
+    return (payload[0] ?? {}) as ReportPayload
+  }
+  return (payload ?? {}) as ReportPayload
+}
+
+const reportLinks: ReportLink[] = Object.entries(lessonReportFiles)
+  .map(([filePath, payload]) => {
+    const lessonId = extractLessonId(filePath)
+    if (!lessonId) {
+      return null
+    }
+    const primaryReport = toPrimaryReport(payload)
+    const scriptName = primaryReport.scriptMetadata?.name
+    const attemptCount = Array.isArray(payload) ? payload.length : 1
+    const detailPrefix = attemptCount > 1 ? `${attemptCount} lan hoc` : '1 lan hoc'
+
+    return {
+      lessonId,
+      label: `Lesson ${lessonId}`,
+      detail: scriptName ? `${detailPrefix} - ${scriptName}` : detailPrefix,
+      href: `https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=${encodeURIComponent(lessonId)}&token=${reportToken}`,
+    }
+  })
+  .filter((item): item is ReportLink => item !== null)
+  .sort((a, b) => a.lessonId.localeCompare(b.lessonId))
 
 const LESSON_STREAM_SECTION_LABELS: Array<{ key: string; label: string }> = [
   { key: 'overall_comment', label: 'Tong quan buoi hoc' },
@@ -389,8 +432,9 @@ function App() {
       </section>
 
       <section className="report-options" aria-label="Report options">
+        {reportLinks.length === 0 && <p className="feedback">Chua co du lieu buoi hoc trong thu muc data.</p>}
         {reportLinks.map((item) => (
-          <article key={item.href} className="report-card">
+          <article key={item.lessonId} className="report-card">
             <a className="report-card__link" href={item.href} target="_blank" rel="noopener noreferrer">
               <span className="report-card__title">{item.label}</span>
               <span className="report-card__detail">{item.detail}</span>

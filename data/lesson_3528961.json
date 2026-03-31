@@ -1,0 +1,189 @@
+{
+  "reportId": "69400a23113d0f605776448f",
+  "sessionId": "694006531ecc2be77389993c",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 31,
+      "totalCups": 25,
+      "averageReactionTimeMs": 1596.03,
+      "practiceAccuracyPercent": 94,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 35,
+      "speakingCoverage": 0.89,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 31,
+      "averagePronunciationScore": 79.13,
+      "averageGrammarScore": 83,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 1,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 3,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "city",
+        "attemptCount": 9,
+        "averageScore": 83.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/15/admin/mj76g3wq-1b7c214d-audio.wav",
+        "bestResultId": "69400a18113d0f6057764463",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "694006f11ecc2be773899bbf",
+          "694007031ecc2be773899bd1",
+          "6940085b113d0f6057763a30",
+          "6940087c1ecc2be77389a25c",
+          "694008a01ecc2be77389a3db",
+          "694009bd1ecc2be77389ab44",
+          "69400a18113d0f6057764463",
+          "69400853113d0f6057763a1b",
+          "6940088e113d0f6057763c7a"
+        ]
+      },
+      {
+        "word": "countryside",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/15/admin/mj75zkui-794bf9bd-audio.wav",
+        "bestResultId": "694007141ecc2be773899bec",
+        "assessments": {
+          "mask": "11111111111"
+        },
+        "resultIds": [
+          "694007141ecc2be773899bec"
+        ]
+      },
+      {
+        "word": "village",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/15/admin/mj766xtt-1a94e16c-audio.wav",
+        "bestResultId": "6940086c113d0f6057763a6f",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "694007241ecc2be773899c1e",
+          "694007341ecc2be773899c5c",
+          "694008631ecc2be77389a19e",
+          "6940086c113d0f6057763a6f"
+        ]
+      },
+      {
+        "word": "town",
+        "attemptCount": 6,
+        "averageScore": 58.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/15/admin/mj76aki4-73c56555-audio.wav",
+        "bestResultId": "69400915113d0f6057763f9f",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "69400745113d0f60577632df",
+          "69400915113d0f6057763f9f",
+          "69400897113d0f6057763cde",
+          "694008a8113d0f6057763cf8",
+          "694008b51ecc2be77389a555",
+          "69400874113d0f6057763b64"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Where do you live?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/15/admin/mj767h06-36487721-audio.wav",
+        "bestResultId": "694008851ecc2be77389a27d",
+        "assessments": {
+          "mask": "11111 11 111 11111"
+        },
+        "resultIds": [
+          "694008851ecc2be77389a27d"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "city",
+      "village",
+      "countryside",
+      "town"
+    ],
+    "grammar": [
+      "Where do you live?",
+      "I live in the city in Viet Nam.",
+      "I live in the village in Viet Nam."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "gấm 31/10",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/28/collaborator/mha7p4sn-e127be69-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76867"
+  }
+}

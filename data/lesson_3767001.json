@@ -1,0 +1,251 @@
+{
+  "reportId": "69c29705cd2616b91f924377",
+  "sessionId": "69c29072c010b10ce2fe60a8",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 27,
+      "totalCups": 41,
+      "averageReactionTimeMs": 1467.48,
+      "practiceAccuracyPercent": 90,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 47,
+      "speakingCoverage": 0.57,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 27,
+      "averagePronunciationScore": 70.88,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 7,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 7,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "gloves",
+        "attemptCount": 3,
+        "averageScore": 60,
+        "bestScore": 60,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4ns3o5-78638cf4-audio.wav",
+        "bestResultId": "69c29373c010b10ce2fe9d60",
+        "assessments": {
+          "mask": "0110010"
+        },
+        "resultIds": [
+          "69c29173c010b10ce2fe704f",
+          "69c2932bc010b10ce2fe957f",
+          "69c29373c010b10ce2fe9d60"
+        ]
+      },
+      {
+        "word": "belt",
+        "attemptCount": 4,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4nsxn3-47298a42-audio.wav",
+        "bestResultId": "69c2939ac010b10ce2fea258",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69c2917dc010b10ce2fe70d9",
+          "69c292dcc010b10ce2fe8d35",
+          "69c2939ac010b10ce2fea258",
+          "69c29363c010b10ce2fe9bd3"
+        ]
+      },
+      {
+        "word": "hundred",
+        "attemptCount": 6,
+        "averageScore": 69,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4ntdqb-7cc55d17-audio.wav",
+        "bestResultId": "69c293afc010b10ce2fea435",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "69c2918bc010b10ce2fe71b6",
+          "69c292e8cd2616b91f91e999",
+          "69c29391c010b10ce2fea128",
+          "69c293afc010b10ce2fea435",
+          "69c2936bcd2616b91f91f83c",
+          "69c293a0c010b10ce2fea2d6"
+        ]
+      },
+      {
+        "word": "handbag",
+        "attemptCount": 4,
+        "averageScore": 35.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4nt77q-67b5e4cc-audio.wav",
+        "bestResultId": "69c293a6cd2616b91f91fe0c",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "69c293a6cd2616b91f91fe0c",
+          "69c29384cd2616b91f91faa4",
+          "69c291ddcd2616b91f91d167",
+          "69c291d2c010b10ce2fe76a4"
+        ]
+      },
+      {
+        "word": "wallet",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4nslcu-1689b575-audio.wav",
+        "bestResultId": "69c2938acd2616b91f91fb4d",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "69c291e8c010b10ce2fe77fa",
+          "69c2938acd2616b91f91fb4d"
+        ]
+      },
+      {
+        "word": "million",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4njxwf-e7273db5-audio.wav",
+        "bestResultId": "69c291f6cd2616b91f91d386",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "69c291f6cd2616b91f91d386"
+        ]
+      },
+      {
+        "word": "thousand",
+        "attemptCount": 2,
+        "averageScore": 58,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4nk9wh-67de155e-audio.wav",
+        "bestResultId": "69c29206cd2616b91f91d45f",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "69c29206cd2616b91f91d45f",
+          "69c2937bcd2616b91f91f9f1"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "How much is the belt?",
+        "attemptCount": 3,
+        "averageScore": 66.67,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4nsxn3-47298a42-audio.wav",
+        "bestResultId": "69c2939ac010b10ce2fea258",
+        "assessments": {
+          "mask": "111 1111 11 111 11111"
+        },
+        "resultIds": [
+          "69c292dcc010b10ce2fe8d35",
+          "69c2939ac010b10ce2fea258",
+          "69c29363c010b10ce2fe9bd3"
+        ]
+      },
+      {
+        "pattern": "How much are the gloves?",
+        "attemptCount": 2,
+        "averageScore": 92,
+        "bestScore": 92,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/24/admin/mn4ns3o5-78638cf4-audio.wav",
+        "bestResultId": "69c29373c010b10ce2fe9d60",
+        "assessments": {
+          "mask": "111 1111 111 111 0110010"
+        },
+        "resultIds": [
+          "69c2932bc010b10ce2fe957f",
+          "69c29373c010b10ce2fe9d60"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "gloves",
+      "belt",
+      "hundred",
+      "handbag",
+      "wallet",
+      "million",
+      "thousand"
+    ],
+    "grammar": [
+      "How much is the belt?",
+      "It's $300.",
+      "How much are the gloves?",
+      "They're ₫60,000."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 2C - Lesson 1",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/31/collaborator/ml1pteg9-4197ed20-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "78313"
+  }
+}

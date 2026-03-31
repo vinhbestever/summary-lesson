@@ -1,0 +1,227 @@
+{
+  "reportId": "69636689d905eb11e2897421",
+  "sessionId": "696361f98d0f50d1698ce14c",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 36,
+      "totalCups": 29,
+      "averageReactionTimeMs": 1181.06,
+      "practiceAccuracyPercent": 90,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 40,
+      "speakingCoverage": 0.9,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 36,
+      "averagePronunciationScore": 87.11,
+      "averageGrammarScore": 67.6,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "go to school",
+        "attemptCount": 3,
+        "averageScore": 77.78,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9hwa8z-97be739d-audio.wav",
+        "bestResultId": "696364a9d905eb11e2897179",
+        "assessments": {
+          "mask": "11 11 111111"
+        },
+        "resultIds": [
+          "696362f98d0f50d1698ce231",
+          "696364a9d905eb11e2897179",
+          "696364598d0f50d1698ce43f"
+        ]
+      },
+      {
+        "word": "make a cake",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9huqlt-d54eece6-audio.wav",
+        "bestResultId": "69636460d905eb11e289712a",
+        "assessments": {
+          "mask": "1111 1 1111"
+        },
+        "resultIds": [
+          "6963631a8d0f50d1698ce282",
+          "69636460d905eb11e289712a"
+        ]
+      },
+      {
+        "word": "have dinner with friends",
+        "attemptCount": 4,
+        "averageScore": 82.06,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9ho3c6-2a3114ee-audio.wav",
+        "bestResultId": "6963632ad905eb11e2896f56",
+        "assessments": {
+          "mask": "1111 111111 1111 1111111"
+        },
+        "resultIds": [
+          "6963632ad905eb11e2896f56",
+          "69636633d905eb11e2897393",
+          "696364b88d0f50d1698ce4fc",
+          "696364788d0f50d1698ce458"
+        ]
+      },
+      {
+        "word": "do homework",
+        "attemptCount": 2,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9hwgan-7a25eda9-audio.wav",
+        "bestResultId": "696364b0d905eb11e2897183",
+        "assessments": {
+          "mask": "11 11111111"
+        },
+        "resultIds": [
+          "696364b0d905eb11e2897183",
+          "69636470d905eb11e2897132"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What did he do yesterday?",
+        "attemptCount": 1,
+        "averageScore": 80,
+        "bestScore": 80,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9hrvhu-b73feb11-audio.wav",
+        "bestResultId": "696363dbd905eb11e28970a7",
+        "assessments": {
+          "mask": "1111 111 00 11 1111111111"
+        },
+        "resultIds": [
+          "696363dbd905eb11e28970a7"
+        ]
+      },
+      {
+        "pattern": "He went to school.",
+        "attemptCount": 4,
+        "averageScore": 53.13,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9hwscd-6e2c5cd0-audio.wav",
+        "bestResultId": "696364c08d0f50d1698ce506",
+        "assessments": {
+          "mask": "11 1111 11 1111111"
+        },
+        "resultIds": [
+          "696364008d0f50d1698ce3d5",
+          "696364c08d0f50d1698ce506",
+          "696363f1d905eb11e28970b1",
+          "696364808d0f50d1698ce460"
+        ]
+      },
+      {
+        "pattern": "What did she do yesterday?",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9huwnz-ad385985-audio.wav",
+        "bestResultId": "696364688d0f50d1698ce447",
+        "assessments": {
+          "mask": "1111 111 111 11 1111111111"
+        },
+        "resultIds": [
+          "69636432d905eb11e2897105",
+          "696364688d0f50d1698ce447"
+        ]
+      },
+      {
+        "pattern": "She did homework.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/11/admin/mk9hu3dq-e9ea99a0-audio.wav",
+        "bestResultId": "696364428d0f50d1698ce42f",
+        "assessments": {
+          "mask": "111 111 111111111"
+        },
+        "resultIds": [
+          "696364428d0f50d1698ce42f"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "go to school",
+      "make a cake",
+      "do homework",
+      "have dinner with friends"
+    ],
+    "grammar": [
+      "What did he do yesterday?",
+      "He went to school.",
+      "What did she do yesterday?",
+      "She did homework."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/20/collaborator/mi6vli6q-912949b9-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77041"
+  }
+}

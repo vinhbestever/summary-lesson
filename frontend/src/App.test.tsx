@@ -34,42 +34,43 @@ describe('App', () => {
     vi.unstubAllGlobals()
   })
 
-  it('shows two report options linking to the expected URLs', () => {
+  it('loads report options from local lesson data files', () => {
     render(<App />)
 
-    const linkOne = screen.getByRole('link', { name: /trial lesson 10_11/i })
-    const linkTwo = screen.getByRole('link', { name: /lesson 3724970/i })
+    const trialLink = screen.getByRole('link', { name: /trial_lesson_over_7/i })
+    const reportLinks = screen.getAllByRole('link')
 
-    expect(linkOne).toHaveAttribute(
+    expect(trialLink).toHaveAttribute(
       'href',
-      expect.stringContaining('erp_lesson_id=TRIAL_LESSON_10_11'),
+      expect.stringContaining('erp_lesson_id=TRIAL_LESSON_OVER_7'),
     )
-    expect(linkOne).toHaveAttribute('target', '_blank')
-
-    expect(linkTwo).toHaveAttribute(
-      'href',
-      expect.stringContaining('erp_lesson_id=3724970'),
-    )
-    expect(linkTwo).toHaveAttribute('target', '_blank')
+    expect(trialLink).toHaveAttribute('target', '_blank')
+    expect(reportLinks.length).toBeGreaterThan(2)
   })
 
   it('requests lesson feedback and renders shared panel', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([
         'event: status\ndata: {"type":"status","message":"Dang phan tich"}',
-        'event: result\ndata: {"type":"result","data":{"lesson_label":"Trial Lesson 10_11","teacher_tone":"warm_encouraging","overall_comment":"Con hoc rat tap trung.","session_breakdown":{"participation":{"score":85,"comment":"Tot","evidence":["20 luot noi"]},"pronunciation":{"score":72,"comment":"Kha","evidence":["Diem 72"]},"vocabulary":{"score":80,"comment":"Tot","evidence":["5 tu"]},"grammar":{"score":78,"comment":"On","evidence":["3 cau"]},"reaction_confidence":{"score":88,"comment":"Nhanh","evidence":["2s"]}},"strengths":["Tu tin","Nho tu tot"],"priority_improvements":[{"skill":"pronunciation","priority":"high","current_state":"Am cuoi con yeu","target_next_lesson":"Dat 80+","coach_tip":"Luyen 10 phut/ngay"}],"next_lesson_plan":[{"step":"On tu","duration_minutes":8}],"parent_message":"Con dang tien bo rat tot."}}',
+        'event: result\ndata: {"type":"result","data":{"lesson_label":"TRIAL_LESSON_OVER_7","teacher_tone":"warm_encouraging","overall_comment":"Con hoc rat tap trung.","session_breakdown":{"participation":{"score":85,"comment":"Tot","evidence":["20 luot noi"]},"pronunciation":{"score":72,"comment":"Kha","evidence":["Diem 72"]},"vocabulary":{"score":80,"comment":"Tot","evidence":["5 tu"]},"grammar":{"score":78,"comment":"On","evidence":["3 cau"]},"reaction_confidence":{"score":88,"comment":"Nhanh","evidence":["2s"]}},"strengths":["Tu tin","Nho tu tot"],"priority_improvements":[{"skill":"pronunciation","priority":"high","current_state":"Am cuoi con yeu","target_next_lesson":"Dat 80+","coach_tip":"Luyen 10 phut/ngay"}],"next_lesson_plan":[{"step":"On tu","duration_minutes":8}],"parent_message":"Con dang tien bo rat tot."}}',
         'event: done\ndata: {"type":"done"}',
       ]),
     )
     vi.stubGlobal('fetch', fetchMock)
 
     render(<App />)
-    fireEvent.click(screen.getAllByRole('button', { name: /nhan xet/i })[0])
+    const trialLink = screen.getByRole('link', { name: /trial_lesson_over_7/i })
+    const trialCard = trialLink.closest('article')
+    const trialFeedbackButton = trialCard?.querySelector<HTMLButtonElement>('button')
+    if (!trialFeedbackButton) {
+      throw new Error('Trial lesson feedback button not found')
+    }
+    fireEvent.click(trialFeedbackButton)
 
     await waitFor(() => expect(fetchMock).toHaveBeenCalledTimes(1))
     const requestBody = JSON.parse(fetchMock.mock.calls[0][1].body as string)
-    expect(requestBody).toMatchObject({ lesson_id: 'TRIAL_LESSON_10_11' })
-    expect(await screen.findByRole('heading', { name: /nhan xet buoi hoc - trial lesson 10_11/i })).toBeInTheDocument()
+    expect(requestBody).toMatchObject({ lesson_id: 'TRIAL_LESSON_OVER_7' })
+    expect(await screen.findByRole('heading', { name: /nhan xet buoi hoc - trial_lesson_over_7/i })).toBeInTheDocument()
     expect(screen.getByText(/con hoc rat tap trung/i)).toBeInTheDocument()
   })
 

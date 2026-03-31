@@ -1,0 +1,225 @@
+{
+  "reportId": "690214d21c844adcaca9e7c8",
+  "sessionId": "6902102920d53000d369133f",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 34,
+      "totalCups": 28,
+      "averageReactionTimeMs": 1554.44,
+      "practiceAccuracyPercent": 94,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 41,
+      "speakingCoverage": 0.83,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 34,
+      "averagePronunciationScore": 89.73,
+      "averageGrammarScore": 88.43,
+      "goodVocabularyCount": 5,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 5,
+      "totalGrammarCount": 3,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "teacher",
+        "attemptCount": 7,
+        "averageScore": 75.43,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/29/admin/mhc0x0nr-74038ef4-audio.wav",
+        "bestResultId": "690214ae1c844adcaca9e796",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "690210cd20d53000d369140e",
+          "6902132420d53000d369154d",
+          "6902135820d53000d3691584",
+          "690213a41c844adcaca9e6e7",
+          "690214ae1c844adcaca9e796",
+          "6902133820d53000d3691556",
+          "690212ed1c844adcaca9e545"
+        ]
+      },
+      {
+        "word": "doctor",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/29/admin/mhc0o9b1-1d47fee3-audio.wav",
+        "bestResultId": "690213141c844adcaca9e551",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "690210e01c844adcaca9e43c",
+          "690213041c844adcaca9e54d",
+          "690213141c844adcaca9e551"
+        ]
+      },
+      {
+        "word": "firefighter",
+        "attemptCount": 4,
+        "averageScore": 90.75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/29/admin/mhc0ofs1-36256af5-audio.wav",
+        "bestResultId": "6902131c1c844adcaca9e555",
+        "assessments": {
+          "mask": "11111111111"
+        },
+        "resultIds": [
+          "6902111820d53000d369143c",
+          "690212cb20d53000d3691535",
+          "6902131c1c844adcaca9e555",
+          "690212e620d53000d3691541"
+        ]
+      },
+      {
+        "word": "pop star",
+        "attemptCount": 6,
+        "averageScore": 87.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/29/admin/mhc0rp7n-819e2bfc-audio.wav",
+        "bestResultId": "690213b520d53000d36915a2",
+        "assessments": {
+          "mask": "111 11111"
+        },
+        "resultIds": [
+          "6902112b20d53000d3691448",
+          "6902129d1c844adcaca9e52d",
+          "6902137020d53000d369158f",
+          "690213b520d53000d36915a2",
+          "690212fd20d53000d3691545",
+          "6902130c20d53000d3691549"
+        ]
+      },
+      {
+        "word": "clown",
+        "attemptCount": 2,
+        "averageScore": 80,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/29/admin/mhc0nlis-a7681d24-audio.wav",
+        "bestResultId": "690212f51c844adcaca9e549",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "690212f51c844adcaca9e549",
+          "6902113e1c844adcaca9e466"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What do you want to be?",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/29/admin/mhc0rp7n-819e2bfc-audio.wav",
+        "bestResultId": "690213b520d53000d36915a2",
+        "assessments": {
+          "mask": "1 1111 11 11 1 111 11111 1 111111 1111 11111111 1111 11 111 1111 11 111 0001"
+        },
+        "resultIds": [
+          "690212861c844adcaca9e520",
+          "690212b120d53000d3691530",
+          "6902137020d53000d369158f",
+          "690213b520d53000d36915a2"
+        ]
+      },
+      {
+        "pattern": "I want to be a pop star.",
+        "attemptCount": 4,
+        "averageScore": 96.43,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/29/admin/mhc0rp7n-819e2bfc-audio.wav",
+        "bestResultId": "690213b520d53000d36915a2",
+        "assessments": {
+          "mask": "1 1111 11 11 1 111 11111 1 111111 1111 11111111 1111 11 111 1111 11 111 0001"
+        },
+        "resultIds": [
+          "6902129d1c844adcaca9e52d",
+          "6902137020d53000d369158f",
+          "690213b520d53000d36915a2",
+          "6902130c20d53000d3691549"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "teacher",
+      "doctor",
+      "clown",
+      "firefighter",
+      "pop star"
+    ],
+    "grammar": [
+      "What do you want to be?",
+      "I want to be a fire fighter.",
+      "I want to be a pop star."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/23/collaborator/mfvybc26-b926cb8e-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76490"
+  }
+}

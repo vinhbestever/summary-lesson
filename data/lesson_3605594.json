@@ -1,0 +1,298 @@
+{
+  "reportId": "6952824ae4526c242fdbd150",
+  "sessionId": "69527c3ee4526c242fdbabe6",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 38,
+      "totalCups": 29,
+      "averageReactionTimeMs": 1700.03,
+      "practiceAccuracyPercent": 87,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 50,
+      "speakingCoverage": 0.76,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 38,
+      "averagePronunciationScore": 92.42,
+      "averageGrammarScore": 85,
+      "goodVocabularyCount": 8,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 8,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "car",
+        "attemptCount": 8,
+        "averageScore": 98.25,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr7217o-a3de3dd8-audio.wav",
+        "bestResultId": "69528203f33d0f136d77f17b",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "69527cddf33d0f136d77d4f0",
+          "69527f1ff33d0f136d77e6e3",
+          "69527f41e4526c242fdbc68d",
+          "695280dcf33d0f136d77ed56",
+          "69528116e4526c242fdbcd12",
+          "69528203f33d0f136d77f17b",
+          "695281f4f33d0f136d77f140",
+          "6952820df33d0f136d77f1a3"
+        ]
+      },
+      {
+        "word": "truck",
+        "attemptCount": 2,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6a6rd-b8c5da3c-audio.wav",
+        "bestResultId": "69527cefe4526c242fdbb375",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69527cefe4526c242fdbb375",
+          "69527d0cf33d0f136d77d6c8"
+        ]
+      },
+      {
+        "word": "tractor",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6b5f1-487f107f-audio.wav",
+        "bestResultId": "69527d1be4526c242fdbb564",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "69527d1be4526c242fdbb564"
+        ]
+      },
+      {
+        "word": "motorcycle",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6bx24-ed7ac3d0-audio.wav",
+        "bestResultId": "69527d40e4526c242fdbb6ac",
+        "assessments": {
+          "mask": "1111111111"
+        },
+        "resultIds": [
+          "69527d40e4526c242fdbb6ac"
+        ]
+      },
+      {
+        "word": "scooter",
+        "attemptCount": 4,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6nhd2-b8c0ca35-audio.wav",
+        "bestResultId": "69527f5be4526c242fdbc735",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "69527d57f33d0f136d77d9bb",
+          "69527f4af33d0f136d77e760",
+          "69527f5be4526c242fdbc735",
+          "69527f6bf33d0f136d77e7fc"
+        ]
+      },
+      {
+        "word": "fly",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr72s55-b082930a-audio.wav",
+        "bestResultId": "69528226f33d0f136d77f22a",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "69527da4e4526c242fdbba7f",
+          "69527dcbf33d0f136d77dd85",
+          "69527f38e4526c242fdbc66c",
+          "69528226f33d0f136d77f22a"
+        ]
+      },
+      {
+        "word": "helicopter",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6ewmj-ab12da15-audio.wav",
+        "bestResultId": "69527dcbf33d0f136d77dd85",
+        "assessments": {
+          "mask": "1111111111"
+        },
+        "resultIds": [
+          "69527db7f33d0f136d77dcb0",
+          "69527dcbf33d0f136d77dd85"
+        ]
+      },
+      {
+        "word": "sail",
+        "attemptCount": 3,
+        "averageScore": 44,
+        "bestScore": 66,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6wd7h-0a11c20b-audio.wav",
+        "bestResultId": "695280f9f33d0f136d77ed98",
+        "assessments": {
+          "mask": "1110"
+        },
+        "resultIds": [
+          "69527f52f33d0f136d77e782",
+          "695280f9f33d0f136d77ed98",
+          "69527f16e4526c242fdbc5fc"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Yes, I can.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6zjau-5c80b83b-audio.wav",
+        "bestResultId": "6952818de4526c242fdbceee",
+        "assessments": {
+          "mask": "1111 1 111"
+        },
+        "resultIds": [
+          "69527f27e4526c242fdbc628",
+          "6952818de4526c242fdbceee"
+        ]
+      },
+      {
+        "pattern": "Can you drive a car?",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6vqi3-6359412c-audio.wav",
+        "bestResultId": "695280dcf33d0f136d77ed56",
+        "assessments": {
+          "mask": "11111 1 111 1111 1 11111 111 111 11111 1 1111"
+        },
+        "resultIds": [
+          "69527f41e4526c242fdbc68d",
+          "695280dcf33d0f136d77ed56"
+        ]
+      },
+      {
+        "pattern": "Can you ride a scooter?",
+        "attemptCount": 3,
+        "averageScore": 55.47,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6nhd2-b8c0ca35-audio.wav",
+        "bestResultId": "69527f5be4526c242fdbc735",
+        "assessments": {
+          "mask": "111 111 1111 1 11111111"
+        },
+        "resultIds": [
+          "69527f5be4526c242fdbc735",
+          "69527f4af33d0f136d77e760",
+          "69527f6bf33d0f136d77e7fc"
+        ]
+      },
+      {
+        "pattern": "No, I can't.",
+        "attemptCount": 2,
+        "averageScore": 87.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/29/admin/mjr6zwd7-eb2a0e5b-audio.wav",
+        "bestResultId": "6952819ee4526c242fdbcf2f",
+        "assessments": {
+          "mask": "111 1 11111"
+        },
+        "resultIds": [
+          "6952819ee4526c242fdbcf2f",
+          "695280f9f33d0f136d77ed98"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "car",
+      "truck",
+      "tractor",
+      "motorcycle",
+      "scooter",
+      "fly",
+      "sail",
+      "helicopter"
+    ],
+    "grammar": [
+      "Can you drive a car?",
+      "Yes, I can.",
+      "No, I can't.",
+      "Can you ride a scooter?"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "Level 5 - Unit 1B - Lesson 4",
+    "description": "Gấm 06/11",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/05/collaborator/mhlqo9s4-e23cc25e-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76907"
+  }
+}

@@ -1,0 +1,332 @@
+[
+  {
+    "reportId": "68eefc045049d68db90d6832",
+    "sessionId": "68ecfd19110bf4fab2c4d39c",
+    "completion": {
+      "isCompletedByReportRules": false,
+      "reasons": [
+        "GRAMMAR_SECTION_INCOMPLETE",
+        "IMMEDIATE_EXIT"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 1,
+        "totalCups": 0,
+        "averageReactionTimeMs": 2652,
+        "practiceAccuracyPercent": null,
+        "sectionsCompletionPercent": 5,
+        "speakingTargetCount": 39,
+        "speakingCoverage": 0.03,
+        "reactionTag": null,
+        "teacherComment": "Bé vào học nhưng thoát ra luôn, hãy làm bài tập để củng cố kiến thức của buổi hôm nay con nhé.",
+        "sessionSummary": "Chưa hoàn thành buổi học.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": false,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": false,
+          "immediateExit": true
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 1,
+        "averagePronunciationScore": 100,
+        "averageGrammarScore": null,
+        "goodVocabularyCount": 0,
+        "goodGrammarCount": 0,
+        "totalVocabularyCount": 4,
+        "totalGrammarCount": 3,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [],
+      "grammar": []
+    },
+    "targets": {
+      "vocabulary": [
+        "handsome",
+        "pretty",
+        "cute",
+        "sporty"
+      ],
+      "grammar": [
+        "What does he look like?",
+        "He's handsome",
+        "He's sporty"
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "QUICK_EXIT_NO_RELEARN",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/noraimlang.mp4"
+      },
+      "name": "Kịch bản",
+      "description": "Mai 26/9",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/10/collaborator/mfdoq3r9-225baac7-3.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "75207"
+    }
+  },
+  {
+    "reportId": "68ecfd04110bf4fab2c4d333",
+    "sessionId": "68ecf7d3110bf4fab2c4cd97",
+    "completion": {
+      "isCompletedByReportRules": false,
+      "reasons": [
+        "GRAMMAR_SECTION_INCOMPLETE",
+        "VOCABULARY_SECTION_INCOMPLETE"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 37,
+        "totalCups": 27,
+        "averageReactionTimeMs": 1414.68,
+        "practiceAccuracyPercent": 94,
+        "sectionsCompletionPercent": 20,
+        "speakingTargetCount": 39,
+        "speakingCoverage": 0.95,
+        "reactionTag": "Rất nhanh",
+        "teacherComment": "Bé vào học nhưng thoát giữa chừng. Mình làm bài tập nhé để không lỡ kiến thức hôm nay!",
+        "sessionSummary": "Chưa hoàn thành buổi học.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": false,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": false,
+          "immediateExit": false
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 37,
+        "averagePronunciationScore": 91,
+        "averageGrammarScore": 89.71,
+        "goodVocabularyCount": 4,
+        "goodGrammarCount": 3,
+        "totalVocabularyCount": 4,
+        "totalGrammarCount": 3,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [
+        {
+          "word": "handsome",
+          "attemptCount": 7,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/13/admin/mgp5w751-d2b0eec9-audio.wav",
+          "bestResultId": "68ecfcd3c8fa5f23946b5fd8",
+          "assessments": {
+            "mask": "11111111"
+          },
+          "resultIds": [
+            "68ecf8a3c8fa5f23946b5ade",
+            "68ecfa54110bf4fab2c4d02d",
+            "68ecfaa9110bf4fab2c4d071",
+            "68ecfad0c8fa5f23946b5cfd",
+            "68ecfb3ec8fa5f23946b5deb",
+            "68ecfb90110bf4fab2c4d184",
+            "68ecfcd3c8fa5f23946b5fd8"
+          ]
+        },
+        {
+          "word": "pretty",
+          "attemptCount": 7,
+          "averageScore": 57,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/13/admin/mgp5x3fn-36231ee1-audio.wav",
+          "bestResultId": "68ecfcfd110bf4fab2c4d319",
+          "assessments": {
+            "mask": "111111"
+          },
+          "resultIds": [
+            "68ecf8b8110bf4fab2c4ce81",
+            "68ecfcfd110bf4fab2c4d319",
+            "68ecfb84c8fa5f23946b5e29",
+            "68ecfab9c8fa5f23946b5c82",
+            "68ecfac8c8fa5f23946b5cf9",
+            "68ecfb2fc8fa5f23946b5dd3",
+            "68ecfb7b110bf4fab2c4d168"
+          ]
+        },
+        {
+          "word": "cute",
+          "attemptCount": 4,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/13/admin/mgp5v9zu-b48465af-audio.wav",
+          "bestResultId": "68ecfca8110bf4fab2c4d2c5",
+          "assessments": {
+            "mask": "1111"
+          },
+          "resultIds": [
+            "68ecf8e9c8fa5f23946b5b04",
+            "68ecfab1110bf4fab2c4d07d",
+            "68ecfad7110bf4fab2c4d0d6",
+            "68ecfca8110bf4fab2c4d2c5"
+          ]
+        },
+        {
+          "word": "sporty",
+          "attemptCount": 8,
+          "averageScore": 85.25,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/13/admin/mgp5whsf-706642ac-audio.wav",
+          "bestResultId": "68ecfce1c8fa5f23946b5fdf",
+          "assessments": {
+            "mask": "1111111"
+          },
+          "resultIds": [
+            "68ecf900c8fa5f23946b5b18",
+            "68ecfa82110bf4fab2c4d04e",
+            "68ecfaa1110bf4fab2c4d067",
+            "68ecfb90110bf4fab2c4d184",
+            "68ecfce1c8fa5f23946b5fdf",
+            "68ecfadfc8fa5f23946b5d06",
+            "68ecfcb7110bf4fab2c4d2c9",
+            "68ecfb3ec8fa5f23946b5deb"
+          ]
+        }
+      ],
+      "grammar": [
+        {
+          "pattern": "What does he look like?",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/13/admin/mgp5kuqs-2b456660-audio.wav",
+          "bestResultId": "68ecfac1c8fa5f23946b5c95",
+          "assessments": {
+            "mask": "1111 1111 11 1111 11111"
+          },
+          "resultIds": [
+            "68ecfa3dc8fa5f23946b5c1f",
+            "68ecfa6b110bf4fab2c4d037",
+            "68ecfac1c8fa5f23946b5c95"
+          ]
+        },
+        {
+          "pattern": "He's handsome",
+          "attemptCount": 4,
+          "averageScore": 95.75,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/13/admin/mgp5pa8u-f2dd5001-audio.wav",
+          "bestResultId": "68ecfb90110bf4fab2c4d184",
+          "assessments": {
+            "mask": "1111 11111111 111 1111111"
+          },
+          "resultIds": [
+            "68ecfaa9110bf4fab2c4d071",
+            "68ecfb3ec8fa5f23946b5deb",
+            "68ecfb90110bf4fab2c4d184",
+            "68ecfa54110bf4fab2c4d02d"
+          ]
+        },
+        {
+          "pattern": "He's sporty",
+          "attemptCount": 2,
+          "averageScore": 91.5,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/13/admin/mgp5k5mk-4ad8cc91-audio.wav",
+          "bestResultId": "68ecfaa1110bf4fab2c4d067",
+          "assessments": {
+            "mask": "1111 1111111"
+          },
+          "resultIds": [
+            "68ecfaa1110bf4fab2c4d067",
+            "68ecfa82110bf4fab2c4d04e"
+          ]
+        }
+      ]
+    },
+    "targets": {
+      "vocabulary": [
+        "handsome",
+        "pretty",
+        "cute",
+        "sporty"
+      ],
+      "grammar": [
+        "What does he look like?",
+        "He's handsome",
+        "He's sporty"
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "BEFORE_VOCAB_NO_RELEARN",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/noraimlang.mp4"
+      },
+      "name": "Kịch bản",
+      "description": "Mai 26/9",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/10/collaborator/mfdoq3r9-225baac7-3.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "75207"
+    }
+  }
+]

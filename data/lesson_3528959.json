@@ -1,0 +1,221 @@
+{
+  "reportId": "6936d04635b652934108ce2c",
+  "sessionId": "6936cbec41223900f4f8e219",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 28,
+      "totalCups": 30,
+      "averageReactionTimeMs": 1610.93,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 41,
+      "speakingCoverage": 0.68,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 28,
+      "averagePronunciationScore": 93.43,
+      "averageGrammarScore": 87.43,
+      "goodVocabularyCount": 7,
+      "goodGrammarCount": 1,
+      "totalVocabularyCount": 7,
+      "totalGrammarCount": 1,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "sea",
+        "attemptCount": 4,
+        "averageScore": 83.25,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix6ffxm-b99abaae-audio.wav",
+        "bestResultId": "6936d00441223900f4f8e759",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6936cc8a41223900f4f8e320",
+          "6936ce6d35b652934108cb65",
+          "6936d00441223900f4f8e759",
+          "6936ce7b35b652934108cb77"
+        ]
+      },
+      {
+        "word": "river",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix5wrwt-a67e4ee2-audio.wav",
+        "bestResultId": "6936cc9b41223900f4f8e329",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "6936cc9b41223900f4f8e329"
+        ]
+      },
+      {
+        "word": "mountain",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix5x57x-ee97c847-audio.wav",
+        "bestResultId": "6936ccad41223900f4f8e336",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "6936ccad41223900f4f8e336"
+        ]
+      },
+      {
+        "word": "beach",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix5yccd-30510def-audio.wav",
+        "bestResultId": "6936cce535b652934108c8be",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "6936cce535b652934108c8be"
+        ]
+      },
+      {
+        "word": "forest",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix5yqx0-b646c51e-audio.wav",
+        "bestResultId": "6936ccf741223900f4f8e34b",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "6936ccf741223900f4f8e34b"
+        ]
+      },
+      {
+        "word": "lake",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix5zlx9-992fed44-audio.wav",
+        "bestResultId": "6936cd2041223900f4f8e387",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6936cd2041223900f4f8e387"
+        ]
+      },
+      {
+        "word": "waterfall",
+        "attemptCount": 3,
+        "averageScore": 88.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix66km0-1cfd7c6e-audio.wav",
+        "bestResultId": "6936ce6541223900f4f8e4f4",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "6936cd3335b652934108c9e6",
+          "6936ce6541223900f4f8e4f4",
+          "6936d02e41223900f4f8e77a"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "I like waterfalls, so I will travel to Canada.",
+        "attemptCount": 1,
+        "averageScore": 98.89,
+        "bestScore": 98.88888888888889,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/08/admin/mix6564o-b104140a-audio.wav",
+        "bestResultId": "6936ce2335b652934108cb2e",
+        "assessments": {
+          "mask": "1 1111 11111111101 11 1 1111 111111 11 1111111"
+        },
+        "resultIds": [
+          "6936ce2335b652934108cb2e"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "sea",
+      "river",
+      "mountain",
+      "beach",
+      "lake",
+      "waterfall",
+      "forest"
+    ],
+    "grammar": [
+      "I like waterfalls, so I will travel to Canada."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản YEN 22/10",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/22/collaborator/mh1kg2ae-df188616-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76846"
+  }
+}

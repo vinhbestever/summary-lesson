@@ -1,0 +1,290 @@
+{
+  "reportId": "699ef16bc35c50ae4edf8975",
+  "sessionId": "699eea2bf27f0653c92fec47",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 28,
+      "totalCups": 44,
+      "averageReactionTimeMs": 700.64,
+      "practiceAccuracyPercent": 90,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 49,
+      "speakingCoverage": 0.57,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Bé đã hoàn thành buổi học, phát âm khá ổn, nhưng cần cố gắng thêm nhé.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 28,
+      "averagePronunciationScore": 69.59,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 10,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 10,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "go straight",
+        "attemptCount": 4,
+        "averageScore": 81.25,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20yyqe-18035104-audio.wav",
+        "bestResultId": "699eee59c35c50ae4edf70fb",
+        "assessments": {
+          "mask": "11 11111111"
+        },
+        "resultIds": [
+          "699eec0bc35c50ae4edf66a4",
+          "699eec22c35c50ae4edf66f8",
+          "699eee59c35c50ae4edf70fb",
+          "699eee32c35c50ae4edf7072"
+        ]
+      },
+      {
+        "word": "turn left",
+        "attemptCount": 3,
+        "averageScore": 66.67,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20ygln-631a9131-audio.wav",
+        "bestResultId": "699eee42f27f0653c9300322",
+        "assessments": {
+          "mask": "1111 1111"
+        },
+        "resultIds": [
+          "699eec3bf27f0653c92ff828",
+          "699eee42f27f0653c9300322",
+          "699eec2ec35c50ae4edf673f"
+        ]
+      },
+      {
+        "word": "turn right",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20nqh5-13fda330-audio.wav",
+        "bestResultId": "699eec4df27f0653c92ff87d",
+        "assessments": {
+          "mask": "1111 11111"
+        },
+        "resultIds": [
+          "699eec4df27f0653c92ff87d"
+        ]
+      },
+      {
+        "word": "middle",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20o3k1-ea0d3c5d-audio.wav",
+        "bestResultId": "699eec5ec35c50ae4edf6825",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "699eec5ec35c50ae4edf6825"
+        ]
+      },
+      {
+        "word": "end",
+        "attemptCount": 2,
+        "averageScore": 66,
+        "bestScore": 66,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20ymuh-a6e46d2e-audio.wav",
+        "bestResultId": "699eee4ac35c50ae4edf70cb",
+        "assessments": {
+          "mask": "011"
+        },
+        "resultIds": [
+          "699eec6ac35c50ae4edf6860",
+          "699eee4ac35c50ae4edf70cb"
+        ]
+      },
+      {
+        "word": "traffic lights",
+        "attemptCount": 3,
+        "averageScore": 95.83,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20yage-1e0061dd-audio.wav",
+        "bestResultId": "699eee3af27f0653c93002fd",
+        "assessments": {
+          "mask": "1111111 111111"
+        },
+        "resultIds": [
+          "699eec7ac35c50ae4edf68ab",
+          "699eee3af27f0653c93002fd",
+          "699eec8fc35c50ae4edf68f8"
+        ]
+      },
+      {
+        "word": "north",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20pu1q-409407fd-audio.wav",
+        "bestResultId": "699eecaff27f0653c92ffa16",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "699eecaff27f0653c92ffa16"
+        ]
+      },
+      {
+        "word": "east",
+        "attemptCount": 4,
+        "averageScore": 41.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20rgo6-f1a97a70-audio.wav",
+        "bestResultId": "699eecfcf27f0653c92ffb98",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "699eecfcf27f0653c92ffb98",
+          "699eecbff27f0653c92ffa3d",
+          "699eeccdc35c50ae4edf69cf",
+          "699eece4f27f0653c92ffb43"
+        ]
+      },
+      {
+        "word": "west",
+        "attemptCount": 2,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20rsdn-e87ad4cd-audio.wav",
+        "bestResultId": "699eed0bc35c50ae4edf6ac0",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "699eed0bc35c50ae4edf6ac0",
+          "699eee51f27f0653c9300358"
+        ]
+      },
+      {
+        "word": "south",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20s5kn-7ed11963-audio.wav",
+        "bestResultId": "699eed1cf27f0653c92ffc5e",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "699eed1cf27f0653c92ffc5e"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Do you know the way to the pharmacy?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20xs15-2c693279-audio.wav",
+        "bestResultId": "699eee22f27f0653c9300286",
+        "assessments": {
+          "mask": "11 111 1111 111 111 11 111 111111111"
+        },
+        "resultIds": [
+          "699eee22f27f0653c9300286"
+        ]
+      },
+      {
+        "pattern": "How do I get to the bakery?",
+        "attemptCount": 1,
+        "averageScore": 94.29,
+        "bestScore": 94.28571428571429,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/25/admin/mm20xy6b-050a1933-audio.wav",
+        "bestResultId": "699eee2af27f0653c93002ac",
+        "assessments": {
+          "mask": "111 11 1 111 11 111 0011110"
+        },
+        "resultIds": [
+          "699eee2af27f0653c93002ac"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "go straight",
+      "turn left",
+      "turn right",
+      "middle",
+      "end",
+      "traffic lights",
+      "north",
+      "west",
+      "east",
+      "south"
+    ],
+    "grammar": [
+      "Do you know the way to the pharmacy?",
+      "Go straight to the end of the street.",
+      "How do I get to the bakery?",
+      "Go straight then turn right  It's in the middle of the grocery store and the pharmacy"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 4B - Lesson 5",
+    "description": "Gấm 23/12",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/12/20/collaborator/mjef7div-a17875ca-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77223"
+  }
+}

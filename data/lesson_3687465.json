@@ -1,0 +1,225 @@
+{
+  "reportId": "6978b31b0f7fe4b5e1c98eec",
+  "sessionId": "6978ae9a0f7fe4b5e1c976bd",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 23,
+      "totalCups": 29,
+      "averageReactionTimeMs": 1432.91,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 38,
+      "speakingCoverage": 0.61,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 23,
+      "averagePronunciationScore": 81.22,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 6,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 6,
+      "totalGrammarCount": 2,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "silver",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwl2vat-53311614-audio.wav",
+        "bestResultId": "6978b20d0f7fe4b5e1c9875a",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "6978afa80f7fe4b5e1c97aa3",
+          "6978b20d0f7fe4b5e1c9875a"
+        ]
+      },
+      {
+        "word": "gold",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwkydz2-de900ea2-audio.wav",
+        "bestResultId": "6978b13cbfd48146969d6931",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "6978afb5bfd48146969d6238",
+          "6978b124bfd48146969d6893",
+          "6978b13cbfd48146969d6931"
+        ]
+      },
+      {
+        "word": "metal",
+        "attemptCount": 3,
+        "averageScore": 93.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwkz7ib-e59b1c95-audio.wav",
+        "bestResultId": "6978b162bfd48146969d69d9",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "6978afc8bfd48146969d6288",
+          "6978b162bfd48146969d69d9",
+          "6978b1f10f7fe4b5e1c986d1"
+        ]
+      },
+      {
+        "word": "wood",
+        "attemptCount": 3,
+        "averageScore": 55.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwkrg8u-aa8228ce-audio.wav",
+        "bestResultId": "6978aff8bfd48146969d6322",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6978aff8bfd48146969d6322",
+          "6978b15abfd48146969d69b8",
+          "6978b1720f7fe4b5e1c982fa"
+        ]
+      },
+      {
+        "word": "wool",
+        "attemptCount": 2,
+        "averageScore": 66.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwks0wi-a6c6f234-audio.wav",
+        "bestResultId": "6978b0130f7fe4b5e1c97c34",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6978b0130f7fe4b5e1c97c34",
+          "6978b1520f7fe4b5e1c98297"
+        ]
+      },
+      {
+        "word": "plastic",
+        "attemptCount": 1,
+        "averageScore": 42,
+        "bestScore": 42,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwkyq16-2783d9b0-audio.wav",
+        "bestResultId": "6978b14bbfd48146969d6982",
+        "assessments": {
+          "mask": "10101000"
+        },
+        "resultIds": [
+          "6978b14bbfd48146969d6982"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What is your trophy made of?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwkxlkt-b5a45e8a-audio.wav",
+        "bestResultId": "6978b117bfd48146969d6870",
+        "assessments": {
+          "mask": "1111 11 1111 111111 1111 111"
+        },
+        "resultIds": [
+          "6978b117bfd48146969d6870"
+        ]
+      },
+      {
+        "pattern": "It's made of gold.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/27/admin/mkwkydz2-de900ea2-audio.wav",
+        "bestResultId": "6978b13cbfd48146969d6931",
+        "assessments": {
+          "mask": "1111 1111 11 11111"
+        },
+        "resultIds": [
+          "6978b124bfd48146969d6893",
+          "6978b13cbfd48146969d6931"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "metal",
+      "gold",
+      "silver",
+      "wool",
+      "wood",
+      "plastic"
+    ],
+    "grammar": [
+      "What is your trophy made of?",
+      "It's made of gold."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 3B - Lesson 3",
+    "description": "Gấm 03/12",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/27/collaborator/migvtyjk-af119386-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77143"
+  }
+}

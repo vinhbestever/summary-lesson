@@ -1,0 +1,252 @@
+{
+  "reportId": "698b23660b8640e5d56fea9b",
+  "sessionId": "698b1cc26107d676b6aead9e",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 46,
+      "totalCups": 45,
+      "averageReactionTimeMs": 1249.07,
+      "practiceAccuracyPercent": 96,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 49,
+      "speakingCoverage": 0.94,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 46,
+      "averagePronunciationScore": 85.43,
+      "averageGrammarScore": 74.36,
+      "goodVocabularyCount": 6,
+      "goodGrammarCount": 3,
+      "totalVocabularyCount": 6,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "street",
+        "attemptCount": 10,
+        "averageScore": 74,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgkdl8u-7a6e7045-audio.wav",
+        "bestResultId": "698b215d6107d676b6aebfce",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "698b1e206107d676b6aeb3ba",
+          "698b202b6107d676b6aebc54",
+          "698b204c0b8640e5d56fe17d",
+          "698b206d6107d676b6aebd5f",
+          "698b207d0b8640e5d56fe1e0",
+          "698b20f46107d676b6aebebd",
+          "698b215d6107d676b6aebfce",
+          "698b208b0b8640e5d56fe1f7",
+          "698b214e0b8640e5d56fe39e",
+          "698b21420b8640e5d56fe382"
+        ]
+      },
+      {
+        "word": "address",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgk8lki-ebc11df3-audio.wav",
+        "bestResultId": "698b20746107d676b6aebd6d",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "698b1e330b8640e5d56fd88c",
+          "698b20226107d676b6aebc34",
+          "698b20746107d676b6aebd6d"
+        ]
+      },
+      {
+        "word": "North",
+        "attemptCount": 6,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgkns1e-47eeb551-audio.wav",
+        "bestResultId": "698b233a0b8640e5d56fea0f",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "698b1e716107d676b6aeb52c",
+          "698b228d6107d676b6aec46f",
+          "698b22b76107d676b6aec4e6",
+          "698b22fe6107d676b6aec58e",
+          "698b230d6107d676b6aec5d1",
+          "698b233a0b8640e5d56fea0f"
+        ]
+      },
+      {
+        "word": "South",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgk7x61-b2f13083-audio.wav",
+        "bestResultId": "698b20546107d676b6aebccc",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "698b1e816107d676b6aeb56c",
+          "698b1fc36107d676b6aeba5a",
+          "698b20546107d676b6aebccc"
+        ]
+      },
+      {
+        "word": "East",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgjy9o4-aafb20c9-audio.wav",
+        "bestResultId": "698b1e926107d676b6aeb5b3",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "698b1e926107d676b6aeb5b3"
+        ]
+      },
+      {
+        "word": "West",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgjylzj-cb689978-audio.wav",
+        "bestResultId": "698b1ea26107d676b6aeb605",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "698b1ea26107d676b6aeb605"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Where is the grocery store?",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgk7k2b-019fdf5b-audio.wav",
+        "bestResultId": "698b20436107d676b6aebc98",
+        "assessments": {
+          "mask": "11111 11 111 1111111 11111"
+        },
+        "resultIds": [
+          "698b1fb26107d676b6aeba0b",
+          "698b20436107d676b6aebc98"
+        ]
+      },
+      {
+        "pattern": "It's in the south of the city.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgk7x61-b2f13083-audio.wav",
+        "bestResultId": "698b20546107d676b6aebccc",
+        "assessments": {
+          "mask": "1111 11 111 11111 11 111 11111"
+        },
+        "resultIds": [
+          "698b1fc36107d676b6aeba5a",
+          "698b20546107d676b6aebccc"
+        ]
+      },
+      {
+        "pattern": "Do you know the address of the grocery store?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/02/10/admin/mlgk6u88-ed4fa0d0-audio.wav",
+        "bestResultId": "698b20226107d676b6aebc34",
+        "assessments": {
+          "mask": "11 111 1111 111 1111111 11 111 1111111 111111"
+        },
+        "resultIds": [
+          "698b20226107d676b6aebc34"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "street",
+      "address",
+      "North",
+      "West",
+      "East",
+      "South"
+    ],
+    "grammar": [
+      "Where is the grocery store?",
+      "It's in the south of the city.",
+      "Do you know the address of the grocery store?",
+      "It’s 68 Hang Dao street."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 4B - Lesson 2",
+    "description": "Gấm 20/12",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/12/19/collaborator/mjclqy6j-81f4a6bd-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77220"
+  }
+}

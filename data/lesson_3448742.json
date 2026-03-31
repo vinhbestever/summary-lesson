@@ -1,0 +1,282 @@
+{
+  "reportId": "68f8da57308fedade1ca313c",
+  "sessionId": "68f8d552308fedade1ca2e86",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 34,
+      "totalCups": 27,
+      "averageReactionTimeMs": 963.85,
+      "practiceAccuracyPercent": 90,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 41,
+      "speakingCoverage": 0.83,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 34,
+      "averagePronunciationScore": 89.88,
+      "averageGrammarScore": 82,
+      "goodVocabularyCount": 5,
+      "goodGrammarCount": 6,
+      "totalVocabularyCount": 5,
+      "totalGrammarCount": 6,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "clever",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20uswu-266784f5-audio.wav",
+        "bestResultId": "68f8da51308fedade1ca3128",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "68f8d602308fedade1ca2f6c",
+          "68f8d6184fae51be8061c306",
+          "68f8d830308fedade1ca303c",
+          "68f8da51308fedade1ca3128"
+        ]
+      },
+      {
+        "word": "hard-working",
+        "attemptCount": 5,
+        "averageScore": 89.2,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20u61o-0e8dd35d-audio.wav",
+        "bestResultId": "68f8da33308fedade1ca3120",
+        "assessments": {
+          "mask": "1111 1111111"
+        },
+        "resultIds": [
+          "68f8d6294fae51be8061c30e",
+          "68f8d8374fae51be8061c3f2",
+          "68f8da33308fedade1ca3120",
+          "68f8d651308fedade1ca2f8f",
+          "68f8d6404fae51be8061c319"
+        ]
+      },
+      {
+        "word": "funny",
+        "attemptCount": 5,
+        "averageScore": 68,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20th6i-9c03cf07-audio.wav",
+        "bestResultId": "68f8da13308fedade1ca311c",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "68f8d81f4fae51be8061c3ee",
+          "68f8da044fae51be8061c4c1",
+          "68f8da13308fedade1ca311c",
+          "68f8d6734fae51be8061c330",
+          "68f8d6894fae51be8061c337"
+        ]
+      },
+      {
+        "word": "kind",
+        "attemptCount": 5,
+        "averageScore": 99.4,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20n14l-8d317dcb-audio.wav",
+        "bestResultId": "68f8d8e5308fedade1ca305c",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "68f8d69c4fae51be8061c340",
+          "68f8d83e308fedade1ca3040",
+          "68f8d8ac4fae51be8061c40c",
+          "68f8d8e5308fedade1ca305c",
+          "68f8da234fae51be8061c4c5"
+        ]
+      },
+      {
+        "word": "friendly",
+        "attemptCount": 5,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20n14l-8d317dcb-audio.wav",
+        "bestResultId": "68f8d8e5308fedade1ca305c",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "68f8d6b5308fedade1ca2fb3",
+          "68f8d6cb4fae51be8061c355",
+          "68f8d84e4fae51be8061c3f6",
+          "68f8d8ac4fae51be8061c40c",
+          "68f8d8e5308fedade1ca305c"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Is he funny?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20iry5-6d519a25-audio.wav",
+        "bestResultId": "68f8d81f4fae51be8061c3ee",
+        "assessments": {
+          "mask": "11 11 111111"
+        },
+        "resultIds": [
+          "68f8d81f4fae51be8061c3ee"
+        ]
+      },
+      {
+        "pattern": "Why do you like her?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20izl4-246e8194-audio.wav",
+        "bestResultId": "68f8d829308fedade1ca3038",
+        "assessments": {
+          "mask": "111 11 111 1111 1111"
+        },
+        "resultIds": [
+          "68f8d829308fedade1ca3038"
+        ]
+      },
+      {
+        "pattern": "Because she's kind.",
+        "attemptCount": 3,
+        "averageScore": 75.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20lt3y-c1399541-audio.wav",
+        "bestResultId": "68f8d8ac4fae51be8061c40c",
+        "assessments": {
+          "mask": "111 11011 11111111 1 1111 111 1111111 11111 1111 111 111111111"
+        },
+        "resultIds": [
+          "68f8d8ac4fae51be8061c40c",
+          "68f8d83e308fedade1ca3040",
+          "68f8d8e5308fedade1ca305c"
+        ]
+      },
+      {
+        "pattern": "No,he isn’t.",
+        "attemptCount": 1,
+        "averageScore": 75,
+        "bestScore": 75,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20jmah-84b68874-audio.wav",
+        "bestResultId": "68f8d846308fedade1ca3044",
+        "resultIds": [
+          "68f8d846308fedade1ca3044"
+        ]
+      },
+      {
+        "pattern": "Because she's friendly.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20js8t-be67aed6-audio.wav",
+        "bestResultId": "68f8d84e4fae51be8061c3f6",
+        "assessments": {
+          "mask": "1111111 11111 111111111"
+        },
+        "resultIds": [
+          "68f8d84e4fae51be8061c3f6"
+        ]
+      },
+      {
+        "pattern": "Yes, he is.",
+        "attemptCount": 4,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/22/admin/mh20uswu-266784f5-audio.wav",
+        "bestResultId": "68f8da51308fedade1ca3128",
+        "assessments": {
+          "mask": "1111 11 11"
+        },
+        "resultIds": [
+          "68f8d8554fae51be8061c3fa",
+          "68f8da33308fedade1ca3120",
+          "68f8da51308fedade1ca3128",
+          "68f8d866308fedade1ca3050"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "clever",
+      "hard-working",
+      "funny",
+      "kind",
+      "friendly"
+    ],
+    "grammar": [
+      "Is he funny?",
+      "Yes, he is.",
+      "No,he isn’t.",
+      "Why do you like her?",
+      "Because she's kind.",
+      "Because she's friendly."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/11/collaborator/mfeblts1-280ac389-topic-brainstorm.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "75210"
+  }
+}

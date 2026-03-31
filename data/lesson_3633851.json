@@ -1,0 +1,291 @@
+{
+  "reportId": "6958832bf33d0f136d7ccf29",
+  "sessionId": "69587eb3e4526c242fe092f8",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 29,
+      "totalCups": 27,
+      "averageReactionTimeMs": 1390.07,
+      "practiceAccuracyPercent": 90,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 39,
+      "speakingCoverage": 0.74,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 29,
+      "averagePronunciationScore": 88.86,
+      "averageGrammarScore": 90.17,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 7,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 7,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "bus",
+        "attemptCount": 7,
+        "averageScore": 96.57,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp3uni-e50b3193-audio.wav",
+        "bestResultId": "6958819df33d0f136d7ccc7b",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "69587f6de4526c242fe093ba",
+          "69587f7fe4526c242fe093cc",
+          "69587f94e4526c242fe093e6",
+          "69588112e4526c242fe09663",
+          "6958811bf33d0f136d7ccc08",
+          "6958819df33d0f136d7ccc7b",
+          "695882c3e4526c242fe098a0"
+        ]
+      },
+      {
+        "word": "bus stop",
+        "attemptCount": 4,
+        "averageScore": 94,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp127d-8320858b-audio.wav",
+        "bestResultId": "6958811bf33d0f136d7ccc08",
+        "assessments": {
+          "mask": "111 1111"
+        },
+        "resultIds": [
+          "69587f7fe4526c242fe093cc",
+          "69587f94e4526c242fe093e6",
+          "6958811bf33d0f136d7ccc08",
+          "695882c3e4526c242fe098a0"
+        ]
+      },
+      {
+        "word": "train",
+        "attemptCount": 13,
+        "averageScore": 92.31,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxpbg8p-43bc1e05-audio.wav",
+        "bestResultId": "69588300e4526c242fe0992c",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69587fbff33d0f136d7cca17",
+          "69587fd0f33d0f136d7cca33",
+          "69587fe3f33d0f136d7cca4e",
+          "69587ff6e4526c242fe09454",
+          "6958810bf33d0f136d7ccbee",
+          "69588123e4526c242fe0968d",
+          "6958812be4526c242fe09691",
+          "69588134e4526c242fe09695",
+          "6958813df33d0f136d7ccc27",
+          "69588148e4526c242fe0969d",
+          "695881c2e4526c242fe096f6",
+          "69588300e4526c242fe0992c",
+          "69588155f33d0f136d7ccc47"
+        ]
+      },
+      {
+        "word": "train station",
+        "attemptCount": 8,
+        "averageScore": 87.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxpbg8p-43bc1e05-audio.wav",
+        "bestResultId": "69588300e4526c242fe0992c",
+        "assessments": {
+          "mask": "11111 11111111"
+        },
+        "resultIds": [
+          "69587fe3f33d0f136d7cca4e",
+          "69587ff6e4526c242fe09454",
+          "69588123e4526c242fe0968d",
+          "6958813df33d0f136d7ccc27",
+          "69588148e4526c242fe0969d",
+          "695881c2e4526c242fe096f6",
+          "69588300e4526c242fe0992c",
+          "69588155f33d0f136d7ccc47"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "How do you go to school?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp0jqs-d8a8f8b6-audio.wav",
+        "bestResultId": "69588103e4526c242fe095cd",
+        "assessments": {
+          "mask": "111 11 111 11 11 1111111"
+        },
+        "resultIds": [
+          "69588103e4526c242fe095cd"
+        ]
+      },
+      {
+        "pattern": "How can I catch  a bus?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp0vmx-3c54e029-audio.wav",
+        "bestResultId": "69588112e4526c242fe09663",
+        "assessments": {
+          "mask": "111 111 1 11111 1 1111"
+        },
+        "resultIds": [
+          "69588112e4526c242fe09663"
+        ]
+      },
+      {
+        "pattern": "You go to the  bus stop.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp127d-8320858b-audio.wav",
+        "bestResultId": "6958811bf33d0f136d7ccc08",
+        "assessments": {
+          "mask": "111 11 11 111 111 1111"
+        },
+        "resultIds": [
+          "6958811bf33d0f136d7ccc08"
+        ]
+      },
+      {
+        "pattern": "I go to school by train.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp1f7q-49e6f872-audio.wav",
+        "bestResultId": "6958812be4526c242fe09691",
+        "assessments": {
+          "mask": "1 11 11 111111 11 111111"
+        },
+        "resultIds": [
+          "6958812be4526c242fe09691"
+        ]
+      },
+      {
+        "pattern": "How can I catch a train?",
+        "attemptCount": 1,
+        "averageScore": 88.83,
+        "bestScore": 88.83333333333333,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp1lx1-9e334d9d-audio.wav",
+        "bestResultId": "69588134e4526c242fe09695",
+        "assessments": {
+          "mask": "111 111 1 00111 1 111111"
+        },
+        "resultIds": [
+          "69588134e4526c242fe09695"
+        ]
+      },
+      {
+        "pattern": "You go to the train station.",
+        "attemptCount": 3,
+        "averageScore": 63.89,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp20my-47175a40-audio.wav",
+        "bestResultId": "69588148e4526c242fe0969d",
+        "assessments": {
+          "mask": "111 11 11 111 11111 11111111"
+        },
+        "resultIds": [
+          "69588148e4526c242fe0969d",
+          "6958813df33d0f136d7ccc27",
+          "69588155f33d0f136d7ccc47"
+        ]
+      },
+      {
+        "pattern": "I go to school by bus.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/03/admin/mjxp3uni-e50b3193-audio.wav",
+        "bestResultId": "6958819df33d0f136d7ccc7b",
+        "assessments": {
+          "mask": "111 11111 1 11 11 111111 11 1111 111 11111 1111"
+        },
+        "resultIds": [
+          "6958819df33d0f136d7ccc7b"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "bus",
+      "bus stop",
+      "train",
+      "train station"
+    ],
+    "grammar": [
+      "How do you go to school?",
+      "I go to school by bus.",
+      "I go to school by train.",
+      "How can I catch  a bus?",
+      "You go to the  bus stop.",
+      "How can I catch a train?",
+      "You go to the train station."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "Level 5 - Unit 1B - Lesson 5",
+    "description": "Gấm 09/11",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/05/collaborator/mhlwq6f8-fb4292a2-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76908"
+  }
+}

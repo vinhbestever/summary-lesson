@@ -1,0 +1,287 @@
+{
+  "reportId": "69b01c628905d0211675ce57",
+  "sessionId": "69b016300fa3de72797ce7f4",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 24,
+      "totalCups": 39,
+      "averageReactionTimeMs": 1229.88,
+      "practiceAccuracyPercent": 94,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 45,
+      "speakingCoverage": 0.53,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 24,
+      "averagePronunciationScore": 86.25,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 8,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 8,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "once a week",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmvj61-3e0275cb-audio.wav",
+        "bestResultId": "69b019980fa3de72797d3285",
+        "assessments": {
+          "mask": "1111 1 1111"
+        },
+        "resultIds": [
+          "69b017610fa3de72797cff4e",
+          "69b019980fa3de72797d3285"
+        ]
+      },
+      {
+        "word": "twice a week",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmv71j-7fe4c916-audio.wav",
+        "bestResultId": "69b019898905d0211675983d",
+        "assessments": {
+          "mask": "11111 1 1111"
+        },
+        "resultIds": [
+          "69b017728905d02116756970",
+          "69b019898905d0211675983d"
+        ]
+      },
+      {
+        "word": "three times a week",
+        "attemptCount": 4,
+        "averageScore": 85.38,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmv1sl-1b69b114-audio.wav",
+        "bestResultId": "69b019820fa3de72797d3081",
+        "assessments": {
+          "mask": "11111 11111 1 11111"
+        },
+        "resultIds": [
+          "69b017a70fa3de72797d066b",
+          "69b019508905d02116759302",
+          "69b019820fa3de72797d3081",
+          "69b017988905d02116756c79"
+        ]
+      },
+      {
+        "word": "every school day",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmvcu6-7e72f8b2-audio.wav",
+        "bestResultId": "69b019900fa3de72797d31f0",
+        "assessments": {
+          "mask": "11111 111111 111"
+        },
+        "resultIds": [
+          "69b017b98905d02116757028",
+          "69b019900fa3de72797d31f0"
+        ]
+      },
+      {
+        "word": "interesting",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmm66v-3f895637-audio.wav",
+        "bestResultId": "69b017e48905d02116757392",
+        "assessments": {
+          "mask": "11111111111"
+        },
+        "resultIds": [
+          "69b017e48905d02116757392"
+        ]
+      },
+      {
+        "word": "funny",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmmjsb-4b6262c2-audio.wav",
+        "bestResultId": "69b017f58905d0211675751b",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69b017f58905d0211675751b"
+        ]
+      },
+      {
+        "word": "exciting",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmndek-18cb4d3a-audio.wav",
+        "bestResultId": "69b0181b0fa3de72797d1288",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "69b0181b0fa3de72797d1288"
+        ]
+      },
+      {
+        "word": "easy",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmnr5r-5e338d4e-audio.wav",
+        "bestResultId": "69b0182d0fa3de72797d1407",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "69b0182d0fa3de72797d1407"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "How many lessons do you have today?",
+        "attemptCount": 2,
+        "averageScore": 98.79,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmrwi4-9cc50228-audio.wav",
+        "bestResultId": "69b018ef0fa3de72797d2619",
+        "assessments": {
+          "mask": "111 1111 1111111 11 111 1111 111111"
+        },
+        "resultIds": [
+          "69b018ef0fa3de72797d2619",
+          "69b0196a8905d021167594f3"
+        ]
+      },
+      {
+        "pattern": "I have five lessons.",
+        "attemptCount": 3,
+        "averageScore": 87.42,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmvq1s-7a3a8627-audio.wav",
+        "bestResultId": "69b019a18905d021167599ee",
+        "assessments": {
+          "mask": "1 1111 1111 11111111"
+        },
+        "resultIds": [
+          "69b019a18905d021167599ee",
+          "69b018fb0fa3de72797d2728",
+          "69b019710fa3de72797d2f40"
+        ]
+      },
+      {
+        "pattern": "How often do you have English?",
+        "attemptCount": 2,
+        "averageScore": 86.08,
+        "bestScore": 88.83333333333333,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmuvb1-73e9c973-audio.wav",
+        "bestResultId": "69b019798905d02116759628",
+        "assessments": {
+          "mask": "111 11111 11 111 1000 11111111"
+        },
+        "resultIds": [
+          "69b019798905d02116759628",
+          "69b019420fa3de72797d2ba1"
+        ]
+      },
+      {
+        "pattern": "I have it three times a week.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/10/admin/mmkmv1sl-1b69b114-audio.wav",
+        "bestResultId": "69b019820fa3de72797d3081",
+        "assessments": {
+          "mask": "1 1111 11 11111 11111 1 11111"
+        },
+        "resultIds": [
+          "69b019508905d02116759302",
+          "69b019820fa3de72797d3081"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "once a week",
+      "twice a week",
+      "three times a week",
+      "every school day",
+      "interesting",
+      "funny",
+      "exciting",
+      "easy"
+    ],
+    "grammar": [
+      "How many lessons do you have today?",
+      "I have five lessons.",
+      "How often do you have English?",
+      "I have it three times a week."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 1C - Lesson 2",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/19/collaborator/mkkqdi5s-481e643a-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "78270"
+  }
+}

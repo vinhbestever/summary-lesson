@@ -1,0 +1,286 @@
+{
+  "reportId": "696f7e0a3034135589b39299",
+  "sessionId": "696f78f03034135589b37258",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 31,
+      "totalCups": 31,
+      "averageReactionTimeMs": 1299.74,
+      "practiceAccuracyPercent": 95,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 45,
+      "speakingCoverage": 0.69,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 31,
+      "averagePronunciationScore": 80.48,
+      "averageGrammarScore": 77.6,
+      "goodVocabularyCount": 8,
+      "goodGrammarCount": 3,
+      "totalVocabularyCount": 8,
+      "totalGrammarCount": 3,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "pan",
+        "attemptCount": 2,
+        "averageScore": 83,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlo0nk-bfc90e11-audio.wav",
+        "bestResultId": "696f7bf203eb29e88a0d636c",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "696f7bf203eb29e88a0d636c",
+          "696f79e13034135589b37582"
+        ]
+      },
+      {
+        "word": "spoon",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmloiif-ea93c91e-audio.wav",
+        "bestResultId": "696f7c093034135589b37d4a",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "696f79f13034135589b3763e",
+          "696f7bf93034135589b37d21",
+          "696f7c093034135589b37d4a"
+        ]
+      },
+      {
+        "word": "bottle",
+        "attemptCount": 5,
+        "averageScore": 92,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlqy9r-6fa28571-audio.wav",
+        "bestResultId": "696f7c7a3034135589b3819d",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "696f7a033034135589b37681",
+          "696f7bc93034135589b37c55",
+          "696f7c0f3034135589b37d5d",
+          "696f7c7a3034135589b3819d",
+          "696f7c1e3034135589b37dad"
+        ]
+      },
+      {
+        "word": "rug",
+        "attemptCount": 5,
+        "averageScore": 26.4,
+        "bestScore": 33,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlrmgf-c8dc1105-audio.wav",
+        "bestResultId": "696f7c9a3034135589b382e7",
+        "assessments": {
+          "mask": "100"
+        },
+        "resultIds": [
+          "696f7a3303eb29e88a0d5d03",
+          "696f7a413034135589b37749",
+          "696f7c1703eb29e88a0d6425",
+          "696f7c9a3034135589b382e7",
+          "696f7bd93034135589b37c7a"
+        ]
+      },
+      {
+        "word": "study",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlsj0g-7a982249-audio.wav",
+        "bestResultId": "696f7cc43034135589b3851e",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "696f7a5003eb29e88a0d5d5b",
+          "696f7bb83034135589b37c18",
+          "696f7c0103eb29e88a0d638a",
+          "696f7cc43034135589b3851e"
+        ]
+      },
+      {
+        "word": "desk",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlsj0g-7a982249-audio.wav",
+        "bestResultId": "696f7cc43034135589b3851e",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "696f7a5f3034135589b377a2",
+          "696f7bb83034135589b37c18",
+          "696f7c0103eb29e88a0d638a",
+          "696f7cc43034135589b3851e"
+        ]
+      },
+      {
+        "word": "keep water",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlonky-ef90b75f-audio.wav",
+        "bestResultId": "696f7c0f3034135589b37d5d",
+        "assessments": {
+          "mask": "1111 11111"
+        },
+        "resultIds": [
+          "696f7a893034135589b377f8",
+          "696f7bc93034135589b37c55",
+          "696f7c0f3034135589b37d5d"
+        ]
+      },
+      {
+        "word": "clean my feet",
+        "attemptCount": 4,
+        "averageScore": 93.75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlotn4-0580c8e2-audio.wav",
+        "bestResultId": "696f7c1703eb29e88a0d6425",
+        "assessments": {
+          "mask": "11111 11 1111"
+        },
+        "resultIds": [
+          "696f7a9b03eb29e88a0d5e03",
+          "696f7bd93034135589b37c7a",
+          "696f7c1703eb29e88a0d6425",
+          "696f7c9a3034135589b382e7"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "I have a desk to study.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlochv-752765a2-audio.wav",
+        "bestResultId": "696f7c0103eb29e88a0d638a",
+        "assessments": {
+          "mask": "1 1111 1 1111 11 11111"
+        },
+        "resultIds": [
+          "696f7bb83034135589b37c18",
+          "696f7c0103eb29e88a0d638a"
+        ]
+      },
+      {
+        "pattern": "I have a bottle to keep water.",
+        "attemptCount": 2,
+        "averageScore": 90.43,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlonky-ef90b75f-audio.wav",
+        "bestResultId": "696f7c0f3034135589b37d5d",
+        "assessments": {
+          "mask": "1 1111 1 111111 11 1111 11111"
+        },
+        "resultIds": [
+          "696f7c0f3034135589b37d5d",
+          "696f7bc93034135589b37c55"
+        ]
+      },
+      {
+        "pattern": "I have a rug to clean my feet.",
+        "attemptCount": 2,
+        "averageScore": 89.56,
+        "bestScore": 91.625,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/20/admin/mkmlotn4-0580c8e2-audio.wav",
+        "bestResultId": "696f7c1703eb29e88a0d6425",
+        "assessments": {
+          "mask": "1 1111 1 100 11 11111 11 1111"
+        },
+        "resultIds": [
+          "696f7c1703eb29e88a0d6425",
+          "696f7bd93034135589b37c7a"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "pan",
+      "bottle",
+      "spoon",
+      "rug",
+      "study",
+      "desk",
+      "keep water",
+      "clean my feet"
+    ],
+    "grammar": [
+      "I have a desk to study.",
+      "I have a bottle to keep water.",
+      "I have a rug to clean my feet."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 3B - Lesson 1",
+    "description": "Gấm 02/12",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/26/collaborator/mifebq3c-342e8f79-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77141"
+  }
+}

@@ -1,0 +1,246 @@
+{
+  "reportId": "69c3ec96cd2616b91f955385",
+  "sessionId": "69c3e6a9aae94d884a978a04",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 26,
+      "totalCups": 42,
+      "averageReactionTimeMs": 1901.6,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 45,
+      "speakingCoverage": 0.58,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 26,
+      "averagePronunciationScore": 78.8,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 7,
+      "goodGrammarCount": 1,
+      "totalVocabularyCount": 7,
+      "totalGrammarCount": 2,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "costume",
+        "attemptCount": 6,
+        "averageScore": 83,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn646axh-a6f02067-audio.wav",
+        "bestResultId": "69c3eb36aae94d884a97c563",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "69c3e77faae94d884a9797ef",
+          "69c3e94ccd2616b91f953214",
+          "69c3eb36aae94d884a97c563",
+          "69c3e923aae94d884a97aea2",
+          "69c3e945aae94d884a97b018",
+          "69c3e976aae94d884a97b243"
+        ]
+      },
+      {
+        "word": "pyjamas",
+        "attemptCount": 6,
+        "averageScore": 51.83,
+        "bestScore": 71,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn63x2im-ed0449fa-audio.wav",
+        "bestResultId": "69c3e987cd2616b91f953501",
+        "assessments": {
+          "mask": "1001111"
+        },
+        "resultIds": [
+          "69c3e7a4cd2616b91f951e16",
+          "69c3e923aae94d884a97aea2",
+          "69c3e987cd2616b91f953501",
+          "69c3eb36aae94d884a97c563",
+          "69c3e955cd2616b91f953265",
+          "69c3e97ecd2616b91f95344a"
+        ]
+      },
+      {
+        "word": "trainers",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn63w5p9-31e448ec-audio.wav",
+        "bestResultId": "69c3e95dcd2616b91f9532ab",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "69c3e7b4cd2616b91f951ee1",
+          "69c3e95dcd2616b91f9532ab"
+        ]
+      },
+      {
+        "word": "cheap",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn63nxcf-bcc53e5f-audio.wav",
+        "bestResultId": "69c3e7dccd2616b91f952106",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69c3e7dccd2616b91f952106"
+        ]
+      },
+      {
+        "word": "cheaper",
+        "attemptCount": 6,
+        "averageScore": 83.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn646nuj-46f6fef2-audio.wav",
+        "bestResultId": "69c3eb47aae94d884a97c628",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "69c3e7ebcd2616b91f952220",
+          "69c3e90ccd2616b91f952f82",
+          "69c3e93caae94d884a97afc3",
+          "69c3eb23aae94d884a97c4a4",
+          "69c3eb47aae94d884a97c628",
+          "69c3eb18aae94d884a97c407"
+        ]
+      },
+      {
+        "word": "expensive",
+        "attemptCount": 8,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn646zxb-b52945b2-audio.wav",
+        "bestResultId": "69c3eb56cd2616b91f9547e5",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "69c3e812aae94d884a979f8b",
+          "69c3e923aae94d884a97aea2",
+          "69c3e945aae94d884a97b018",
+          "69c3e965aae94d884a97b153",
+          "69c3e96daae94d884a97b1dc",
+          "69c3e976aae94d884a97b243",
+          "69c3eb36aae94d884a97c563",
+          "69c3eb56cd2616b91f9547e5"
+        ]
+      },
+      {
+        "word": "more expensive",
+        "attemptCount": 6,
+        "averageScore": 91.67,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn646zxb-b52945b2-audio.wav",
+        "bestResultId": "69c3eb56cd2616b91f9547e5",
+        "assessments": {
+          "mask": "1111 111111111"
+        },
+        "resultIds": [
+          "69c3e923aae94d884a97aea2",
+          "69c3e965aae94d884a97b153",
+          "69c3e976aae94d884a97b243",
+          "69c3eb36aae94d884a97c563",
+          "69c3eb56cd2616b91f9547e5",
+          "69c3e945aae94d884a97b018"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "The dress is cheaper than the shirt.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/25/admin/mn63vggz-c2a528cf-audio.wav",
+        "bestResultId": "69c3e93caae94d884a97afc3",
+        "assessments": {
+          "mask": "111 11111 11 1111111 1111 111 111111"
+        },
+        "resultIds": [
+          "69c3e90ccd2616b91f952f82",
+          "69c3e93caae94d884a97afc3"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "costume",
+      "pyjamas",
+      "trainers",
+      "cheap",
+      "cheaper",
+      "more expensive",
+      "expensive"
+    ],
+    "grammar": [
+      "The dress is cheaper than the shirt.",
+      "me is more  expensive than the pyjamas."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 2C - Lesson 2",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/02/02/collaborator/ml4y2uut-a4fefa42-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "78314"
+  }
+}

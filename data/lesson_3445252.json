@@ -1,0 +1,357 @@
+[
+  {
+    "reportId": "68ecf795c8fa5f23946b59a1",
+    "sessionId": "68eba26909c1c1cd5c52b5a0",
+    "completion": {
+      "isCompletedByReportRules": false,
+      "reasons": [
+        "GRAMMAR_SECTION_INCOMPLETE",
+        "IMMEDIATE_EXIT"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 1,
+        "totalCups": 0,
+        "averageReactionTimeMs": 1652,
+        "practiceAccuracyPercent": null,
+        "sectionsCompletionPercent": 5,
+        "speakingTargetCount": 49,
+        "speakingCoverage": 0.02,
+        "reactionTag": null,
+        "teacherComment": "Bé vào học nhưng thoát ra luôn, hãy làm bài tập để củng cố kiến thức của buổi hôm nay con nhé.",
+        "sessionSummary": "Chưa hoàn thành buổi học.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": false,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": false,
+          "immediateExit": true
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 1,
+        "averagePronunciationScore": 100,
+        "averageGrammarScore": null,
+        "goodVocabularyCount": 0,
+        "goodGrammarCount": 0,
+        "totalVocabularyCount": 6,
+        "totalGrammarCount": 3,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [],
+      "grammar": []
+    },
+    "targets": {
+      "vocabulary": [
+        "fat",
+        "tall",
+        "young",
+        "old",
+        "short",
+        "thin"
+      ],
+      "grammar": [
+        "What do you look like?",
+        "I'm tall",
+        "I'm short."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "QUICK_EXIT_NO_RELEARN",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "blue",
+        "label": "Blue",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/noraimlang.mp4"
+      },
+      "name": "Kịch bản",
+      "description": "Kịch bản- 10/9/2025",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/03/collaborator/mga6db0m-2a76166b-fix-level-5---unit-1a---lesson.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "75206"
+    }
+  },
+  {
+    "reportId": "68f0b244d5e9d73ceff25803",
+    "sessionId": "68e66063ff06feda9de8b204",
+    "completion": {
+      "isCompletedByReportRules": true,
+      "reasons": [
+        "GRAMMAR_SECTION_COMPLETED",
+        "VOCABULARY_SECTION_COMPLETED"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 36,
+        "totalCups": 34,
+        "averageReactionTimeMs": 1757.17,
+        "practiceAccuracyPercent": 92,
+        "sectionsCompletionPercent": 100,
+        "speakingTargetCount": 49,
+        "speakingCoverage": 0.73,
+        "reactionTag": "Rất nhanh",
+        "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+        "sessionSummary": "Buổi học diễn ra thành công.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": true,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": true,
+          "immediateExit": false
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 36,
+        "averagePronunciationScore": 82.42,
+        "averageGrammarScore": 89.43,
+        "goodVocabularyCount": 6,
+        "goodGrammarCount": 3,
+        "totalVocabularyCount": 6,
+        "totalGrammarCount": 3,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [
+        {
+          "word": "tall",
+          "attemptCount": 4,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0sai9-31b81992-audio.wav",
+          "bestResultId": "68e665efff06feda9de8b740",
+          "assessments": {
+            "mask": "1111"
+          },
+          "resultIds": [
+            "68e6617ac916e14dfaf09c25",
+            "68e66392ff06feda9de8b4c7",
+            "68e663ddff06feda9de8b518",
+            "68e665efff06feda9de8b740"
+          ]
+        },
+        {
+          "word": "short",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0h3sy-78f3f89f-audio.wav",
+          "bestResultId": "68e663e5c916e14dfaf09e50",
+          "assessments": {
+            "mask": "11111"
+          },
+          "resultIds": [
+            "68e6618aff06feda9de8b399",
+            "68e663e5c916e14dfaf09e50"
+          ]
+        },
+        {
+          "word": "fat",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0sv78-af8950c1-audio.wav",
+          "bestResultId": "68e6660aff06feda9de8b748",
+          "assessments": {
+            "mask": "111"
+          },
+          "resultIds": [
+            "68e661c3c916e14dfaf09c4a",
+            "68e663edc916e14dfaf09e54",
+            "68e6660aff06feda9de8b748"
+          ]
+        },
+        {
+          "word": "thin",
+          "attemptCount": 6,
+          "averageScore": 45.83,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0t4dt-4219146e-audio.wav",
+          "bestResultId": "68e66617c916e14dfaf0a0d9",
+          "assessments": {
+            "mask": "1111"
+          },
+          "resultIds": [
+            "68e661d7c916e14dfaf09c5c",
+            "68e66617c916e14dfaf0a0d9",
+            "68e66420c916e14dfaf09e83",
+            "68e6642fc916e14dfaf09e8a",
+            "68e66443c916e14dfaf09e99",
+            "68e66428ff06feda9de8b53b"
+          ]
+        },
+        {
+          "word": "old",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0i7ad-d7704f6f-audio.wav",
+          "bestResultId": "68e66418c916e14dfaf09e78",
+          "assessments": {
+            "mask": "1111"
+          },
+          "resultIds": [
+            "68e6620bc916e14dfaf09c73",
+            "68e66418c916e14dfaf09e78"
+          ]
+        },
+        {
+          "word": "young",
+          "attemptCount": 5,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0tdyn-dcd45696-audio.wav",
+          "bestResultId": "68e66623ff06feda9de8b75a",
+          "assessments": {
+            "mask": "11111"
+          },
+          "resultIds": [
+            "68e66220ff06feda9de8b3f1",
+            "68e663c0ff06feda9de8b4de",
+            "68e66408c916e14dfaf09e65",
+            "68e665fdc916e14dfaf0a0cc",
+            "68e66623ff06feda9de8b75a"
+          ]
+        }
+      ],
+      "grammar": [
+        {
+          "pattern": "What do you look like?",
+          "attemptCount": 5,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0lj2y-20ee0550-audio.wav",
+          "bestResultId": "68e664b4c916e14dfaf09f72",
+          "assessments": {
+            "mask": "111 11111 11111 1 111111 1111 11 111 1111 11111"
+          },
+          "resultIds": [
+            "68e6637aff06feda9de8b4b8",
+            "68e663a9ff06feda9de8b4d4",
+            "68e66410c916e14dfaf09e71",
+            "68e66471c916e14dfaf09f46",
+            "68e664b4c916e14dfaf09f72"
+          ]
+        },
+        {
+          "pattern": "I'm tall",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0gxjp-34588568-audio.wav",
+          "bestResultId": "68e663ddff06feda9de8b518",
+          "assessments": {
+            "mask": "111 1111"
+          },
+          "resultIds": [
+            "68e66392ff06feda9de8b4c7",
+            "68e663ddff06feda9de8b518"
+          ]
+        },
+        {
+          "pattern": "I'm short.",
+          "attemptCount": 1,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/08/admin/mgi0h3sy-78f3f89f-audio.wav",
+          "bestResultId": "68e663e5c916e14dfaf09e50",
+          "assessments": {
+            "mask": "111 11111"
+          },
+          "resultIds": [
+            "68e663e5c916e14dfaf09e50"
+          ]
+        }
+      ]
+    },
+    "targets": {
+      "vocabulary": [
+        "fat",
+        "tall",
+        "young",
+        "old",
+        "short",
+        "thin"
+      ],
+      "grammar": [
+        "What do you look like?",
+        "I'm tall",
+        "I'm short."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "DEFAULT",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "blue",
+        "label": "Blue",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/noraimlang.mp4"
+      },
+      "name": "Kịch bản",
+      "description": "Kịch bản- 10/9/2025",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/03/collaborator/mga6db0m-2a76166b-fix-level-5---unit-1a---lesson.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "75206"
+    }
+  }
+]

@@ -1,0 +1,97 @@
+{
+  "reportId": "68f5e209d5e9d73ceff32102",
+  "sessionId": "68e479dc3fe2f2ae7c195043",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 0,
+      "totalCups": 0,
+      "averageReactionTimeMs": null,
+      "practiceAccuracyPercent": null,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 15,
+      "speakingCoverage": 0,
+      "reactionTag": null,
+      "teacherComment": "Bé đã hoàn thành buổi học, phát âm khá ổn, nhưng cần cố gắng thêm nhé.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 0,
+      "averagePronunciationScore": null,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 0,
+      "goodGrammarCount": 0,
+      "totalVocabularyCount": 2,
+      "totalGrammarCount": 1,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [],
+    "grammar": []
+  },
+  "targets": {
+    "vocabulary": [
+      "cow",
+      "pig"
+    ],
+    "grammar": [
+      "I see a black and white cow on the farm"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "Ms. Nora",
+      "label": "Ms. Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/6b3fd4d0-69f5-412e-b82d-e73bc9aea297.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/WAITINGDEMO.mp4"
+    },
+    "name": "Animals",
+    "description": "Phù hợp với bé từ 7 tuổi",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/02/collaborator/mg8wjkyo-23fcb84c-animal.jpg",
+    "lmsCourseId": "933",
+    "lmsSectionId": "76666"
+  }
+}

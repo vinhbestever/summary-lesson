@@ -1,0 +1,260 @@
+{
+  "reportId": "69b177189cbc4760beef8ba7",
+  "sessionId": "69b171289cbc4760beef4b31",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 22,
+      "totalCups": 40,
+      "averageReactionTimeMs": 1369.14,
+      "practiceAccuracyPercent": 94,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 42,
+      "speakingCoverage": 0.52,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 22,
+      "averagePronunciationScore": 79.86,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 6,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 6,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "listen to English",
+        "attemptCount": 3,
+        "averageScore": 80,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3qts9-c4ea55ee-audio.wav",
+        "bestResultId": "69b174790fa3de72798086f7",
+        "assessments": {
+          "mask": "111111 11 11111111"
+        },
+        "resultIds": [
+          "69b172459cbc4760beef5981",
+          "69b174790fa3de72798086f7",
+          "69b174689cbc4760beef70ac"
+        ]
+      },
+      {
+        "word": "watch English cartoons",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3f3m0-7d5b3487-audio.wav",
+        "bestResultId": "69b172550fa3de72798070e6",
+        "assessments": {
+          "mask": "11111 1111111 11111111"
+        },
+        "resultIds": [
+          "69b172550fa3de72798070e6"
+        ]
+      },
+      {
+        "word": "write in English",
+        "attemptCount": 3,
+        "averageScore": 91.78,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3pseu-ab317f2d-audio.wav",
+        "bestResultId": "69b174489cbc4760beef6e48",
+        "assessments": {
+          "mask": "11111 11 11111111"
+        },
+        "resultIds": [
+          "69b172829cbc4760beef5bb3",
+          "69b174489cbc4760beef6e48",
+          "69b1741e9cbc4760beef6cbd"
+        ]
+      },
+      {
+        "word": "read English comic books",
+        "attemptCount": 2,
+        "averageScore": 73.5,
+        "bestScore": 83.25,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3qbtb-06c1dc98-audio.wav",
+        "bestResultId": "69b174619cbc4760beef708c",
+        "assessments": {
+          "mask": "1000 1111111 11111 111111"
+        },
+        "resultIds": [
+          "69b174619cbc4760beef708c",
+          "69b172919cbc4760beef5c4a"
+        ]
+      },
+      {
+        "word": "watch English programmes",
+        "attemptCount": 4,
+        "averageScore": 70,
+        "bestScore": 79,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3hb5v-810f5671-audio.wav",
+        "bestResultId": "69b172bc9cbc4760beef5e39",
+        "assessments": {
+          "mask": "11111 1111111 1100100000"
+        },
+        "resultIds": [
+          "69b172bc9cbc4760beef5e39",
+          "69b174710fa3de72798086b9",
+          "69b173c49cbc4760beef6a3d",
+          "69b1743f9cbc4760beef6ddc"
+        ]
+      },
+      {
+        "word": "talk with my foreign friends",
+        "attemptCount": 2,
+        "averageScore": 96.6,
+        "bestScore": 96.6,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3q5am-380a5cda-audio.wav",
+        "bestResultId": "69b174590fa3de7279808603",
+        "assessments": {
+          "mask": "1111 1111 11 1111111 11111100"
+        },
+        "resultIds": [
+          "69b172cc0fa3de7279807683",
+          "69b174590fa3de7279808603"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "How do you  practise English?",
+        "attemptCount": 2,
+        "averageScore": 81.9,
+        "bestScore": 97,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3pf9p-96853a3c-audio.wav",
+        "bestResultId": "69b174379cbc4760beef6d84",
+        "assessments": {
+          "mask": "111 11 111 11111011 11111111"
+        },
+        "resultIds": [
+          "69b174379cbc4760beef6d84",
+          "69b173b39cbc4760beef6960"
+        ]
+      },
+      {
+        "pattern": "I watch English programmes.",
+        "attemptCount": 3,
+        "averageScore": 75.25,
+        "bestScore": 81.25,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3qnwo-842cc841-audio.wav",
+        "bestResultId": "69b174710fa3de72798086b9",
+        "assessments": {
+          "mask": "1 11111 1111111 00000011110"
+        },
+        "resultIds": [
+          "69b174710fa3de72798086b9",
+          "69b173c49cbc4760beef6a3d",
+          "69b1743f9cbc4760beef6ddc"
+        ]
+      },
+      {
+        "pattern": "Why do you want to learn English?",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3pynl-817d5791-audio.wav",
+        "bestResultId": "69b174509cbc4760beef6e91",
+        "assessments": {
+          "mask": "111 11 111 1111 11 11111 11111111"
+        },
+        "resultIds": [
+          "69b1740d9cbc4760beef6c3d",
+          "69b174509cbc4760beef6e91"
+        ]
+      },
+      {
+        "pattern": "Because I  want to write  in English.",
+        "attemptCount": 2,
+        "averageScore": 94.71,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/11/admin/mmm3pseu-ab317f2d-audio.wav",
+        "bestResultId": "69b174489cbc4760beef6e48",
+        "assessments": {
+          "mask": "1111111 1 1111 11 11111 11 11111111"
+        },
+        "resultIds": [
+          "69b174489cbc4760beef6e48",
+          "69b1741e9cbc4760beef6cbd"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "listen to English",
+      "watch English cartoons",
+      "write in English",
+      "read English comic books",
+      "watch English programmes",
+      "talk with my foreign friends"
+    ],
+    "grammar": [
+      "How do you  practise English?",
+      "I watch English programmes.",
+      "Why do you want to learn English?",
+      "Because I  want to write  in English."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 1C - Lesson 3",
+    "description": "kịch bản GAM 22/01",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/19/collaborator/mkkt9mwx-c270c3e2-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "78271"
+  }
+}

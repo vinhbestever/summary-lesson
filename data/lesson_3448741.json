@@ -1,0 +1,330 @@
+{
+  "reportId": "68f6384771dd5ff2cf96b6aa",
+  "sessionId": "68f63252d5e9d73ceff34888",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 42,
+      "totalCups": 34,
+      "averageReactionTimeMs": 1052.98,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 52,
+      "speakingCoverage": 0.81,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 42,
+      "averagePronunciationScore": 81.93,
+      "averageGrammarScore": 91,
+      "goodVocabularyCount": 10,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 10,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "tall",
+        "attemptCount": 9,
+        "averageScore": 83.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz62yug-8e97aa99-audio.wav",
+        "bestResultId": "68f63805d5e9d73ceff34c2b",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "68f6330d71dd5ff2cf96b3d7",
+          "68f635e0d5e9d73ceff34b53",
+          "68f6366ed5e9d73ceff34b85",
+          "68f6368271dd5ff2cf96b5e6",
+          "68f636b5d5e9d73ceff34b8d",
+          "68f636c571dd5ff2cf96b5ee",
+          "68f63805d5e9d73ceff34c2b",
+          "68f63329d5e9d73ceff349d2",
+          "68f63338d5e9d73ceff349f2"
+        ]
+      },
+      {
+        "word": "short",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5s5r1-d480ac76-audio.wav",
+        "bestResultId": "68f6360cd5e9d73ceff34b64",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "68f6334bd5e9d73ceff349fc",
+          "68f6360cd5e9d73ceff34b64"
+        ]
+      },
+      {
+        "word": "fat",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5dy6v-61e1a5f7-audio.wav",
+        "bestResultId": "68f6337671dd5ff2cf96b426",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "68f6337671dd5ff2cf96b426"
+        ]
+      },
+      {
+        "word": "thin",
+        "attemptCount": 6,
+        "averageScore": 45.83,
+        "bestScore": 75,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5ejxl-e20d1ba0-audio.wav",
+        "bestResultId": "68f6339271dd5ff2cf96b438",
+        "assessments": {
+          "mask": "1011"
+        },
+        "resultIds": [
+          "68f6339271dd5ff2cf96b438",
+          "68f6368271dd5ff2cf96b5e6",
+          "68f636c571dd5ff2cf96b5ee",
+          "68f63824d5e9d73ceff34c33",
+          "68f633ba71dd5ff2cf96b447",
+          "68f633cc71dd5ff2cf96b44e"
+        ]
+      },
+      {
+        "word": "old",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5h5p1-151cdcba-audio.wav",
+        "bestResultId": "68f6340bd5e9d73ceff34a45",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "68f633eb71dd5ff2cf96b45b",
+          "68f6340bd5e9d73ceff34a45"
+        ]
+      },
+      {
+        "word": "young",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5vryj-852fc760-audio.wav",
+        "bestResultId": "68f636b5d5e9d73ceff34b8d",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "68f6341d71dd5ff2cf96b474",
+          "68f6366ed5e9d73ceff34b85",
+          "68f636b5d5e9d73ceff34b8d"
+        ]
+      },
+      {
+        "word": "handsome",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz63aku-f3380328-audio.wav",
+        "bestResultId": "68f63814d5e9d73ceff34c2f",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "68f63447d5e9d73ceff34a59",
+          "68f635d871dd5ff2cf96b5a1",
+          "68f63814d5e9d73ceff34c2f"
+        ]
+      },
+      {
+        "word": "pretty",
+        "attemptCount": 3,
+        "averageScore": 83.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5jibg-b3f64e1e-audio.wav",
+        "bestResultId": "68f63479d5e9d73ceff34a6f",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "68f6345bd5e9d73ceff34a66",
+          "68f63479d5e9d73ceff34a6f",
+          "68f635e8d5e9d73ceff34b57"
+        ]
+      },
+      {
+        "word": "cute",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5kngs-355bf4fe-audio.wav",
+        "bestResultId": "68f634aed5e9d73ceff34a83",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "68f63491d5e9d73ceff34a79",
+          "68f634aed5e9d73ceff34a83"
+        ]
+      },
+      {
+        "word": "sporty",
+        "attemptCount": 2,
+        "averageScore": 93.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5rk3u-b8acbefd-audio.wav",
+        "bestResultId": "68f635f071dd5ff2cf96b5b6",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "68f635f071dd5ff2cf96b5b6",
+          "68f637f7d5e9d73ceff34c27"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "He’s handsome.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5r1df-ec258f6f-audio.wav",
+        "bestResultId": "68f635d871dd5ff2cf96b5a1",
+        "assessments": {
+          "mask": "1111 111111111"
+        },
+        "resultIds": [
+          "68f635d871dd5ff2cf96b5a1"
+        ]
+      },
+      {
+        "pattern": "I'm tall.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5r7o7-0c15d553-audio.wav",
+        "bestResultId": "68f635e0d5e9d73ceff34b53",
+        "assessments": {
+          "mask": "111 11111"
+        },
+        "resultIds": [
+          "68f635e0d5e9d73ceff34b53"
+        ]
+      },
+      {
+        "pattern": "What does he look like?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5rq4t-3a20c845-audio.wav",
+        "bestResultId": "68f635f8d5e9d73ceff34b60",
+        "assessments": {
+          "mask": "1111 1111 11 1111 11111"
+        },
+        "resultIds": [
+          "68f635f8d5e9d73ceff34b60"
+        ]
+      },
+      {
+        "pattern": "What do you look like?",
+        "attemptCount": 2,
+        "averageScore": 50,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/20/admin/mgz5sbuc-a81c9e68-audio.wav",
+        "bestResultId": "68f63614d5e9d73ceff34b68",
+        "assessments": {
+          "mask": "1111 11 111 1111 11111"
+        },
+        "resultIds": [
+          "68f63614d5e9d73ceff34b68",
+          "68f6362a71dd5ff2cf96b5d2"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "tall",
+      "short",
+      "thin",
+      "fat",
+      "handsome",
+      "pretty",
+      "old",
+      "young",
+      "cute",
+      "sporty"
+    ],
+    "grammar": [
+      "What do you look like?",
+      "I'm tall.",
+      "What does he look like?",
+      "He’s handsome."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/noraimlang.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/11/collaborator/mfe8jfxz-a38cebba-topic-brainstorm.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "75209"
+  }
+}

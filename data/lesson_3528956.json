@@ -1,0 +1,186 @@
+{
+  "reportId": "692d91015f24dee0820ff1a7",
+  "sessionId": "6926f9d95f24dee0820e37ad",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 26,
+      "totalCups": 17,
+      "averageReactionTimeMs": 950.15,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 66,
+      "speakingTargetCount": 43,
+      "speakingCoverage": 0.6,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 26,
+      "averagePronunciationScore": 84.65,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 1,
+      "totalVocabularyCount": 7,
+      "totalGrammarCount": 6,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "acting",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/26/admin/mig1pwwi-d38472f4-audio.wav",
+        "bestResultId": "692701c85f24dee0820e4c83",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "6926fa785f24dee0820e38d1",
+          "6926fa8f5f24dee0820e38db",
+          "692700c0e5ab08399d2d58de",
+          "692701c85f24dee0820e4c83"
+        ]
+      },
+      {
+        "word": "singing karaoke",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/26/admin/mig1p1sl-f570af14-audio.wav",
+        "bestResultId": "692701a05f24dee0820e4c6b",
+        "assessments": {
+          "mask": "1111111 11111111"
+        },
+        "resultIds": [
+          "6926faa05f24dee0820e38e8",
+          "69270093e5ab08399d2d58cc",
+          "692701a05f24dee0820e4c6b"
+        ]
+      },
+      {
+        "word": "playing basketball",
+        "attemptCount": 1,
+        "averageScore": 85.5,
+        "bestScore": 85.5,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/26/admin/mig0ocs3-a9ecee41-audio.wav",
+        "bestResultId": "6926faf0e5ab08399d2d4638",
+        "assessments": {
+          "mask": "0101111 1111111111"
+        },
+        "resultIds": [
+          "6926faf0e5ab08399d2d4638"
+        ]
+      },
+      {
+        "word": "playing badminton",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/26/admin/mig1pra1-5a03faed-audio.wav",
+        "bestResultId": "692701c15f24dee0820e4c7f",
+        "assessments": {
+          "mask": "1111111 111111111"
+        },
+        "resultIds": [
+          "692700b65f24dee0820e49bb",
+          "692701c15f24dee0820e4c7f"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "I was singing karaoke",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/26/admin/mig1p1sl-f570af14-audio.wav",
+        "bestResultId": "692701a05f24dee0820e4c6b",
+        "assessments": {
+          "mask": "1 111 1111111 11111111"
+        },
+        "resultIds": [
+          "69270093e5ab08399d2d58cc",
+          "692701a05f24dee0820e4c6b"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "acting",
+      "singing karaoke",
+      "roller skating",
+      "playing basketball",
+      "playing badminton",
+      "running races",
+      "playing the guitar"
+    ],
+    "grammar": [
+      "What were you doing at 9 PM yesterday?",
+      "I was singing karaoke",
+      "He was singing karaoke.",
+      "She was singing karaoke.",
+      "What was he doing at 9 PM yesterday?",
+      "What was she doing at 9 PM yesterday?"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "Level 5 - Unit 3A - Lesson 5",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/09/collaborator/mgj73ceu-a537dd3a-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76816"
+  }
+}

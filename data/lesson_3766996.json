@@ -1,0 +1,226 @@
+{
+  "reportId": "69a82e208905d021166890a8",
+  "sessionId": "69a828318905d021166854fc",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 20,
+      "totalCups": 39,
+      "averageReactionTimeMs": 1453,
+      "practiceAccuracyPercent": 91,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 43,
+      "speakingCoverage": 0.47,
+      "reactionTag": null,
+      "teacherComment": "Bé đã hoàn thành buổi học, phát âm khá ổn, nhưng cần cố gắng thêm nhé.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 20,
+      "averagePronunciationScore": 68.3,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "interesting",
+        "attemptCount": 3,
+        "averageScore": 74,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc1fqrx-aa0c7c43-audio.wav",
+        "bestResultId": "69a82b5e8905d02116686a7e",
+        "assessments": {
+          "mask": "11111111111"
+        },
+        "resultIds": [
+          "69a829428905d02116685b2b",
+          "69a82b5e8905d02116686a7e",
+          "69a82b4f8905d02116686a23"
+        ]
+      },
+      {
+        "word": "funny",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc14g78-4fec88c4-audio.wav",
+        "bestResultId": "69a8294f8905d02116685b51",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69a8294f8905d02116685b51"
+        ]
+      },
+      {
+        "word": "easy",
+        "attemptCount": 5,
+        "averageScore": 60,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc1f9m1-e0093980-audio.wav",
+        "bestResultId": "69a82b488905d021166869f9",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "69a829900fa3de72796fec5a",
+          "69a82b390fa3de72796ff782",
+          "69a82b488905d021166869f9",
+          "69a829708905d02116685be2",
+          "69a829808905d02116685c53"
+        ]
+      },
+      {
+        "word": "exciting",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc1f48g-8c955879-audio.wav",
+        "bestResultId": "69a82b418905d021166869be",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "69a82b418905d021166869be"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What's your favorite subject?",
+        "attemptCount": 2,
+        "averageScore": 89.25,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc1bl3p-f37b64a3-audio.wav",
+        "bestResultId": "69a82a9c8905d0211668651a",
+        "assessments": {
+          "mask": "111111 1111 11111111 11111111"
+        },
+        "resultIds": [
+          "69a82a9c8905d0211668651a",
+          "69a82b208905d0211668683e"
+        ]
+      },
+      {
+        "pattern": "It's English.",
+        "attemptCount": 3,
+        "averageScore": 88.83,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc1fkku-0ae96f2e-audio.wav",
+        "bestResultId": "69a82b560fa3de72796ff836",
+        "assessments": {
+          "mask": "1111 11111111"
+        },
+        "resultIds": [
+          "69a82aaf0fa3de72796ff3f4",
+          "69a82b560fa3de72796ff836",
+          "69a82b280fa3de72796ff70d"
+        ]
+      },
+      {
+        "pattern": "Why do you like English?",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc1erna-67bd7897-audio.wav",
+        "bestResultId": "69a82b318905d0211668693e",
+        "assessments": {
+          "mask": "111 11 111 1111 11111111"
+        },
+        "resultIds": [
+          "69a82af48905d02116686717",
+          "69a82b318905d0211668693e"
+        ]
+      },
+      {
+        "pattern": "Because it's easy.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/04/admin/mmc1exx1-1d1df92c-audio.wav",
+        "bestResultId": "69a82b390fa3de72796ff782",
+        "assessments": {
+          "mask": "1111111 1111 11111"
+        },
+        "resultIds": [
+          "69a82b390fa3de72796ff782"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "interesting",
+      "funny",
+      "exciting",
+      "easy"
+    ],
+    "grammar": [
+      "What's your favorite subject?",
+      "It's English.",
+      "Why do you like English?",
+      "Because it's easy."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 1C - Lesson 1",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/16/collaborator/mkgmoau8-e07853ea-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "78269"
+  }
+}

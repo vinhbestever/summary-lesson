@@ -1,0 +1,313 @@
+{
+  "reportId": "693973901ecc2be773862408",
+  "sessionId": "69396ee31ecc2be773861b1c",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 41,
+      "totalCups": 33,
+      "averageReactionTimeMs": 1433.76,
+      "practiceAccuracyPercent": 89,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 54,
+      "speakingCoverage": 0.76,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 41,
+      "averagePronunciationScore": 81.58,
+      "averageGrammarScore": 82.43,
+      "goodVocabularyCount": 10,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 12,
+      "totalGrammarCount": 3,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "Britain",
+        "attemptCount": 7,
+        "averageScore": 67.29,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj01cdde-22a0c05e-audio.wav",
+        "bestResultId": "6939733c1ecc2be7738623b4",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "69396f731ecc2be773861d46",
+          "69396f841ecc2be773861d57",
+          "693971b81ecc2be773861fec",
+          "6939733c1ecc2be7738623b4",
+          "69396f651ecc2be773861d34",
+          "693971a81ecc2be773861f90",
+          "69397197113d0f605772da23"
+        ]
+      },
+      {
+        "word": "Thailand",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj012ubb-612913fa-audio.wav",
+        "bestResultId": "6939717f113d0f605772da18",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "69396f94113d0f605772d7fc",
+          "6939717f113d0f605772da18"
+        ]
+      },
+      {
+        "word": "Canada",
+        "attemptCount": 4,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj016b1x-4ce0426e-audio.wav",
+        "bestResultId": "693972211ecc2be773862055",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "69396fa41ecc2be773861d73",
+          "69396fb6113d0f605772d820",
+          "693972211ecc2be773862055",
+          "693971871ecc2be773861f86"
+        ]
+      },
+      {
+        "word": "Japan",
+        "attemptCount": 4,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj015qqu-3c9560d8-audio.wav",
+        "bestResultId": "69397206113d0f605772db15",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "69396fc5113d0f605772d82e",
+          "6939718f113d0f605772da1f",
+          "69397206113d0f605772db15",
+          "693971771ecc2be773861f7f"
+        ]
+      },
+      {
+        "word": "beach",
+        "attemptCount": 1,
+        "averageScore": 80,
+        "bestScore": 80,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj00udkr-f446b3e1-audio.wav",
+        "bestResultId": "69396ff4113d0f605772d849",
+        "assessments": {
+          "mask": "01111"
+        },
+        "resultIds": [
+          "69396ff4113d0f605772d849"
+        ]
+      },
+      {
+        "word": "river",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj01dm60-1fea4188-audio.wav",
+        "bestResultId": "69397377113d0f605772ddc9",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69397005113d0f605772d85c",
+          "69397377113d0f605772ddc9"
+        ]
+      },
+      {
+        "word": "forest",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj00v3j5-4e646823-audio.wav",
+        "bestResultId": "69397016113d0f605772d868",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "69397016113d0f605772d868"
+        ]
+      },
+      {
+        "word": "lake",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj00vp1i-b7b47b00-audio.wav",
+        "bestResultId": "69397031113d0f605772d87f",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "69397031113d0f605772d87f"
+        ]
+      },
+      {
+        "word": "sea",
+        "attemptCount": 2,
+        "averageScore": 16.5,
+        "bestScore": 33,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj00wcmu-e49a4482-audio.wav",
+        "bestResultId": "693970501ecc2be773861e02",
+        "assessments": {
+          "mask": "011"
+        },
+        "resultIds": [
+          "693970501ecc2be773861e02",
+          "693970411ecc2be773861dfb"
+        ]
+      },
+      {
+        "word": "waterfall",
+        "attemptCount": 3,
+        "averageScore": 81.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj00xe48-a2706555-audio.wav",
+        "bestResultId": "69397081113d0f605772d8cd",
+        "assessments": {
+          "mask": "1111111111"
+        },
+        "resultIds": [
+          "6939706f113d0f605772d8b3",
+          "69397081113d0f605772d8cd",
+          "6939705f113d0f605772d8a2"
+        ]
+      },
+      {
+        "word": "mountain.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj01d00j-b4b71764-audio.wav",
+        "bestResultId": "6939735a113d0f605772ddb2",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "69397092113d0f605772d8e7",
+          "6939735a113d0f605772ddb2"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Where are you from?",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj015qqu-3c9560d8-audio.wav",
+        "bestResultId": "69397206113d0f605772db15",
+        "assessments": {
+          "mask": "111 1111 111111 11111 111 111 11111"
+        },
+        "resultIds": [
+          "6939716f1ecc2be773861f71",
+          "69397206113d0f605772db15"
+        ]
+      },
+      {
+        "pattern": "I’m from Japan.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/10/admin/mj015qqu-3c9560d8-audio.wav",
+        "bestResultId": "69397206113d0f605772db15",
+        "assessments": {
+          "mask": "111 1111 111111 11111 111 111 11111"
+        },
+        "resultIds": [
+          "6939718f113d0f605772da1f",
+          "69397206113d0f605772db15"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "Britain",
+      "Thailand",
+      "Canada",
+      "Japan",
+      "Singapore",
+      "beach",
+      "river",
+      "forest",
+      "lake",
+      "sea",
+      "waterfall",
+      "mountain."
+    ],
+    "grammar": [
+      "Where are you from?",
+      "I’m from Japan.",
+      "I like waterfalls, so I will travel to Japan."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/22/collaborator/mh1mdabf-245105dd-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76847"
+  }
+}

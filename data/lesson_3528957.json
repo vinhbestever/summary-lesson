@@ -1,0 +1,232 @@
+{
+  "reportId": "692d95f8e5ab08399d2f1397",
+  "sessionId": "692d91535f24dee0820ff222",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 33,
+      "totalCups": 34,
+      "averageReactionTimeMs": 1087.55,
+      "practiceAccuracyPercent": 96,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 47,
+      "speakingCoverage": 0.7,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 33,
+      "averagePronunciationScore": 87.91,
+      "averageGrammarScore": 77,
+      "goodVocabularyCount": 5,
+      "goodGrammarCount": 3,
+      "totalVocabularyCount": 5,
+      "totalGrammarCount": 3,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "Britain",
+        "attemptCount": 6,
+        "averageScore": 76,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min67zw1-3f648005-audio.wav",
+        "bestResultId": "692d94b1e5ab08399d2f0f4e",
+        "assessments": {
+          "mask": "11111111"
+        },
+        "resultIds": [
+          "692d9201e5ab08399d2f08e1",
+          "692d93f8e5ab08399d2f0f00",
+          "692d946b5f24dee0820ffeaf",
+          "692d94b1e5ab08399d2f0f4e",
+          "692d94565f24dee0820ffeab",
+          "692d94c2e5ab08399d2f0f52"
+        ]
+      },
+      {
+        "word": "Thailand",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min63hw6-b6220100-audio.wav",
+        "bestResultId": "692d93dfe5ab08399d2f0ef5",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "692d92115f24dee0820ff37c",
+          "692d93cf5f24dee0820ffbfd",
+          "692d93dfe5ab08399d2f0ef5"
+        ]
+      },
+      {
+        "word": "Canada",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min63oe7-b7e4a310-audio.wav",
+        "bestResultId": "692d93e85f24dee0820ffd4c",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "692d9247e5ab08399d2f08fc",
+          "692d93e85f24dee0820ffd4c"
+        ]
+      },
+      {
+        "word": "Japan",
+        "attemptCount": 5,
+        "averageScore": 91.6,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min6dip2-2d872bbe-audio.wav",
+        "bestResultId": "692d95b4e5ab08399d2f11e1",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "692d925ce5ab08399d2f090b",
+          "692d9384e5ab08399d2f0dc7",
+          "692d93d75f24dee0820ffc04",
+          "692d95b4e5ab08399d2f11e1",
+          "692d95975f24dee0820fffc0"
+        ]
+      },
+      {
+        "word": "Singapore",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min6477s-4e0c36c9-audio.wav",
+        "bestResultId": "692d9400e5ab08399d2f0f0a",
+        "assessments": {
+          "mask": "1111111111"
+        },
+        "resultIds": [
+          "692d93f05f24dee0820ffd50",
+          "692d9400e5ab08399d2f0f0a"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Where are you from?",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min67n59-0172108f-audio.wav",
+        "bestResultId": "692d94a15f24dee0820ffeb7",
+        "assessments": {
+          "mask": "010 00000001 11111 111 111 11111"
+        },
+        "resultIds": [
+          "692d93725f24dee0820ff9b3",
+          "692d9394e5ab08399d2f0dd1",
+          "692d9441e5ab08399d2f0f40",
+          "692d94a15f24dee0820ffeb7"
+        ]
+      },
+      {
+        "pattern": "I'm from Japan.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min61jp8-c6e0853d-audio.wav",
+        "bestResultId": "692d9384e5ab08399d2f0dc7",
+        "assessments": {
+          "mask": "111 1111 111111"
+        },
+        "resultIds": [
+          "692d9384e5ab08399d2f0dc7"
+        ]
+      },
+      {
+        "pattern": "I’m from Thailand.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/01/admin/min6350j-d4a01eb3-audio.wav",
+        "bestResultId": "692d93cf5f24dee0820ffbfd",
+        "assessments": {
+          "mask": "111 1111 111111111"
+        },
+        "resultIds": [
+          "692d93cf5f24dee0820ffbfd"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "Britain",
+      "Thailand",
+      "Canada",
+      "Japan",
+      "Singapore"
+    ],
+    "grammar": [
+      "Where are you from?",
+      "I’m from Thailand.",
+      "I'm from Japan."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "gấm 22/10",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/20/collaborator/mgz06ml0-e430f684-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76840"
+  }
+}

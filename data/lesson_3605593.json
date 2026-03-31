@@ -1,0 +1,162 @@
+{
+  "reportId": "69527be2e4526c242fdba84d",
+  "sessionId": "694be2621ecc2be77393d667",
+  "completion": {
+    "isCompletedByReportRules": false,
+    "reasons": [
+      "GRAMMAR_SECTION_INCOMPLETE"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 8,
+      "totalCups": 7,
+      "averageReactionTimeMs": 1094.29,
+      "practiceAccuracyPercent": 75,
+      "sectionsCompletionPercent": 50,
+      "speakingTargetCount": 42,
+      "speakingCoverage": 0.19,
+      "reactionTag": null,
+      "teacherComment": "Bé đang học từ vựng nhưng thoát ra giữa chừng.",
+      "sessionSummary": "Vẫn còn nhiều kiến thức trong buổi học. Bé vào học ngay để không bỏ lỡ nhé.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": false,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 8,
+      "averagePronunciationScore": 57.14,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 0,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 6,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "bus",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0ucn1-d8d18509-audio.wav",
+        "bestResultId": "694be3df1ecc2be77393e095",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "694be3ca113d0f6057803380",
+          "694be3df1ecc2be77393e095"
+        ]
+      },
+      {
+        "word": "bus stop",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0twaw-4c5088db-audio.wav",
+        "bestResultId": "694be3ca113d0f6057803380",
+        "assessments": {
+          "mask": "111 1111"
+        },
+        "resultIds": [
+          "694be3ca113d0f6057803380"
+        ]
+      },
+      {
+        "word": "train",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0w1bg-59969c30-audio.wav",
+        "bestResultId": "694be42d1ecc2be77393e1f2",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "694be41b1ecc2be77393e1a1",
+          "694be42d1ecc2be77393e1f2"
+        ]
+      },
+      {
+        "word": "train station",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0vn1g-3bdc2bed-audio.wav",
+        "bestResultId": "694be41b1ecc2be77393e1a1",
+        "assessments": {
+          "mask": "11111 1111111"
+        },
+        "resultIds": [
+          "694be41b1ecc2be77393e1a1"
+        ]
+      }
+    ],
+    "grammar": []
+  },
+  "targets": {
+    "vocabulary": [
+      "train",
+      "train station",
+      "bus",
+      "bus stop"
+    ],
+    "grammar": [
+      "How do you go to school?",
+      "I go to school by bus.",
+      "How can I catch a bus?",
+      "You go to the bus stop.",
+      "How can I catch a train?",
+      "You go to the train station."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "AFTER_VOCAB_RELEARN",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "kịch bản",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/04/collaborator/mhk9ibqd-b3d5d22c-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76906"
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "reportId": "69b95858e6d5e9fab5927353",
+  "sessionId": "69b951c8e6d5e9fab591ed00",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 26,
+      "totalCups": 44,
+      "averageReactionTimeMs": 1369.56,
+      "practiceAccuracyPercent": 85,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 55,
+      "speakingCoverage": 0.47,
+      "reactionTag": null,
+      "teacherComment": "Bé đã hoàn thành buổi học, phát âm khá ổn, nhưng cần cố gắng thêm nhé.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 26,
+      "averagePronunciationScore": 81.6,
+      "averageGrammarScore": null,
+      "goodVocabularyCount": 7,
+      "goodGrammarCount": 6,
+      "totalVocabularyCount": 8,
+      "totalGrammarCount": 6,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "interesting",
+        "attemptCount": 4,
+        "averageScore": 75,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun00k8-a0f81493-audio.wav",
+        "bestResultId": "69b9545f882d3195d310ba3f",
+        "assessments": {
+          "mask": "111111111111"
+        },
+        "resultIds": [
+          "69b952f4882d3195d3109844",
+          "69b95308e6d5e9fab5920c2c",
+          "69b9545f882d3195d310ba3f",
+          "69b9544f882d3195d310b8a8"
+        ]
+      },
+      {
+        "word": "easy",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun0q0j-eb67aab7-audio.wav",
+        "bestResultId": "69b95480e6d5e9fab5922f34",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "69b95312e6d5e9fab5920d23",
+          "69b95480e6d5e9fab5922f34"
+        ]
+      },
+      {
+        "word": "fun",
+        "attemptCount": 2,
+        "averageScore": 66.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmumt4gq-6a2e2e86-audio.wav",
+        "bestResultId": "69b9531de6d5e9fab5920e21",
+        "assessments": {
+          "mask": "111"
+        },
+        "resultIds": [
+          "69b9531de6d5e9fab5920e21",
+          "69b9546fe6d5e9fab5922de9"
+        ]
+      },
+      {
+        "word": "exciting",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun4b2b-a443c7d5-audio.wav",
+        "bestResultId": "69b95527e6d5e9fab5923e62",
+        "assessments": {
+          "mask": "111111111"
+        },
+        "resultIds": [
+          "69b9532a882d3195d3109d54",
+          "69b95527e6d5e9fab5923e62"
+        ]
+      },
+      {
+        "word": "watch English cartoons",
+        "attemptCount": 4,
+        "averageScore": 97.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun4vmm-7e160b3c-audio.wav",
+        "bestResultId": "69b95542882d3195d310cec6",
+        "assessments": {
+          "mask": "11111 1111111 11111111"
+        },
+        "resultIds": [
+          "69b9535be6d5e9fab5921454",
+          "69b95542882d3195d310cec6",
+          "69b95348882d3195d3109fd5",
+          "69b9543fe6d5e9fab5922916"
+        ]
+      },
+      {
+        "word": "read English comic books",
+        "attemptCount": 4,
+        "averageScore": 79.38,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmumvg0m-32f0436d-audio.wav",
+        "bestResultId": "69b9538ae6d5e9fab5921875",
+        "assessments": {
+          "mask": "1111 1111111 11111 11111"
+        },
+        "resultIds": [
+          "69b9538ae6d5e9fab5921875",
+          "69b95375882d3195d310a39c",
+          "69b9553a882d3195d310ce1a",
+          "69b95368882d3195d310a264"
+        ]
+      },
+      {
+        "word": "watch English programmes",
+        "attemptCount": 1,
+        "averageScore": 66.67,
+        "bestScore": 66.66666666666667,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmumvw4n-8b38834d-audio.wav",
+        "bestResultId": "69b9539fe6d5e9fab59219db",
+        "assessments": {
+          "mask": "11111 1111111 0000000000"
+        },
+        "resultIds": [
+          "69b9539fe6d5e9fab59219db"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What's your favorite subject?",
+        "attemptCount": 1,
+        "averageScore": 78.5,
+        "bestScore": 78.5,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun3rlv-4d7a2bbc-audio.wav",
+        "bestResultId": "69b9550fe6d5e9fab5923c67",
+        "assessments": {
+          "mask": "111111 1111 11111111 00000100"
+        },
+        "resultIds": [
+          "69b9550fe6d5e9fab5923c67"
+        ]
+      },
+      {
+        "pattern": "It's English.",
+        "attemptCount": 1,
+        "averageScore": 83,
+        "bestScore": 83,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun3ya3-45424724-audio.wav",
+        "bestResultId": "69b95517e6d5e9fab5923d14",
+        "assessments": {
+          "mask": "1001 11111111"
+        },
+        "resultIds": [
+          "69b95517e6d5e9fab5923d14"
+        ]
+      },
+      {
+        "pattern": "Why do you like English?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun44ta-9b2143ec-audio.wav",
+        "bestResultId": "69b9551fe6d5e9fab5923dbd",
+        "assessments": {
+          "mask": "111 11 111 1111 11111111"
+        },
+        "resultIds": [
+          "69b9551fe6d5e9fab5923dbd"
+        ]
+      },
+      {
+        "pattern": "Because it's exciting.",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun4b2b-a443c7d5-audio.wav",
+        "bestResultId": "69b95527e6d5e9fab5923e62",
+        "assessments": {
+          "mask": "1111111 1111 111111111"
+        },
+        "resultIds": [
+          "69b95527e6d5e9fab5923e62"
+        ]
+      },
+      {
+        "pattern": "Why do you want to learn English?",
+        "attemptCount": 1,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun4j1m-3afb22bc-audio.wav",
+        "bestResultId": "69b95532882d3195d310cd93",
+        "assessments": {
+          "mask": "111 11 111 1111 11 11111 11111111"
+        },
+        "resultIds": [
+          "69b95532882d3195d310cd93"
+        ]
+      },
+      {
+        "pattern": "Because I want to read English comic books.",
+        "attemptCount": 1,
+        "averageScore": 87.5,
+        "bestScore": 87.5,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/03/17/admin/mmun4pft-ab2d6b10-audio.wav",
+        "bestResultId": "69b9553a882d3195d310ce1a",
+        "assessments": {
+          "mask": "1111111 1 1111 11 1111 1111111 11111 000000"
+        },
+        "resultIds": [
+          "69b9553a882d3195d310ce1a"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "interesting",
+      "easy",
+      "fun",
+      "exciting",
+      "watch English cartoons",
+      "read English comic books",
+      "watch English programmes",
+      "talk with my foreign friends"
+    ],
+    "grammar": [
+      "What's your favorite subject?",
+      "It's English.",
+      "Why do you like English?",
+      "Because it's exciting.",
+      "Why do you want to learn English?",
+      "Because I want to read English comic books."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 1C - Lesson 4",
+    "description": "kịch bản GAM 22/01",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/19/collaborator/mkkwa14o-0dd2cef9-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "78272"
+  }
+}

@@ -1,0 +1,202 @@
+{
+  "reportId": "6975e2483034135589ba1d6f",
+  "sessionId": "6975dd0e03eb29e88a13ffc2",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 32,
+      "totalCups": 26,
+      "averageReactionTimeMs": 1004.31,
+      "practiceAccuracyPercent": 83,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 38,
+      "speakingCoverage": 0.84,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 32,
+      "averagePronunciationScore": 78.5,
+      "averageGrammarScore": 79.57,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 2,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "spot",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/25/admin/mktj1agi-5140bed1-audio.wav",
+        "bestResultId": "6975e00d3034135589ba1887",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6975de4803eb29e88a1401c2",
+          "6975e00d3034135589ba1887"
+        ]
+      },
+      {
+        "word": "spotted",
+        "attemptCount": 4,
+        "averageScore": 91.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/25/admin/mktj0s1u-1918eb2b-audio.wav",
+        "bestResultId": "6975dff53034135589ba1853",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "6975de5903eb29e88a1401db",
+          "6975df993034135589ba16eb",
+          "6975dff53034135589ba1853",
+          "6975e0053034135589ba1878"
+        ]
+      },
+      {
+        "word": "stripe",
+        "attemptCount": 2,
+        "averageScore": 90,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/25/admin/mktisxd3-4c83c068-audio.wav",
+        "bestResultId": "6975de8703eb29e88a14022d",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "6975de8703eb29e88a14022d",
+          "6975e0143034135589ba18a1"
+        ]
+      },
+      {
+        "word": "striped",
+        "attemptCount": 11,
+        "averageScore": 63.18,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/25/admin/mktjc38b-76859cdc-audio.wav",
+        "bestResultId": "6975e20603eb29e88a140c18",
+        "assessments": {
+          "mask": "1111110"
+        },
+        "resultIds": [
+          "6975e20603eb29e88a140c18",
+          "6975de973034135589ba1327",
+          "6975e01b3034135589ba18af",
+          "6975e0353034135589ba1954",
+          "6975dfbb3034135589ba176a",
+          "6975dfed3034135589ba183b",
+          "6975e0243034135589ba1929",
+          "6975e02b03eb29e88a1407f2",
+          "6975e09103eb29e88a140939",
+          "6975dfe43034135589ba1825",
+          "6975dffd3034135589ba1861"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "My mom wants me to find a spotted rug.",
+        "attemptCount": 1,
+        "averageScore": 92.56,
+        "bestScore": 92.55555555555556,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/25/admin/mktiysfk-97450741-audio.wav",
+        "bestResultId": "6975df993034135589ba16eb",
+        "assessments": {
+          "mask": "11 111 11111 11 11 1111 1 1111111 100"
+        },
+        "resultIds": [
+          "6975df993034135589ba16eb"
+        ]
+      },
+      {
+        "pattern": "Shall I help you find it?",
+        "attemptCount": 2,
+        "averageScore": 83.33,
+        "bestScore": 83.33333333333333,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/25/admin/mktizuxg-981cf096-audio.wav",
+        "bestResultId": "6975dfca03eb29e88a1406ae",
+        "assessments": {
+          "mask": "00000 1 1111 111 1111 111"
+        },
+        "resultIds": [
+          "6975dfa703eb29e88a1405d6",
+          "6975dfca03eb29e88a1406ae"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "spot",
+      "spotted",
+      "stripe",
+      "striped"
+    ],
+    "grammar": [
+      "My mom wants me to find a spotted rug.",
+      "Shall I help you find it?"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/flow-materials/2026/01/08/admin/mk53521e-da512457-0e2056d2-61d5-48ed-a267-7cb445.mp4"
+    },
+    "name": "Level 5 - Unit 3B - Lesson 2",
+    "description": "Gấm 02/12",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/27/collaborator/migttmzx-10077b26-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77142"
+  }
+}

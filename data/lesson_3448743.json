@@ -1,0 +1,287 @@
+{
+  "reportId": "68ff72770d5c1dc09318e4b9",
+  "sessionId": "68ff6cd30d5c1dc09318df26",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 39,
+      "totalCups": 32,
+      "averageReactionTimeMs": 1287.87,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 47,
+      "speakingCoverage": 0.83,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 39,
+      "averagePronunciationScore": 81.95,
+      "averageGrammarScore": 90.43,
+      "goodVocabularyCount": 5,
+      "goodGrammarCount": 6,
+      "totalVocabularyCount": 5,
+      "totalGrammarCount": 6,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "driver",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95vj68-b9e55f49-audio.wav",
+        "bestResultId": "68ff709fe08e76a8f344f2e1",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "68ff6db30d5c1dc09318e07c",
+          "68ff709fe08e76a8f344f2e1"
+        ]
+      },
+      {
+        "word": "office worker",
+        "attemptCount": 5,
+        "averageScore": 64.9,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95ueb9-f4c6e60b-audio.wav",
+        "bestResultId": "68ff706ae08e76a8f344f2cd",
+        "assessments": {
+          "mask": "111111 1111111"
+        },
+        "resultIds": [
+          "68ff6dc60d5c1dc09318e09a",
+          "68ff706ae08e76a8f344f2cd",
+          "68ff70be0d5c1dc09318e39b",
+          "68ff7097e08e76a8f344f2dc",
+          "68ff70d2e08e76a8f344f2f7"
+        ]
+      },
+      {
+        "word": "nurse",
+        "attemptCount": 5,
+        "averageScore": 67,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95vp05-acd6a7d2-audio.wav",
+        "bestResultId": "68ff70a60d5c1dc09318e38b",
+        "assessments": {
+          "mask": "111111"
+        },
+        "resultIds": [
+          "68ff6ddae08e76a8f344f00a",
+          "68ff70a60d5c1dc09318e38b",
+          "68ff723ae08e76a8f344f3b9",
+          "68ff6ff5e08e76a8f344f23c",
+          "68ff70060d5c1dc09318e2e6"
+        ]
+      },
+      {
+        "word": "cook",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95vuui-1ebcf1a0-audio.wav",
+        "bestResultId": "68ff70ae0d5c1dc09318e38f",
+        "assessments": {
+          "mask": "11111"
+        },
+        "resultIds": [
+          "68ff6e0e0d5c1dc09318e0fe",
+          "68ff70ae0d5c1dc09318e38f"
+        ]
+      },
+      {
+        "word": "farmer",
+        "attemptCount": 5,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh964vz7-4fc52701-audio.wav",
+        "bestResultId": "68ff72550d5c1dc09318e49f",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "68ff6e200d5c1dc09318e12c",
+          "68ff6f7f0d5c1dc09318e280",
+          "68ff70880d5c1dc09318e37b",
+          "68ff72470d5c1dc09318e49b",
+          "68ff72550d5c1dc09318e49f"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "What do you  do?",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95yx48-22566e5b-audio.wav",
+        "bestResultId": "68ff713d0d5c1dc09318e3fb",
+        "assessments": {
+          "mask": "1110100001100011 01101 1111 11 111 111"
+        },
+        "resultIds": [
+          "68ff6f690d5c1dc09318e25d",
+          "68ff70e9e08e76a8f344f308",
+          "68ff713d0d5c1dc09318e3fb"
+        ]
+      },
+      {
+        "pattern": "I'm a farmer.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95v1f8-70c1ffa0-audio.wav",
+        "bestResultId": "68ff70880d5c1dc09318e37b",
+        "assessments": {
+          "mask": "111 1 1111111"
+        },
+        "resultIds": [
+          "68ff6f7f0d5c1dc09318e280",
+          "68ff70880d5c1dc09318e37b"
+        ]
+      },
+      {
+        "pattern": "What does your mother do?",
+        "attemptCount": 3,
+        "averageScore": 88.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95xu3a-003b7ef4-audio.wav",
+        "bestResultId": "68ff710ae08e76a8f344f316",
+        "assessments": {
+          "mask": "111111 111111111 1111 1111 1111 111111 111"
+        },
+        "resultIds": [
+          "68ff710ae08e76a8f344f316",
+          "68ff6fdfe08e76a8f344f214",
+          "68ff7159e08e76a8f344f330"
+        ]
+      },
+      {
+        "pattern": "She’s a nurse.",
+        "attemptCount": 3,
+        "averageScore": 60,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95vp05-acd6a7d2-audio.wav",
+        "bestResultId": "68ff70a60d5c1dc09318e38b",
+        "assessments": {
+          "mask": "11111 1 111111"
+        },
+        "resultIds": [
+          "68ff70a60d5c1dc09318e38b",
+          "68ff70060d5c1dc09318e2e6",
+          "68ff6ff5e08e76a8f344f23c"
+        ]
+      },
+      {
+        "pattern": "What does your father do?",
+        "attemptCount": 3,
+        "averageScore": 88.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95tvvc-5d90e2cf-audio.wav",
+        "bestResultId": "68ff7052e08e76a8f344f2a5",
+        "assessments": {
+          "mask": "1111 1111 1111 111111 111"
+        },
+        "resultIds": [
+          "68ff7052e08e76a8f344f2a5",
+          "68ff714be08e76a8f344f32b",
+          "68ff70f80d5c1dc09318e3e3"
+        ]
+      },
+      {
+        "pattern": "He’s an office worker.",
+        "attemptCount": 4,
+        "averageScore": 62,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/27/admin/mh95ueb9-f4c6e60b-audio.wav",
+        "bestResultId": "68ff706ae08e76a8f344f2cd",
+        "assessments": {
+          "mask": "1111 11 111111 1111111"
+        },
+        "resultIds": [
+          "68ff706ae08e76a8f344f2cd",
+          "68ff70be0d5c1dc09318e39b",
+          "68ff7097e08e76a8f344f2dc",
+          "68ff70d2e08e76a8f344f2f7"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "office worker",
+      "nurse",
+      "driver",
+      "cook",
+      "farmer"
+    ],
+    "grammar": [
+      "What do you  do?",
+      "I'm a farmer.",
+      "What does your father do?",
+      "What does your mother do?",
+      "She’s a nurse.",
+      "He’s an office worker."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "L5-2A-lesson1",
+    "description": "Gam29/9",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/21/collaborator/mft5ocsa-6e419f5f-3.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76489"
+  }
+}

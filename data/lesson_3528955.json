@@ -1,0 +1,262 @@
+{
+  "reportId": "69245c7ea01411a7bfab11f4",
+  "sessionId": "692456d2a01411a7bfab0815",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 35,
+      "totalCups": 31,
+      "averageReactionTimeMs": 1418.82,
+      "practiceAccuracyPercent": 100,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 44,
+      "speakingCoverage": 0.8,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 35,
+      "averagePronunciationScore": 86,
+      "averageGrammarScore": 90.29,
+      "goodVocabularyCount": 8,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 8,
+      "totalGrammarCount": 6,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "going shopping",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid6h3rx-b8785597-audio.wav",
+        "bestResultId": "69245c65a01411a7bfab11d4",
+        "assessments": {
+          "mask": "11111 111111111"
+        },
+        "resultIds": [
+          "6924578590cb95f727f2fab7",
+          "69245a93a01411a7bfab1065",
+          "69245c65a01411a7bfab11d4"
+        ]
+      },
+      {
+        "word": "telling jokes",
+        "attemptCount": 3,
+        "averageScore": 66.67,
+        "bestScore": 70,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid67obk-5b221599-audio.wav",
+        "bestResultId": "69245aad90cb95f727f30134",
+        "assessments": {
+          "mask": "1111111 01011"
+        },
+        "resultIds": [
+          "6924579ca01411a7bfab0b4b",
+          "69245aad90cb95f727f30134",
+          "692457bfa01411a7bfab0b73"
+        ]
+      },
+      {
+        "word": "trampolining",
+        "attemptCount": 4,
+        "averageScore": 45.5,
+        "bestScore": 75,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid5rz8o-1e37cc7c-audio.wav",
+        "bestResultId": "692457d0a01411a7bfab0b89",
+        "assessments": {
+          "mask": "001111111111"
+        },
+        "resultIds": [
+          "692457d0a01411a7bfab0b89",
+          "69245ac890cb95f727f3013f",
+          "692457e9a01411a7bfab0c75",
+          "69245ad4a01411a7bfab1086"
+        ]
+      },
+      {
+        "word": "going diving",
+        "attemptCount": 2,
+        "averageScore": 87.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid67b38-019c3856-audio.wav",
+        "bestResultId": "69245a9ba01411a7bfab106b",
+        "assessments": {
+          "mask": "11111 1111111"
+        },
+        "resultIds": [
+          "69245a9ba01411a7bfab106b",
+          "69245921a01411a7bfab0ee6"
+        ]
+      },
+      {
+        "word": "going sailing",
+        "attemptCount": 3,
+        "averageScore": 95.17,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid67hji-70261ed2-audio.wav",
+        "bestResultId": "69245aa490cb95f727f30130",
+        "assessments": {
+          "mask": "11111 1111111"
+        },
+        "resultIds": [
+          "6924593290cb95f727f2fee0",
+          "69245aa490cb95f727f30130",
+          "69245943a01411a7bfab0ef8"
+        ]
+      },
+      {
+        "word": "playing chess",
+        "attemptCount": 4,
+        "averageScore": 90,
+        "bestScore": 90,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid6bplh-fef3f39c-audio.wav",
+        "bestResultId": "69245b6990cb95f727f30198",
+        "assessments": {
+          "mask": "1111111 11101"
+        },
+        "resultIds": [
+          "6924597590cb95f727f2ff25",
+          "69245ab690cb95f727f3013b",
+          "69245b2490cb95f727f30180",
+          "69245b6990cb95f727f30198"
+        ]
+      },
+      {
+        "word": "playing video games",
+        "attemptCount": 2,
+        "averageScore": 82.67,
+        "bestScore": 92,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid6ft8w-a88f44bc-audio.wav",
+        "bestResultId": "69245c2990cb95f727f3025d",
+        "assessments": {
+          "mask": "1111111 11111 000111"
+        },
+        "resultIds": [
+          "69245c2990cb95f727f3025d",
+          "69245abfa01411a7bfab1076"
+        ]
+      },
+      {
+        "word": "reading comics",
+        "attemptCount": 1,
+        "averageScore": 85,
+        "bestScore": 85,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid6ggxi-48e735d1-audio.wav",
+        "bestResultId": "69245c47a01411a7bfab11c4",
+        "resultIds": [
+          "69245c47a01411a7bfab11c4"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "I like going shopping.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid6h3rx-b8785597-audio.wav",
+        "bestResultId": "69245c65a01411a7bfab11d4",
+        "assessments": {
+          "mask": "1 1111 11111 111111111"
+        },
+        "resultIds": [
+          "69245a93a01411a7bfab1065",
+          "69245c65a01411a7bfab11d4"
+        ]
+      },
+      {
+        "pattern": "She likes going diving.",
+        "attemptCount": 1,
+        "averageScore": 95,
+        "bestScore": 95,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/24/admin/mid67b38-019c3856-audio.wav",
+        "bestResultId": "69245a9ba01411a7bfab106b",
+        "assessments": {
+          "mask": "111 11110 11111 1111111"
+        },
+        "resultIds": [
+          "69245a9ba01411a7bfab106b"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "going shopping",
+      "telling jokes",
+      "trampolining",
+      "going diving",
+      "going sailing",
+      "reading comics",
+      "playing chess",
+      "playing video games"
+    ],
+    "grammar": [
+      "What do you/they like doing?",
+      "I like going shopping.",
+      "They like going shopping.",
+      "What does he/she like doing?",
+      "He likes going diving.",
+      "She likes going diving."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "Level 5 - Unit 3A - Lesson 4",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/07/collaborator/mggpoo1h-5b363daa-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76795"
+  }
+}

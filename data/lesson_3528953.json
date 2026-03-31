@@ -1,0 +1,206 @@
+{
+  "reportId": "691b22b64476bea8a901cf5f",
+  "sessionId": "691b1c524476bea8a901c0ab",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 31,
+      "totalCups": 32,
+      "averageReactionTimeMs": 1022.97,
+      "practiceAccuracyPercent": 91,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 45,
+      "speakingCoverage": 0.69,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 31,
+      "averagePronunciationScore": 90.62,
+      "averageGrammarScore": 89.29,
+      "goodVocabularyCount": 5,
+      "goodGrammarCount": 1,
+      "totalVocabularyCount": 5,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "playing the guitar",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/17/admin/mi36hp0w-ea96bbe0-audio.wav",
+        "bestResultId": "691b228b4476bea8a901cf3e",
+        "assessments": {
+          "mask": "1111111 111 1111111"
+        },
+        "resultIds": [
+          "691b1d2e3ea3676f3c68faa4",
+          "691b20c74476bea8a901cd51",
+          "691b20d84476bea8a901cd66",
+          "691b228b4476bea8a901cf3e"
+        ]
+      },
+      {
+        "word": "playing chess",
+        "attemptCount": 6,
+        "averageScore": 80.67,
+        "bestScore": 90,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/17/admin/mi36a8uz-e09e9723-audio.wav",
+        "bestResultId": "691b212f4476bea8a901cdb1",
+        "assessments": {
+          "mask": "1111111 11111"
+        },
+        "resultIds": [
+          "691b1d3e3ea3676f3c68fabf",
+          "691b20be3ea3676f3c690546",
+          "691b20cf3ea3676f3c69055a",
+          "691b212f4476bea8a901cdb1",
+          "691b208d3ea3676f3c6904d3",
+          "691b21753ea3676f3c6905d2"
+        ]
+      },
+      {
+        "word": "playing badminton",
+        "attemptCount": 6,
+        "averageScore": 93,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/17/admin/mi36hdqc-a3b0e077-audio.wav",
+        "bestResultId": "691b227c3ea3676f3c6907c5",
+        "assessments": {
+          "mask": "1111111 111111111"
+        },
+        "resultIds": [
+          "691b1d983ea3676f3c68fb6f",
+          "691b1dfd4476bea8a901c4cb",
+          "691b202b3ea3676f3c69041c",
+          "691b227c3ea3676f3c6907c5",
+          "691b225e4476bea8a901cf32",
+          "691b20a54476bea8a901cd2b"
+        ]
+      },
+      {
+        "word": "playing basketball",
+        "attemptCount": 3,
+        "averageScore": 97,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/17/admin/mi36h1ze-1a8419db-audio.wav",
+        "bestResultId": "691b226d4476bea8a901cf36",
+        "assessments": {
+          "mask": "1111111 11111111111"
+        },
+        "resultIds": [
+          "691b20ae4476bea8a901cd35",
+          "691b226d4476bea8a901cf36",
+          "691b22ab4476bea8a901cf46"
+        ]
+      },
+      {
+        "word": "playing video games",
+        "attemptCount": 3,
+        "averageScore": 93.33,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/17/admin/mi36geiy-032e8cb5-audio.wav",
+        "bestResultId": "691b224f4476bea8a901cf2e",
+        "assessments": {
+          "mask": "1111111 11111 11111"
+        },
+        "resultIds": [
+          "691b20b63ea3676f3c69053f",
+          "691b224f4476bea8a901cf2e",
+          "691b229c4476bea8a901cf42"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "He was playing chess.",
+        "attemptCount": 1,
+        "averageScore": 87.75,
+        "bestScore": 87.75,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/17/admin/mi366ryo-79ab6c3a-audio.wav",
+        "bestResultId": "691b208d3ea3676f3c6904d3",
+        "assessments": {
+          "mask": "11 111 0101111 11101"
+        },
+        "resultIds": [
+          "691b208d3ea3676f3c6904d3"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "playing the guitar",
+      "playing chess",
+      "playing video games",
+      "playing badminton",
+      "playing basketball"
+    ],
+    "grammar": [
+      "I was playing video games.",
+      "He was playing chess.",
+      "What were you doing at 8 p.m yesterday?",
+      "What was he doing at 2 p.m yesterday?"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "L5-4A-lesson2",
+    "description": "Mai",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/07/collaborator/mgg5m2zn-bc16f7aa-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76789"
+  }
+}

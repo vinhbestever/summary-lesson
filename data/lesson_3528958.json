@@ -1,0 +1,203 @@
+{
+  "reportId": "693038865f24dee08210b76b",
+  "sessionId": "69303452e5ab08399d2fbf87",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 30,
+      "totalCups": 33,
+      "averageReactionTimeMs": 1064.1,
+      "practiceAccuracyPercent": 96,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 45,
+      "speakingCoverage": 0.67,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 30,
+      "averagePronunciationScore": 83.67,
+      "averageGrammarScore": 85.29,
+      "goodVocabularyCount": 4,
+      "goodGrammarCount": 2,
+      "totalVocabularyCount": 4,
+      "totalGrammarCount": 3,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "city",
+        "attemptCount": 6,
+        "averageScore": 87.5,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/03/admin/miq169m1-0db6f253-audio.wav",
+        "bestResultId": "6930382ae5ab08399d2fc2e5",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "693035015f24dee08210b495",
+          "69303663e5ab08399d2fc0fb",
+          "693036b3e5ab08399d2fc118",
+          "6930380ce5ab08399d2fc2e1",
+          "6930382ae5ab08399d2fc2e5",
+          "693034f3e5ab08399d2fbfc5"
+        ]
+      },
+      {
+        "word": "countryside",
+        "attemptCount": 5,
+        "averageScore": 94,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/03/admin/miq169m1-0db6f253-audio.wav",
+        "bestResultId": "6930382ae5ab08399d2fc2e5",
+        "assessments": {
+          "mask": "111111111111"
+        },
+        "resultIds": [
+          "69303513e5ab08399d2fbfd8",
+          "693036a65f24dee08210b650",
+          "693036ba5f24dee08210b654",
+          "6930382ae5ab08399d2fc2e5",
+          "69303839e5ab08399d2fc2e9"
+        ]
+      },
+      {
+        "word": "town",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/03/admin/miq0y459-953ca398-audio.wav",
+        "bestResultId": "693036ade5ab08399d2fc114",
+        "assessments": {
+          "mask": "1111"
+        },
+        "resultIds": [
+          "6930353b5f24dee08210b4a7",
+          "693036ade5ab08399d2fc114"
+        ]
+      },
+      {
+        "word": "village",
+        "attemptCount": 4,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/03/admin/miq0ykj8-4286d686-audio.wav",
+        "bestResultId": "693036c2e5ab08399d2fc11c",
+        "assessments": {
+          "mask": "1111111"
+        },
+        "resultIds": [
+          "6930354d5f24dee08210b4b0",
+          "69303688e5ab08399d2fc10d",
+          "6930369f5f24dee08210b64c",
+          "693036c2e5ab08399d2fc11c"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Where do you live?",
+        "attemptCount": 4,
+        "averageScore": 90,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/03/admin/miq0yqmv-1a9a9753-audio.wav",
+        "bestResultId": "693036ca5f24dee08210b658",
+        "assessments": {
+          "mask": "11111 11 111 11111"
+        },
+        "resultIds": [
+          "69303650e5ab08399d2fc0ee",
+          "693036755f24dee08210b63d",
+          "693036ca5f24dee08210b658",
+          "6930372b5f24dee08210b68e"
+        ]
+      },
+      {
+        "pattern": "I live in the city in Viet Nam.",
+        "attemptCount": 1,
+        "averageScore": 78.13,
+        "bestScore": 78.125,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/03/admin/miq0wjcl-4222054d-audio.wav",
+        "bestResultId": "69303663e5ab08399d2fc0fb",
+        "assessments": {
+          "mask": "1 1111 11 111 1111 11 0100 0001"
+        },
+        "resultIds": [
+          "69303663e5ab08399d2fc0fb"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "city",
+      "countryside",
+      "town",
+      "village"
+    ],
+    "grammar": [
+      "Where do you live?",
+      "I live in a town in Vietnam.",
+      "I live in the city in Viet Nam."
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "gấm 23/10",
+    "description": "kịch bản",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/10/20/collaborator/mgzblltl-fe9e2d54-brainstorm-ch.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "76841"
+  }
+}

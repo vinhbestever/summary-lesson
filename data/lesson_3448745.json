@@ -1,0 +1,362 @@
+[
+  {
+    "reportId": "69096c0837a5b70f3d0c8eee",
+    "sessionId": "6908ac276813fa60502e746f",
+    "completion": {
+      "isCompletedByReportRules": false,
+      "reasons": [
+        "GRAMMAR_SECTION_INCOMPLETE",
+        "IMMEDIATE_EXIT"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 0,
+        "totalCups": 0,
+        "averageReactionTimeMs": null,
+        "practiceAccuracyPercent": null,
+        "sectionsCompletionPercent": 5,
+        "speakingTargetCount": 40,
+        "speakingCoverage": 0,
+        "reactionTag": null,
+        "teacherComment": "Bé vào học nhưng thoát ra luôn, hãy làm bài tập để củng cố kiến thức của buổi hôm nay con nhé.",
+        "sessionSummary": "Chưa hoàn thành buổi học.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": false,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": false,
+          "immediateExit": true
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 0,
+        "averagePronunciationScore": null,
+        "averageGrammarScore": null,
+        "goodVocabularyCount": 0,
+        "goodGrammarCount": 0,
+        "totalVocabularyCount": 7,
+        "totalGrammarCount": 2,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [],
+      "grammar": []
+    },
+    "targets": {
+      "vocabulary": [
+        "farm",
+        "circus",
+        "school",
+        "hospital",
+        "fire station",
+        "studio",
+        "office"
+      ],
+      "grammar": [
+        "A hospital is where doctors work.",
+        "An office is where office workers work."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "QUICK_EXIT_NO_RELEARN",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+      },
+      "name": "Gấm 02/10",
+      "description": "kịch bản",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/23/collaborator/mfwauyhx-f829a974-brainstorm-ch.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "76491"
+    }
+  },
+  {
+    "reportId": "6908ac1d6813fa60502e7405",
+    "sessionId": "6908a7526813fa60502e6f69",
+    "completion": {
+      "isCompletedByReportRules": true,
+      "reasons": [
+        "GRAMMAR_SECTION_COMPLETED",
+        "VOCABULARY_SECTION_COMPLETED"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 41,
+        "totalCups": 28,
+        "averageReactionTimeMs": 1343.1,
+        "practiceAccuracyPercent": 89,
+        "sectionsCompletionPercent": 100,
+        "speakingTargetCount": 40,
+        "speakingCoverage": 1,
+        "reactionTag": "Rất nhanh",
+        "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+        "sessionSummary": "Buổi học diễn ra thành công.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": true,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": true,
+          "immediateExit": false
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 41,
+        "averagePronunciationScore": 83.9,
+        "averageGrammarScore": 84.14,
+        "goodVocabularyCount": 7,
+        "goodGrammarCount": 2,
+        "totalVocabularyCount": 7,
+        "totalGrammarCount": 2,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [
+        {
+          "word": "farm",
+          "attemptCount": 5,
+          "averageScore": 87.2,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5rhwg-d40a916c-audio.wav",
+          "bestResultId": "6908a9d96813fa60502e7202",
+          "assessments": {
+            "mask": "1111"
+          },
+          "resultIds": [
+            "6908a7f36813fa60502e6fff",
+            "6908a9d96813fa60502e7202",
+            "6908abc037a5b70f3d0c850c",
+            "6908abde37a5b70f3d0c851d",
+            "6908abd06813fa60502e73d8"
+          ]
+        },
+        {
+          "word": "circus",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5rbvo-364eb077-audio.wav",
+          "bestResultId": "6908a9d137a5b70f3d0c8359",
+          "assessments": {
+            "mask": "111111"
+          },
+          "resultIds": [
+            "6908a8056813fa60502e7009",
+            "6908a9d137a5b70f3d0c8359"
+          ]
+        },
+        {
+          "word": "school",
+          "attemptCount": 4,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj63hy8-4f4c0623-audio.wav",
+          "bestResultId": "6908ac0a37a5b70f3d0c8535",
+          "assessments": {
+            "mask": "111111"
+          },
+          "resultIds": [
+            "6908a83e6813fa60502e7017",
+            "6908a9c96813fa60502e71fe",
+            "6908abed37a5b70f3d0c8525",
+            "6908ac0a37a5b70f3d0c8535"
+          ]
+        },
+        {
+          "word": "hospital",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5qzg8-a42b6d0e-audio.wav",
+          "bestResultId": "6908a9c16813fa60502e71fa",
+          "assessments": {
+            "mask": "11111111"
+          },
+          "resultIds": [
+            "6908a84f6813fa60502e7024",
+            "6908a99337a5b70f3d0c8323",
+            "6908a9c16813fa60502e71fa"
+          ]
+        },
+        {
+          "word": "fire station",
+          "attemptCount": 6,
+          "averageScore": 91.67,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5v0ac-f742bd8c-audio.wav",
+          "bestResultId": "6908aa7c37a5b70f3d0c83c6",
+          "assessments": {
+            "mask": "1111 1111111"
+          },
+          "resultIds": [
+            "6908a86037a5b70f3d0c81db",
+            "6908a9f96813fa60502e721d",
+            "6908aa0937a5b70f3d0c8377",
+            "6908aa7c37a5b70f3d0c83c6",
+            "6908aae66813fa60502e72ca",
+            "6908a9e037a5b70f3d0c8360"
+          ]
+        },
+        {
+          "word": "studio",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5s07p-0795ffa2-audio.wav",
+          "bestResultId": "6908a9f06813fa60502e7212",
+          "assessments": {
+            "mask": "111111"
+          },
+          "resultIds": [
+            "6908a88e6813fa60502e710d",
+            "6908a9f06813fa60502e7212"
+          ]
+        },
+        {
+          "word": "office",
+          "attemptCount": 6,
+          "averageScore": 86.08,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5speg-e8d8cc8f-audio.wav",
+          "bestResultId": "6908aa1137a5b70f3d0c837b",
+          "assessments": {
+            "mask": "111111"
+          },
+          "resultIds": [
+            "6908a8a037a5b70f3d0c8271",
+            "6908a9a837a5b70f3d0c8339",
+            "6908a9e96813fa60502e720b",
+            "6908aa016813fa60502e7223",
+            "6908aa1137a5b70f3d0c837b",
+            "6908aa1e37a5b70f3d0c838c"
+          ]
+        }
+      ],
+      "grammar": [
+        {
+          "pattern": "A hospital is where doctors work.",
+          "attemptCount": 2,
+          "averageScore": 97.08,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5qzg8-a42b6d0e-audio.wav",
+          "bestResultId": "6908a9c16813fa60502e71fa",
+          "assessments": {
+            "mask": "1 11111111 11 11111 1111111 11111"
+          },
+          "resultIds": [
+            "6908a9c16813fa60502e71fa",
+            "6908a99337a5b70f3d0c8323"
+          ]
+        },
+        {
+          "pattern": "An office is where office workers work.",
+          "attemptCount": 5,
+          "averageScore": 54.6,
+          "bestScore": 77.14285714285714,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/11/03/admin/mhj5qgdp-fa6d2be2-audio.wav",
+          "bestResultId": "6908a9a837a5b70f3d0c8339",
+          "assessments": {
+            "mask": "11 111111 00 10010 111111 1111111 11111"
+          },
+          "resultIds": [
+            "6908a9a837a5b70f3d0c8339",
+            "6908aa1137a5b70f3d0c837b",
+            "6908aa016813fa60502e7223",
+            "6908a9e96813fa60502e720b",
+            "6908aa1e37a5b70f3d0c838c"
+          ]
+        }
+      ]
+    },
+    "targets": {
+      "vocabulary": [
+        "farm",
+        "circus",
+        "school",
+        "hospital",
+        "fire station",
+        "studio",
+        "office"
+      ],
+      "grammar": [
+        "A hospital is where doctors work.",
+        "An office is where office workers work."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "DEFAULT",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+      },
+      "name": "Gấm 02/10",
+      "description": "kịch bản",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/23/collaborator/mfwauyhx-f829a974-brainstorm-ch.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "76491"
+    }
+  }
+]

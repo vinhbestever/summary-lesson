@@ -1,0 +1,378 @@
+[
+  {
+    "reportId": "68f6324171dd5ff2cf96b333",
+    "sessionId": "68efa0b9d5e9d73ceff20a1a",
+    "completion": {
+      "isCompletedByReportRules": false,
+      "reasons": [
+        "GRAMMAR_SECTION_INCOMPLETE",
+        "IMMEDIATE_EXIT"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 0,
+        "totalCups": 0,
+        "averageReactionTimeMs": null,
+        "practiceAccuracyPercent": null,
+        "sectionsCompletionPercent": 5,
+        "speakingTargetCount": 45,
+        "speakingCoverage": 0,
+        "reactionTag": null,
+        "teacherComment": "Bé vào học nhưng thoát ra luôn, hãy làm bài tập để củng cố kiến thức của buổi hôm nay con nhé.",
+        "sessionSummary": "Chưa hoàn thành buổi học.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": false,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": false,
+          "immediateExit": true
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 0,
+        "averagePronunciationScore": null,
+        "averageGrammarScore": null,
+        "goodVocabularyCount": 0,
+        "goodGrammarCount": 0,
+        "totalVocabularyCount": 5,
+        "totalGrammarCount": 5,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [],
+      "grammar": []
+    },
+    "targets": {
+      "vocabulary": [
+        "friendly",
+        "clever",
+        "kind",
+        "hard-working",
+        "funny"
+      ],
+      "grammar": [
+        "Is he funny?",
+        "Yes, he is.",
+        "No, he isn’t.",
+        "Why do you like her?",
+        "Because she's kind."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "QUICK_EXIT_NO_RELEARN",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/noraimlang.mp4"
+      },
+      "name": "kịch bản",
+      "description": "kịch bản 26/09",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/23/collaborator/mfw3b6vs-14ae1cfc-fix-level-5---unit-1a---lesson.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "75208"
+    }
+  },
+  {
+    "reportId": "68efa0ae71dd5ff2cf956228",
+    "sessionId": "68ef9ad271dd5ff2cf955ece",
+    "completion": {
+      "isCompletedByReportRules": false,
+      "reasons": [
+        "GRAMMAR_SECTION_INCOMPLETE",
+        "VOCABULARY_SECTION_INCOMPLETE"
+      ]
+    },
+    "moments": [],
+    "achievements": {
+      "stats": {
+        "speakingTurnCount": 39,
+        "totalCups": 34,
+        "averageReactionTimeMs": 1467.95,
+        "practiceAccuracyPercent": 100,
+        "sectionsCompletionPercent": 20,
+        "speakingTargetCount": 45,
+        "speakingCoverage": 0.87,
+        "reactionTag": "Rất nhanh",
+        "teacherComment": "Bé vào học nhưng thoát giữa chừng. Mình làm bài tập nhé để không lỡ kiến thức hôm nay!",
+        "sessionSummary": "Chưa hoàn thành buổi học.",
+        "trialComment": null,
+        "canRelearn": false,
+        "progress": {
+          "hasGrammarSection": true,
+          "grammarCompleted": false,
+          "hasVocabularySection": true,
+          "vocabularyCompleted": false,
+          "immediateExit": false
+        }
+      },
+      "pronunciation": {
+        "attemptCount": 39,
+        "averagePronunciationScore": 87.33,
+        "averageGrammarScore": 88.71,
+        "goodVocabularyCount": 5,
+        "goodGrammarCount": 5,
+        "totalVocabularyCount": 5,
+        "totalGrammarCount": 5,
+        "goodScoreThreshold": 60
+      },
+      "vocabulary": [
+        {
+          "word": "clever",
+          "attemptCount": 7,
+          "averageScore": 90.29,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0vv34-0d94fb41-audio.wav",
+          "bestResultId": "68efa08c71dd5ff2cf956213",
+          "assessments": {
+            "mask": "1111111"
+          },
+          "resultIds": [
+            "68ef9b9871dd5ff2cf956014",
+            "68ef9e3671dd5ff2cf95612e",
+            "68ef9ebdd5e9d73ceff208e0",
+            "68ef9f26d5e9d73ceff208f4",
+            "68efa08c71dd5ff2cf956213",
+            "68ef9eced5e9d73ceff208e4",
+            "68ef9f1ed5e9d73ceff208f0"
+          ]
+        },
+        {
+          "word": "kind",
+          "attemptCount": 4,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0v91f-12a189a3-audio.wav",
+          "bestResultId": "68efa070d5e9d73ceff209a3",
+          "assessments": {
+            "mask": "11111"
+          },
+          "resultIds": [
+            "68ef9bac71dd5ff2cf956023",
+            "68ef9dffd5e9d73ceff208b9",
+            "68ef9e1d71dd5ff2cf956126",
+            "68efa070d5e9d73ceff209a3"
+          ]
+        },
+        {
+          "word": "hard-working",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0vjs7-d195d24b-audio.wav",
+          "bestResultId": "68efa07d71dd5ff2cf95620f",
+          "assessments": {
+            "mask": "1111 1111111"
+          },
+          "resultIds": [
+            "68ef9be171dd5ff2cf95602f",
+            "68ef9e2d71dd5ff2cf95612a",
+            "68efa07d71dd5ff2cf95620f"
+          ]
+        },
+        {
+          "word": "funny",
+          "attemptCount": 6,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0uybn-68ea5d0f-audio.wav",
+          "bestResultId": "68efa06271dd5ff2cf95620b",
+          "assessments": {
+            "mask": "111111"
+          },
+          "resultIds": [
+            "68ef9bf6d5e9d73ceff207ef",
+            "68ef9d50d5e9d73ceff20888",
+            "68ef9d80d5e9d73ceff2089b",
+            "68ef9e25d5e9d73ceff208c3",
+            "68ef9e5dd5e9d73ceff208cb",
+            "68efa06271dd5ff2cf95620b"
+          ]
+        },
+        {
+          "word": "friendly",
+          "attemptCount": 6,
+          "averageScore": 70.67,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0whfe-8a4f3b02-audio.wav",
+          "bestResultId": "68efa0a9d5e9d73ceff209ab",
+          "assessments": {
+            "mask": "11111111"
+          },
+          "resultIds": [
+            "68ef9f1ed5e9d73ceff208f0",
+            "68ef9f26d5e9d73ceff208f4",
+            "68efa09bd5e9d73ceff209a7",
+            "68efa0a9d5e9d73ceff209ab",
+            "68ef9ebdd5e9d73ceff208e0",
+            "68ef9eced5e9d73ceff208e4"
+          ]
+        }
+      ],
+      "grammar": [
+        {
+          "pattern": "Is he funny?",
+          "attemptCount": 3,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0jwdr-72e7e388-audio.wav",
+          "bestResultId": "68ef9e5dd5e9d73ceff208cb",
+          "assessments": {
+            "mask": "11 11 111111"
+          },
+          "resultIds": [
+            "68ef9d50d5e9d73ceff20888",
+            "68ef9d80d5e9d73ceff2089b",
+            "68ef9e5dd5e9d73ceff208cb"
+          ]
+        },
+        {
+          "pattern": "Yes, he is.",
+          "attemptCount": 3,
+          "averageScore": 66.67,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0k2me-b634d4ae-audio.wav",
+          "bestResultId": "68ef9e6571dd5ff2cf956132",
+          "assessments": {
+            "mask": "1111 11 11"
+          },
+          "resultIds": [
+            "68ef9d6971dd5ff2cf9560f6",
+            "68ef9e6571dd5ff2cf956132",
+            "68ef9e75d5e9d73ceff208d5"
+          ]
+        },
+        {
+          "pattern": "No, he isn’t.",
+          "attemptCount": 1,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0fnnq-f11b9dd3-audio.wav",
+          "bestResultId": "68ef9d9771dd5ff2cf956108",
+          "assessments": {
+            "mask": "111 11 111111"
+          },
+          "resultIds": [
+            "68ef9d9771dd5ff2cf956108"
+          ]
+        },
+        {
+          "pattern": "Why do you like her?",
+          "attemptCount": 2,
+          "averageScore": 100,
+          "bestScore": 100,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0j819-36653374-audio.wav",
+          "bestResultId": "68ef9e3ed5e9d73ceff208c7",
+          "assessments": {
+            "mask": "111 11 111 1111 1111"
+          },
+          "resultIds": [
+            "68ef9de8d5e9d73ceff208af",
+            "68ef9e3ed5e9d73ceff208c7"
+          ]
+        },
+        {
+          "pattern": "Because she's kind.",
+          "attemptCount": 1,
+          "averageScore": 83.33,
+          "bestScore": 83.33333333333333,
+          "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/10/15/admin/mgs0hvjc-b12f8598-audio.wav",
+          "bestResultId": "68ef9dffd5e9d73ceff208b9",
+          "assessments": {
+            "mask": "1111111 00111 11111"
+          },
+          "resultIds": [
+            "68ef9dffd5e9d73ceff208b9"
+          ]
+        }
+      ]
+    },
+    "targets": {
+      "vocabulary": [
+        "friendly",
+        "clever",
+        "kind",
+        "hard-working",
+        "funny"
+      ],
+      "grammar": [
+        "Is he funny?",
+        "Yes, he is.",
+        "No, he isn’t.",
+        "Why do you like her?",
+        "Because she's kind."
+      ]
+    },
+    "config": {
+      "reaction": {
+        "label": "Rất nhanh",
+        "maxSeconds": 3,
+        "minCoverage": 0.5
+      },
+      "pronunciation": {
+        "goodScoreThreshold": 60
+      },
+      "completion": {
+        "requiresGrammarSection": true,
+        "fallbackPercentThreshold": 70
+      },
+      "feedback": {
+        "summaryRule": "BEFORE_VOCAB_NO_RELEARN",
+        "trialCommentRule": null,
+        "canRelearn": false
+      }
+    },
+    "scriptMetadata": {
+      "theme": {
+        "key": "default",
+        "label": "Default",
+        "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+      },
+      "teachingAssistantVoice": {
+        "key": "female",
+        "label": "Female"
+      },
+      "teacher": {
+        "key": "nora",
+        "label": "Teacher Nora",
+        "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+        "defaultVideoUrl": "https://scontent.rinoedu.ai/teacherroger/noraimlang.mp4"
+      },
+      "name": "kịch bản",
+      "description": "kịch bản 26/09",
+      "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/09/23/collaborator/mfw3b6vs-14ae1cfc-fix-level-5---unit-1a---lesson.png",
+      "lmsCourseId": "896",
+      "lmsSectionId": "75208"
+    }
+  }
+]

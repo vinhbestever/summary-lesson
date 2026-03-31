@@ -1,0 +1,252 @@
+{
+  "reportId": "695d08c9f33d0f136d802b34",
+  "sessionId": "695d0376f33d0f136d801110",
+  "completion": {
+    "isCompletedByReportRules": true,
+    "reasons": [
+      "GRAMMAR_SECTION_COMPLETED",
+      "VOCABULARY_SECTION_COMPLETED"
+    ]
+  },
+  "moments": [],
+  "achievements": {
+    "stats": {
+      "speakingTurnCount": 36,
+      "totalCups": 32,
+      "averageReactionTimeMs": 848.22,
+      "practiceAccuracyPercent": 94,
+      "sectionsCompletionPercent": 100,
+      "speakingTargetCount": 47,
+      "speakingCoverage": 0.77,
+      "reactionTag": "Rất nhanh",
+      "teacherComment": "Tuyệt vời! Bé học rất chủ động, phản xạ rất nhanh và phát âm tốt. Hãy giữ tiến độ như vậy.",
+      "sessionSummary": "Buổi học diễn ra thành công.",
+      "trialComment": null,
+      "canRelearn": true,
+      "progress": {
+        "hasGrammarSection": true,
+        "grammarCompleted": true,
+        "hasVocabularySection": true,
+        "vocabularyCompleted": true,
+        "immediateExit": false
+      }
+    },
+    "pronunciation": {
+      "attemptCount": 36,
+      "averagePronunciationScore": 84.94,
+      "averageGrammarScore": 81.43,
+      "goodVocabularyCount": 5,
+      "goodGrammarCount": 4,
+      "totalVocabularyCount": 5,
+      "totalGrammarCount": 4,
+      "goodScoreThreshold": 60
+    },
+    "vocabulary": [
+      {
+        "word": "clean my house",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2lia3o-e4a52925-audio.wav",
+        "bestResultId": "695d06faf33d0f136d801dc9",
+        "assessments": {
+          "mask": "11111 11 11111"
+        },
+        "resultIds": [
+          "695d04cbe4526c242fe3e3a5",
+          "695d06faf33d0f136d801dc9"
+        ]
+      },
+      {
+        "word": "visit my grandparents",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2lj4dw-1e8f8a16-audio.wav",
+        "bestResultId": "695d0721f33d0f136d801e97",
+        "assessments": {
+          "mask": "11111 11 1111111111111"
+        },
+        "resultIds": [
+          "695d04dce4526c242fe3e3df",
+          "695d0712f33d0f136d801e1e",
+          "695d0721f33d0f136d801e97"
+        ]
+      },
+      {
+        "word": "chat with friends",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2ljabx-57a47d24-audio.wav",
+        "bestResultId": "695d0729f33d0f136d801ec1",
+        "assessments": {
+          "mask": "1111 1111 1111111"
+        },
+        "resultIds": [
+          "695d04eee4526c242fe3e4bb",
+          "695d070af33d0f136d801dff",
+          "695d0729f33d0f136d801ec1"
+        ]
+      },
+      {
+        "word": "cook dinner",
+        "attemptCount": 5,
+        "averageScore": 90,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2lrfqq-6e8bd971-audio.wav",
+        "bestResultId": "695d08a6f33d0f136d802a50",
+        "assessments": {
+          "mask": "1111 111111"
+        },
+        "resultIds": [
+          "695d051ae4526c242fe3e539",
+          "695d062ee4526c242fe3ea48",
+          "695d08a6f33d0f136d802a50",
+          "695d0654e4526c242fe3eb07",
+          "695d0731e4526c242fe3ef58"
+        ]
+      },
+      {
+        "word": "wash dishes",
+        "attemptCount": 6,
+        "averageScore": 65.83,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2l8nw8-f31581d9-audio.wav",
+        "bestResultId": "695d0539f33d0f136d80160e",
+        "assessments": {
+          "mask": "1111 111111"
+        },
+        "resultIds": [
+          "695d0539f33d0f136d80160e",
+          "695d06cef33d0f136d801d2b",
+          "695d0702e4526c242fe3ee3f",
+          "695d06adf33d0f136d801cbd",
+          "695d052af33d0f136d8015d1",
+          "695d071af33d0f136d801e30"
+        ]
+      }
+    ],
+    "grammar": [
+      {
+        "pattern": "Did you cook dinner last night?",
+        "attemptCount": 3,
+        "averageScore": 90.72,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2ldwak-83302f48-audio.wav",
+        "bestResultId": "695d062ee4526c242fe3ea48",
+        "assessments": {
+          "mask": "111 111 1111 111111 1111 111111"
+        },
+        "resultIds": [
+          "695d062ee4526c242fe3ea48",
+          "695d0654e4526c242fe3eb07",
+          "695d0731e4526c242fe3ef58"
+        ]
+      },
+      {
+        "pattern": "Yes, I did.",
+        "attemptCount": 2,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2lgzwe-78cd02eb-audio.wav",
+        "bestResultId": "695d06bef33d0f136d801cfc",
+        "assessments": {
+          "mask": "1111 1 111"
+        },
+        "resultIds": [
+          "695d0641e4526c242fe3eacd",
+          "695d06bef33d0f136d801cfc"
+        ]
+      },
+      {
+        "pattern": "No, I didn't.",
+        "attemptCount": 3,
+        "averageScore": 100,
+        "bestScore": 100,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2lrfqq-6e8bd971-audio.wav",
+        "bestResultId": "695d08a6f33d0f136d802a50",
+        "assessments": {
+          "mask": "111 1 1111111"
+        },
+        "resultIds": [
+          "695d0665f33d0f136d801bd9",
+          "695d06e0f33d0f136d801d5c",
+          "695d08a6f33d0f136d802a50"
+        ]
+      },
+      {
+        "pattern": "Did you wash dishes yesterday?",
+        "attemptCount": 3,
+        "averageScore": 83.87,
+        "bestScore": 93.2,
+        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2026/01/06/admin/mk2lhca3-0c171dbe-audio.wav",
+        "bestResultId": "695d06cef33d0f136d801d2b",
+        "assessments": {
+          "mask": "111 111 1100 111111 1111111111"
+        },
+        "resultIds": [
+          "695d06cef33d0f136d801d2b",
+          "695d06adf33d0f136d801cbd",
+          "695d071af33d0f136d801e30"
+        ]
+      }
+    ]
+  },
+  "targets": {
+    "vocabulary": [
+      "clean my house",
+      "visit my grandparents",
+      "chat with friends",
+      "cook dinner",
+      "wash dishes"
+    ],
+    "grammar": [
+      "Did you cook dinner last night?",
+      "Yes, I did.",
+      "No, I didn't.",
+      "Did you wash dishes yesterday?"
+    ]
+  },
+  "config": {
+    "reaction": {
+      "label": "Rất nhanh",
+      "maxSeconds": 3,
+      "minCoverage": 0.5
+    },
+    "pronunciation": {
+      "goodScoreThreshold": 60
+    },
+    "completion": {
+      "requiresGrammarSection": true,
+      "fallbackPercentThreshold": 70
+    },
+    "feedback": {
+      "summaryRule": "DEFAULT",
+      "trialCommentRule": null,
+      "canRelearn": true
+    }
+  },
+  "scriptMetadata": {
+    "theme": {
+      "key": "default",
+      "label": "Default",
+      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+    },
+    "teachingAssistantVoice": {
+      "key": "female",
+      "label": "Female"
+    },
+    "teacher": {
+      "key": "nora",
+      "label": "Teacher Nora",
+      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    },
+    "name": "Level 5 - Unit 2B - Lesson 2",
+    "description": "Gấm 25/11",
+    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/28/collaborator/mii7sx8n-6e9ccbec-brainstorm-ch-1.png",
+    "lmsCourseId": "896",
+    "lmsSectionId": "77039"
+  }
+}
