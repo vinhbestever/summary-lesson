@@ -46,6 +46,7 @@ Frontend mac dinh: `http://localhost:5173`
 
 - `GET /health`
 - `POST /api/v1/summaries`
+- `POST /api/v1/lesson-feedback`
 
 Request (co the gui `report_text` hoac `report_url` hoac `lesson_id`):
 
@@ -66,3 +67,46 @@ Response:
   "action_items": ["..."]
 }
 ```
+
+Request nhan xet lesson:
+
+```json
+{
+  "lesson_id": "3724970",
+  "lesson_label": "Lesson 3724970"
+}
+```
+
+Response nhan xet lesson:
+
+```json
+{
+  "lesson_label": "Lesson 3724970",
+  "teacher_tone": "warm_encouraging",
+  "overall_comment": "...",
+  "session_breakdown": {
+    "participation": { "score": 85, "comment": "...", "evidence": ["..."] },
+    "pronunciation": { "score": 72, "comment": "...", "evidence": ["..."] },
+    "vocabulary": { "score": 80, "comment": "...", "evidence": ["..."] },
+    "grammar": { "score": 78, "comment": "...", "evidence": ["..."] },
+    "reaction_confidence": { "score": 88, "comment": "...", "evidence": ["..."] }
+  },
+  "strengths": ["..."],
+  "priority_improvements": [
+    {
+      "skill": "pronunciation",
+      "priority": "high",
+      "current_state": "...",
+      "target_next_lesson": "...",
+      "coach_tip": "..."
+    }
+  ],
+  "next_lesson_plan": [{ "step": "...", "duration_minutes": 8 }],
+  "parent_message": "..."
+}
+```
+
+UI flow:
+- Moi lesson card co nut `Nhan xet AI`.
+- Bam nut de goi `/api/v1/lesson-feedback`.
+- Ket qua hien thi o panel chung ben duoi danh sach lesson.
