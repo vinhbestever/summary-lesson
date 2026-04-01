@@ -478,15 +478,21 @@ def _build_portfolio_feedback_messages(
         '## Phong cách học hiện tại; '
         '## Điểm mạnh; '
         '## Ưu tiên can thiệp; '
-        '## Lộ trình học tháng tới; '
+        '## Đánh giá 6 năng lực; '
+        '## Kế hoạch 2 tuần; '
         '## Lời nhắn phụ huynh. '
         'Yêu cầu chi tiết theo section: '
         '1) "Tổng quan quá trình": nêu mức độ tiến bộ chung, độ ổn định và mức hoàn thành theo toàn bộ các buổi. '
         '2) "Xu hướng tiến bộ": nêu chiều hướng tăng/giảm/dao động theo thời gian và chỉ ra giai đoạn rõ ràng (đầu kỳ, gần đây). '
         '3) "Xu hướng kỹ năng": với từng kỹ năng chính, ghi ngắn gọn trạng thái hiện tại + bằng chứng dữ liệu. '
         '4) "Phong cách học hiện tại": mô tả cách học nổi bật của học sinh (mức chủ động, tốc độ phản xạ, khả năng tập trung, kiểu tiếp thu) dựa trên dữ liệu quan sát. '
-        '5) "Lộ trình học tháng tới": mỗi ý là hành động cụ thể có tần suất theo tuần và thời lượng. '
-        '6) "Lời nhắn phụ huynh": khuyến nghị ngắn gọn, khả thi tại nhà. '
+        '5) "Đánh giá 6 năng lực": bắt buộc trình bày đủ 6 năng lực theo thứ tự A->F gồm Learn, Recognize, Apply, Retain, Focus, Express. '
+        'Mỗi năng lực là 1 bullet cha trên 1 dòng, ngay dưới có đúng 4 bullet con theo thứ tự: '
+        '"  - Đo lường: ...", "  - Kết quả hiện tại: ...", "  - Nhận xét: ...", "  - Khuyến nghị: ...". '
+        'Dòng "Kết quả hiện tại" bắt buộc có score hoặc level theo thang 5 mức (Rất cần hỗ trợ, Cần hỗ trợ, Đang hình thành, Khá vững, Vững vàng). '
+        '6) "Kế hoạch 2 tuần": 6-8 hành động cụ thể, mỗi hành động phải ghi rõ tần suất/tuần + thời lượng + năng lực liên quan (1-2 năng lực), '
+        'và phải bám sát mức hiện tại trong "Đánh giá 6 năng lực". '
+        '7) "Lời nhắn phụ huynh": khuyến nghị ngắn gọn, khả thi tại nhà. '
         'Quy tắc trình bày bắt buộc: mỗi ý phải bắt đầu bằng "- " và mỗi section cách nhau 1 dòng trống. '
         'Mọi nhận định phải bám sát dữ liệu; nếu thiếu dữ liệu thì ghi rõ "chưa đủ dữ liệu".'
     )
@@ -495,7 +501,6 @@ def _build_portfolio_feedback_messages(
         'total_lessons': len(lessons_payload),
         'portfolio_context': context,
         'format': 'markdown',
-        'lessons': lessons_payload,
     }
     return [
         {'role': 'system', 'content': system_prompt},

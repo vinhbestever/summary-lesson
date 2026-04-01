@@ -198,6 +198,24 @@ describe('App', () => {
     expect(screen.getByText(/tien bo on dinh qua cac buoi/i)).toBeInTheDocument()
   })
 
+  it('renders radar chart from portfolio result event', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich tong hop',
+        'event: result\ndata: {"type":"lesson_radar","competencies":[{"key":"learn","label":"A. Learn","score":66,"insufficient_data":false},{"key":"recognize","label":"B. Recognize","score":61,"insufficient_data":false},{"key":"apply","label":"C. Apply","score":59,"insufficient_data":false},{"key":"retain","label":"D. Retain","score":54,"insufficient_data":false},{"key":"focus","label":"E. Focus","score":68,"insufficient_data":false},{"key":"express","label":"F. Express","score":52,"insufficient_data":false}]}',
+        'event: chunk\ndata: # Nhan xet chung qua trinh hoc\ndata: \ndata: ## Tong quan qua trinh\ndata: \ndata: Tien bo on dinh qua cac buoi.',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+    fireEvent.click(screen.getByRole('button', { name: /nhan xet chung/i }))
+
+    expect(await screen.findByRole('heading', { name: /nhan xet chung qua trinh hoc/i })).toBeInTheDocument()
+    expect(screen.getAllByText(/a\. learn/i).length).toBeGreaterThan(0)
+  })
+
   it('does not render raw html from markdown content', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([

@@ -7,6 +7,7 @@ from pathlib import Path
 
 _SAFE_KEY_PATTERN = re.compile(r'[^a-zA-Z0-9._-]+')
 LESSON_FEEDBACK_CACHE_VERSION = 'v8'
+PORTFOLIO_FEEDBACK_CACHE_VERSION = 'v2'
 
 
 def _repo_root() -> Path:
@@ -50,7 +51,7 @@ def lesson_feedback_cache_key(
 
 
 def portfolio_feedback_cache_key() -> str:
-    return 'portfolio_all_lessons'
+    return f'portfolio_{PORTFOLIO_FEEDBACK_CACHE_VERSION}_recent_8_non_trial'
 
 
 def read_feedback_cache(cache_key: str) -> str | None:

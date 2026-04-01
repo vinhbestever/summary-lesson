@@ -435,6 +435,58 @@ def _parse_lesson_time_to_timestamp(value: str | None) -> float | None:
         return None
 
 
+def _is_trial_lesson(lesson_id: str) -> bool:
+    return lesson_id.upper().startswith('TRIAL_')
+
+
+def _lesson_id_desc_sort_key(lesson_id: str) -> tuple[int, int, str]:
+    lesson_id = lesson_id.strip()
+    if lesson_id.isdigit():
+        return (1, int(lesson_id), lesson_id)
+    return (0, 0, lesson_id.lower())
+
+
+def _extract_lesson_start_time_from_raw_json(raw_json_text: str) -> str | None:
+    root = _parse_lesson_root(raw_json_text)
+    report = _extract_primary_report(root)
+    lesson_time = report.get('lessonTime') if isinstance(report.get('lessonTime'), dict) else {}
+    start_time = lesson_time.get('lessonStartTime') if isinstance(lesson_time, dict) else None
+    if isinstance(start_time, str):
+        return start_time
+    return None
+
+
+def _select_recent_portfolio_lessons(
+    lessons_payload: list[dict[str, str]],
+    limit: int = 8,
+) -> list[dict[str, str]]:
+    candidates: list[dict[str, Any]] = []
+
+    for item in lessons_payload:
+        lesson_id = str(item.get('lesson_id', '')).strip()
+        if not lesson_id or _is_trial_lesson(lesson_id):
+            continue
+        start_time = _extract_lesson_start_time_from_raw_json(item.get('raw_json_text', ''))
+        time_sort_key = _parse_lesson_time_to_timestamp(start_time)
+        candidates.append(
+            {
+                'item': item,
+                'lesson_id': lesson_id,
+                'time_sort_key': time_sort_key,
+            }
+        )
+
+    candidates.sort(
+        key=lambda entry: (
+            entry.get('time_sort_key') is not None,
+            entry.get('time_sort_key') or float('-inf'),
+            _lesson_id_desc_sort_key(str(entry.get('lesson_id', ''))),
+        ),
+        reverse=True,
+    )
+    return [entry['item'] for entry in candidates[: max(0, limit)]]
+
+
 def _extract_lesson_snapshot(raw_json_text: str, lesson_id: str, source_file: str) -> dict[str, Any]:
     root = _parse_lesson_root(raw_json_text)
     report = _extract_primary_report(root)
@@ -700,9 +752,10 @@ def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PlainTextRes
 
     try:
         lessons_payload = load_all_lessons_json_from_local_data()
-        if not lessons_payload:
+        selected_lessons = _select_recent_portfolio_lessons(lessons_payload, limit=8)
+        if not selected_lessons:
             raise HTTPException(status_code=400, detail='Khong tim thay du lieu lesson trong /data')
-        feedback = generate_portfolio_feedback(lessons_payload, payload.portfolio_label)
+        feedback = generate_portfolio_feedback(selected_lessons, payload.portfolio_label)
         write_feedback_cache(cache_key, feedback)
     except HTTPException:
         raise
@@ -724,6 +777,8 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
         def cached_event_generator():
             yield _format_sse_event('status', 'Dang tai noi dung nhan xet tu cache...')
             yield _format_sse_event('chunk', cached_markdown)
+            radar_payload = _build_lesson_radar_payload(cached_markdown)
+            yield _format_sse_event('result', json.dumps(radar_payload, ensure_ascii=False))
             yield _format_sse_event('done', 'done')
 
         return StreamingResponse(
@@ -734,7 +789,8 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
 
     try:
         lessons_payload = load_all_lessons_json_from_local_data()
-        if not lessons_payload:
+        selected_lessons = _select_recent_portfolio_lessons(lessons_payload, limit=8)
+        if not selected_lessons:
             raise HTTPException(status_code=400, detail='Khong tim thay du lieu lesson trong /data')
     except HTTPException:
         raise
@@ -746,8 +802,9 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
     def event_generator():
         chunk_buffer: list[str] = []
         stream_failed = False
+        has_radar_result = False
         try:
-            for event in stream_portfolio_feedback(lessons_payload, payload.portfolio_label):
+            for event in stream_portfolio_feedback(selected_lessons, payload.portfolio_label):
                 event_type = str(event.get('type', 'status'))
                 if event_type == 'status':
                     yield _format_sse_event(event_type, str(event.get('message', '')))
@@ -760,14 +817,21 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
                     stream_failed = True
                     yield _format_sse_event(event_type, str(event.get('message', '')))
                 elif event_type == 'result':
-                    yield _format_sse_event(event_type, json.dumps(event.get('data', {}), ensure_ascii=False))
+                    result_data = event.get('data', {})
+                    if isinstance(result_data, dict) and result_data.get('type') == 'lesson_radar':
+                        has_radar_result = True
+                    yield _format_sse_event(event_type, json.dumps(result_data, ensure_ascii=False))
                 else:
                     yield _format_sse_event(event_type, json.dumps(event, ensure_ascii=False))
         except Exception as exc:
             stream_failed = True
             yield _format_sse_event('error', str(exc))
         if not stream_failed:
-            write_feedback_cache(cache_key, ''.join(chunk_buffer))
+            markdown = ''.join(chunk_buffer)
+            write_feedback_cache(cache_key, markdown)
+            if not has_radar_result:
+                radar_payload = _build_lesson_radar_payload(markdown)
+                yield _format_sse_event('result', json.dumps(radar_payload, ensure_ascii=False))
         yield _format_sse_event('done', 'done')
 
     return StreamingResponse(

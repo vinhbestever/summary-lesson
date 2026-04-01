@@ -433,12 +433,51 @@ def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
     user_payload = json.loads(messages[1]['content'])
 
     assert 'Chỉ trả về markdown' in system_prompt
-    assert '## Lộ trình học tháng tới' in system_prompt
+    assert '## Đánh giá 6 năng lực' in system_prompt
+    assert '## Kế hoạch 2 tuần' in system_prompt
+    assert 'A->F' in system_prompt
+    assert 'Kết quả hiện tại' in system_prompt
     assert '## Ưu tiên can thiệp' in system_prompt
     assert '## Xu hướng tiến bộ' in system_prompt
     assert '## Phong cách học hiện tại' in system_prompt
     assert 'portfolio_context' in user_payload
     assert user_payload['portfolio_context']['total_lessons'] == 1
+
+
+def test_select_recent_portfolio_lessons_excludes_trial_and_limits_to_8() -> None:
+    from app.main import _select_recent_portfolio_lessons
+
+    def _lesson_item(lesson_id: str, start_time: str | None) -> dict[str, str]:
+        if start_time is None:
+            raw_json_text = '{"lessonTime":{}}'
+        else:
+            raw_json_text = json.dumps({'lessonTime': {'lessonStartTime': start_time}})
+        return {
+            'lesson_id': lesson_id,
+            'source_file': f'lesson_{lesson_id}.json',
+            'raw_json_text': raw_json_text,
+        }
+
+    lessons_payload = [
+        _lesson_item('TRIAL_LESSON_1', '2026-03-31 09:00:00'),
+        _lesson_item('100', '2026-03-31 10:00:00'),
+        _lesson_item('101', '2026-03-30 10:00:00'),
+        _lesson_item('102', '2026-03-29 10:00:00'),
+        _lesson_item('103', '2026-03-28 10:00:00'),
+        _lesson_item('104', '2026-03-27 10:00:00'),
+        _lesson_item('105', '2026-03-26 10:00:00'),
+        _lesson_item('106', '2026-03-25 10:00:00'),
+        _lesson_item('107', '2026-03-24 10:00:00'),
+        _lesson_item('999', None),
+        _lesson_item('108', '2026-03-23 10:00:00'),
+    ]
+
+    selected = _select_recent_portfolio_lessons(lessons_payload, limit=8)
+    selected_ids = [item['lesson_id'] for item in selected]
+
+    assert len(selected_ids) == 8
+    assert not any(lesson_id.startswith('TRIAL_') for lesson_id in selected_ids)
+    assert selected_ids == ['100', '101', '102', '103', '104', '105', '106', '107']
 
 
 def test_stream_portfolio_feedback_emits_chunk_events(monkeypatch) -> None:
@@ -764,8 +803,12 @@ def test_create_portfolio_feedback_stream_writes_cache_and_reuses(monkeypatch) -
     assert first.status_code == 200
     assert second.status_code == 200
     assert 'data: # Generated portfolio markdown' in first.text
+    assert 'event: result' in first.text
+    assert '"type": "lesson_radar"' in first.text
     assert 'cache' in second.text.lower()
     assert 'data: # Generated portfolio markdown' in second.text
+    assert 'event: result' in second.text
+    assert '"type": "lesson_radar"' in second.text
     assert call_count['count'] == 1
 
 
@@ -888,6 +931,7 @@ def test_portfolio_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
     body = response.text
     assert 'event: chunk' in body
     assert 'data: # Tong ket' in body
+    assert '"type": "lesson_radar"' in body
     assert 'event: done' in body
 
 

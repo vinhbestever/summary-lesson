@@ -556,7 +556,7 @@ function App() {
     [feedbackMarkdown],
   )
   const resolvedLessonRadarPayload = useMemo(() => {
-    if (feedbackMode !== 'lesson') {
+    if (feedbackMode === null) {
       return null
     }
     if (lessonRadarPayload) {
@@ -727,6 +727,15 @@ function App() {
           } else if (eventName === 'chunk') {
             setFeedbackStreamingStatus('Dang tao noi dung nhan xet...')
             setFeedbackMarkdown((previous) => previous + (eventData || '\n'))
+          } else if (eventName === 'result') {
+            try {
+              const parsed = JSON.parse(eventData) as LessonRadarPayload
+              if (parsed?.type === 'lesson_radar' && Array.isArray(parsed.competencies)) {
+                setLessonRadarPayload(parsed)
+              }
+            } catch (_error) {
+              // Ignore invalid result payload and rely on markdown fallback parser.
+            }
           } else if (eventName === 'error') {
             throw new Error(eventData || 'Chua tao duoc nhan xet. Vui long thu lai.')
           } else if (eventName === 'done') {
@@ -747,10 +756,6 @@ function App() {
       <section className="hero">
         <div className="hero__header">
           <p className="hero__eyebrow">Bao cao sau buoi hoc</p>
-          <h1>RinoDigi Lesson Feedback</h1>
-          <p className="hero__subtitle">
-            Khong gian xem buoi hoc va nhan xet duoc toi uu cho tre: de nhin, de tim, de theo doi tien bo.
-          </p>
         </div>
         <div className="hero__stats" aria-label="Thong ke">
           <article className="hero-stat">
@@ -769,8 +774,7 @@ function App() {
       <div className="layout">
         <section className="report-options" aria-label="Report options">
           <header className="section-head">
-            <h2>Danh sach buoi hoc</h2>
-            <p>Chon buoi hoc de xem nhanh bao cao hoac tao nhan xet AI.</p>
+            <h2>Danh sách buổi học</h2>
           </header>
           {reportLinks.length === 0 && (
             <p className="feedback">Chua co du lieu buoi hoc trong thu muc data.</p>
@@ -799,7 +803,7 @@ function App() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  Xem bao cao
+                  Xem báo cáo
                 </a>
                 <button
                   type="button"
@@ -807,7 +811,7 @@ function App() {
                   onClick={() => handleGenerateFeedback(item.lessonId, item.label)}
                   disabled={feedbackLoadingId !== null}
                 >
-                  Nhan xet
+                  Nhận xét
                 </button>
               </div>
             </article>
@@ -816,15 +820,14 @@ function App() {
 
         <section className="lesson-feedback-panel" aria-label="Lesson feedback">
           <header className="section-head section-head--feedback">
-            <h2>Ket qua nhan xet</h2>
-            <p>Tap trung hien thi noi dung de giao vien va phu huynh de doc.</p>
+            <h2>Kết quả nhận xét</h2>
             <button
               type="button"
               className="portfolio-action__button"
               onClick={handleGeneratePortfolioFeedback}
               disabled={feedbackLoadingId !== null}
             >
-              Nhan xet chung
+             Nhận xét 8 buổi học gần đây
             </button>
           </header>
 
@@ -841,9 +844,6 @@ function App() {
                 Dang xu ly: <strong>{activeFeedbackLabel}</strong>
               </p>
               <article className="summary-result">
-                <p className="summary-result__context">
-                  Dang hien thi: <strong>{activeFeedbackLabel}</strong>
-                </p>
                 <div className="summary-result__split">
                   <div className="summary-result__chart-pane">
                     <RadarChartSkeleton />
@@ -864,9 +864,6 @@ function App() {
 
           {!feedbackLoadingId && feedbackMarkdown && (
             <article className="summary-result" data-testid={`markdown-result-${feedbackMode ?? 'none'}`}>
-              <p className="summary-result__context">
-                Dang hien thi: <strong>{activeFeedbackLabel}</strong>
-              </p>
               <div
                 className={`summary-result__split ${resolvedLessonRadarPayload ? '' : 'summary-result__split--single'}`}
               >
