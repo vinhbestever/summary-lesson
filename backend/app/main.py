@@ -1,5 +1,7 @@
 import json
 import os
+import re
+import unicodedata
 from datetime import datetime
 from typing import Any
 
@@ -45,6 +47,24 @@ app.add_middleware(
     allow_methods=['*'],
     allow_headers=['*'],
 )
+
+_RADAR_COMPETENCY_SPECS = [
+    ('learn', 'A', 'Learn'),
+    ('recognize', 'B', 'Recognize'),
+    ('apply', 'C', 'Apply'),
+    ('retain', 'D', 'Retain'),
+    ('focus', 'E', 'Focus'),
+    ('express', 'F', 'Express'),
+]
+_RADAR_COMPETENCY_BY_NAME = {name.lower(): key for key, _code, name in _RADAR_COMPETENCY_SPECS}
+_RADAR_COMPETENCY_BY_CODE = {code.upper(): key for key, code, _name in _RADAR_COMPETENCY_SPECS}
+_LEVEL_SCORE_MAP = {
+    'Rất cần hỗ trợ': 20,
+    'Cần hỗ trợ': 40,
+    'Đang hình thành': 60,
+    'Khá vững': 80,
+    'Vững vàng': 100,
+}
 
 
 def generate_summary(report_text: str) -> dict:
@@ -97,6 +117,314 @@ def _parse_lesson_root(raw_json_text: str) -> dict[str, Any]:
     return {}
 
 
+def _extract_primary_report(root: dict[str, Any]) -> dict[str, Any]:
+    if not isinstance(root, dict):
+        return {}
+    reports = root.get('reports')
+    if isinstance(reports, list):
+        for item in reports:
+            if isinstance(item, dict):
+                return item
+        return {}
+    return root
+
+
+def _extract_lesson_moments(root: dict[str, Any], primary_report: dict[str, Any]) -> list[dict[str, Any]]:
+    if isinstance(root.get('moments'), list):
+        return [item for item in root.get('moments', []) if isinstance(item, dict)]
+    if isinstance(primary_report.get('moments'), list):
+        return [item for item in primary_report.get('moments', []) if isinstance(item, dict)]
+    return []
+
+
+def _words_count(value: Any) -> int:
+    text = str(value or '').strip()
+    if not text:
+        return 0
+    return len([part for part in text.split() if part.strip()])
+
+
+def _to_float(value: Any) -> float | None:
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _avg(values: list[float]) -> float | None:
+    if not values:
+        return None
+    return round(sum(values) / len(values), 2)
+
+
+def _take_examples(values: list[str], limit: int = 3) -> list[str]:
+    seen: set[str] = set()
+    deduped: list[str] = []
+    for value in values:
+        normalized = str(value).strip()
+        if not normalized or normalized in seen:
+            continue
+        seen.add(normalized)
+        deduped.append(normalized)
+        if len(deduped) >= limit:
+            break
+    return deduped
+
+
+def _normalize_compare_text(value: str) -> str:
+    normalized = unicodedata.normalize('NFD', value or '')
+    without_marks = ''.join(ch for ch in normalized if unicodedata.category(ch) != 'Mn')
+    return without_marks.lower().strip()
+
+
+def _extract_level_label(value: str) -> str:
+    normalized_value = _normalize_compare_text(value)
+    for label in _LEVEL_SCORE_MAP:
+        if _normalize_compare_text(label) in normalized_value:
+            return label
+    return ''
+
+
+def _extract_competency_score(line: str) -> tuple[int | None, str, bool]:
+    content = line.split(':', 1)[1].strip() if ':' in line else ''
+    normalized_content = _normalize_compare_text(content)
+    insufficient_data = 'chua du du lieu' in normalized_content
+
+    level_text = _extract_level_label(content)
+    score: int | None = None
+    score_match = re.search(r'(?<!\d)(100|[1-9]?\d)(?:\s*/\s*100)?', content)
+    if score_match:
+        score = max(0, min(int(score_match.group(1)), 100))
+    elif level_text:
+        score = _LEVEL_SCORE_MAP[level_text]
+
+    if insufficient_data:
+        return 0, level_text, True
+    return score, level_text, False
+
+
+def _default_lesson_radar_payload() -> dict[str, Any]:
+    return {
+        'type': 'lesson_radar',
+        'competencies': [
+            {
+                'key': key,
+                'label': f'{code}. {name}',
+                'score': 0,
+                'level_text': '',
+                'insufficient_data': True,
+            }
+            for key, code, name in _RADAR_COMPETENCY_SPECS
+        ],
+    }
+
+
+def _build_lesson_radar_payload(markdown: str) -> dict[str, Any]:
+    payload = _default_lesson_radar_payload()
+    lines = (markdown or '').splitlines()
+    if not lines:
+        return payload
+
+    inside_section = False
+    current_key: str | None = None
+    competency_data: dict[str, dict[str, Any]] = {}
+
+    for raw_line in lines:
+        stripped = raw_line.strip()
+        if not stripped:
+            continue
+
+        if re.match(r'^##\s+', stripped):
+            if re.match(r'^##\s*(Đánh giá 6 năng lực|Danh gia 6 nang luc)\b', stripped, flags=re.IGNORECASE):
+                inside_section = True
+                current_key = None
+                continue
+            if inside_section:
+                break
+            continue
+
+        if not inside_section:
+            continue
+
+        competency_match = re.match(
+            r'^[-*]\s*(?:([A-F])\.\s*)?(?:\*\*)?(Learn|Recognize|Apply|Retain|Focus|Express)(?:\*\*)?\b',
+            stripped,
+            flags=re.IGNORECASE,
+        )
+        if competency_match:
+            code = (competency_match.group(1) or '').upper()
+            name = competency_match.group(2).lower()
+            current_key = _RADAR_COMPETENCY_BY_NAME.get(name) or _RADAR_COMPETENCY_BY_CODE.get(code)
+            if current_key and current_key not in competency_data:
+                competency_data[current_key] = {'score': None, 'level_text': '', 'insufficient_data': True}
+            continue
+
+        if current_key is None:
+            continue
+
+        if 'ket qua hien tai' in _normalize_compare_text(stripped):
+            score, level_text, insufficient_data = _extract_competency_score(stripped)
+            competency_data[current_key] = {
+                'score': score,
+                'level_text': level_text,
+                'insufficient_data': insufficient_data or score is None,
+            }
+
+    normalized_competencies: list[dict[str, Any]] = []
+    for key, code, name in _RADAR_COMPETENCY_SPECS:
+        item = competency_data.get(key, {})
+        score = item.get('score')
+        insufficient = bool(item.get('insufficient_data', True))
+        normalized_competencies.append(
+            {
+                'key': key,
+                'label': f'{code}. {name}',
+                'score': int(score) if isinstance(score, int) else 0,
+                'level_text': str(item.get('level_text') or ''),
+                'insufficient_data': insufficient or score is None,
+            }
+        )
+
+    payload['competencies'] = normalized_competencies
+    return payload
+
+
+def _build_lesson_skill_context(raw_json_text: str) -> dict[str, Any]:
+    root = _parse_lesson_root(raw_json_text)
+    primary_report = _extract_primary_report(root)
+    moments = _extract_lesson_moments(root, primary_report)
+
+    vocab_scores: list[float] = []
+    vocab_evidence: list[str] = []
+    short_sentence_scores: list[float] = []
+    short_sentence_evidence: list[str] = []
+    long_sentence_scores: list[float] = []
+    long_sentence_evidence: list[str] = []
+    listening_scores: list[float] = []
+    listening_questions: list[str] = []
+    listening_good_examples: list[str] = []
+    listening_weak_examples: list[str] = []
+    reading_scores: list[float] = []
+    reading_good_examples: list[str] = []
+    reading_weak_examples: list[str] = []
+
+    for moment in moments:
+        interaction_type = str(moment.get('interaction_type') or moment.get('interactionType') or '').strip()
+        lms_type = str(moment.get('lms_type') or moment.get('lmsType') or '').strip()
+        lms_data = moment.get('lms_data') if isinstance(moment.get('lms_data'), dict) else {}
+        if not lms_data and isinstance(moment.get('lmsData'), dict):
+            lms_data = moment.get('lmsData')
+        result = moment.get('result') if isinstance(moment.get('result'), dict) else {}
+        question_type = str(lms_data.get('questionType') or '').strip()
+        expected_transcript = str(lms_data.get('expectedTranscript') or '').strip()
+        user_transcript = str(result.get('userTranscript') or '').strip()
+        score = _to_float(result.get('score'))
+        pronunciation_score = _to_float(result.get('pronunciationScore'))
+        activity_score = pronunciation_score if pronunciation_score is not None else score
+        transcript_for_example = user_transcript or expected_transcript
+
+        is_audio = interaction_type == 'AUDIO'
+        if is_audio and expected_transcript:
+            expected_word_count = _words_count(expected_transcript)
+            if expected_word_count <= 3:
+                if activity_score is not None:
+                    vocab_scores.append(activity_score)
+                if transcript_for_example:
+                    vocab_evidence.append(transcript_for_example)
+
+            is_short_activity = lms_type == 'game_pronunciation' or (
+                question_type == 'speaking_scripted' and expected_word_count <= 4
+            )
+            is_long_activity = lms_type in {'dialogue', 'conversation'} or (
+                question_type == 'speaking_scripted' and expected_word_count >= 5
+            )
+
+            if is_short_activity:
+                if score is not None:
+                    short_sentence_scores.append(score)
+                if transcript_for_example:
+                    short_sentence_evidence.append(transcript_for_example)
+
+            if is_long_activity:
+                if score is not None:
+                    long_sentence_scores.append(score)
+                if transcript_for_example:
+                    long_sentence_evidence.append(transcript_for_example)
+
+            # Read-aloud evidence: scripted speaking or dialogue/conversation with expected transcript.
+            is_reading_activity = lms_type in {'dialogue', 'conversation', 'game_pronunciation'} or (
+                question_type == 'speaking_scripted'
+            )
+            if is_reading_activity and score is not None:
+                reading_scores.append(score)
+                pair = f'expected="{expected_transcript}" | spoken="{user_transcript or "không có bản ghi"}"'
+                if score >= 85:
+                    reading_good_examples.append(pair)
+                elif score <= 70:
+                    reading_weak_examples.append(pair)
+
+        is_listening_quiz = question_type in {'single_choice', 'matching'}
+        if is_listening_quiz:
+            if score is not None:
+                listening_scores.append(score)
+            question = str(lms_data.get('question') or '').strip()
+            if question:
+                listening_questions.append(question)
+                if score is not None:
+                    item = f'question="{question}" | score={round(score, 2)}'
+                    if score >= 80:
+                        listening_good_examples.append(item)
+                    elif score < 80:
+                        listening_weak_examples.append(item)
+
+    speaking_sentence_total = len(short_sentence_scores) + len(long_sentence_scores)
+    listening_correct_count = len([value for value in listening_scores if value >= 80])
+    listening_total = len(listening_scores)
+
+    return {
+        'speaking_pronunciation_vocab': {
+            'attempt_count': len(vocab_scores),
+            'average_score': _avg(vocab_scores),
+            'evidence': _take_examples(vocab_evidence),
+        },
+        'speaking_sentence_length_by_activity': {
+            'short_sentence': {
+                'attempt_count': len(short_sentence_scores),
+                'average_score': _avg(short_sentence_scores),
+                'evidence': _take_examples(short_sentence_evidence),
+            },
+            'long_sentence': {
+                'attempt_count': len(long_sentence_scores),
+                'average_score': _avg(long_sentence_scores),
+                'evidence': _take_examples(long_sentence_evidence),
+            },
+            'total_attempt_count': speaking_sentence_total,
+        },
+        'listening_quiz': {
+            'attempt_count': listening_total,
+            'correct_count': listening_correct_count,
+            'accuracy_percent': round((listening_correct_count / listening_total) * 100, 2)
+            if listening_total
+            else None,
+            'evidence_questions': _take_examples(listening_questions),
+            'good_examples': _take_examples(listening_good_examples),
+            'weak_examples': _take_examples(listening_weak_examples),
+        },
+        'reading_fluency': {
+            'attempt_count': len(reading_scores),
+            'average_score': _avg(reading_scores),
+            'good_examples': _take_examples(reading_good_examples),
+            'weak_examples': _take_examples(reading_weak_examples),
+        },
+        'data_coverage': {
+            'speaking_pronunciation_vocab': len(vocab_scores) > 0,
+            'speaking_sentence_length': speaking_sentence_total > 0,
+            'listening_quiz': listening_total > 0,
+            'reading_fluency': len(reading_scores) > 0,
+        },
+    }
+
+
 def _parse_lesson_time_to_timestamp(value: str | None) -> float | None:
     if not value:
         return None
@@ -109,18 +437,19 @@ def _parse_lesson_time_to_timestamp(value: str | None) -> float | None:
 
 def _extract_lesson_snapshot(raw_json_text: str, lesson_id: str, source_file: str) -> dict[str, Any]:
     root = _parse_lesson_root(raw_json_text)
-    lesson_time = root.get('lessonTime') if isinstance(root.get('lessonTime'), dict) else {}
-    achievements = root.get('achievements') if isinstance(root.get('achievements'), dict) else {}
+    report = _extract_primary_report(root)
+    lesson_time = report.get('lessonTime') if isinstance(report.get('lessonTime'), dict) else {}
+    achievements = report.get('achievements') if isinstance(report.get('achievements'), dict) else {}
     stats = achievements.get('stats') if isinstance(achievements.get('stats'), dict) else {}
     pronunciation = (
         achievements.get('pronunciation') if isinstance(achievements.get('pronunciation'), dict) else {}
     )
     vocabulary_attempts = achievements.get('vocabulary') if isinstance(achievements.get('vocabulary'), list) else []
     grammar_attempts = achievements.get('grammar') if isinstance(achievements.get('grammar'), list) else []
-    targets = root.get('targets') if isinstance(root.get('targets'), dict) else {}
+    targets = report.get('targets') if isinstance(report.get('targets'), dict) else {}
     target_vocabulary = targets.get('vocabulary') if isinstance(targets.get('vocabulary'), list) else []
     target_grammar = targets.get('grammar') if isinstance(targets.get('grammar'), list) else []
-    script_metadata = root.get('scriptMetadata') if isinstance(root.get('scriptMetadata'), dict) else {}
+    script_metadata = report.get('scriptMetadata') if isinstance(report.get('scriptMetadata'), dict) else {}
 
     start_time = lesson_time.get('lessonStartTime') if isinstance(lesson_time, dict) else None
     end_time = lesson_time.get('lessonEndTime') if isinstance(lesson_time, dict) else None
@@ -227,11 +556,13 @@ def _build_lesson_feedback_input_text(current_report_text: str, lesson_id: str |
     current_lesson_data: Any = current_report_text
     parsed_current = _parse_lesson_root(current_report_text)
     if parsed_current:
-        current_lesson_data = parsed_current
+        primary_report = _extract_primary_report(parsed_current)
+        current_lesson_data = primary_report or parsed_current
 
     payload = {
         'current_lesson_data': current_lesson_data,
         'lesson_progress_context': _build_lesson_progress_context(current_report_text, lesson_id),
+        'lesson_skill_context': _build_lesson_skill_context(current_report_text),
     }
     return json.dumps(payload, ensure_ascii=False)
 
@@ -296,6 +627,8 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
         def cached_event_generator():
             yield _format_sse_event('status', 'Dang tai noi dung nhan xet tu cache...')
             yield _format_sse_event('chunk', cached_markdown)
+            radar_payload = _build_lesson_radar_payload(cached_markdown)
+            yield _format_sse_event('result', json.dumps(radar_payload, ensure_ascii=False))
             yield _format_sse_event('done', 'done')
 
         return StreamingResponse(
@@ -319,6 +652,7 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
     def event_generator():
         chunk_buffer: list[str] = []
         stream_failed = False
+        has_radar_result = False
         try:
             for event in stream_lesson_feedback(lesson_feedback_input_text, payload.lesson_label):
                 event_type = str(event.get('type', 'status'))
@@ -333,14 +667,21 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
                     stream_failed = True
                     yield _format_sse_event(event_type, str(event.get('message', '')))
                 elif event_type == 'result':
-                    yield _format_sse_event(event_type, json.dumps(event.get('data', {}), ensure_ascii=False))
+                    result_data = event.get('data', {})
+                    if isinstance(result_data, dict) and result_data.get('type') == 'lesson_radar':
+                        has_radar_result = True
+                    yield _format_sse_event(event_type, json.dumps(result_data, ensure_ascii=False))
                 else:
                     yield _format_sse_event(event_type, json.dumps(event, ensure_ascii=False))
         except Exception as exc:
             stream_failed = True
             yield _format_sse_event('error', str(exc))
         if not stream_failed:
-            write_feedback_cache(cache_key, ''.join(chunk_buffer))
+            markdown = ''.join(chunk_buffer)
+            write_feedback_cache(cache_key, markdown)
+            if not has_radar_result:
+                radar_payload = _build_lesson_radar_payload(markdown)
+                yield _format_sse_event('result', json.dumps(radar_payload, ensure_ascii=False))
         yield _format_sse_event('done', 'done')
 
     return StreamingResponse(

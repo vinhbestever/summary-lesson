@@ -1,0 +1,573 @@
+- main [ref=e3]:
+  - generic [ref=e4]:
+    - generic [ref=e5]:
+      - paragraph [ref=e6]: Bao cao sau buoi hoc
+      - heading "RinoDigi Lesson Feedback" [level=1] [ref=e7]
+      - paragraph [ref=e8]: "Khong gian xem buoi hoc va nhan xet duoc toi uu cho tre: de nhin, de tim, de theo doi tien bo."
+    - generic "Thong ke" [ref=e9]:
+      - article [ref=e10]:
+        - paragraph [ref=e11]: Tong buoi hoc
+        - paragraph [ref=e12]: "50"
+      - article [ref=e13]:
+        - paragraph [ref=e14]: Trang thai
+        - paragraph [ref=e15]: San sang
+  - generic [ref=e16]:
+    - region "Report options" [ref=e17]:
+      - generic [ref=e18]:
+        - heading "Danh sach buoi hoc" [level=2] [ref=e19]
+        - paragraph [ref=e20]: Chon buoi hoc de xem nhanh bao cao hoac tao nhan xet AI.
+      - article [ref=e21]:
+        - paragraph [ref=e22]: Buoi 50
+        - 'link "Lesson 3767002 1 lan hoc - Level 5 - Unit 2C - Lesson 2 Thoi gian hoc: 18:00 25/03/2026 - 22:00" [ref=e23] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3767002&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e24]: Lesson 3767002
+          - generic [ref=e25]: 1 lan hoc - Level 5 - Unit 2C - Lesson 2
+          - generic [ref=e26]: "Thoi gian hoc: 18:00 25/03/2026 - 22:00"
+        - generic [ref=e27]:
+          - link "Xem bao cao" [ref=e28] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3767002&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e29] [cursor=pointer]
+      - article [ref=e30]:
+        - paragraph [ref=e31]: Buoi 49
+        - 'link "Lesson 3767001 1 lan hoc - Level 5 - Unit 2C - Lesson 1 Thoi gian hoc: 18:00 24/03/2026 - 22:00" [ref=e32] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3767001&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e33]: Lesson 3767001
+          - generic [ref=e34]: 1 lan hoc - Level 5 - Unit 2C - Lesson 1
+          - generic [ref=e35]: "Thoi gian hoc: 18:00 24/03/2026 - 22:00"
+        - generic [ref=e36]:
+          - link "Xem bao cao" [ref=e37] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3767001&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e38] [cursor=pointer]
+      - article [ref=e39]:
+        - paragraph [ref=e40]: Buoi 48
+        - 'link "Lesson 3767000 1 lan hoc - Level 5 - Unit 1C - Lesson 5 Thoi gian hoc: 18:00 18/03/2026 - 22:00" [ref=e41] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3767000&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e42]: Lesson 3767000
+          - generic [ref=e43]: 1 lan hoc - Level 5 - Unit 1C - Lesson 5
+          - generic [ref=e44]: "Thoi gian hoc: 18:00 18/03/2026 - 22:00"
+        - generic [ref=e45]:
+          - link "Xem bao cao" [ref=e46] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3767000&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e47] [cursor=pointer]
+      - article [ref=e48]:
+        - paragraph [ref=e49]: Buoi 47
+        - 'link "Lesson 3766999 1 lan hoc - Level 5 - Unit 1C - Lesson 4 Thoi gian hoc: 18:00 17/03/2026 - 22:00" [ref=e50] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766999&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e51]: Lesson 3766999
+          - generic [ref=e52]: 1 lan hoc - Level 5 - Unit 1C - Lesson 4
+          - generic [ref=e53]: "Thoi gian hoc: 18:00 17/03/2026 - 22:00"
+        - generic [ref=e54]:
+          - link "Xem bao cao" [ref=e55] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766999&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e56] [cursor=pointer]
+      - article [ref=e57]:
+        - paragraph [ref=e58]: Buoi 46
+        - 'link "Lesson 3766998 1 lan hoc - Level 5 - Unit 1C - Lesson 3 Thoi gian hoc: 18:00 11/03/2026 - 22:00" [ref=e59] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766998&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e60]: Lesson 3766998
+          - generic [ref=e61]: 1 lan hoc - Level 5 - Unit 1C - Lesson 3
+          - generic [ref=e62]: "Thoi gian hoc: 18:00 11/03/2026 - 22:00"
+        - generic [ref=e63]:
+          - link "Xem bao cao" [ref=e64] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766998&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e65] [cursor=pointer]
+      - article [ref=e66]:
+        - paragraph [ref=e67]: Buoi 45
+        - 'link "Lesson 3766997 1 lan hoc - Level 5 - Unit 1C - Lesson 2 Thoi gian hoc: 18:00 10/03/2026 - 22:00" [ref=e68] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766997&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e69]: Lesson 3766997
+          - generic [ref=e70]: 1 lan hoc - Level 5 - Unit 1C - Lesson 2
+          - generic [ref=e71]: "Thoi gian hoc: 18:00 10/03/2026 - 22:00"
+        - generic [ref=e72]:
+          - link "Xem bao cao" [ref=e73] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766997&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e74] [cursor=pointer]
+      - article [ref=e75]:
+        - paragraph [ref=e76]: Buoi 44
+        - 'link "Lesson 3766996 1 lan hoc - Level 5 - Unit 1C - Lesson 1 Thoi gian hoc: 18:00 04/03/2026 - 22:00" [ref=e77] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766996&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e78]: Lesson 3766996
+          - generic [ref=e79]: 1 lan hoc - Level 5 - Unit 1C - Lesson 1
+          - generic [ref=e80]: "Thoi gian hoc: 18:00 04/03/2026 - 22:00"
+        - generic [ref=e81]:
+          - link "Xem bao cao" [ref=e82] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766996&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e83] [cursor=pointer]
+      - article [ref=e84]:
+        - paragraph [ref=e85]: Buoi 43
+        - 'link "Lesson 3766995 1 lan hoc - Level 5 - Unit Test U3B + U4B Thoi gian hoc: 18:00 03/03/2026 - 22:00" [ref=e86] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766995&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e87]: Lesson 3766995
+          - generic [ref=e88]: 1 lan hoc - Level 5 - Unit Test U3B + U4B
+          - generic [ref=e89]: "Thoi gian hoc: 18:00 03/03/2026 - 22:00"
+        - generic [ref=e90]:
+          - link "Xem bao cao" [ref=e91] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766995&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e92] [cursor=pointer]
+      - article [ref=e93]:
+        - paragraph [ref=e94]: Buoi 42
+        - 'link "Lesson 3766994 1 lan hoc - Level 5 - Unit 4B - Lesson 5 Thoi gian hoc: 18:00 25/02/2026 - 22:00" [ref=e95] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766994&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e96]: Lesson 3766994
+          - generic [ref=e97]: 1 lan hoc - Level 5 - Unit 4B - Lesson 5
+          - generic [ref=e98]: "Thoi gian hoc: 18:00 25/02/2026 - 22:00"
+        - generic [ref=e99]:
+          - link "Xem bao cao" [ref=e100] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766994&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e101] [cursor=pointer]
+      - article [ref=e102]:
+        - paragraph [ref=e103]: Buoi 41
+        - 'link "Lesson 3766993 1 lan hoc - Level 5 - Unit 4B - Lesson 4 Thoi gian hoc: 18:00 24/02/2026 - 22:00" [ref=e104] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766993&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e105]: Lesson 3766993
+          - generic [ref=e106]: 1 lan hoc - Level 5 - Unit 4B - Lesson 4
+          - generic [ref=e107]: "Thoi gian hoc: 18:00 24/02/2026 - 22:00"
+        - generic [ref=e108]:
+          - link "Xem bao cao" [ref=e109] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3766993&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e110] [cursor=pointer]
+      - article [ref=e111]:
+        - paragraph [ref=e112]: Buoi 40
+        - 'link "Lesson 3744892 1 lan hoc - Level 5 - Unit 4B - Lesson 3 Thoi gian hoc: 18:00 11/02/2026 - 22:00" [ref=e113] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3744892&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e114]: Lesson 3744892
+          - generic [ref=e115]: 1 lan hoc - Level 5 - Unit 4B - Lesson 3
+          - generic [ref=e116]: "Thoi gian hoc: 18:00 11/02/2026 - 22:00"
+        - generic [ref=e117]:
+          - link "Xem bao cao" [ref=e118] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3744892&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e119] [cursor=pointer]
+      - article [ref=e120]:
+        - paragraph [ref=e121]: Buoi 39
+        - 'link "Lesson 3744891 1 lan hoc - Level 5 - Unit 4B - Lesson 2 Thoi gian hoc: 18:00 10/02/2026 - 22:00" [ref=e122] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3744891&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e123]: Lesson 3744891
+          - generic [ref=e124]: 1 lan hoc - Level 5 - Unit 4B - Lesson 2
+          - generic [ref=e125]: "Thoi gian hoc: 18:00 10/02/2026 - 22:00"
+        - generic [ref=e126]:
+          - link "Xem bao cao" [ref=e127] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3744891&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e128] [cursor=pointer]
+      - article [ref=e129]:
+        - paragraph [ref=e130]: Buoi 38
+        - 'link "Lesson 3687468 1 lan hoc - Level 5 - Unit 4B - Lesson 1 Thoi gian hoc: 13:00 08/02/2026 - 17:00" [ref=e131] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687468&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e132]: Lesson 3687468
+          - generic [ref=e133]: 1 lan hoc - Level 5 - Unit 4B - Lesson 1
+          - generic [ref=e134]: "Thoi gian hoc: 13:00 08/02/2026 - 17:00"
+        - generic [ref=e135]:
+          - link "Xem bao cao" [ref=e136] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687468&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e137] [cursor=pointer]
+      - article [ref=e138]:
+        - paragraph [ref=e139]: Buoi 37
+        - 'link "Lesson 3687467 1 lan hoc - Level 5 - Unit 3B - Lesson 5 Thoi gian hoc: 18:00 03/02/2026 - 22:00" [ref=e140] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687467&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e141]: Lesson 3687467
+          - generic [ref=e142]: 1 lan hoc - Level 5 - Unit 3B - Lesson 5
+          - generic [ref=e143]: "Thoi gian hoc: 18:00 03/02/2026 - 22:00"
+        - generic [ref=e144]:
+          - link "Xem bao cao" [ref=e145] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687467&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e146] [cursor=pointer]
+      - article [ref=e147]:
+        - paragraph [ref=e148]: Buoi 36
+        - 'link "Lesson 3687465 1 lan hoc - Level 5 - Unit 3B - Lesson 3 Thoi gian hoc: 18:00 27/01/2026 - 22:00" [ref=e149] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687465&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e150]: Lesson 3687465
+          - generic [ref=e151]: 1 lan hoc - Level 5 - Unit 3B - Lesson 3
+          - generic [ref=e152]: "Thoi gian hoc: 18:00 27/01/2026 - 22:00"
+        - generic [ref=e153]:
+          - link "Xem bao cao" [ref=e154] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687465&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e155] [cursor=pointer]
+      - article [ref=e156]:
+        - paragraph [ref=e157]: Buoi 35
+        - 'link "Lesson 3687464 1 lan hoc - Level 5 - Unit 3B - Lesson 2 Thoi gian hoc: 13:00 25/01/2026 - 17:00" [ref=e158] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687464&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e159]: Lesson 3687464
+          - generic [ref=e160]: 1 lan hoc - Level 5 - Unit 3B - Lesson 2
+          - generic [ref=e161]: "Thoi gian hoc: 13:00 25/01/2026 - 17:00"
+        - generic [ref=e162]:
+          - link "Xem bao cao" [ref=e163] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687464&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e164] [cursor=pointer]
+      - article [ref=e165]:
+        - paragraph [ref=e166]: Buoi 34
+        - 'link "Lesson 3687463 1 lan hoc - Level 5 - Unit 3B - Lesson 1 Thoi gian hoc: 18:00 20/01/2026 - 22:00" [ref=e167] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687463&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e168]: Lesson 3687463
+          - generic [ref=e169]: 1 lan hoc - Level 5 - Unit 3B - Lesson 1
+          - generic [ref=e170]: "Thoi gian hoc: 18:00 20/01/2026 - 22:00"
+        - generic [ref=e171]:
+          - link "Xem bao cao" [ref=e172] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3687463&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e173] [cursor=pointer]
+      - article [ref=e174]:
+        - paragraph [ref=e175]: Buoi 33
+        - 'link "Lesson 3672544 1 lan hoc - kịch bản Thoi gian hoc: 13:00 18/01/2026 - 17:00" [ref=e176] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3672544&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e177]: Lesson 3672544
+          - generic [ref=e178]: 1 lan hoc - kịch bản
+          - generic [ref=e179]: "Thoi gian hoc: 13:00 18/01/2026 - 17:00"
+        - generic [ref=e180]:
+          - link "Xem bao cao" [ref=e181] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3672544&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e182] [cursor=pointer]
+      - article [ref=e183]:
+        - paragraph [ref=e184]: Buoi 32
+        - 'link "Lesson 3672543 1 lan hoc - Level 5 - Unit 2B - Lesson 4 Thoi gian hoc: 08:00 17/01/2026 - 12:00" [ref=e185] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3672543&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e186]: Lesson 3672543
+          - generic [ref=e187]: 1 lan hoc - Level 5 - Unit 2B - Lesson 4
+          - generic [ref=e188]: "Thoi gian hoc: 08:00 17/01/2026 - 12:00"
+        - generic [ref=e189]:
+          - link "Xem bao cao" [ref=e190] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3672543&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e191] [cursor=pointer]
+      - article [ref=e192]:
+        - paragraph [ref=e193]: Buoi 31
+        - 'link "Lesson 3664256 1 lan hoc - kịch bản Thoi gian hoc: 13:00 11/01/2026 - 17:00" [ref=e194] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3664256&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e195]: Lesson 3664256
+          - generic [ref=e196]: 1 lan hoc - kịch bản
+          - generic [ref=e197]: "Thoi gian hoc: 13:00 11/01/2026 - 17:00"
+        - generic [ref=e198]:
+          - link "Xem bao cao" [ref=e199] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3664256&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e200] [cursor=pointer]
+      - article [ref=e201]:
+        - paragraph [ref=e202]: Buoi 30
+        - 'link "Lesson 3654342 1 lan hoc - Level 5 - Unit 2B - Lesson 2 Thoi gian hoc: 18:00 06/01/2026 - 22:00" [ref=e203] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3654342&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e204]: Lesson 3654342
+          - generic [ref=e205]: 1 lan hoc - Level 5 - Unit 2B - Lesson 2
+          - generic [ref=e206]: "Thoi gian hoc: 18:00 06/01/2026 - 22:00"
+        - generic [ref=e207]:
+          - link "Xem bao cao" [ref=e208] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3654342&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e209] [cursor=pointer]
+      - article [ref=e210]:
+        - paragraph [ref=e211]: Buoi 29
+        - 'link "Lesson 3633852 1 lan hoc - Level 5 - Unit 2B - Lesson 1 Thoi gian hoc: 08:00 04/01/2026 - 12:00" [ref=e212] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3633852&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e213]: Lesson 3633852
+          - generic [ref=e214]: 1 lan hoc - Level 5 - Unit 2B - Lesson 1
+          - generic [ref=e215]: "Thoi gian hoc: 08:00 04/01/2026 - 12:00"
+        - generic [ref=e216]:
+          - link "Xem bao cao" [ref=e217] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3633852&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e218] [cursor=pointer]
+      - article [ref=e219]:
+        - paragraph [ref=e220]: Buoi 28
+        - 'link "Lesson 3633851 1 lan hoc - Level 5 - Unit 1B - Lesson 5 Thoi gian hoc: 08:00 03/01/2026 - 12:00" [ref=e221] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3633851&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e222]: Lesson 3633851
+          - generic [ref=e223]: 1 lan hoc - Level 5 - Unit 1B - Lesson 5
+          - generic [ref=e224]: "Thoi gian hoc: 08:00 03/01/2026 - 12:00"
+        - generic [ref=e225]:
+          - link "Xem bao cao" [ref=e226] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3633851&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e227] [cursor=pointer]
+      - article [ref=e228]:
+        - paragraph [ref=e229]: Buoi 27
+        - 'link "Lesson 3605594 1 lan hoc - Level 5 - Unit 1B - Lesson 4 Thoi gian hoc: 18:00 29/12/2025 - 22:00" [ref=e230] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3605594&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e231]: Lesson 3605594
+          - generic [ref=e232]: 1 lan hoc - Level 5 - Unit 1B - Lesson 4
+          - generic [ref=e233]: "Thoi gian hoc: 18:00 29/12/2025 - 22:00"
+        - generic [ref=e234]:
+          - link "Xem bao cao" [ref=e235] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3605594&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e236] [cursor=pointer]
+      - article [ref=e237]:
+        - paragraph [ref=e238]: Buoi 26
+        - 'link "Lesson 3605593 1 lan hoc - kịch bản Thoi gian hoc: 18:00 24/12/2025 - 22:00" [ref=e239] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3605593&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e240]: Lesson 3605593
+          - generic [ref=e241]: 1 lan hoc - kịch bản
+          - generic [ref=e242]: "Thoi gian hoc: 18:00 24/12/2025 - 22:00"
+        - generic [ref=e243]:
+          - link "Xem bao cao" [ref=e244] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3605593&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e245] [cursor=pointer]
+      - article [ref=e246]:
+        - paragraph [ref=e247]: Buoi 25
+        - 'link "Lesson 3605592 1 lan hoc - kịch bản Thoi gian hoc: 18:00 22/12/2025 - 22:00" [ref=e248] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3605592&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e249]: Lesson 3605592
+          - generic [ref=e250]: 1 lan hoc - kịch bản
+          - generic [ref=e251]: "Thoi gian hoc: 18:00 22/12/2025 - 22:00"
+        - generic [ref=e252]:
+          - link "Xem bao cao" [ref=e253] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3605592&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e254] [cursor=pointer]
+      - article [ref=e255]:
+        - paragraph [ref=e256]: Buoi 24
+        - 'link "Lesson 3600069 1 lan hoc - kịch bản Thoi gian hoc: 18:00 19/12/2025 - 22:00" [ref=e257] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3600069&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e258]: Lesson 3600069
+          - generic [ref=e259]: 1 lan hoc - kịch bản
+          - generic [ref=e260]: "Thoi gian hoc: 18:00 19/12/2025 - 22:00"
+        - generic [ref=e261]:
+          - link "Xem bao cao" [ref=e262] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3600069&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e263] [cursor=pointer]
+      - article [ref=e264]:
+        - paragraph [ref=e265]: Buoi 23
+        - 'link "Lesson 3528961 1 lan hoc - gấm 31/10 Thoi gian hoc: 20:00 15/12/2025 - 20:25" [ref=e266] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528961&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e267]: Lesson 3528961
+          - generic [ref=e268]: 1 lan hoc - gấm 31/10
+          - generic [ref=e269]: "Thoi gian hoc: 20:00 15/12/2025 - 20:25"
+        - generic [ref=e270]:
+          - link "Xem bao cao" [ref=e271] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528961&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e272] [cursor=pointer]
+      - article [ref=e273]:
+        - paragraph [ref=e274]: Buoi 22
+        - 'link "Lesson 3528960 1 lan hoc - kịch bản Thoi gian hoc: 20:00 10/12/2025 - 20:25" [ref=e275] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528960&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e276]: Lesson 3528960
+          - generic [ref=e277]: 1 lan hoc - kịch bản
+          - generic [ref=e278]: "Thoi gian hoc: 20:00 10/12/2025 - 20:25"
+        - generic [ref=e279]:
+          - link "Xem bao cao" [ref=e280] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528960&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e281] [cursor=pointer]
+      - article [ref=e282]:
+        - paragraph [ref=e283]: Buoi 21
+        - 'link "Lesson 3528959 1 lan hoc - kịch bản Thoi gian hoc: 20:00 08/12/2025 - 20:25" [ref=e284] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528959&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e285]: Lesson 3528959
+          - generic [ref=e286]: 1 lan hoc - kịch bản
+          - generic [ref=e287]: "Thoi gian hoc: 20:00 08/12/2025 - 20:25"
+        - generic [ref=e288]:
+          - link "Xem bao cao" [ref=e289] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528959&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e290] [cursor=pointer]
+      - article [ref=e291]:
+        - paragraph [ref=e292]: Buoi 20
+        - 'link "Lesson 3528958 1 lan hoc - gấm 23/10 Thoi gian hoc: 20:00 03/12/2025 - 20:25" [ref=e293] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528958&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e294]: Lesson 3528958
+          - generic [ref=e295]: 1 lan hoc - gấm 23/10
+          - generic [ref=e296]: "Thoi gian hoc: 20:00 03/12/2025 - 20:25"
+        - generic [ref=e297]:
+          - link "Xem bao cao" [ref=e298] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528958&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e299] [cursor=pointer]
+      - article [ref=e300]:
+        - paragraph [ref=e301]: Buoi 19
+        - 'link "Lesson 3528957 1 lan hoc - gấm 22/10 Thoi gian hoc: 20:00 01/12/2025 - 20:25" [ref=e302] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528957&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e303]: Lesson 3528957
+          - generic [ref=e304]: 1 lan hoc - gấm 22/10
+          - generic [ref=e305]: "Thoi gian hoc: 20:00 01/12/2025 - 20:25"
+        - generic [ref=e306]:
+          - link "Xem bao cao" [ref=e307] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528957&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e308] [cursor=pointer]
+      - article [ref=e309]:
+        - paragraph [ref=e310]: Buoi 18
+        - 'link "Lesson 3528956 1 lan hoc - Level 5 - Unit 3A - Lesson 5 Thoi gian hoc: 20:00 26/11/2025 - 20:25" [ref=e311] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528956&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e312]: Lesson 3528956
+          - generic [ref=e313]: 1 lan hoc - Level 5 - Unit 3A - Lesson 5
+          - generic [ref=e314]: "Thoi gian hoc: 20:00 26/11/2025 - 20:25"
+        - generic [ref=e315]:
+          - link "Xem bao cao" [ref=e316] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528956&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e317] [cursor=pointer]
+      - article [ref=e318]:
+        - paragraph [ref=e319]: Buoi 17
+        - 'link "Lesson 3528955 1 lan hoc - Level 5 - Unit 3A - Lesson 4 Thoi gian hoc: 20:00 24/11/2025 - 20:25" [ref=e320] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528955&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e321]: Lesson 3528955
+          - generic [ref=e322]: 1 lan hoc - Level 5 - Unit 3A - Lesson 4
+          - generic [ref=e323]: "Thoi gian hoc: 20:00 24/11/2025 - 20:25"
+        - generic [ref=e324]:
+          - link "Xem bao cao" [ref=e325] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528955&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e326] [cursor=pointer]
+      - article [ref=e327]:
+        - paragraph [ref=e328]: Buoi 16
+        - 'link "Lesson 3528954 1 lan hoc - Level 5 - Unit 3A - Lesson 3 Thoi gian hoc: 20:00 19/11/2025 - 20:25" [ref=e329] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528954&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e330]: Lesson 3528954
+          - generic [ref=e331]: 1 lan hoc - Level 5 - Unit 3A - Lesson 3
+          - generic [ref=e332]: "Thoi gian hoc: 20:00 19/11/2025 - 20:25"
+        - generic [ref=e333]:
+          - link "Xem bao cao" [ref=e334] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528954&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e335] [cursor=pointer]
+      - article [ref=e336]:
+        - paragraph [ref=e337]: Buoi 15
+        - 'link "Lesson 3528953 1 lan hoc - L5-4A-lesson2 Thoi gian hoc: 20:00 17/11/2025 - 20:25" [ref=e338] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528953&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e339]: Lesson 3528953
+          - generic [ref=e340]: 1 lan hoc - L5-4A-lesson2
+          - generic [ref=e341]: "Thoi gian hoc: 20:00 17/11/2025 - 20:25"
+        - generic [ref=e342]:
+          - link "Xem bao cao" [ref=e343] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3528953&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e344] [cursor=pointer]
+      - article [ref=e345]:
+        - paragraph [ref=e346]: Buoi 14
+        - 'link "Lesson 3525824 1 lan hoc - L5 - 3A - lesson 1 Thoi gian hoc: 10:00 15/11/2025 - 10:25" [ref=e347] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3525824&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e348]: Lesson 3525824
+          - generic [ref=e349]: 1 lan hoc - L5 - 3A - lesson 1
+          - generic [ref=e350]: "Thoi gian hoc: 10:00 15/11/2025 - 10:25"
+        - generic [ref=e351]:
+          - link "Xem bao cao" [ref=e352] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3525824&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e353] [cursor=pointer]
+      - article [ref=e354]:
+        - paragraph [ref=e355]: Buoi 13
+        - 'link "Lesson 3448747 1 lan hoc - Level 5 - 2A - lesson 5 Thoi gian hoc: 20:00 10/11/2025 - 20:25" [ref=e356] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448747&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e357]: Lesson 3448747
+          - generic [ref=e358]: 1 lan hoc - Level 5 - 2A - lesson 5
+          - generic [ref=e359]: "Thoi gian hoc: 20:00 10/11/2025 - 20:25"
+        - generic [ref=e360]:
+          - link "Xem bao cao" [ref=e361] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448747&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e362] [cursor=pointer]
+      - article [ref=e363]:
+        - paragraph [ref=e364]: Buoi 12
+        - 'link "Lesson 3448746 1 lan hoc - kịch bản Thoi gian hoc: 20:00 05/11/2025 - 20:25" [ref=e365] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448746&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e366]: Lesson 3448746
+          - generic [ref=e367]: 1 lan hoc - kịch bản
+          - generic [ref=e368]: "Thoi gian hoc: 20:00 05/11/2025 - 20:25"
+        - generic [ref=e369]:
+          - link "Xem bao cao" [ref=e370] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448746&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e371] [cursor=pointer]
+      - article [ref=e372]:
+        - paragraph [ref=e373]: Buoi 11
+        - 'link "Lesson 3448745 1 lan hoc - Gấm 02/10 Thoi gian hoc: 20:00 03/11/2025 - 20:25" [ref=e374] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448745&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e375]: Lesson 3448745
+          - generic [ref=e376]: 1 lan hoc - Gấm 02/10
+          - generic [ref=e377]: "Thoi gian hoc: 20:00 03/11/2025 - 20:25"
+        - generic [ref=e378]:
+          - link "Xem bao cao" [ref=e379] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448745&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e380] [cursor=pointer]
+      - article [ref=e381]:
+        - paragraph [ref=e382]: Buoi 10
+        - 'link "Lesson 3448744 1 lan hoc - kịch bản Thoi gian hoc: 20:00 29/10/2025 - 20:25" [ref=e383] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448744&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e384]: Lesson 3448744
+          - generic [ref=e385]: 1 lan hoc - kịch bản
+          - generic [ref=e386]: "Thoi gian hoc: 20:00 29/10/2025 - 20:25"
+        - generic [ref=e387]:
+          - link "Xem bao cao" [ref=e388] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448744&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e389] [cursor=pointer]
+      - article [ref=e390]:
+        - paragraph [ref=e391]: Buoi 9
+        - 'link "Lesson 3448743 1 lan hoc - L5-2A-lesson1 Thoi gian hoc: 20:00 27/10/2025 - 20:25" [ref=e392] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448743&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e393]: Lesson 3448743
+          - generic [ref=e394]: 1 lan hoc - L5-2A-lesson1
+          - generic [ref=e395]: "Thoi gian hoc: 20:00 27/10/2025 - 20:25"
+        - generic [ref=e396]:
+          - link "Xem bao cao" [ref=e397] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448743&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e398] [cursor=pointer]
+      - article [ref=e399]:
+        - paragraph [ref=e400]: Buoi 8
+        - 'link "Lesson 3448742 1 lan hoc - kịch bản Thoi gian hoc: 20:00 22/10/2025 - 20:25" [ref=e401] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448742&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e402]: Lesson 3448742
+          - generic [ref=e403]: 1 lan hoc - kịch bản
+          - generic [ref=e404]: "Thoi gian hoc: 20:00 22/10/2025 - 20:25"
+        - generic [ref=e405]:
+          - link "Xem bao cao" [ref=e406] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448742&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e407] [cursor=pointer]
+      - article [ref=e408]:
+        - paragraph [ref=e409]: Buoi 7
+        - 'link "Lesson 3448741 1 lan hoc - kịch bản Thoi gian hoc: 20:00 20/10/2025 - 20:25" [ref=e410] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448741&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e411]: Lesson 3448741
+          - generic [ref=e412]: 1 lan hoc - kịch bản
+          - generic [ref=e413]: "Thoi gian hoc: 20:00 20/10/2025 - 20:25"
+        - generic [ref=e414]:
+          - link "Xem bao cao" [ref=e415] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448741&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e416] [cursor=pointer]
+      - article [ref=e417]:
+        - paragraph [ref=e418]: Buoi 6
+        - 'link "Lesson 3448740 1 lan hoc - kịch bản Thoi gian hoc: 20:00 15/10/2025 - 20:25" [ref=e419] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448740&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e420]: Lesson 3448740
+          - generic [ref=e421]: 1 lan hoc - kịch bản
+          - generic [ref=e422]: "Thoi gian hoc: 20:00 15/10/2025 - 20:25"
+        - generic [ref=e423]:
+          - link "Xem bao cao" [ref=e424] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448740&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e425] [cursor=pointer]
+      - article [ref=e426]:
+        - paragraph [ref=e427]: Buoi 5
+        - 'link "Lesson 3448739 1 lan hoc - Kịch bản Thoi gian hoc: 20:00 13/10/2025 - 20:25" [ref=e428] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448739&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e429]: Lesson 3448739
+          - generic [ref=e430]: 1 lan hoc - Kịch bản
+          - generic [ref=e431]: "Thoi gian hoc: 20:00 13/10/2025 - 20:25"
+        - generic [ref=e432]:
+          - link "Xem bao cao" [ref=e433] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3448739&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e434] [cursor=pointer]
+      - article [ref=e435]:
+        - paragraph [ref=e436]: Buoi 4
+        - 'link "Lesson 3445252 1 lan hoc - Kịch bản Thoi gian hoc: 20:00 08/10/2025 - 20:25" [ref=e437] [cursor=pointer]':
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3445252&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e438]: Lesson 3445252
+          - generic [ref=e439]: 1 lan hoc - Kịch bản
+          - generic [ref=e440]: "Thoi gian hoc: 20:00 08/10/2025 - 20:25"
+        - generic [ref=e441]:
+          - link "Xem bao cao" [ref=e442] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3445252&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e443] [cursor=pointer]
+      - article [ref=e444]:
+        - paragraph [ref=e445]: Buoi 3
+        - link "Lesson TRIAL_LESSON_OVER_7 1 lan hoc - Animals Chua co thoi gian buoi hoc" [ref=e446] [cursor=pointer]:
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=TRIAL_LESSON_OVER_7&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e447]: Lesson TRIAL_LESSON_OVER_7
+          - generic [ref=e448]: 1 lan hoc - Animals
+          - generic [ref=e449]: Chua co thoi gian buoi hoc
+        - generic [ref=e450]:
+          - link "Xem bao cao" [ref=e451] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=TRIAL_LESSON_OVER_7&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e452] [cursor=pointer]
+      - article [ref=e453]:
+        - paragraph [ref=e454]: Buoi 2
+        - link "Lesson TRIAL_LESSON_10_11 2 lan hoc - Countries Chua co thoi gian buoi hoc" [ref=e455] [cursor=pointer]:
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=TRIAL_LESSON_10_11&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e456]: Lesson TRIAL_LESSON_10_11
+          - generic [ref=e457]: 2 lan hoc - Countries
+          - generic [ref=e458]: Chua co thoi gian buoi hoc
+        - generic [ref=e459]:
+          - link "Xem bao cao" [ref=e460] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=TRIAL_LESSON_10_11&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e461] [cursor=pointer]
+      - article [ref=e462]:
+        - paragraph [ref=e463]: Buoi 1
+        - link "Lesson 3724970 1 lan hoc - Kịch bản Chua co thoi gian buoi hoc" [ref=e464] [cursor=pointer]:
+          - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3724970&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - generic [ref=e465]: Lesson 3724970
+          - generic [ref=e466]: 1 lan hoc - Kịch bản
+          - generic [ref=e467]: Chua co thoi gian buoi hoc
+        - generic [ref=e468]:
+          - link "Xem bao cao" [ref=e469] [cursor=pointer]:
+            - /url: https://rinoedu.ai/bao-cao-sau-buoi-hoc?erp_lesson_id=3724970&token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjEwMjU1NSwiZGV2aWNlSWQiOiJBUDNBLjI0MDkwNS4wMTUuQTIiLCJpYXQiOjE3NzQ5MjYwODEsImV4cCI6MTgwNjQ2MjA4MX0.h0NAX3uL9FDyVjZcI3jgLFQV87WNRzYadBl6b46G-_U
+          - button "Nhan xet" [ref=e470] [cursor=pointer]
+    - region "Lesson feedback" [ref=e471]:
+      - generic [ref=e472]:
+        - heading "Ket qua nhan xet" [level=2] [ref=e473]
+        - paragraph [ref=e474]: Tap trung hien thi noi dung de giao vien va phu huynh de doc.
+        - button "Nhan xet chung" [ref=e475] [cursor=pointer]

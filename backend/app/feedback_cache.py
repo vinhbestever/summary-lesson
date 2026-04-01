@@ -6,7 +6,7 @@ from pathlib import Path
 
 
 _SAFE_KEY_PATTERN = re.compile(r'[^a-zA-Z0-9._-]+')
-LESSON_FEEDBACK_CACHE_VERSION = 'v5'
+LESSON_FEEDBACK_CACHE_VERSION = 'v8'
 
 
 def _repo_root() -> Path:

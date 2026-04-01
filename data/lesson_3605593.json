@@ -1,168 +1,1126 @@
 {
-  "reportId": "69527be2e4526c242fdba84d",
-  "sessionId": "694be2621ecc2be77393d667",
-  "completion": {
-    "isCompletedByReportRules": false,
-    "reasons": [
-      "GRAMMAR_SECTION_INCOMPLETE"
-    ]
-  },
-  "moments": [],
-  "achievements": {
-    "stats": {
-      "speakingTurnCount": 8,
-      "totalCups": 7,
-      "averageReactionTimeMs": 1094.29,
-      "practiceAccuracyPercent": 75,
-      "sectionsCompletionPercent": 50,
-      "speakingTargetCount": 42,
-      "speakingCoverage": 0.19,
-      "reactionTag": null,
-      "teacherComment": "Bé đang học từ vựng nhưng thoát ra giữa chừng.",
-      "sessionSummary": "Vẫn còn nhiều kiến thức trong buổi học. Bé vào học ngay để không bỏ lỡ nhé.",
-      "trialComment": null,
-      "canRelearn": true,
-      "progress": {
-        "hasGrammarSection": true,
-        "grammarCompleted": false,
-        "hasVocabularySection": true,
-        "vocabularyCompleted": true,
-        "immediateExit": false
+  "schema_version": "2.0",
+  "lesson_id": "3605593",
+  "reports": [
+    {
+      "reportId": "69527be2e4526c242fdba84d",
+      "sessionId": "694be2621ecc2be77393d667",
+      "completion": {
+        "isCompletedByReportRules": false,
+        "reasons": [
+          "GRAMMAR_SECTION_INCOMPLETE"
+        ]
+      },
+      "moments": [],
+      "achievements": {
+        "stats": {
+          "speakingTurnCount": 8,
+          "totalCups": 7,
+          "averageReactionTimeMs": 1094.29,
+          "practiceAccuracyPercent": 75,
+          "sectionsCompletionPercent": 50,
+          "speakingTargetCount": 42,
+          "speakingCoverage": 0.19,
+          "reactionTag": null,
+          "teacherComment": "Bé đang học từ vựng nhưng thoát ra giữa chừng.",
+          "sessionSummary": "Vẫn còn nhiều kiến thức trong buổi học. Bé vào học ngay để không bỏ lỡ nhé.",
+          "trialComment": null,
+          "canRelearn": true,
+          "progress": {
+            "hasGrammarSection": true,
+            "grammarCompleted": false,
+            "hasVocabularySection": true,
+            "vocabularyCompleted": true,
+            "immediateExit": false
+          }
+        },
+        "pronunciation": {
+          "attemptCount": 8,
+          "averagePronunciationScore": 57.14,
+          "averageGrammarScore": null,
+          "goodVocabularyCount": 4,
+          "goodGrammarCount": 0,
+          "totalVocabularyCount": 4,
+          "totalGrammarCount": 6,
+          "goodScoreThreshold": 60
+        },
+        "vocabulary": [
+          {
+            "word": "bus",
+            "attemptCount": 2,
+            "averageScore": 100,
+            "bestScore": 100,
+            "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0ucn1-d8d18509-audio.wav",
+            "bestResultId": "694be3df1ecc2be77393e095",
+            "assessments": {
+              "mask": "111"
+            },
+            "resultIds": [
+              "694be3ca113d0f6057803380",
+              "694be3df1ecc2be77393e095"
+            ]
+          },
+          {
+            "word": "bus stop",
+            "attemptCount": 1,
+            "averageScore": 100,
+            "bestScore": 100,
+            "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0twaw-4c5088db-audio.wav",
+            "bestResultId": "694be3ca113d0f6057803380",
+            "assessments": {
+              "mask": "111 1111"
+            },
+            "resultIds": [
+              "694be3ca113d0f6057803380"
+            ]
+          },
+          {
+            "word": "train",
+            "attemptCount": 2,
+            "averageScore": 100,
+            "bestScore": 100,
+            "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0w1bg-59969c30-audio.wav",
+            "bestResultId": "694be42d1ecc2be77393e1f2",
+            "assessments": {
+              "mask": "11111"
+            },
+            "resultIds": [
+              "694be41b1ecc2be77393e1a1",
+              "694be42d1ecc2be77393e1f2"
+            ]
+          },
+          {
+            "word": "train station",
+            "attemptCount": 1,
+            "averageScore": 100,
+            "bestScore": 100,
+            "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0vn1g-3bdc2bed-audio.wav",
+            "bestResultId": "694be41b1ecc2be77393e1a1",
+            "assessments": {
+              "mask": "11111 1111111"
+            },
+            "resultIds": [
+              "694be41b1ecc2be77393e1a1"
+            ]
+          }
+        ],
+        "grammar": []
+      },
+      "targets": {
+        "vocabulary": [
+          "train",
+          "train station",
+          "bus",
+          "bus stop"
+        ],
+        "grammar": [
+          "How do you go to school?",
+          "I go to school by bus.",
+          "How can I catch a bus?",
+          "You go to the bus stop.",
+          "How can I catch a train?",
+          "You go to the train station."
+        ]
+      },
+      "config": {
+        "reaction": {
+          "label": "Rất nhanh",
+          "maxSeconds": 3,
+          "minCoverage": 0.5
+        },
+        "pronunciation": {
+          "goodScoreThreshold": 60
+        },
+        "completion": {
+          "requiresGrammarSection": true,
+          "fallbackPercentThreshold": 70
+        },
+        "feedback": {
+          "summaryRule": "AFTER_VOCAB_RELEARN",
+          "trialCommentRule": null,
+          "canRelearn": true
+        }
+      },
+      "scriptMetadata": {
+        "theme": {
+          "key": "default",
+          "label": "Default",
+          "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+        },
+        "teachingAssistantVoice": {
+          "key": "female",
+          "label": "Female"
+        },
+        "teacher": {
+          "key": "nora",
+          "label": "Teacher Nora",
+          "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
+          "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+        },
+        "name": "kịch bản",
+        "description": "kịch bản",
+        "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/04/collaborator/mhk9ibqd-b3d5d22c-brainstorm-ch.png",
+        "lmsCourseId": "896",
+        "lmsSectionId": "76906"
+      },
+      "lessonTime": {
+        "lessonStartTime": "2025-12-24 18:00:00",
+        "lessonEndTime": "2025-12-24 22:00:00",
+        "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
+        "erpLessonId": "3605593"
       }
-    },
-    "pronunciation": {
-      "attemptCount": 8,
-      "averagePronunciationScore": 57.14,
-      "averageGrammarScore": null,
-      "goodVocabularyCount": 4,
-      "goodGrammarCount": 0,
-      "totalVocabularyCount": 4,
-      "totalGrammarCount": 6,
-      "goodScoreThreshold": 60
-    },
-    "vocabulary": [
-      {
-        "word": "bus",
-        "attemptCount": 2,
-        "averageScore": 100,
-        "bestScore": 100,
-        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0ucn1-d8d18509-audio.wav",
-        "bestResultId": "694be3df1ecc2be77393e095",
-        "assessments": {
-          "mask": "111"
-        },
-        "resultIds": [
-          "694be3ca113d0f6057803380",
-          "694be3df1ecc2be77393e095"
-        ]
-      },
-      {
-        "word": "bus stop",
-        "attemptCount": 1,
-        "averageScore": 100,
-        "bestScore": 100,
-        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0twaw-4c5088db-audio.wav",
-        "bestResultId": "694be3ca113d0f6057803380",
-        "assessments": {
-          "mask": "111 1111"
-        },
-        "resultIds": [
-          "694be3ca113d0f6057803380"
-        ]
-      },
-      {
-        "word": "train",
-        "attemptCount": 2,
-        "averageScore": 100,
-        "bestScore": 100,
-        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0w1bg-59969c30-audio.wav",
-        "bestResultId": "694be42d1ecc2be77393e1f2",
-        "assessments": {
-          "mask": "11111"
-        },
-        "resultIds": [
-          "694be41b1ecc2be77393e1a1",
-          "694be42d1ecc2be77393e1f2"
-        ]
-      },
-      {
-        "word": "train station",
-        "attemptCount": 1,
-        "averageScore": 100,
-        "bestScore": 100,
-        "bestAudioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0vn1g-3bdc2bed-audio.wav",
-        "bestResultId": "694be41b1ecc2be77393e1a1",
-        "assessments": {
-          "mask": "11111 1111111"
-        },
-        "resultIds": [
-          "694be41b1ecc2be77393e1a1"
-        ]
-      }
-    ],
-    "grammar": []
-  },
-  "targets": {
-    "vocabulary": [
-      "train",
-      "train station",
-      "bus",
-      "bus stop"
-    ],
-    "grammar": [
-      "How do you go to school?",
-      "I go to school by bus.",
-      "How can I catch a bus?",
-      "You go to the bus stop.",
-      "How can I catch a train?",
-      "You go to the train station."
-    ]
-  },
-  "config": {
-    "reaction": {
-      "label": "Rất nhanh",
-      "maxSeconds": 3,
-      "minCoverage": 0.5
-    },
-    "pronunciation": {
-      "goodScoreThreshold": 60
-    },
-    "completion": {
-      "requiresGrammarSection": true,
-      "fallbackPercentThreshold": 70
-    },
-    "feedback": {
-      "summaryRule": "AFTER_VOCAB_RELEARN",
-      "trialCommentRule": null,
-      "canRelearn": true
     }
-  },
-  "scriptMetadata": {
-    "theme": {
-      "key": "default",
-      "label": "Default",
-      "previewLink": "https://scontent.rinoedu.ai/teacherroger/anhdannhap/BG/blue.png"
+  ],
+  "moments": [
+    {
+      "event_id": {
+        "$oid": "694be2a2113d0f6057802df0"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965ce0598bfe23ce95668",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c48",
+      "node_id": "5d23d0f7-9470-4757-a7c3-1346df0121ca",
+      "block_id": "cbe83824-cccd-4cde-8e39-f37c11f42cbd",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786363",
+        "questionType": "speaking_unscripted",
+        "question": "What color is the sky?",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": null,
+      "attempt_number": 1,
+      "result": {
+        "score": null,
+        "userAnswers": []
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T12:54:58.094Z",
+      "created_at": "2025-12-24T12:54:58.094Z",
+      "raw_version": 0
     },
-    "teachingAssistantVoice": {
-      "key": "female",
-      "label": "Female"
+    {
+      "event_id": {
+        "$oid": "694be2dc113d0f6057802f54"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965ce0598bfe23ce95668",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c48",
+      "node_id": "c49be9bc-5dc6-43be-966c-eaede46c8ec1",
+      "block_id": "fa4c7c3b-fcc9-4729-9f5f-7424ade7f45e",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786364",
+        "questionType": "speaking_unscripted",
+        "question": "Okay! Let me ask again. What color is the sky? Blue or black?",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": 1827,
+      "attempt_number": 1,
+      "result": {
+        "score": 0,
+        "audioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0orjg-25f4e7a9-audio.wav",
+        "userTranscript": "Blue, I think, Black, I think.",
+        "additionalData": {
+          "warmup": {
+            "result": {
+              "userAnswerType": "inaccordant",
+              "transcript": "Blue, I think, Black, I think."
+            }
+          }
+        },
+        "userAnswers": []
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T12:55:56.766Z",
+      "created_at": "2025-12-24T12:55:56.767Z",
+      "raw_version": 0
     },
-    "teacher": {
-      "key": "nora",
-      "label": "Teacher Nora",
-      "avatarUrl": "https://scontent.rinoedu.ai/teacherroger/Nora.png",
-      "defaultVideoUrl": "https://scontent.rinoedu.ai/defaul_nora/noradefault_mini.mp4"
+    {
+      "event_id": {
+        "$oid": "694be3211ecc2be77393db67"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965ce0598bfe23ce95668",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c48",
+      "node_id": "c49be9bc-5dc6-43be-966c-eaede46c8ec1",
+      "block_id": "1dec2a4d-11d2-4682-823e-2a272ce29acc",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786363",
+        "questionType": "speaking_unscripted",
+        "question": "What color is the sky?",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": 1054,
+      "attempt_number": 1,
+      "result": {
+        "score": 0,
+        "audioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0qaoz-d54edee2-audio.wav",
+        "userTranscript": "It's black, it's it's it's black, it's black.",
+        "additionalData": {
+          "warmup": {
+            "result": {
+              "userAnswerType": "inaccordant",
+              "transcript": "It's black, it's it's it's black, it's black."
+            }
+          }
+        },
+        "userAnswers": []
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T12:57:05.612Z",
+      "created_at": "2025-12-24T12:57:05.612Z",
+      "raw_version": 0
     },
-    "name": "kịch bản",
-    "description": "kịch bản",
-    "coverImageUrl": "https://scontent.rinoedu.ai/flow-materials/2025/11/04/collaborator/mhk9ibqd-b3d5d22c-brainstorm-ch.png",
-    "lmsCourseId": "896",
-    "lmsSectionId": "76906"
-  },
-  "lessonTime": {
-    "lessonStartTime": "2025-12-24 18:00:00",
-    "lessonEndTime": "2025-12-24 22:00:00",
-    "source": "https://api.rinoedu.ai/api/digi/lesson/{id}",
-    "erpLessonId": "3605593"
+    {
+      "event_id": {
+        "$oid": "694be35b1ecc2be77393de0a"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965bb0598bfe23ce95664",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c4f",
+      "node_id": "f0533c78-1d6a-42e4-b2f0-70158208687d",
+      "block_id": "cfcd6936-aef5-42ec-b01d-3ae9daca24fa",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786365",
+        "questionType": "speaking_unscripted",
+        "question": "What can you see?",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": 878,
+      "attempt_number": 1,
+      "result": {
+        "score": 0,
+        "audioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0rjpc-39b7bf69-audio.wav",
+        "userTranscript": "Can see a bus stop, a train station.",
+        "additionalData": {
+          "brainstorm": {
+            "result": {
+              "correctObjects": [
+                "bus stop",
+                "train station"
+              ],
+              "userAnswerType": "correct",
+              "transcript": "Can see a bus stop, a train station."
+            },
+            "objects": [
+              {
+                "name": "Bus stop",
+                "isMain": true
+              },
+              {
+                "name": "bus",
+                "isMain": true
+              },
+              {
+                "name": "train station",
+                "isMain": true
+              },
+              {
+                "name": "train",
+                "isMain": true
+              },
+              {
+                "name": "boy",
+                "isMain": false
+              },
+              {
+                "name": "girl",
+                "isMain": false
+              },
+              {
+                "name": "tree",
+                "isMain": false
+              },
+              {
+                "name": "cloud",
+                "isMain": false
+              }
+            ]
+          }
+        },
+        "userAnswers": []
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T12:58:03.874Z",
+      "created_at": "2025-12-24T12:58:03.874Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be3ca113d0f6057803380"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c58",
+      "node_id": "61c3ec0e-dc5c-46c4-9778-48383ae73d44",
+      "block_id": "b22376a7-0765-43dd-ada1-19f3db0ac54f",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786369",
+        "questionType": "speaking_scripted",
+        "question": "Okay, now I want you to say the word one more time! Let's go!",
+        "expectedTranscript": "Bus stop",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": 1165,
+      "attempt_number": 1,
+      "result": {
+        "score": 100,
+        "audioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0twaw-4c5088db-audio.wav",
+        "userTranscript": "bus stop bus stop bus stop bus stop bus stop bus stop bus stop",
+        "pronunciationScore": 100,
+        "additionalData": {
+          "speaking": {
+            "result": {
+              "matchedTranscriptsIpa": "bʌs stɑːp",
+              "isLetterCorrectAllWords": "111 1111",
+              "wordScoreList": [
+                {
+                  "word": "Bus",
+                  "qualityScore": 100,
+                  "isLetterCorrect": "111",
+                  "phoneScoreList": [
+                    {
+                      "phone": "b",
+                      "phoneIpa": "b",
+                      "qualityScore": 100,
+                      "soundMostLike": "b"
+                    },
+                    {
+                      "phone": "ah1",
+                      "phoneIpa": "ʌ",
+                      "qualityScore": 100,
+                      "soundMostLike": "ah1"
+                    },
+                    {
+                      "phone": "s",
+                      "phoneIpa": "s",
+                      "qualityScore": 100,
+                      "soundMostLike": "s"
+                    }
+                  ],
+                  "syllableScoreList": [
+                    {
+                      "phoneCount": 3,
+                      "letters": "bus",
+                      "qualityScore": 100,
+                      "stressScore": 100
+                    }
+                  ]
+                },
+                {
+                  "word": "stop",
+                  "qualityScore": 100,
+                  "isLetterCorrect": "1111",
+                  "phoneScoreList": [
+                    {
+                      "phone": "s",
+                      "phoneIpa": "s",
+                      "qualityScore": 100,
+                      "soundMostLike": "s"
+                    },
+                    {
+                      "phone": "t",
+                      "phoneIpa": "t",
+                      "qualityScore": 100,
+                      "soundMostLike": "t"
+                    },
+                    {
+                      "phone": "aa",
+                      "phoneIpa": "ɑː",
+                      "qualityScore": 100,
+                      "soundMostLike": "aa"
+                    },
+                    {
+                      "phone": "p",
+                      "phoneIpa": "p",
+                      "qualityScore": 100,
+                      "soundMostLike": "p"
+                    }
+                  ],
+                  "syllableScoreList": [
+                    {
+                      "phoneCount": 4,
+                      "letters": "stop",
+                      "qualityScore": 100,
+                      "stressScore": 100
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "userAnswers": []
+      },
+      "matched_vocabulary": [
+        "bus",
+        "bus stop"
+      ],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T12:59:54.132Z",
+      "created_at": "2025-12-24T12:59:54.132Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be3df1ecc2be77393e095"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c58",
+      "node_id": "8787ae60-5642-46c7-bd45-b1aafb22eedc",
+      "block_id": "20a9b1f5-d474-4e2d-abaa-9417d025deb7",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786371",
+        "questionType": "speaking_scripted",
+        "question": "Next word",
+        "expectedTranscript": "Bus",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": 998,
+      "attempt_number": 1,
+      "result": {
+        "score": 100,
+        "audioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0ucn1-d8d18509-audio.wav",
+        "userTranscript": "bus",
+        "pronunciationScore": 100,
+        "additionalData": {
+          "speaking": {
+            "result": {
+              "matchedTranscriptsIpa": "bʌs",
+              "isLetterCorrectAllWords": "111",
+              "wordScoreList": [
+                {
+                  "word": "Bus",
+                  "qualityScore": 100,
+                  "isLetterCorrect": "111",
+                  "phoneScoreList": [
+                    {
+                      "phone": "b",
+                      "phoneIpa": "b",
+                      "qualityScore": 100,
+                      "soundMostLike": "b"
+                    },
+                    {
+                      "phone": "ah1",
+                      "phoneIpa": "ʌ",
+                      "qualityScore": 100,
+                      "soundMostLike": "ah1"
+                    },
+                    {
+                      "phone": "s",
+                      "phoneIpa": "s",
+                      "qualityScore": 100,
+                      "soundMostLike": "s"
+                    }
+                  ],
+                  "syllableScoreList": [
+                    {
+                      "phoneCount": 3,
+                      "letters": "bus",
+                      "qualityScore": 100,
+                      "stressScore": 100
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "userAnswers": []
+      },
+      "matched_vocabulary": [
+        "bus"
+      ],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T13:00:15.326Z",
+      "created_at": "2025-12-24T13:00:15.327Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be41b1ecc2be77393e1a1"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c5c",
+      "node_id": "8787ae60-5642-46c7-bd45-b1aafb22eedc",
+      "block_id": "20a9b1f5-d474-4e2d-abaa-9417d025deb7",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786373",
+        "questionType": "speaking_scripted",
+        "question": "Okay, now I want you to say the word one more time! Let's go!",
+        "expectedTranscript": "Train station",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": 873,
+      "attempt_number": 1,
+      "result": {
+        "score": 100,
+        "audioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0vn1g-3bdc2bed-audio.wav",
+        "userTranscript": "train station train station train station train station train station",
+        "pronunciationScore": 100,
+        "additionalData": {
+          "speaking": {
+            "result": {
+              "matchedTranscriptsIpa": "treɪn steɪʃən",
+              "isLetterCorrectAllWords": "11111 1111111",
+              "wordScoreList": [
+                {
+                  "word": "Train",
+                  "qualityScore": 100,
+                  "isLetterCorrect": "11111",
+                  "phoneScoreList": [
+                    {
+                      "phone": "t",
+                      "phoneIpa": "t",
+                      "qualityScore": 100,
+                      "soundMostLike": "t"
+                    },
+                    {
+                      "phone": "r",
+                      "phoneIpa": "r",
+                      "qualityScore": 100,
+                      "soundMostLike": "r"
+                    },
+                    {
+                      "phone": "ey",
+                      "phoneIpa": "eɪ",
+                      "qualityScore": 100,
+                      "soundMostLike": "ey"
+                    },
+                    {
+                      "phone": "n",
+                      "phoneIpa": "n",
+                      "qualityScore": 100,
+                      "soundMostLike": "n"
+                    }
+                  ],
+                  "syllableScoreList": [
+                    {
+                      "phoneCount": 5,
+                      "letters": "train",
+                      "qualityScore": 100,
+                      "stressScore": 100
+                    }
+                  ]
+                },
+                {
+                  "word": "station",
+                  "qualityScore": 100,
+                  "isLetterCorrect": "1111111",
+                  "phoneScoreList": [
+                    {
+                      "phone": "s",
+                      "phoneIpa": "s",
+                      "qualityScore": 100,
+                      "soundMostLike": "s"
+                    },
+                    {
+                      "phone": "t",
+                      "phoneIpa": "t",
+                      "qualityScore": 100,
+                      "soundMostLike": "t"
+                    },
+                    {
+                      "phone": "ey",
+                      "phoneIpa": "eɪ",
+                      "qualityScore": 100,
+                      "soundMostLike": "ey"
+                    },
+                    {
+                      "phone": "sh",
+                      "phoneIpa": "ʃ",
+                      "qualityScore": 100,
+                      "soundMostLike": "sh"
+                    },
+                    {
+                      "phone": "ah0",
+                      "phoneIpa": "ə",
+                      "qualityScore": 100,
+                      "soundMostLike": "ah0"
+                    },
+                    {
+                      "phone": "n",
+                      "phoneIpa": "n",
+                      "qualityScore": 100,
+                      "soundMostLike": "n"
+                    }
+                  ],
+                  "syllableScoreList": [
+                    {
+                      "phoneCount": 3,
+                      "letters": "sta",
+                      "qualityScore": 100,
+                      "stressScore": 100
+                    },
+                    {
+                      "phoneCount": 4,
+                      "letters": "tion",
+                      "qualityScore": 100,
+                      "stressScore": 100
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "userAnswers": []
+      },
+      "matched_vocabulary": [
+        "train",
+        "train station"
+      ],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T13:01:15.467Z",
+      "created_at": "2025-12-24T13:01:15.468Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be42d1ecc2be77393e1f2"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c5d",
+      "node_id": "8787ae60-5642-46c7-bd45-b1aafb22eedc",
+      "block_id": "20a9b1f5-d474-4e2d-abaa-9417d025deb7",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786376",
+        "questionType": "speaking_scripted",
+        "question": "Next one",
+        "expectedTranscript": "Train",
+        "answers": []
+      },
+      "interaction_type": "AUDIO",
+      "reaction_time_ms": 865,
+      "attempt_number": 1,
+      "result": {
+        "score": 100,
+        "audioUrl": "https://scontent.rinoedu.ai/uploads/2025/12/24/admin/mjk0w1bg-59969c30-audio.wav",
+        "userTranscript": "train",
+        "pronunciationScore": 100,
+        "additionalData": {
+          "speaking": {
+            "result": {
+              "matchedTranscriptsIpa": "treɪn",
+              "isLetterCorrectAllWords": "11111",
+              "wordScoreList": [
+                {
+                  "word": "Train",
+                  "qualityScore": 100,
+                  "isLetterCorrect": "11111",
+                  "phoneScoreList": [
+                    {
+                      "phone": "t",
+                      "phoneIpa": "t",
+                      "qualityScore": 100,
+                      "soundMostLike": "t"
+                    },
+                    {
+                      "phone": "r",
+                      "phoneIpa": "r",
+                      "qualityScore": 100,
+                      "soundMostLike": "r"
+                    },
+                    {
+                      "phone": "ey",
+                      "phoneIpa": "eɪ",
+                      "qualityScore": 100,
+                      "soundMostLike": "ey"
+                    },
+                    {
+                      "phone": "n",
+                      "phoneIpa": "n",
+                      "qualityScore": 100,
+                      "soundMostLike": "n"
+                    }
+                  ],
+                  "syllableScoreList": [
+                    {
+                      "phoneCount": 5,
+                      "letters": "train",
+                      "qualityScore": 100,
+                      "stressScore": 100
+                    }
+                  ]
+                }
+              ]
+            }
+          }
+        },
+        "userAnswers": []
+      },
+      "matched_vocabulary": [
+        "train"
+      ],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T13:01:33.689Z",
+      "created_at": "2025-12-24T13:01:33.689Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be448113d0f6057803583"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c62",
+      "node_id": "0e33b6ec-0fa2-4ac8-8cc4-b94c40345ff8",
+      "block_id": "f4233bb0-c7e5-4042-95c6-a88c3c91409e",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786378",
+        "questionType": "single_choice",
+        "question": "train station",
+        "answers": [
+          {
+            "id": "0",
+            "content": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/0ea3_bus3.png",
+            "isCorrect": false,
+            "_id": {
+              "$oid": "694be448113d0f6057803584"
+            }
+          },
+          {
+            "id": "1",
+            "content": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/6a9e_train-station4.png",
+            "isCorrect": true,
+            "_id": {
+              "$oid": "694be448113d0f6057803585"
+            }
+          }
+        ],
+        "correctAnswer": [
+          1
+        ]
+      },
+      "interaction_type": "NON_AUDIO",
+      "reaction_time_ms": 2091,
+      "attempt_number": 1,
+      "result": {
+        "score": 100,
+        "userAnswers": [
+          {
+            "id": "-1",
+            "value": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/6a9e_train-station4.png",
+            "_id": {
+              "$oid": "694be448113d0f6057803586"
+            }
+          }
+        ]
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T13:02:00.511Z",
+      "created_at": "2025-12-24T13:02:00.512Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be4521ecc2be77393e293"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c63",
+      "node_id": "0e33b6ec-0fa2-4ac8-8cc4-b94c40345ff8",
+      "block_id": "f4233bb0-c7e5-4042-95c6-a88c3c91409e",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786380",
+        "questionType": "single_choice",
+        "question": "train",
+        "answers": [
+          {
+            "id": "0",
+            "content": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/6fee_train3.png",
+            "isCorrect": true,
+            "_id": {
+              "$oid": "694be4521ecc2be77393e294"
+            }
+          },
+          {
+            "id": "1",
+            "content": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/735b_bus-stop1.png",
+            "isCorrect": false,
+            "_id": {
+              "$oid": "694be4521ecc2be77393e295"
+            }
+          }
+        ],
+        "correctAnswer": [
+          0
+        ]
+      },
+      "interaction_type": "NON_AUDIO",
+      "reaction_time_ms": 2128,
+      "attempt_number": 1,
+      "result": {
+        "score": 100,
+        "userAnswers": [
+          {
+            "id": "-1",
+            "value": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/6fee_train3.png",
+            "_id": {
+              "$oid": "694be4521ecc2be77393e296"
+            }
+          }
+        ]
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T13:02:10.556Z",
+      "created_at": "2025-12-24T13:02:10.558Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be463113d0f6057803600"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c64",
+      "node_id": "0e33b6ec-0fa2-4ac8-8cc4-b94c40345ff8",
+      "block_id": "f4233bb0-c7e5-4042-95c6-a88c3c91409e",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786381",
+        "questionType": "single_choice",
+        "question": "bus",
+        "answers": [
+          {
+            "id": "0",
+            "content": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/c9a0_bus2.png",
+            "isCorrect": true,
+            "_id": {
+              "$oid": "694be463113d0f6057803601"
+            }
+          },
+          {
+            "id": "1",
+            "content": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/29a6_train-station2.png",
+            "isCorrect": false,
+            "_id": {
+              "$oid": "694be463113d0f6057803602"
+            }
+          }
+        ],
+        "correctAnswer": [
+          0
+        ]
+      },
+      "interaction_type": "NON_AUDIO",
+      "reaction_time_ms": 7836,
+      "attempt_number": 1,
+      "result": {
+        "score": 100,
+        "userAnswers": [
+          {
+            "id": "-1",
+            "value": "https://d17pvycz1g8p67.cloudfront.net/upload/5c209fe6176b0/2025/11/04/c9a0_bus2.png",
+            "_id": {
+              "$oid": "694be463113d0f6057803603"
+            }
+          }
+        ]
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T13:02:27.106Z",
+      "created_at": "2025-12-24T13:02:27.107Z",
+      "raw_version": 0
+    },
+    {
+      "event_id": {
+        "$oid": "694be52c1ecc2be77393e77f"
+      },
+      "session_id": {
+        "$oid": "694be2621ecc2be77393d667"
+      },
+      "student_id": "2102555",
+      "lesson_id": "3605593",
+      "section_id": "689965880598bfe23ce9565c",
+      "script_version_id": {
+        "$oid": "692817f55f24dee0820e8c45"
+      },
+      "flow_id": "692817f55f24dee0820e8c67",
+      "node_id": "0e33b6ec-0fa2-4ac8-8cc4-b94c40345ff8",
+      "block_id": "f4233bb0-c7e5-4042-95c6-a88c3c91409e",
+      "lms_type": "practice",
+      "lms_data": {
+        "moduleId": "53448",
+        "itemId": "786382",
+        "questionType": "fill_paragraph",
+        "question": "A bus stop is where people come and wait for [{}] ! Bus stops are placed along the road with a sign that tells buses [{}] to stop.",
+        "answers": [
+          {
+            "id": "1",
+            "content": "buses",
+            "_id": {
+              "$oid": "694be52c1ecc2be77393e780"
+            }
+          },
+          {
+            "id": "2",
+            "content": "trains",
+            "_id": {
+              "$oid": "694be52c1ecc2be77393e781"
+            }
+          },
+          {
+            "id": "3",
+            "content": "where",
+            "_id": {
+              "$oid": "694be52c1ecc2be77393e782"
+            }
+          },
+          {
+            "id": "4",
+            "content": "who",
+            "_id": {
+              "$oid": "694be52c1ecc2be77393e783"
+            }
+          }
+        ],
+        "correctAnswer": [
+          1,
+          3
+        ]
+      },
+      "interaction_type": "NON_AUDIO",
+      "reaction_time_ms": null,
+      "attempt_number": 1,
+      "result": {
+        "score": 0,
+        "userAnswers": [
+          {
+            "id": "-1",
+            "value": "buses",
+            "_id": {
+              "$oid": "694be52c1ecc2be77393e784"
+            }
+          }
+        ]
+      },
+      "matched_vocabulary": [],
+      "matched_grammar": [],
+      "timestamp": "2025-12-24T13:05:48.189Z",
+      "created_at": "2025-12-24T13:05:48.190Z",
+      "raw_version": 0
+    }
+  ],
+  "mapping_meta": {
+    "source_file": "/home/pc600/Downloads/Telegram Desktop/vh_digital_teacher.learning_results_2102555.json",
+    "mapped_at": "2026-04-01T07:09:14.220110+00:00",
+    "total_events": 12,
+    "mapping_policy": "intersection_only",
+    "moment_policy": "full_raw_fields"
   }
 }

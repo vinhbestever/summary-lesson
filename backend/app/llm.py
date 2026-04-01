@@ -166,6 +166,18 @@ def _parse_lesson_root(raw_json_text: str) -> dict[str, Any]:
     return {}
 
 
+def _extract_primary_report(root: dict[str, Any]) -> dict[str, Any]:
+    if not isinstance(root, dict):
+        return {}
+    reports = root.get('reports')
+    if isinstance(reports, list):
+        for item in reports:
+            if isinstance(item, dict):
+                return item
+        return {}
+    return root
+
+
 def _as_float(value: Any) -> float | None:
     try:
         return float(value)
@@ -198,7 +210,8 @@ def _build_portfolio_input_context(lessons_payload: list[dict[str, str]]) -> dic
         lesson_id = _normalize_text(item.get('lesson_id', ''), fallback='unknown')
         source_file = _normalize_text(item.get('source_file', ''), fallback='unknown')
         root = _parse_lesson_root(item.get('raw_json_text', ''))
-        achievements = root.get('achievements') if isinstance(root, dict) else {}
+        report = _extract_primary_report(root)
+        achievements = report.get('achievements') if isinstance(report, dict) else {}
         achievements = achievements if isinstance(achievements, dict) else {}
         stats = achievements.get('stats') if isinstance(achievements.get('stats'), dict) else {}
         pronunciation = achievements.get('pronunciation') if isinstance(achievements.get('pronunciation'), dict) else {}
@@ -397,8 +410,10 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         '## Điểm mạnh; '
         '## Ưu tiên cải thiện; '
         '## Kế hoạch buổi sau; '
-        '## Lời nhắn phụ huynh. '
-        'Dữ liệu đầu vào có thể gồm current_lesson_data và lesson_progress_context (recent_lessons tối đa 2 buổi gần nhất). '
+        '## Đánh giá 6 năng lực. '
+        '## Lời nhắn phụ huynh; '
+        'Dữ liệu đầu vào có thể gồm current_lesson_data, lesson_progress_context (recent_lessons tối đa 2 buổi gần nhất), '
+        'và lesson_skill_context (tổng hợp từ moments). '
         'Nếu lesson_progress_context.progress_context.is_first_lesson=true hoặc thiếu dữ liệu thời gian, '
         'hãy coi đây là buổi học đầu tiên, KHÔNG suy diễn tiến bộ theo lịch sử, và ghi rõ "chưa đủ dữ liệu" ở phần cần so sánh. '
         'Nếu có recent_lessons, bắt buộc có bullet bắt đầu bằng "- So sánh buổi gần đây: " trong mục "## So sánh buổi gần đây". '
@@ -406,7 +421,35 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'Nội dung so sánh phải nêu điểm tiến bộ/khác biệt gần đây và chỉ dựa trên dữ liệu thực tế. '
         'Khi so sánh, ưu tiên nhắc rõ nội dung học giữa các buổi: script_name/chủ đề, target vocabulary, target grammar, '
         'và từ/cấu trúc còn yếu lặp lại (nếu có). Không chỉ nêu số liệu chung chung. '
-        'Nếu thiếu dữ liệu cho ý nào, ghi rõ "chưa đủ dữ liệu".'
+        'Trong mục "## Đánh giá từng kỹ năng", bắt buộc phải có đúng 3 bullet chính theo thứ tự sau: '
+        '1) "- Nghe:"; '
+        '2) "- Nói:"; '
+        '3) "- Đọc:". '
+        'Mỗi bullet chính phải xuống dòng rõ ràng bằng 3 bullet con theo đúng thứ tự: '
+        '"  - Tốt: ...", "  - Chưa tốt: ...", "  - Yếu: ...". '
+        'Không gộp trên cùng một dòng, không dùng ký tự "|" giữa các ý. '
+        'Bullet Nghe phải dựa trên lesson_skill_context.listening_quiz (single_choice/matching). '
+        'Bullet Nói phải tổng hợp cả speaking_pronunciation_vocab và speaking_sentence_length_by_activity. '
+        'Bullet Đọc phải dựa trên lesson_skill_context.reading_fluency. '
+        'Nếu data_coverage của tiêu chí nào = false hoặc thiếu bằng chứng, phải ghi rõ "chưa đủ dữ liệu" ngay trong bullet tiêu chí đó. '
+        'Nếu thiếu dữ liệu cho ý nào, ghi rõ "chưa đủ dữ liệu". '
+        'Trong section "## Đánh giá 6 năng lực", bắt buộc trình bày đủ 6 năng lực theo thứ tự A->F với format cố định cho từng năng lực: '
+        '- Learn – Học và tiếp thu kiến thức mới; '
+        '- Recognize – Nhận biết ngôn ngữ (âm thanh/hình ảnh/chữ viết); '
+        '- Apply – Vận dụng kiến thức vào tình huống; '
+        '- Retain – Ghi nhớ và duy trì theo thời gian; '
+        '- Focus – Chú ý và duy trì tương tác; '
+        '- Express – Tự tin và sẵn sàng sử dụng ngôn ngữ. '
+        'Quy tắc markdown bắt buộc cho section này: mỗi năng lực là 1 bullet cha riêng trên 1 dòng; '
+        'ngay bên dưới là 4 bullet con thụt lề 2 dấu cách; có 1 dòng trống giữa các năng lực; '
+        'tuyệt đối không gộp nhiều nhãn trong cùng 1 dòng, không dùng "|" để nối các nhãn. '
+        'Mỗi năng lực phải có đúng 4 dòng bullet con theo thứ tự: '
+        '"  - Đo lường: ...", "  - Kết quả hiện tại: ...", "  - Nhận xét: ...", "  - Khuyến nghị: ...". '
+        'Dòng "Đo lường" phải nêu các chỉ số quan sát được từ dữ liệu (hoặc ghi rõ chưa đủ dữ liệu); '
+        'dòng "Kết quả hiện tại" bắt buộc có score hoặc level theo thang 5 mức (Rất cần hỗ trợ, Cần hỗ trợ, Đang hình thành, Khá vững, Vững vàng); '
+        'dòng "Nhận xét" phải bám bằng chứng; dòng "Khuyến nghị" phải là hành động cụ thể, khả thi. '
+        'Không thêm section kế hoạch 2 tuần hoặc tiêu đề/tiểu mục liên quan đến tuần 1, tuần 2. '
+        'Nếu dữ liệu thiếu, vẫn phải xuất đủ cấu trúc 6 năng lực nhưng ghi rõ giả định tối thiểu và mức độ chắc chắn thấp.'
     )
     user_payload = {
         'lesson_label': lesson_label or 'Lesson',

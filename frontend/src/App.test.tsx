@@ -116,6 +116,40 @@ describe('App', () => {
     expect(screen.getByText(/con hoc rat tap trung/i)).toBeInTheDocument()
   })
 
+  it('renders radar chart from lesson result event', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich',
+        'event: result\ndata: {"type":"lesson_radar","competencies":[{"key":"learn","label":"A. Learn","score":76,"insufficient_data":false},{"key":"recognize","label":"B. Recognize","score":80,"insufficient_data":false},{"key":"apply","label":"C. Apply","score":62,"insufficient_data":false},{"key":"retain","label":"D. Retain","score":55,"insufficient_data":false},{"key":"focus","label":"E. Focus","score":70,"insufficient_data":false},{"key":"express","label":"F. Express","score":48,"insufficient_data":false}]}',
+        'event: chunk\ndata: # Nhan xet buoi hoc - TRIAL_LESSON_OVER_7\ndata: \ndata: ## Tong quan\ndata: \ndata: Con hoc rat tap trung.',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: /nhan xet/i })[0])
+
+    expect(await screen.findByRole('heading', { name: /nhan xet buoi hoc - trial_lesson_over_7/i })).toBeInTheDocument()
+  })
+
+  it('falls back to parse radar from markdown when no result event', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich',
+        'event: chunk\ndata: # Nhan xet\ndata: \ndata: ## Đánh giá 6 năng lực\ndata: \ndata: - Learn - Học\ndata:   - Kết quả hiện tại: 72/100\ndata: - Recognize - Nhận biết\ndata:   - Kết quả hiện tại: Khá vững',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: /nhan xet/i })[0])
+
+    expect(await screen.findByRole('heading', { name: /nhan xet/i })).toBeInTheDocument()
+    expect(screen.getAllByText(/learn/i).length).toBeGreaterThan(0)
+  })
+
   it('shows loading state while requesting lesson feedback', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([
@@ -180,5 +214,76 @@ describe('App', () => {
     await screen.findByRole('heading', { name: /nhan xet/i })
     expect(container.querySelector('script')).toBeNull()
     expect(screen.getByText(/noi dung an toan/i)).toBeInTheDocument()
+  })
+
+  it('formats inline skill details into clearer line breaks', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich',
+        'event: chunk\ndata: # Nhan xet\ndata: \ndata: ## Danh gia tung ky nang\ndata: \ndata: - Nghe: Tốt: Bé nghe tốt | Chưa tốt: Một vài câu dài còn nhầm | Yếu: Cần nghe kỹ từ khóa',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    const { container } = render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: /nhan xet/i })[0])
+
+    await screen.findByRole('heading', { name: /nhan xet/i })
+    const listItems = container.querySelectorAll('.summary-result li')
+    expect(listItems.length).toBeGreaterThan(1)
+    expect(screen.getByText(/chưa tốt:/i)).toBeInTheDocument()
+    expect(screen.getByText(/yếu:/i)).toBeInTheDocument()
+  })
+
+  it('groups misplaced skill sub-bullets under each skill', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich',
+        'event: chunk\ndata: # Nhan xet\ndata: \ndata: ## Danh gia tung ky nang\ndata: \ndata: - Nghe: - Tốt: Bé nghe tốt\ndata: - Chưa tốt: Còn nhầm vài câu\ndata: - Yếu: Chưa ổn định\ndata: - Nói: - Tốt: Nói khá tự tin\ndata: - Chưa tốt: Cần tròn âm hơn\ndata: - Yếu: Một số từ khó\ndata: - Đọc: - Tốt: Đọc khá trôi chảy\ndata: - Chưa tốt: Vấp ở câu dài\ndata: - Yếu: Cần luyện nhịp câu',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    const { container } = render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: /nhan xet/i })[0])
+
+    await screen.findByRole('heading', { name: /nhan xet/i })
+
+    const allLists = container.querySelectorAll('.summary-result ul')
+    const topList = allLists[allLists.length - 1]
+    expect(topList).not.toBeNull()
+    const topLevelItems = topList?.querySelectorAll(':scope > li') ?? []
+    expect(topLevelItems.length).toBe(3)
+    expect(screen.getByText(/nghe:/i)).toBeInTheDocument()
+    expect(screen.getByText(/nói:/i)).toBeInTheDocument()
+    expect(screen.getByText(/đọc:/i)).toBeInTheDocument()
+  })
+
+  it('formats competency section into clear parent-child bullets', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich',
+        'event: chunk\ndata: # Nhan xet\ndata: \ndata: ## Đánh giá 6 năng lực\ndata: \ndata: - Learn - Học và tiếp thu kiến thức mới\ndata: - Đo lường: Hoàn thành 90%\ndata: - Kết quả hiện tại: Khá vững\ndata: - Nhận xét: Tiến bộ tốt\ndata: - Khuyến nghị: Duy trì luyện tập',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    const { container } = render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: /nhan xet/i })[0])
+
+    await screen.findByRole('heading', { name: /nhan xet/i })
+
+    const summary = container.querySelector('.summary-result')
+    expect(summary).not.toBeNull()
+    const items = summary?.querySelectorAll('li') ?? []
+    expect(items.length).toBeGreaterThanOrEqual(5)
+    expect(screen.getAllByText(/a\. learn/i).length).toBeGreaterThan(0)
+    expect(screen.getByText(/đo lường:/i)).toBeInTheDocument()
+    expect(screen.getByText(/kết quả hiện tại:/i)).toBeInTheDocument()
+    expect(screen.getByText(/nhận xét:/i)).toBeInTheDocument()
+    expect(screen.getByText(/khuyến nghị:/i)).toBeInTheDocument()
   })
 })

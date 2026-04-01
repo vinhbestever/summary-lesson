@@ -262,6 +262,14 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
     assert 'buổi học đầu tiên' in system_prompt
     assert 'so sánh buổi gần đây' in system_prompt
     assert '## so sánh buổi gần đây' in system_prompt
+    assert '- nghe:' in system_prompt
+    assert '- nói:' in system_prompt
+    assert '- đọc:' in system_prompt
+    assert 'tốt:' in system_prompt
+    assert 'chưa tốt:' in system_prompt
+    assert 'yếu:' in system_prompt
+    assert 'reading_fluency' in system_prompt
+    assert 'lesson_skill_context' in system_prompt
     assert isinstance(user_payload.get('lesson_input'), str)
     assert isinstance(result, str)
     assert result
@@ -583,10 +591,10 @@ def test_create_lesson_feedback_with_lesson_id_success(monkeypatch) -> None:
 
 
 def test_lesson_feedback_cache_key_uses_version_prefix() -> None:
-    from app.feedback_cache import lesson_feedback_cache_key
+    from app.feedback_cache import LESSON_FEEDBACK_CACHE_VERSION, lesson_feedback_cache_key
 
     key = lesson_feedback_cache_key('3724970', None, None, 'Lesson 1')
-    assert key.startswith('lesson_v5_')
+    assert key.startswith(f'lesson_{LESSON_FEEDBACK_CACHE_VERSION}_')
 
 
 def test_create_lesson_feedback_uses_cache_when_available(monkeypatch) -> None:
@@ -682,6 +690,7 @@ def test_create_lesson_feedback_stream_uses_cache_when_available(monkeypatch) ->
     assert 'event: status' in response.text
     assert 'cache' in response.text.lower()
     assert 'data: # Cached stream lesson markdown' in response.text
+    assert '"type": "lesson_radar"' in response.text
     assert 'event: done' in response.text
 
 
@@ -815,7 +824,50 @@ def test_lesson_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
     body = response.text
     assert 'event: chunk' in body
     assert 'data: # Nhan xet' in body
+    assert '"type": "lesson_radar"' in body
     assert 'event: done' in body
+
+
+def test_build_lesson_radar_payload_extracts_scores_and_levels() -> None:
+    from app.main import _build_lesson_radar_payload
+
+    markdown = (
+        '## Đánh giá 6 năng lực\n\n'
+        '- A. Learn - Hoc va tiep thu kien thuc moi\n'
+        '  - Kết quả hiện tại: 76/100\n\n'
+        '- B. Recognize - Nhan biet ngon ngu\n'
+        '  - Kết quả hiện tại: Khá vững\n\n'
+        '- C. Apply - Van dung\n'
+        '  - Kết quả hiện tại: chưa đủ dữ liệu\n'
+    )
+
+    payload = _build_lesson_radar_payload(markdown)
+    competencies = {item['key']: item for item in payload['competencies']}
+
+    assert payload['type'] == 'lesson_radar'
+    assert competencies['learn']['score'] == 76
+    assert competencies['learn']['insufficient_data'] is False
+    assert competencies['recognize']['score'] == 80
+    assert competencies['recognize']['level_text'] == 'Khá vững'
+    assert competencies['apply']['score'] == 0
+    assert competencies['apply']['insufficient_data'] is True
+
+
+def test_build_lesson_radar_payload_accepts_competency_without_letter_prefix() -> None:
+    from app.main import _build_lesson_radar_payload
+
+    markdown = (
+        '## Đánh giá 6 năng lực\n\n'
+        '- Learn – Học và tiếp thu kiến thức mới\n'
+        '  - Kết quả hiện tại: Khá vững\n\n'
+        '- Recognize – Nhận biết ngôn ngữ\n'
+        '  - Kết quả hiện tại: 74/100\n'
+    )
+
+    payload = _build_lesson_radar_payload(markdown)
+    competencies = {item['key']: item for item in payload['competencies']}
+    assert competencies['learn']['score'] == 80
+    assert competencies['recognize']['score'] == 74
 
 
 def test_portfolio_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
@@ -958,6 +1010,51 @@ def test_build_lesson_progress_context_uses_two_most_recent_previous_lessons(mon
     assert recent_ids == ['3', '2']
 
 
+def test_build_lesson_skill_context_extracts_speaking_and_listening_metrics() -> None:
+    from app.main import _build_lesson_skill_context
+
+    report_text = json.dumps(
+        {
+            'moments': [
+                {
+                    'interaction_type': 'AUDIO',
+                    'lms_type': 'practice',
+                    'lms_data': {
+                        'questionType': 'speaking_scripted',
+                        'expectedTranscript': 'Britain',
+                    },
+                    'result': {'userTranscript': 'britain', 'score': 95, 'pronunciationScore': 90},
+                },
+                {
+                    'interaction_type': 'AUDIO',
+                    'lms_type': 'dialogue',
+                    'lms_data': {
+                        'expectedTranscript': 'The costume is more expensive than the pyjamas.',
+                    },
+                    'result': {'userTranscript': 'the costume is more expensive', 'score': 88},
+                },
+                {
+                    'interaction_type': 'NON_AUDIO',
+                    'lms_type': 'practice',
+                    'lms_data': {'questionType': 'single_choice', 'question': 'How much is it?'},
+                    'result': {'score': 100},
+                },
+            ]
+        }
+    )
+    context = _build_lesson_skill_context(report_text)
+
+    assert context['speaking_pronunciation_vocab']['attempt_count'] == 1
+    assert context['speaking_pronunciation_vocab']['average_score'] == 90
+    assert context['speaking_sentence_length_by_activity']['long_sentence']['attempt_count'] == 1
+    assert context['listening_quiz']['attempt_count'] == 1
+    assert context['listening_quiz']['accuracy_percent'] == 100
+    assert context['reading_fluency']['attempt_count'] == 2
+    assert context['data_coverage']['speaking_pronunciation_vocab'] is True
+    assert context['data_coverage']['listening_quiz'] is True
+    assert context['data_coverage']['reading_fluency'] is True
+
+
 def test_create_lesson_feedback_passes_recent_lesson_context_to_llm(monkeypatch) -> None:
     captured = {'input_text': ''}
 
@@ -996,6 +1093,8 @@ def test_create_lesson_feedback_passes_recent_lesson_context_to_llm(monkeypatch)
     sent_payload = json.loads(captured['input_text'])
     assert 'current_lesson_data' in sent_payload
     assert 'lesson_progress_context' in sent_payload
+    assert 'lesson_skill_context' in sent_payload
     assert isinstance(sent_payload['current_lesson_data'], dict)
     assert len(sent_payload['lesson_progress_context']['recent_lessons']) == 2
     assert sent_payload['lesson_progress_context']['progress_context']['is_first_lesson'] is False
+    assert isinstance(sent_payload['lesson_skill_context'], dict)
