@@ -265,6 +265,8 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
     assert '4 tiêu chí' in system_prompt
     assert 'proficiency' in system_prompt
     assert 'self-regulation' in system_prompt or 'self regulation' in system_prompt
+    assert 'độ tin cậy' in system_prompt
+    assert 'củng cố đánh giá' in system_prompt
     assert isinstance(user_payload.get('lesson_input'), str)
     assert isinstance(result, str)
     assert result
@@ -437,6 +439,8 @@ def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
     assert '## Phong cách học hiện tại' in system_prompt
     assert 'portfolio_context' in user_payload
     assert user_payload['portfolio_context']['total_lessons'] == 1
+    assert 'Độ tin cậy kết luận' in system_prompt
+    assert 'Cách củng cố đánh giá' in system_prompt
 
 
 def test_select_recent_portfolio_lessons_excludes_trial_and_limits_to_8() -> None:

@@ -254,6 +254,26 @@ describe('App', () => {
     expect(screen.getByText(/yếu:/i)).toBeInTheDocument()
   })
 
+  it('splits confidence and remediation bullets under each skill', async () => {
+    const fetchMock = vi.fn().mockResolvedValue(
+      createStreamResponse([
+        'event: status\ndata: Dang phan tich',
+        'event: chunk\ndata: # Nhan xet\ndata: \ndata: ## Danh gia tung ky nang\ndata: \ndata: - Nghe: Tốt: ok | Chưa tốt: chua du | Yếu: chua du | Độ tin cậy kết luận: Thấp (1 câu) | Cách củng cố đánh giá: Thêm bài nghe 5 câu',
+        'event: done\ndata: done',
+      ]),
+    )
+    vi.stubGlobal('fetch', fetchMock)
+
+    const { container } = render(<App />)
+    fireEvent.click(screen.getAllByRole('button', { name: /nhận xét/i })[0])
+
+    await screen.findByRole('heading', { name: /nhan xet/i })
+    expect(screen.getByText(/độ tin cậy kết luận:/i)).toBeInTheDocument()
+    expect(screen.getByText(/cách củng cố đánh giá:/i)).toBeInTheDocument()
+    const nested = container.querySelectorAll('.summary-result ul ul li')
+    expect(nested.length).toBeGreaterThan(3)
+  })
+
   it('groups misplaced skill sub-bullets under each skill', async () => {
     const fetchMock = vi.fn().mockResolvedValue(
       createStreamResponse([

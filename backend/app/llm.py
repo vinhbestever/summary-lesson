@@ -434,6 +434,11 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'Nói tổng hợp speaking_pronunciation_vocab và speaking_sentence_length_by_activity; '
         'Đọc dựa trên lesson_skill_context.reading_fluency. '
         'Nếu data_coverage = false hoặc thiếu bằng chứng, ghi "chưa đủ dữ liệu" trong bullet tương ứng. '
+        'QUY TẮC ĐỘ TIN CẬY (bắt buộc khi dữ liệu không đủ để kết luận chắc chắn): '
+        'Với từng mục Nghe / Nói / Đọc trong "## Dữ liệu nền", nếu thiếu dữ liệu hoặc mẫu quá ít (attempt_count thấp, evidence trống, chỉ suy luận gián tiếp), '
+        'sau 3 dòng "Tốt / Chưa tốt / Yếu" phải thêm đúng 2 bullet con thụt 2 dấu cách: '
+        '"  - Độ tin cậy kết luận: ..." (mức Thấp / Trung bình / Cao hoặc ước lượng % 0–100, kèm 1 câu vì sao chưa chắc) '
+        'và "  - Cách củng cố đánh giá: ..." (giải pháp cụ thể: cần thêm hoạt động/loại bài gì, quan sát gì ở buổi sau để chấm đúng mục đó). '
         'Trong "## Đánh giá 4 tiêu chí in-class", bắt buộc đủ 4 tiêu chí theo thứ tự A->D, mỗi tiêu chí 1 bullet cha trên 1 dòng: '
         '- A. Proficiency – Năng lực kiến thức & vận dụng; '
         '- B. Capacity – Năng lực tiếp thu & tiến độ; '
@@ -445,9 +450,13 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'dòng "Kết quả hiện tại" bắt buộc ghi một trong ba mức rubric (Needs Improvement / Meets Expectation / Exceeds Expectation) '
         'và có thể kèm điểm 0–100 hoặc mô tả ngắn bám rubric; '
         'dòng "Nhận xét" bám bằng chứng; dòng "Khuyến nghị" hành động cụ thể. '
+        'Nếu với một tiêu chí dữ liệu hệ thống không đủ tin cậy để xếp rubric chắc chắn, sau 4 bullet trên (cùng tiêu chí đó) '
+        'bắt buộc thêm 2 bullet con: "  - Độ tin cậy kết luận: ..." và "  - Cách củng cố đánh giá: ..." với nội dung như quy tắc phần Dữ liệu nền. '
+        'Khi dữ liệu rất đầy đủ và kết luận rõ ràng, có thể chỉ ghi ngắn "Độ tin cậy kết luận: Cao (...)" hoặc bỏ 2 bullet phụ — '
+        'nhưng khi data_coverage liên quan = false hoặc "chưa đủ dữ liệu" trong Đo lường/Kết quả thì phải có đủ 2 bullet bổ sung. '
         'Không dùng "|" để nối nhiều nhãn trên một dòng trong section này. '
         'Không thêm section kế hoạch 2 tuần. '
-        'Nếu dữ liệu thiếu, vẫn xuất đủ 4 tiêu chí và ghi rõ "chưa đủ dữ liệu" ở phần tương ứng.'
+        'Nếu dữ liệu thiếu, vẫn xuất đủ 4 tiêu chí, ghi rõ "chưa đủ dữ liệu" và áp dụng đầy đủ quy tắc Độ tin cậy / Cách củng cố đánh giá.'
     )
     user_payload = {
         'lesson_label': lesson_label or 'Lesson',
@@ -485,16 +494,19 @@ def _build_portfolio_feedback_messages(
         'Yêu cầu chi tiết theo section: '
         '1) "Tổng quan quá trình": nêu mức độ tiến bộ chung, độ ổn định và mức hoàn thành theo toàn bộ các buổi. '
         '2) "Xu hướng tiến bộ": nêu chiều hướng tăng/giảm/dao động theo thời gian và chỉ ra giai đoạn rõ ràng (đầu kỳ, gần đây). '
-        '3) "Xu hướng theo 4 tiêu chí": với Proficiency, Capacity, Engagement, Self-regulation — mỗi tiêu chí 1–2 bullet, có bằng chứng từ portfolio_context. '
+        '3) "Xu hướng theo 4 tiêu chí": với Proficiency, Capacity, Engagement, Self-regulation — mỗi tiêu chí 1–2 bullet, có bằng chứng từ portfolio_context; '
+        'nếu số buổi có dữ liệu ít hoặc chỉ số thưa, thêm ngay trong bullet đó "Độ tin cậy kết luận: ..." và "Cách củng cố đánh giá: ..." (mức Thấp/Trung bình/Cao hoặc %, + việc cần làm để tăng độ tin cậy). '
         '4) "Phong cách học hiện tại": mô tả chủ động, phản xạ, tập trung, tiếp thu dựa trên dữ liệu. '
         '5) "Đánh giá 4 tiêu chí in-class": đủ A->D (Proficiency, Capacity, Engagement, Self-regulation), '
         'mỗi tiêu chí 1 bullet cha, dưới đó 4 bullet con: Đo lường; Kết quả hiện tại (bắt buộc một trong ba mức rubric + có thể kèm điểm); '
         'Nhận xét; Khuyến nghị. Cách nhau 1 dòng trống giữa các tiêu chí. '
+        'Khi tổng hợp nhiều buổi mà dữ liệu không đủ tin cậy cho một tiêu chí, sau 4 bullet con bắt buộc thêm '
+        '"  - Độ tin cậy kết luận: ..." và "  - Cách củng cố đánh giá: ..." (hành động cụ thể để thu thập/quan sát thêm). '
         '6) "Kế hoạch 2 tuần": 6-8 hành động cụ thể, mỗi hành động ghi tần suất/tuần + thời lượng + 1-2 tiêu chí rubric liên quan, '
         'bám sát "Đánh giá 4 tiêu chí in-class". '
         '7) "Lời nhắn phụ huynh": khuyến nghị ngắn gọn, khả thi tại nhà. '
         'Quy tắc trình bày: mỗi ý bắt đầu bằng "- "; mỗi section cách nhau 1 dòng trống. '
-        'Mọi nhận định bám dữ liệu; thiếu dữ liệu thì ghi "chưa đủ dữ liệu".'
+        'Mọi nhận định bám dữ liệu; thiếu dữ liệu thì ghi "chưa đủ dữ liệu" và luôn kèm Độ tin cậy kết luận + Cách củng cố đánh giá cho phần đó.'
     )
     user_payload = {
         'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',

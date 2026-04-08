@@ -365,6 +365,8 @@ function normalizeMarkdownLineBreaks(raw: string): string {
     .replace(/\s*\|\s*Kết quả hiện tại:\s*/g, '\n  - Kết quả hiện tại: ')
     .replace(/\s*\|\s*Nhận xét:\s*/g, '\n  - Nhận xét: ')
     .replace(/\s*\|\s*Khuyến nghị:\s*/g, '\n  - Khuyến nghị: ')
+    .replace(/\s*\|\s*Độ tin cậy kết luận:\s*/g, '\n  - Độ tin cậy kết luận: ')
+    .replace(/\s*\|\s*Cách củng cố đánh giá:\s*/g, '\n  - Cách củng cố đánh giá: ')
     .replace(/-\s*(Tuần\s*[12])\s*:\s*(?=\S)/g, '- $1:\n  - ')
     .replace(/([.!?])\s*-\s+/g, '$1\n- ')
     .replace(/\n-\s*\n-/g, '\n- ')
@@ -453,15 +455,17 @@ function normalizeMarkdownLineBreaks(raw: string): string {
       }
 
       const competencyChildMatch = line.match(
-        /^\s*-\s*(Đo lường|Do lường|Kết quả hiện tại|Ket qua hien tai|Nhận xét|Nhan xet|Khuyến nghị|Khuyen nghi)\s*:\s*(.*)$/i,
+        /^\s*-\s*(Đo lường|Do lường|Kết quả hiện tại|Ket qua hien tai|Nhận xét|Nhan xet|Khuyến nghị|Khuyen nghi|Độ tin cậy kết luận|Do tin cay ket luan|Cách củng cố đánh giá|Cach cung co danh gia)\s*:\s*(.*)$/i,
       )
       if (competencyChildMatch && currentCompetency) {
         const rawKey = competencyChildMatch[1].toLowerCase()
         let normalizedKey = competencyChildMatch[1]
         if (rawKey.includes('do l')) normalizedKey = 'Đo lường'
         if (rawKey.includes('ket qua')) normalizedKey = 'Kết quả hiện tại'
-        if (rawKey.includes('nhan')) normalizedKey = 'Nhận xét'
+        if (rawKey.includes('nhan') && !rawKey.includes('tin')) normalizedKey = 'Nhận xét'
         if (rawKey.includes('khuyen')) normalizedKey = 'Khuyến nghị'
+        if (rawKey.includes('do tin') || rawKey.includes('độ tin')) normalizedKey = 'Độ tin cậy kết luận'
+        if (rawKey.includes('cach cung') || rawKey.includes('cách củng')) normalizedKey = 'Cách củng cố đánh giá'
         output.push(`  - ${normalizedKey}: ${competencyChildMatch[2].trim()}`)
         continue
       }
@@ -497,6 +501,19 @@ function normalizeMarkdownLineBreaks(raw: string): string {
     const childMatch = line.match(/^\s*-\s*(Tốt|Chưa tốt|Yếu)\s*:\s*(.*)$/i)
     if (childMatch && currentSkill) {
       output.push(`  - ${childMatch[1]}: ${childMatch[2].trim()}`)
+      continue
+    }
+
+    const skillConfidenceMatch = line.match(
+      /^\s*-\s*(Độ tin cậy kết luận|Do tin cay ket luan|Cách củng cố đánh giá|Cach cung co danh gia)\s*:\s*(.*)$/i,
+    )
+    if (skillConfidenceMatch && currentSkill) {
+      const raw = skillConfidenceMatch[1].toLowerCase()
+      const label =
+        raw.includes('do tin') || raw.includes('độ tin')
+          ? 'Độ tin cậy kết luận'
+          : 'Cách củng cố đánh giá'
+      output.push(`  - ${label}: ${skillConfidenceMatch[2].trim()}`)
       continue
     }
 
