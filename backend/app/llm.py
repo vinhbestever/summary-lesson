@@ -4,7 +4,7 @@ from typing import Any
 
 from openai import OpenAI
 
-VALID_PRIORITY_SKILLS = {'pronunciation', 'vocabulary', 'grammar', 'reaction_confidence', 'participation'}
+VALID_PRIORITY_SKILLS = {'proficiency', 'capacity', 'engagement', 'self_regulation'}
 VALID_PRIORITIES = {'high', 'medium', 'low'}
 VALID_TRENDS = {'improving', 'stable', 'declining', 'mixed', 'insufficient_data'}
 
@@ -259,7 +259,8 @@ def _build_portfolio_input_context(lessons_payload: list[dict[str, str]]) -> dic
         reaction_text = summary['average_reaction_time_ms']
         completion_text = summary['sections_completion_percent']
         evidence_highlights.append(
-            f"{lesson_ref}: pronunciation={pronunciation_text}, speaking_turns={speaking_turn_text}, reaction_ms={reaction_text}, completion={completion_text}"
+            f"{lesson_ref}: pronunciation_avg={pronunciation_text}, speaking_turns={speaking_turn_text}, "
+            f"reaction_ms={reaction_text}, completion_percent={completion_text}"
         )
 
     return {
@@ -275,29 +276,24 @@ def _build_portfolio_input_context(lessons_payload: list[dict[str, str]]) -> dic
         'planning_hints': {
             'weak_skill_signals': [
                 {
-                    'skill': 'pronunciation',
-                    'signal': 'Trung binh diem phat am duoi 70 hoac dao dong lon giua cac buoi',
-                    'target_2_weeks': 'Tang do on dinh diem phat am qua bai shadowing ngan hang ngay',
+                    'criterion': 'proficiency',
+                    'signal': 'Diem noi/doc/nghe thap, tu vung/ngu phap yeu, lap lai loi co ban',
+                    'target_2_weeks': 'Cung co kien thuc trong tam, giam loi lap lai qua luyen tap co huong dan',
                 },
                 {
-                    'skill': 'participation',
-                    'signal': 'Speaking turn hoac speaking coverage chua on dinh',
-                    'target_2_weeks': 'Tang so luot noi thanh cau day du trong moi buoi',
+                    'criterion': 'capacity',
+                    'signal': 'Phan xa cham, hoan thanh cham so voi lop, can nhac nhieu lan',
+                    'target_2_weeks': 'Tang nhip tiep thu va hoan thanh phan co ban dung tien do',
                 },
                 {
-                    'skill': 'reaction_confidence',
-                    'signal': 'Average reaction time cao hoac phan xa chua deu',
-                    'target_2_weeks': 'Cai thien toc do hoi dap theo tinh huong gan gui',
+                    'criterion': 'engagement',
+                    'signal': 'It luot noi, it phan hoi, tham gia thu dong',
+                    'target_2_weeks': 'Khuyen khich hoi dap nhanh va tham gia hoat dong/nhom ro rang hon',
                 },
                 {
-                    'skill': 'vocabulary',
-                    'signal': 'Dau hieu lap lai loi tu vung/ghi nho tu moi chua ben',
-                    'target_2_weeks': 'Cung co tu vung theo chu de bang on tap cach quang',
-                },
-                {
-                    'skill': 'grammar',
-                    'signal': 'Co mau cau sai lap lai hoac do chinh xac cau chua on dinh',
-                    'target_2_weeks': 'On mau cau trong tam va van dung vao hoi dap ngan',
+                    'criterion': 'self_regulation',
+                    'signal': 'Can nhac de bat dau, de mat tap trung, de bo task hoac bo trong bai',
+                    'target_2_weeks': 'Luyen vao bai ngay, tu kiem tra truoc khi nop, xoay xo khi gap kho',
                 },
             ],
             'must_link_plan_to_context': True,
@@ -351,7 +347,7 @@ def _build_portfolio_plan_repair_messages(
         'Yeu cau bat buoc: khong doi schema, khong bịa du lieu. '
         'Tap trung sua top_priorities va study_plan_2_weeks dua tren portfolio_context va evidence_highlights. '
         'study_plan_2_weeks bat buoc 6-8 buoc, moi buoc phai co step cu the, frequency ro rang, duration_minutes 8-20. '
-        'Moi buoc can lien ket toi it nhat 1 focus skill co trong planning_hints. '
+        'Moi buoc can lien ket toi it nhat 1 tieu chi (proficiency/capacity/engagement/self_regulation) co trong planning_hints. '
         'Khong duoc de rong.'
     )
     user_payload = {
@@ -368,11 +364,10 @@ def _build_portfolio_plan_repair_messages(
 
 def _build_fallback_next_lesson_plan(priorities: list[dict[str, str]]) -> list[dict[str, Any]]:
     default_by_skill = {
-        'pronunciation': {'step': 'Luyen phat am theo cum tu kho voi shadowing', 'duration_minutes': 12},
-        'grammar': {'step': 'On mau cau trong tam va dat cau theo tinh huong', 'duration_minutes': 10},
-        'vocabulary': {'step': 'On tu vung trong bai bang flashcard va dat cau', 'duration_minutes': 10},
-        'reaction_confidence': {'step': 'Luyen hoi dap nhanh theo tinh huong gan gui', 'duration_minutes': 8},
-        'participation': {'step': 'Khuyen khich be noi thanh cau day du trong moi luot', 'duration_minutes': 8},
+        'proficiency': {'step': 'Cung co kien thuc trong tam: on tu/cau mau va luyen noi co kiem tra loi', 'duration_minutes': 12},
+        'capacity': {'step': 'Tang nhip tiep thu: hoan thanh phan co ban theung tien do, giam thoi gian phan hoi', 'duration_minutes': 10},
+        'engagement': {'step': 'Khuyen khich tham gia chu dong: hoi dap nhanh va gop y trong hoat dong nhom', 'duration_minutes': 8},
+        'self_regulation': {'step': 'Luyen tu vao bai, tu kiem tra truoc khi nop, khong bo trong khi gap kho', 'duration_minutes': 10},
     }
     plan: list[dict[str, Any]] = []
     for item in priorities[:3]:
@@ -402,16 +397,27 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'Bạn là giáo viên tiếng Anh tiểu học nhiều kinh nghiệm, giọng điệu ấm áp và khích lệ. '
         'Nhiệm vụ: viết nhận xét buổi học bằng markdown tiếng Việt, ngắn gọn, rõ ràng, bám sát dữ liệu được cung cấp. '
         'Chỉ trả về markdown, không trả về JSON, không code block. '
+        'Rubric chấm theo 4 tiêu chí (in-class, PERFORMANCE EVALUATION): '
+        'Proficiency (nắm kiến thức, giải thích, vận dụng nhẹ), '
+        'Capacity (tiếp thu, xử lý bài, tiến độ), '
+        'Engagement (tham gia, phản hồi, chủ động), '
+        'Self-regulation (tự duy trì, tự kiểm tra, tự điều chỉnh, quản lý thời gian). '
+        'Mỗi tiêu chí xếp một trong 3 mức rubric (ghi rõ trong "Kết quả hiện tại"): '
+        '⚠️ Needs Improvement (cần cải thiện), '
+        '✅ Meets Expectation (đạt kỳ vọng), '
+        '🌟 Exceeds Expectation (vượt kỳ vọng). '
+        'Điểm số 0–100 ánh xạ: Needs Improvement 0–39, Meets Expectation 40–79, Exceeds Expectation 80–100 '
+        '(chọn điểm cụ thể trong khoảng dựa trên mức độ bằng chứng). '
         'Sử dụng heading và bullet list theo cấu trúc sau: '
         '# Nhận xét buổi học - <lesson_label>; '
         '## Tổng quan; '
         '## So sánh buổi gần đây; '
-        '## Đánh giá từng kỹ năng; '
+        '## Dữ liệu nền (nghe – nói – đọc); '
         '## Điểm mạnh; '
         '## Ưu tiên cải thiện; '
         '## Kế hoạch buổi sau; '
-        '## Đánh giá 6 năng lực. '
-        '## Lời nhắn phụ huynh; '
+        '## Đánh giá 4 tiêu chí in-class; '
+        '## Lời nhắn phụ huynh. '
         'Dữ liệu đầu vào có thể gồm current_lesson_data, lesson_progress_context (recent_lessons tối đa 2 buổi gần nhất), '
         'và lesson_skill_context (tổng hợp từ moments). '
         'Nếu lesson_progress_context.progress_context.is_first_lesson=true hoặc thiếu dữ liệu thời gian, '
@@ -421,35 +427,27 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'Nội dung so sánh phải nêu điểm tiến bộ/khác biệt gần đây và chỉ dựa trên dữ liệu thực tế. '
         'Khi so sánh, ưu tiên nhắc rõ nội dung học giữa các buổi: script_name/chủ đề, target vocabulary, target grammar, '
         'và từ/cấu trúc còn yếu lặp lại (nếu có). Không chỉ nêu số liệu chung chung. '
-        'Trong mục "## Đánh giá từng kỹ năng", bắt buộc phải có đúng 3 bullet chính theo thứ tự sau: '
-        '1) "- Nghe:"; '
-        '2) "- Nói:"; '
-        '3) "- Đọc:". '
-        'Mỗi bullet chính phải xuống dòng rõ ràng bằng 3 bullet con theo đúng thứ tự: '
-        '"  - Tốt: ...", "  - Chưa tốt: ...", "  - Yếu: ...". '
-        'Không gộp trên cùng một dòng, không dùng ký tự "|" giữa các ý. '
-        'Bullet Nghe phải dựa trên lesson_skill_context.listening_quiz (single_choice/matching). '
-        'Bullet Nói phải tổng hợp cả speaking_pronunciation_vocab và speaking_sentence_length_by_activity. '
-        'Bullet Đọc phải dựa trên lesson_skill_context.reading_fluency. '
-        'Nếu data_coverage của tiêu chí nào = false hoặc thiếu bằng chứng, phải ghi rõ "chưa đủ dữ liệu" ngay trong bullet tiêu chí đó. '
-        'Nếu thiếu dữ liệu cho ý nào, ghi rõ "chưa đủ dữ liệu". '
-        'Trong section "## Đánh giá 6 năng lực", bắt buộc trình bày đủ 6 năng lực theo thứ tự A->F với format cố định cho từng năng lực: '
-        '- Learn – Học và tiếp thu kiến thức mới; '
-        '- Recognize – Nhận biết ngôn ngữ (âm thanh/hình ảnh/chữ viết); '
-        '- Apply – Vận dụng kiến thức vào tình huống; '
-        '- Retain – Ghi nhớ và duy trì theo thời gian; '
-        '- Focus – Chú ý và duy trì tương tác; '
-        '- Express – Tự tin và sẵn sàng sử dụng ngôn ngữ. '
-        'Quy tắc markdown bắt buộc cho section này: mỗi năng lực là 1 bullet cha riêng trên 1 dòng; '
-        'ngay bên dưới là 4 bullet con thụt lề 2 dấu cách; có 1 dòng trống giữa các năng lực; '
-        'tuyệt đối không gộp nhiều nhãn trong cùng 1 dòng, không dùng "|" để nối các nhãn. '
-        'Mỗi năng lực phải có đúng 4 dòng bullet con theo thứ tự: '
+        'Trong "## Dữ liệu nền (nghe – nói – đọc)", bắt buộc có đúng 3 bullet chính theo thứ tự: '
+        '1) "- Nghe:"; 2) "- Nói:"; 3) "- Đọc:". '
+        'Mỗi bullet chính có 3 bullet con: "  - Tốt: ...", "  - Chưa tốt: ...", "  - Yếu: ...". '
+        'Nghe dựa trên lesson_skill_context.listening_quiz; '
+        'Nói tổng hợp speaking_pronunciation_vocab và speaking_sentence_length_by_activity; '
+        'Đọc dựa trên lesson_skill_context.reading_fluency. '
+        'Nếu data_coverage = false hoặc thiếu bằng chứng, ghi "chưa đủ dữ liệu" trong bullet tương ứng. '
+        'Trong "## Đánh giá 4 tiêu chí in-class", bắt buộc đủ 4 tiêu chí theo thứ tự A->D, mỗi tiêu chí 1 bullet cha trên 1 dòng: '
+        '- A. Proficiency – Năng lực kiến thức & vận dụng; '
+        '- B. Capacity – Năng lực tiếp thu & tiến độ; '
+        '- C. Engagement – Tham gia & tương tác; '
+        '- D. Self-regulation – Tự điều chỉnh & quản lý học tập. '
+        'Quy tắc markdown: giữa các tiêu chí cách 1 dòng trống; mỗi tiêu chí có đúng 4 bullet con thụt 2 dấu cách theo thứ tự: '
         '"  - Đo lường: ...", "  - Kết quả hiện tại: ...", "  - Nhận xét: ...", "  - Khuyến nghị: ...". '
-        'Dòng "Đo lường" phải nêu các chỉ số quan sát được từ dữ liệu (hoặc ghi rõ chưa đủ dữ liệu); '
-        'dòng "Kết quả hiện tại" bắt buộc có score hoặc level theo thang 5 mức (Rất cần hỗ trợ, Cần hỗ trợ, Đang hình thành, Khá vững, Vững vàng); '
-        'dòng "Nhận xét" phải bám bằng chứng; dòng "Khuyến nghị" phải là hành động cụ thể, khả thi. '
-        'Không thêm section kế hoạch 2 tuần hoặc tiêu đề/tiểu mục liên quan đến tuần 1, tuần 2. '
-        'Nếu dữ liệu thiếu, vẫn phải xuất đủ cấu trúc 6 năng lực nhưng ghi rõ giả định tối thiểu và mức độ chắc chắn thấp.'
+        'Dòng "Đo lường" nêu chỉ số/bằng chứng từ dữ liệu (kể cả stats, moments, từ/ngữ pháp yếu); '
+        'dòng "Kết quả hiện tại" bắt buộc ghi một trong ba mức rubric (Needs Improvement / Meets Expectation / Exceeds Expectation) '
+        'và có thể kèm điểm 0–100 hoặc mô tả ngắn bám rubric; '
+        'dòng "Nhận xét" bám bằng chứng; dòng "Khuyến nghị" hành động cụ thể. '
+        'Không dùng "|" để nối nhiều nhãn trên một dòng trong section này. '
+        'Không thêm section kế hoạch 2 tuần. '
+        'Nếu dữ liệu thiếu, vẫn xuất đủ 4 tiêu chí và ghi rõ "chưa đủ dữ liệu" ở phần tương ứng.'
     )
     user_payload = {
         'lesson_label': lesson_label or 'Lesson',
@@ -470,31 +468,33 @@ def _build_portfolio_feedback_messages(
         'Bạn là giáo viên tiếng Anh tiểu học có kinh nghiệm, giỏi tổng hợp tiến trình học theo nhiều buổi. '
         'Nhiệm vụ: viết nhận xét tổng hợp bằng markdown tiếng Việt, thân thiện, dễ hiểu với phụ huynh. '
         'Chỉ trả về markdown, không JSON, không code block. '
+        'Rubric chấm theo 4 tiêu chí in-class: Proficiency, Capacity, Engagement, Self-regulation; '
+        'mỗi tiêu chí một trong ba mức: Needs Improvement, Meets Expectation, Exceeds Expectation '
+        '(điểm 0–100: Needs Improvement 0–39, Meets 40–79, Exceeds 80–100). '
         'Sử dụng heading và bullet list theo cấu trúc sau: '
         '# Nhận xét chung quá trình học; '
         '## Tổng quan quá trình; '
         '## Xu hướng tiến bộ; '
-        '## Xu hướng kỹ năng; '
+        '## Xu hướng theo 4 tiêu chí; '
         '## Phong cách học hiện tại; '
         '## Điểm mạnh; '
         '## Ưu tiên can thiệp; '
-        '## Đánh giá 6 năng lực; '
+        '## Đánh giá 4 tiêu chí in-class; '
         '## Kế hoạch 2 tuần; '
         '## Lời nhắn phụ huynh. '
         'Yêu cầu chi tiết theo section: '
         '1) "Tổng quan quá trình": nêu mức độ tiến bộ chung, độ ổn định và mức hoàn thành theo toàn bộ các buổi. '
         '2) "Xu hướng tiến bộ": nêu chiều hướng tăng/giảm/dao động theo thời gian và chỉ ra giai đoạn rõ ràng (đầu kỳ, gần đây). '
-        '3) "Xu hướng kỹ năng": với từng kỹ năng chính, ghi ngắn gọn trạng thái hiện tại + bằng chứng dữ liệu. '
-        '4) "Phong cách học hiện tại": mô tả cách học nổi bật của học sinh (mức chủ động, tốc độ phản xạ, khả năng tập trung, kiểu tiếp thu) dựa trên dữ liệu quan sát. '
-        '5) "Đánh giá 6 năng lực": bắt buộc trình bày đủ 6 năng lực theo thứ tự A->F gồm Learn, Recognize, Apply, Retain, Focus, Express. '
-        'Mỗi năng lực là 1 bullet cha trên 1 dòng, ngay dưới có đúng 4 bullet con theo thứ tự: '
-        '"  - Đo lường: ...", "  - Kết quả hiện tại: ...", "  - Nhận xét: ...", "  - Khuyến nghị: ...". '
-        'Dòng "Kết quả hiện tại" bắt buộc có score hoặc level theo thang 5 mức (Rất cần hỗ trợ, Cần hỗ trợ, Đang hình thành, Khá vững, Vững vàng). '
-        '6) "Kế hoạch 2 tuần": 6-8 hành động cụ thể, mỗi hành động phải ghi rõ tần suất/tuần + thời lượng + năng lực liên quan (1-2 năng lực), '
-        'và phải bám sát mức hiện tại trong "Đánh giá 6 năng lực". '
+        '3) "Xu hướng theo 4 tiêu chí": với Proficiency, Capacity, Engagement, Self-regulation — mỗi tiêu chí 1–2 bullet, có bằng chứng từ portfolio_context. '
+        '4) "Phong cách học hiện tại": mô tả chủ động, phản xạ, tập trung, tiếp thu dựa trên dữ liệu. '
+        '5) "Đánh giá 4 tiêu chí in-class": đủ A->D (Proficiency, Capacity, Engagement, Self-regulation), '
+        'mỗi tiêu chí 1 bullet cha, dưới đó 4 bullet con: Đo lường; Kết quả hiện tại (bắt buộc một trong ba mức rubric + có thể kèm điểm); '
+        'Nhận xét; Khuyến nghị. Cách nhau 1 dòng trống giữa các tiêu chí. '
+        '6) "Kế hoạch 2 tuần": 6-8 hành động cụ thể, mỗi hành động ghi tần suất/tuần + thời lượng + 1-2 tiêu chí rubric liên quan, '
+        'bám sát "Đánh giá 4 tiêu chí in-class". '
         '7) "Lời nhắn phụ huynh": khuyến nghị ngắn gọn, khả thi tại nhà. '
-        'Quy tắc trình bày bắt buộc: mỗi ý phải bắt đầu bằng "- " và mỗi section cách nhau 1 dòng trống. '
-        'Mọi nhận định phải bám sát dữ liệu; nếu thiếu dữ liệu thì ghi rõ "chưa đủ dữ liệu".'
+        'Quy tắc trình bày: mỗi ý bắt đầu bằng "- "; mỗi section cách nhau 1 dòng trống. '
+        'Mọi nhận định bám dữ liệu; thiếu dữ liệu thì ghi "chưa đủ dữ liệu".'
     )
     user_payload = {
         'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
@@ -543,11 +543,10 @@ def _normalize_lesson_feedback_payload(parsed: dict[str, Any], lesson_label: str
         'teacher_tone': _normalize_text(parsed.get('teacher_tone'), fallback='warm_encouraging'),
         'overall_comment': _normalize_text(parsed.get('overall_comment')),
         'session_breakdown': {
-            'participation': _normalize_session_criterion(breakdown.get('participation')),
-            'pronunciation': _normalize_session_criterion(breakdown.get('pronunciation')),
-            'vocabulary': _normalize_session_criterion(breakdown.get('vocabulary')),
-            'grammar': _normalize_session_criterion(breakdown.get('grammar')),
-            'reaction_confidence': _normalize_session_criterion(breakdown.get('reaction_confidence')),
+            'proficiency': _normalize_session_criterion(breakdown.get('proficiency')),
+            'capacity': _normalize_session_criterion(breakdown.get('capacity')),
+            'engagement': _normalize_session_criterion(breakdown.get('engagement')),
+            'self_regulation': _normalize_session_criterion(breakdown.get('self_regulation')),
         },
         'strengths': _normalize_string_list(parsed.get('strengths')),
         'priority_improvements': normalized_priorities,
@@ -585,11 +584,10 @@ def _normalize_portfolio_feedback_payload(
         'date_range': _normalize_date_range(parsed.get('date_range')),
         'overall_assessment': _normalize_text(parsed.get('overall_assessment'), fallback=''),
         'skill_trends': {
-            'participation': _normalize_skill_trend(skill_trends.get('participation')),
-            'pronunciation': _normalize_skill_trend(skill_trends.get('pronunciation')),
-            'vocabulary': _normalize_skill_trend(skill_trends.get('vocabulary')),
-            'grammar': _normalize_skill_trend(skill_trends.get('grammar')),
-            'reaction_confidence': _normalize_skill_trend(skill_trends.get('reaction_confidence')),
+            'proficiency': _normalize_skill_trend(skill_trends.get('proficiency')),
+            'capacity': _normalize_skill_trend(skill_trends.get('capacity')),
+            'engagement': _normalize_skill_trend(skill_trends.get('engagement')),
+            'self_regulation': _normalize_skill_trend(skill_trends.get('self_regulation')),
         },
         'top_strengths': strengths,
         'top_priorities': normalized_priorities,

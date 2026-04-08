@@ -49,22 +49,35 @@ app.add_middleware(
 )
 
 _RADAR_COMPETENCY_SPECS = [
-    ('learn', 'A', 'Learn'),
-    ('recognize', 'B', 'Recognize'),
-    ('apply', 'C', 'Apply'),
-    ('retain', 'D', 'Retain'),
-    ('focus', 'E', 'Focus'),
-    ('express', 'F', 'Express'),
+    ('proficiency', 'A', 'Proficiency'),
+    ('capacity', 'B', 'Capacity'),
+    ('engagement', 'C', 'Engagement'),
+    ('self_regulation', 'D', 'Self-regulation'),
 ]
-_RADAR_COMPETENCY_BY_NAME = {name.lower(): key for key, _code, name in _RADAR_COMPETENCY_SPECS}
+_RADAR_COMPETENCY_BY_NAME = {
+    'proficiency': 'proficiency',
+    'capacity': 'capacity',
+    'engagement': 'engagement',
+    'self-regulation': 'self_regulation',
+    'self regulation': 'self_regulation',
+    'selfregulation': 'self_regulation',
+}
 _RADAR_COMPETENCY_BY_CODE = {code.upper(): key for key, code, _name in _RADAR_COMPETENCY_SPECS}
+# In-class rubric (3 levels) + legacy 5-level labels for older markdown
 _LEVEL_SCORE_MAP = {
+    'Exceeds Expectation': 90,
+    'Vượt kỳ vọng': 90,
+    'Meets Expectation': 60,
+    'Đạt kỳ vọng': 60,
+    'Needs Improvement': 25,
+    'Cần cải thiện': 25,
     'Rất cần hỗ trợ': 20,
     'Cần hỗ trợ': 40,
     'Đang hình thành': 60,
     'Khá vững': 80,
     'Vững vàng': 100,
 }
+_LEVEL_LABELS_BY_LENGTH = sorted(_LEVEL_SCORE_MAP.keys(), key=len, reverse=True)
 
 
 def generate_summary(report_text: str) -> dict:
@@ -179,7 +192,7 @@ def _normalize_compare_text(value: str) -> str:
 
 def _extract_level_label(value: str) -> str:
     normalized_value = _normalize_compare_text(value)
-    for label in _LEVEL_SCORE_MAP:
+    for label in _LEVEL_LABELS_BY_LENGTH:
         if _normalize_compare_text(label) in normalized_value:
             return label
     return ''
@@ -235,7 +248,11 @@ def _build_lesson_radar_payload(markdown: str) -> dict[str, Any]:
             continue
 
         if re.match(r'^##\s+', stripped):
-            if re.match(r'^##\s*(Đánh giá 6 năng lực|Danh gia 6 nang luc)\b', stripped, flags=re.IGNORECASE):
+            if re.match(
+                r'^##\s*(Đánh giá 4 tiêu chí|Danh gia 4 tieu chi|Đánh giá 6 năng lực|Danh gia 6 nang luc)\b',
+                stripped,
+                flags=re.IGNORECASE,
+            ):
                 inside_section = True
                 current_key = None
                 continue
@@ -247,14 +264,37 @@ def _build_lesson_radar_payload(markdown: str) -> dict[str, Any]:
             continue
 
         competency_match = re.match(
+            r'^[-*]\s*(?:([A-D])\.\s*)?(?:\*\*)?'
+            r'(Proficiency|Capacity|Engagement|Self-regulation|Self regulation)'
+            r'(?:\*\*)?\b',
+            stripped,
+            flags=re.IGNORECASE,
+        )
+        legacy_match = re.match(
             r'^[-*]\s*(?:([A-F])\.\s*)?(?:\*\*)?(Learn|Recognize|Apply|Retain|Focus|Express)(?:\*\*)?\b',
             stripped,
             flags=re.IGNORECASE,
         )
         if competency_match:
             code = (competency_match.group(1) or '').upper()
-            name = competency_match.group(2).lower()
-            current_key = _RADAR_COMPETENCY_BY_NAME.get(name) or _RADAR_COMPETENCY_BY_CODE.get(code)
+            name = re.sub(r'\s+', ' ', competency_match.group(2).strip().lower())
+            name_key = name.replace(' ', '-')
+            current_key = _RADAR_COMPETENCY_BY_NAME.get(name_key) or _RADAR_COMPETENCY_BY_CODE.get(code)
+            if current_key and current_key not in competency_data:
+                competency_data[current_key] = {'score': None, 'level_text': '', 'insufficient_data': True}
+            continue
+        if legacy_match:
+            _legacy_map = {
+                'learn': 'proficiency',
+                'recognize': 'proficiency',
+                'apply': 'proficiency',
+                'retain': 'capacity',
+                'focus': 'self_regulation',
+                'express': 'engagement',
+            }
+            code = (legacy_match.group(1) or '').upper()
+            name = legacy_match.group(2).lower()
+            current_key = _legacy_map.get(name) or _RADAR_COMPETENCY_BY_CODE.get(code)
             if current_key and current_key not in competency_data:
                 competency_data[current_key] = {'score': None, 'level_text': '', 'insufficient_data': True}
             continue
