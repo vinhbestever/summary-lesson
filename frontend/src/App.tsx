@@ -722,7 +722,7 @@ function App() {
               if (parsed?.type === 'lesson_radar' && Array.isArray(parsed.competencies)) {
                 setLessonRadarPayload(parsed)
               }
-            } catch (_error) {
+            } catch {
               // Ignore invalid result payload and rely on markdown fallback parser.
             }
           } else if (eventName === 'error') {
@@ -732,7 +732,7 @@ function App() {
           }
         }
       }
-    } catch (_requestError) {
+    } catch {
       setFeedbackError('Chua tao duoc nhan xet. Vui long thu lai.')
       setFeedbackStreamingStatus(null)
     } finally {
@@ -812,7 +812,7 @@ function App() {
               if (parsed?.type === 'lesson_radar' && Array.isArray(parsed.competencies)) {
                 setLessonRadarPayload(parsed)
               }
-            } catch (_error) {
+            } catch {
               // Ignore invalid result payload and rely on markdown fallback parser.
             }
           } else if (eventName === 'error') {
@@ -822,7 +822,7 @@ function App() {
           }
         }
       }
-    } catch (_requestError) {
+    } catch {
       setFeedbackError('Chua tao duoc nhan xet. Vui long thu lai.')
       setFeedbackStreamingStatus(null)
     } finally {
