@@ -663,8 +663,9 @@ def test_create_lesson_feedback_writes_cache_and_reuses(monkeypatch) -> None:
 
     assert first.status_code == 200
     assert second.status_code == 200
-    assert first.text.strip() == '# Generated lesson markdown'
-    assert second.text.strip() == '# Generated lesson markdown'
+    assert first.text.strip().startswith('# Generated lesson markdown')
+    assert 'Phụ lục (hệ thống)' in first.text
+    assert first.text.strip() == second.text.strip()
     assert call_count['count'] == 1
 
 
@@ -736,7 +737,7 @@ def test_create_portfolio_feedback_success(monkeypatch) -> None:
     )
     monkeypatch.setattr(
         'app.main.generate_portfolio_feedback',
-        lambda _lessons, _label: '# Nhan xet chung qua trinh hoc\n\n- Tong so buoi: 2',
+        lambda _lessons, _label, **_kwargs: '# Nhan xet chung qua trinh hoc\n\n- Tong so buoi: 2',
         raising=False,
     )
 
@@ -767,7 +768,7 @@ def test_create_portfolio_feedback_stream_returns_events(monkeypatch) -> None:
         lambda: [{'lesson_id': '3724970', 'source_file': 'lesson_3724970.json', 'raw_json_text': '{"ok":true}'}],
     )
 
-    def _fake_stream(_lessons, _label):
+    def _fake_stream(_lessons, _label, **_kwargs):
         yield {'type': 'status', 'message': 'Dang phan tich'}
         yield {'type': 'result', 'data': _portfolio_feedback_payload()}
 
@@ -786,7 +787,7 @@ def test_create_portfolio_feedback_stream_writes_cache_and_reuses(monkeypatch) -
     )
     call_count = {'count': 0}
 
-    def _fake_stream(_lessons, _label):
+    def _fake_stream(_lessons, _label, **_kwargs):
         call_count['count'] += 1
         yield {'type': 'status', 'message': 'Dang tao'}
         yield {'type': 'chunk', 'content': '# Generated portfolio markdown'}
@@ -837,7 +838,7 @@ def test_create_portfolio_feedback_returns_markdown(monkeypatch) -> None:
     )
     monkeypatch.setattr(
         'app.main.generate_portfolio_feedback',
-        lambda _payload, _label: '# Tong ket\n\n- Noi dung',
+        lambda _payload, _label, **_kwargs: '# Tong ket\n\n- Noi dung',
         raising=False,
     )
 
@@ -933,7 +934,7 @@ def test_portfolio_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
         lambda: [{'lesson_id': '1', 'source_file': 'a.json', 'raw_json_text': '{}'}],
     )
 
-    def _fake_stream(_payload, _label):
+    def _fake_stream(_payload, _label, **_kwargs):
         yield {'type': 'status', 'message': 'Dang tao'}
         yield {'type': 'chunk', 'content': '# Tong ket'}
 
@@ -1152,6 +1153,9 @@ def test_create_lesson_feedback_passes_recent_lesson_context_to_llm(monkeypatch)
     assert 'current_lesson_data' in sent_payload
     assert 'lesson_progress_context' in sent_payload
     assert 'lesson_skill_context' in sent_payload
+    assert 'rubric_data_quality' in sent_payload
+    assert 'skill_pillars' in sent_payload['rubric_data_quality']
+    assert 'rubric_criteria' in sent_payload['rubric_data_quality']
     assert isinstance(sent_payload['current_lesson_data'], dict)
     assert len(sent_payload['lesson_progress_context']['recent_lessons']) == 2
     assert sent_payload['lesson_progress_context']['progress_context']['is_first_lesson'] is False

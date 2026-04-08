@@ -23,6 +23,11 @@ from app.ingest import (
     load_all_lessons_json_from_local_data,
     load_lesson_json_from_local_data,
 )
+from app.rubric_quality import (
+    build_lesson_rubric_data_quality,
+    format_lesson_appendix_markdown,
+    format_portfolio_appendix_markdown,
+)
 from app.llm import generate_lesson_feedback as generate_lesson_feedback_from_llm
 from app.llm import generate_portfolio_feedback as generate_portfolio_feedback_from_llm
 from app.llm import stream_lesson_feedback as stream_lesson_feedback_from_llm
@@ -92,12 +97,24 @@ def stream_lesson_feedback(report_text: str, lesson_label: str | None = None):
     return stream_lesson_feedback_from_llm(report_text, lesson_label)
 
 
-def generate_portfolio_feedback(lessons_payload: list[dict], portfolio_label: str | None = None) -> dict:
-    return generate_portfolio_feedback_from_llm(lessons_payload, portfolio_label)
+def generate_portfolio_feedback(
+    lessons_payload: list[dict],
+    portfolio_label: str | None = None,
+    portfolio_rubric_per_lesson: list[dict[str, Any]] | None = None,
+) -> dict:
+    return generate_portfolio_feedback_from_llm(
+        lessons_payload, portfolio_label, portfolio_rubric_per_lesson=portfolio_rubric_per_lesson
+    )
 
 
-def stream_portfolio_feedback(lessons_payload: list[dict], portfolio_label: str | None = None):
-    return stream_portfolio_feedback_from_llm(lessons_payload, portfolio_label)
+def stream_portfolio_feedback(
+    lessons_payload: list[dict],
+    portfolio_label: str | None = None,
+    portfolio_rubric_per_lesson: list[dict[str, Any]] | None = None,
+):
+    return stream_portfolio_feedback_from_llm(
+        lessons_payload, portfolio_label, portfolio_rubric_per_lesson=portfolio_rubric_per_lesson
+    )
 
 
 def resolve_report_text(payload: ReportInputRequest) -> str:
@@ -651,12 +668,72 @@ def _build_lesson_feedback_input_text(current_report_text: str, lesson_id: str |
         primary_report = _extract_primary_report(parsed_current)
         current_lesson_data = primary_report or parsed_current
 
+    lesson_skill_context = _build_lesson_skill_context(current_report_text)
+    lesson_progress_context = _build_lesson_progress_context(current_report_text, lesson_id)
+    current_snapshot = lesson_progress_context.get('current_lesson')
+    current_snapshot = current_snapshot if isinstance(current_snapshot, dict) else {}
+
     payload = {
         'current_lesson_data': current_lesson_data,
-        'lesson_progress_context': _build_lesson_progress_context(current_report_text, lesson_id),
-        'lesson_skill_context': _build_lesson_skill_context(current_report_text),
+        'lesson_progress_context': lesson_progress_context,
+        'lesson_skill_context': lesson_skill_context,
+        'rubric_data_quality': build_lesson_rubric_data_quality(lesson_skill_context, current_snapshot),
     }
     return json.dumps(payload, ensure_ascii=False)
+
+
+def _lesson_appendix_only(report_text: str, lesson_id: str | None) -> str:
+    skill_ctx = _build_lesson_skill_context(report_text)
+    progress = _build_lesson_progress_context(report_text, lesson_id)
+    snap = progress.get('current_lesson')
+    snap = snap if isinstance(snap, dict) else {}
+    return format_lesson_appendix_markdown(skill_ctx, snap).strip()
+
+
+def _append_lesson_system_appendix(markdown: str, report_text: str, lesson_id: str | None) -> str:
+    appendix = _lesson_appendix_only(report_text, lesson_id)
+    base = (markdown or '').strip()
+    if appendix and 'Phụ lục (hệ thống)' in base:
+        return base
+    if not base:
+        return appendix
+    if not appendix:
+        return base
+    return f'{base.rstrip()}\n\n{appendix}'.strip()
+
+
+def _portfolio_rubric_per_lesson_and_pairs(
+    selected_lessons: list[dict[str, str]],
+) -> tuple[list[dict[str, Any]], list[tuple[dict[str, Any], dict[str, Any]]]]:
+    per_lesson: list[dict[str, Any]] = []
+    pairs: list[tuple[dict[str, Any], dict[str, Any]]] = []
+    for item in selected_lessons:
+        raw = str(item.get('raw_json_text', ''))
+        lid = str(item.get('lesson_id', '')).strip() or 'unknown'
+        src = str(item.get('source_file', ''))
+        skill_ctx = _build_lesson_skill_context(raw)
+        snapshot = _extract_lesson_snapshot(raw, lid, src)
+        dq = build_lesson_rubric_data_quality(skill_ctx, snapshot)
+        per_lesson.append({'lesson_id': lid, 'source_file': src, 'rubric_data_quality': dq})
+        pairs.append((skill_ctx, snapshot))
+    return per_lesson, pairs
+
+
+def _portfolio_appendix_only(selected_lessons: list[dict[str, str]]) -> str:
+    _per, pairs = _portfolio_rubric_per_lesson_and_pairs(selected_lessons)
+    return format_portfolio_appendix_markdown(pairs).strip()
+
+
+def _append_portfolio_system_appendix(markdown: str, selected_lessons: list[dict[str, str]]) -> str:
+    appendix = _portfolio_appendix_only(selected_lessons)
+    base = (markdown or '').strip()
+    if appendix and 'Phụ lục (hệ thống)' in base:
+        return base
+    if not appendix:
+        return base
+    if not base:
+        return appendix
+    return f'{base.rstrip()}\n\n{appendix}'.strip()
 
 
 @app.get('/health')
@@ -692,6 +769,7 @@ def create_lesson_feedback(payload: LessonFeedbackRequest) -> PlainTextResponse:
         report_text = resolve_report_text(payload)
         lesson_feedback_input_text = _build_lesson_feedback_input_text(report_text, payload.lesson_id)
         feedback = generate_lesson_feedback(lesson_feedback_input_text, payload.lesson_label)
+        feedback = _append_lesson_system_appendix(feedback, report_text, payload.lesson_id)
         write_feedback_cache(cache_key, feedback)
     except httpx.HTTPError as exc:
         raise HTTPException(status_code=502, detail=f'Failed to load report: {exc}') from exc
@@ -769,10 +847,16 @@ def create_lesson_feedback_stream(payload: LessonFeedbackRequest) -> StreamingRe
             stream_failed = True
             yield _format_sse_event('error', str(exc))
         if not stream_failed:
-            markdown = ''.join(chunk_buffer)
-            write_feedback_cache(cache_key, markdown)
+            raw_markdown = ''.join(chunk_buffer)
+            appendix_block = _lesson_appendix_only(report_text, payload.lesson_id)
+            base_stripped = (raw_markdown or '').strip()
+            if appendix_block and 'Phụ lục (hệ thống)' not in raw_markdown:
+                stream_suffix = ('\n\n' + appendix_block) if base_stripped else appendix_block
+                yield _format_sse_event('chunk', stream_suffix)
+            full_markdown = _append_lesson_system_appendix(raw_markdown, report_text, payload.lesson_id)
+            write_feedback_cache(cache_key, full_markdown)
             if not has_radar_result:
-                radar_payload = _build_lesson_radar_payload(markdown)
+                radar_payload = _build_lesson_radar_payload(full_markdown)
                 yield _format_sse_event('result', json.dumps(radar_payload, ensure_ascii=False))
         yield _format_sse_event('done', 'done')
 
@@ -795,7 +879,11 @@ def create_portfolio_feedback(payload: PortfolioFeedbackRequest) -> PlainTextRes
         selected_lessons = _select_recent_portfolio_lessons(lessons_payload, limit=8)
         if not selected_lessons:
             raise HTTPException(status_code=400, detail='Khong tim thay du lieu lesson trong /data')
-        feedback = generate_portfolio_feedback(selected_lessons, payload.portfolio_label)
+        rubric_per_lesson, _pairs = _portfolio_rubric_per_lesson_and_pairs(selected_lessons)
+        feedback = generate_portfolio_feedback(
+            selected_lessons, payload.portfolio_label, portfolio_rubric_per_lesson=rubric_per_lesson
+        )
+        feedback = _append_portfolio_system_appendix(feedback, selected_lessons)
         write_feedback_cache(cache_key, feedback)
     except HTTPException:
         raise
@@ -839,12 +927,18 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
     except Exception as exc:
         raise HTTPException(status_code=500, detail='Unexpected portfolio feedback error') from exc
 
+    rubric_per_lesson, _ = _portfolio_rubric_per_lesson_and_pairs(selected_lessons)
+
     def event_generator():
         chunk_buffer: list[str] = []
         stream_failed = False
         has_radar_result = False
         try:
-            for event in stream_portfolio_feedback(selected_lessons, payload.portfolio_label):
+            for event in stream_portfolio_feedback(
+                selected_lessons,
+                payload.portfolio_label,
+                portfolio_rubric_per_lesson=rubric_per_lesson,
+            ):
                 event_type = str(event.get('type', 'status'))
                 if event_type == 'status':
                     yield _format_sse_event(event_type, str(event.get('message', '')))
@@ -867,10 +961,16 @@ def create_portfolio_feedback_stream(payload: PortfolioFeedbackRequest) -> Strea
             stream_failed = True
             yield _format_sse_event('error', str(exc))
         if not stream_failed:
-            markdown = ''.join(chunk_buffer)
-            write_feedback_cache(cache_key, markdown)
+            raw_markdown = ''.join(chunk_buffer)
+            appendix_block = _portfolio_appendix_only(selected_lessons)
+            base_stripped = (raw_markdown or '').strip()
+            if appendix_block and 'Phụ lục (hệ thống)' not in raw_markdown:
+                stream_suffix = ('\n\n' + appendix_block) if base_stripped else appendix_block
+                yield _format_sse_event('chunk', stream_suffix)
+            full_markdown = _append_portfolio_system_appendix(raw_markdown, selected_lessons)
+            write_feedback_cache(cache_key, full_markdown)
             if not has_radar_result:
-                radar_payload = _build_lesson_radar_payload(markdown)
+                radar_payload = _build_lesson_radar_payload(full_markdown)
                 yield _format_sse_event('result', json.dumps(radar_payload, ensure_ascii=False))
         yield _format_sse_event('done', 'done')
 

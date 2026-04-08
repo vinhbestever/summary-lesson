@@ -419,7 +419,10 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         '## Đánh giá 4 tiêu chí in-class; '
         '## Lời nhắn phụ huynh. '
         'Dữ liệu đầu vào có thể gồm current_lesson_data, lesson_progress_context (recent_lessons tối đa 2 buổi gần nhất), '
-        'và lesson_skill_context (tổng hợp từ moments). '
+        'lesson_skill_context (tổng hợp từ moments), và rubric_data_quality (độ phủ dữ liệu do hệ thống tính: '
+        'skill_pillars + rubric_criteria với system_confidence low|medium|high). '
+        'Bắt buộc căn cứ rubric_data_quality khi viết Độ tin cậy kết luận và Cách củng cố đánh giá; không mâu thuẫn '
+        '(ví dụ hệ thống low mà lại ghi Cao nếu không giải thích rõ nguồn bổ sung ngoài log). '
         'Nếu lesson_progress_context.progress_context.is_first_lesson=true hoặc thiếu dữ liệu thời gian, '
         'hãy coi đây là buổi học đầu tiên, KHÔNG suy diễn tiến bộ theo lịch sử, và ghi rõ "chưa đủ dữ liệu" ở phần cần so sánh. '
         'Nếu có recent_lessons, bắt buộc có bullet bắt đầu bằng "- So sánh buổi gần đây: " trong mục "## So sánh buổi gần đây". '
@@ -430,6 +433,7 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'Trong "## Dữ liệu nền (nghe – nói – đọc)", bắt buộc có đúng 3 bullet chính theo thứ tự: '
         '1) "- Nghe:"; 2) "- Nói:"; 3) "- Đọc:". '
         'Mỗi bullet chính có 3 bullet con: "  - Tốt: ...", "  - Chưa tốt: ...", "  - Yếu: ...". '
+        'Khi thiếu dữ liệu: ghi "chưa đủ dữ liệu" ở cả ba dòng (hoặc "không áp dụng" nếu không có mẫu), không bịa nội dung tốt/xấu. '
         'Nghe dựa trên lesson_skill_context.listening_quiz; '
         'Nói tổng hợp speaking_pronunciation_vocab và speaking_sentence_length_by_activity; '
         'Đọc dựa trên lesson_skill_context.reading_fluency. '
@@ -452,8 +456,9 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
         'dòng "Nhận xét" bám bằng chứng; dòng "Khuyến nghị" hành động cụ thể. '
         'Nếu với một tiêu chí dữ liệu hệ thống không đủ tin cậy để xếp rubric chắc chắn, sau 4 bullet trên (cùng tiêu chí đó) '
         'bắt buộc thêm 2 bullet con: "  - Độ tin cậy kết luận: ..." và "  - Cách củng cố đánh giá: ..." với nội dung như quy tắc phần Dữ liệu nền. '
-        'Khi dữ liệu rất đầy đủ và kết luận rõ ràng, có thể chỉ ghi ngắn "Độ tin cậy kết luận: Cao (...)" hoặc bỏ 2 bullet phụ — '
-        'nhưng khi data_coverage liên quan = false hoặc "chưa đủ dữ liệu" trong Đo lường/Kết quả thì phải có đủ 2 bullet bổ sung. '
+        'Khi rubric_data_quality hoặc data_coverage cho thấy thiếu/thưa, phải có đủ 2 bullet Độ tin cậy + Cách củng cố. '
+        'Khi hệ thống system_confidence=high cho tiêu chí đó, có thể ghi ngắn "Độ tin cậy kết luận: Cao (đồng thuận với hệ thống)" '
+        'hoặc lược bớt Cách củng cố nếu không cần thiết. '
         'Không dùng "|" để nối nhiều nhãn trên một dòng trong section này. '
         'Không thêm section kế hoạch 2 tuần. '
         'Nếu dữ liệu thiếu, vẫn xuất đủ 4 tiêu chí, ghi rõ "chưa đủ dữ liệu" và áp dụng đầy đủ quy tắc Độ tin cậy / Cách củng cố đánh giá.'
@@ -470,7 +475,9 @@ def _build_lesson_feedback_messages(report_text: str, lesson_label: str | None) 
 
 
 def _build_portfolio_feedback_messages(
-    lessons_payload: list[dict[str, str]], portfolio_label: str | None
+    lessons_payload: list[dict[str, str]],
+    portfolio_label: str | None,
+    portfolio_rubric_per_lesson: list[dict[str, Any]] | None = None,
 ) -> list[dict[str, str]]:
     context = _build_portfolio_input_context(lessons_payload)
     system_prompt = (
@@ -506,14 +513,18 @@ def _build_portfolio_feedback_messages(
         'bám sát "Đánh giá 4 tiêu chí in-class". '
         '7) "Lời nhắn phụ huynh": khuyến nghị ngắn gọn, khả thi tại nhà. '
         'Quy tắc trình bày: mỗi ý bắt đầu bằng "- "; mỗi section cách nhau 1 dòng trống. '
-        'Mọi nhận định bám dữ liệu; thiếu dữ liệu thì ghi "chưa đủ dữ liệu" và luôn kèm Độ tin cậy kết luận + Cách củng cố đánh giá cho phần đó.'
+        'Mọi nhận định bám dữ liệu; thiếu dữ liệu thì ghi "chưa đủ dữ liệu" và luôn kèm Độ tin cậy kết luận + Cách củng cố đánh giá cho phần đó. '
+        'Nếu user payload có portfolio_rubric_data_quality.per_lesson, mỗi phần tử chứa rubric_data_quality cho một buổi — '
+        'bắt buộc dùng system_confidence/reason để nhất quán khi viết xu hướng và đánh giá 4 tiêu chí; không mâu thuẫn với hệ thống.'
     )
-    user_payload = {
+    user_payload: dict[str, Any] = {
         'portfolio_label': portfolio_label or 'Tong hop qua trinh hoc',
         'total_lessons': len(lessons_payload),
         'portfolio_context': context,
         'format': 'markdown',
     }
+    if portfolio_rubric_per_lesson:
+        user_payload['portfolio_rubric_data_quality'] = {'per_lesson': portfolio_rubric_per_lesson}
     return [
         {'role': 'system', 'content': system_prompt},
         {'role': 'user', 'content': json.dumps(user_payload, ensure_ascii=False)},
@@ -659,7 +670,9 @@ def stream_lesson_feedback(report_text: str, lesson_label: str | None = None):
 
 
 def generate_portfolio_feedback(
-    lessons_payload: list[dict[str, str]], portfolio_label: str | None = None
+    lessons_payload: list[dict[str, str]],
+    portfolio_label: str | None = None,
+    portfolio_rubric_per_lesson: list[dict[str, Any]] | None = None,
 ) -> str:
     api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
@@ -670,7 +683,9 @@ def generate_portfolio_feedback(
 
     completion = client.chat.completions.create(
         model=model,
-        messages=_build_portfolio_feedback_messages(lessons_payload, portfolio_label),
+        messages=_build_portfolio_feedback_messages(
+            lessons_payload, portfolio_label, portfolio_rubric_per_lesson=portfolio_rubric_per_lesson
+        ),
         temperature=0.2,
     )
     content = completion.choices[0].message.content
@@ -680,7 +695,11 @@ def generate_portfolio_feedback(
     return markdown
 
 
-def stream_portfolio_feedback(lessons_payload: list[dict[str, str]], portfolio_label: str | None = None):
+def stream_portfolio_feedback(
+    lessons_payload: list[dict[str, str]],
+    portfolio_label: str | None = None,
+    portfolio_rubric_per_lesson: list[dict[str, Any]] | None = None,
+):
     api_key = os.getenv('OPENAI_API_KEY')
     if not api_key:
         raise RuntimeError('OPENAI_API_KEY is missing')
@@ -689,7 +708,9 @@ def stream_portfolio_feedback(lessons_payload: list[dict[str, str]], portfolio_l
     model = os.getenv('OPENAI_MODEL', 'gpt-4.1-mini')
     stream = client.chat.completions.create(
         model=model,
-        messages=_build_portfolio_feedback_messages(lessons_payload, portfolio_label),
+        messages=_build_portfolio_feedback_messages(
+            lessons_payload, portfolio_label, portfolio_rubric_per_lesson=portfolio_rubric_per_lesson
+        ),
         temperature=0.2,
         stream=True,
     )
