@@ -106,7 +106,7 @@ def build_lesson_rubric_signals(skill_ctx: dict[str, Any], lesson_snapshot: dict
 
     vocab_n = int(skill_ev.get('vocabulary_attempt_count') or 0)
     grammar_n = int(skill_ev.get('grammar_attempt_count') or 0)
-    pron = stats.get('averagePronunciationScore')
+    pron = stats.get('average_pronunciation_score')
     has_pron = pron is not None
 
     listening = skill_ctx.get('listening_quiz') if isinstance(skill_ctx.get('listening_quiz'), dict) else {}
@@ -140,8 +140,8 @@ def build_lesson_rubric_signals(skill_ctx: dict[str, Any], lesson_snapshot: dict
         prof_conf = 'high'
         prof_reason = 'Đủ lượt tương tác có điểm và tín hiệu nội dung.'
 
-    comp = stats.get('sectionsCompletionPercent')
-    react = stats.get('averageReactionTimeMs')
+    comp = stats.get('sections_completion_percent')
+    react = stats.get('average_reaction_time_ms')
     if comp is None and react is None:
         cap_conf, cap_reason = 'low', 'Thiếu % hoàn thành và thời gian phản xạ trung bình.'
     elif comp is None or react is None:
@@ -149,7 +149,7 @@ def build_lesson_rubric_signals(skill_ctx: dict[str, Any], lesson_snapshot: dict
     else:
         cap_conf, cap_reason = 'high', 'Có đủ completion và reaction time để bám tiến độ.'
 
-    turns = _as_int(stats.get('speakingTurnCount'))
+    turns = _as_int(stats.get('speaking_turn_count'))
     if turns is None:
         eng_conf, eng_reason = 'low', 'Không có speakingTurnCount trong stats.'
     elif turns < 4:
@@ -157,8 +157,8 @@ def build_lesson_rubric_signals(skill_ctx: dict[str, Any], lesson_snapshot: dict
     else:
         eng_conf, eng_reason = 'high', f'Có đủ lượt nói (speakingTurnCount={turns}) để nhận diện tham gia.'
 
-    teacher = str(stats.get('teacherComment') or '').strip()
-    session_s = str(stats.get('sessionSummary') or '').strip()
+    teacher = str(stats.get('teacher_comment') or '').strip()
+    session_s = str(stats.get('session_summary') or '').strip()
     qual = bool(teacher or session_s)
     if cap_conf == 'low' and not qual:
         sr_conf, sr_reason = 'low', 'Thiếu chỉ số tiến độ/phản xạ và chưa có ghi chú GV để suy ra tự điều chỉnh.'
@@ -271,59 +271,97 @@ def format_portfolio_appendix_markdown(skill_snapshot_pairs: list[tuple[dict[str
     if not skill_snapshot_pairs:
         return ''
 
-    agg_prof: list[str] = []
-    agg_cap: list[str] = []
-    agg_eng: list[str] = []
-    agg_sr: list[str] = []
+    all_dq: list[dict[str, Any]] = []
     listen_counts: list[int] = []
     speak_counts: list[int] = []
     read_counts: list[int] = []
 
     for skill_ctx, snap in skill_snapshot_pairs:
         dq = build_lesson_rubric_data_quality(skill_ctx, snap)
-        rub = dq['rubric_criteria']
-        agg_prof.append(rub['proficiency']['system_confidence'])
-        agg_cap.append(rub['capacity']['system_confidence'])
-        agg_eng.append(rub['engagement']['system_confidence'])
-        agg_sr.append(rub['self_regulation']['system_confidence'])
+        all_dq.append(dq)
         p = dq['skill_pillars']
         listen_counts.append(int(p['listening']['attempt_count']))
         speak_counts.append(int(p['speaking']['attempt_count']))
         read_counts.append(int(p['reading']['attempt_count']))
 
-    def _worst(levels: list[str]) -> str:
-        if any(x == 'low' for x in levels):
-            return 'low'
-        if any(x == 'medium' for x in levels):
-            return 'medium'
-        return 'high'
-
     n_lessons = len(skill_snapshot_pairs)
-    worst_prof = _worst(agg_prof)
-    worst_cap = _worst(agg_cap)
-    worst_eng = _worst(agg_eng)
-    worst_sr = _worst(agg_sr)
-
     label = {'low': 'Thấp', 'medium': 'Trung bình', 'high': 'Cao'}
-    lines = [
-        '## Phụ lục (hệ thống): Độ tin cậy dữ liệu tổng hợp',
+
+    def _worst_pillar(key: str) -> tuple[str, str]:
+        """Return (worst_confidence, remediation_from_worst_lesson)."""
+        worst_conf = 'high'
+        remediation = ''
+        for dq in all_dq:
+            p = dq['skill_pillars'][key]
+            conf = p['system_confidence']
+            if conf == 'low' and worst_conf != 'low':
+                worst_conf = 'low'
+                remediation = p['remediation_if_low']
+            elif conf == 'medium' and worst_conf == 'high':
+                worst_conf = 'medium'
+                remediation = p['remediation_if_low']
+        return worst_conf, remediation
+
+    def _worst_criterion(key: str) -> tuple[str, str]:
+        """Return (worst_confidence, reason_from_worst_lesson)."""
+        worst_conf = 'high'
+        reason = ''
+        for dq in all_dq:
+            block = dq['rubric_criteria'][key]
+            conf = block['system_confidence']
+            if conf == 'low' and worst_conf != 'low':
+                worst_conf = 'low'
+                reason = block['reason']
+            elif conf == 'medium' and worst_conf == 'high':
+                worst_conf = 'medium'
+                reason = block['reason']
+        if not reason and all_dq:
+            reason = all_dq[-1]['rubric_criteria'][key]['reason']
+        return worst_conf, reason
+
+    lines: list[str] = [
+        '## Phụ lục (hệ thống): Độ tin cậy dữ liệu & củng cố đánh giá',
         '',
-        f'_Tổng hợp từ **{n_lessons}** buổi trong tập portfolio; lấy mức kém nhất giữa các buổi._',
-        '',
-        f'- **Proficiency (tổng)**: độ tin cậy hệ thống — **{label[worst_prof]}**.',
-        f'- **Capacity (tổng)**: độ tin cậy hệ thống — **{label[worst_cap]}**.',
-        f'- **Engagement (tổng)**: độ tin cậy hệ thống — **{label[worst_eng]}**.',
-        f'- **Self-regulation (tổng)**: độ tin cậy hệ thống — **{label[worst_sr]}**.',
-        '',
-        '### Trung bình lượt có điểm / buổi (tham khảo)',
-        f'- Nghe: {sum(listen_counts) / n_lessons:.1f}',
-        f'- Nói (ước lượng từ log): {sum(speak_counts) / n_lessons:.1f}',
-        f'- Đọc: {sum(read_counts) / n_lessons:.1f}',
-        '',
-        '### Củng cố đánh giá khi tổng hợp còn yếu',
-        '- Chuẩn hóa log đủ trường: speakingTurnCount, sectionsCompletionPercent, averageReactionTimeMs cho mọi buổi.',
-        '- Mỗi buổi nên có tối thiểu vài lượt nghe + nói + đọc có điểm để rubric 4 tiêu chí không suy diễn từ một nguồn.',
-        '- GV ghi teacherComment/sessionSummary ngắn sau buổi để bổ sung tiêu chí quan sát (engagement, self-regulation).',
+        f'_Tổng hợp từ **{n_lessons}** buổi; lấy mức kém nhất giữa các buổi. Dùng để bảo đảm không bỏ sót khi dữ liệu mỏng._',
         '',
     ]
+
+    lines.append('### Trụ dữ liệu nền (Nghe – Nói – Đọc)')
+    pillar_counts = {'listening': listen_counts, 'speaking': speak_counts, 'reading': read_counts}
+    for key, title in (('listening', 'Nghe'), ('speaking', 'Nói'), ('reading', 'Đọc')):
+        avg_count = sum(pillar_counts[key]) / n_lessons
+        conf, remediation = _worst_pillar(key)
+        lines.append(
+            f'- **{title}**: độ tin cậy hệ thống — **{label.get(conf, conf)}** '
+            f'(trung bình {avg_count:.1f} lượt có điểm/buổi).'
+        )
+        if conf != 'high':
+            lines.append(f'  - Cách củng cố: {remediation}')
+    lines.append('')
+
+    lines.append('### Bốn tiêu chí in-class (theo độ phủ hệ thống)')
+    fix_by_criterion = {
+        'proficiency': (
+            'Tăng số lượt nghe/nói/đọc có điểm; bảo đảm log từ vựng & ngữ pháp (attempt) '
+            'và averagePronunciationScore khi có thể.'
+        ),
+        'capacity': 'Bật đồng bộ sectionsCompletionPercent và averageReactionTimeMs từ LMS cho mỗi buổi.',
+        'engagement': 'Ghi nhận speakingTurnCount (và nên có speakingCoverage nếu platform hỗ trợ).',
+        'self_regulation': (
+            'Khuyến khích GV nhập teacherComment/sessionSummary ngắn sau buổi; '
+            'kết hợp completion + reaction để suy ra tự điều chỉnh.'
+        ),
+    }
+    titles = {
+        'proficiency': 'Proficiency',
+        'capacity': 'Capacity',
+        'engagement': 'Engagement',
+        'self_regulation': 'Self-regulation',
+    }
+    for rk, rt in titles.items():
+        conf, reason = _worst_criterion(rk)
+        lines.append(f'- **{rt}**: độ tin cậy hệ thống — **{label.get(conf, conf)}** — {reason}')
+        if conf != 'high':
+            lines.append(f'  - Cách củng cố: {fix_by_criterion[rk]}')
+    lines.append('')
     return '\n'.join(lines)

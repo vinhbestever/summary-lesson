@@ -351,8 +351,11 @@ function normalizeMarkdownLineBreaks(raw: string): string {
   }
 
   const normalized = raw
+    .replace(/-\s*(Nghe|Nói|Doc|Đọc):\s*Làm được:\s*/g, '- $1:\n  - Làm được: ')
     .replace(/-\s*(Nghe|Nói|Doc|Đọc):\s*Tốt:\s*/g, '- $1:\n  - Tốt: ')
+    .replace(/\s*\|\s*Còn hạn chế:\s*/g, '\n  - Còn hạn chế: ')
     .replace(/\s*\|\s*Chưa tốt:\s*/g, '\n  - Chưa tốt: ')
+    .replace(/\s*\|\s*Chưa có dữ liệu:\s*/g, '\n  - Chưa có dữ liệu: ')
     .replace(/\s*\|\s*Yếu:\s*/g, '\n  - Yếu: ')
     .replace(
       /-\s*([A-D])\.\s*(Proficiency|Capacity|Engagement|Self-regulation|Self regulation)\s*[–-]\s*([^\n]+?)\s*-\s*Đo lường:\s*/gi,
@@ -498,7 +501,7 @@ function normalizeMarkdownLineBreaks(raw: string): string {
       continue
     }
 
-    const childMatch = line.match(/^\s*-\s*(Tốt|Chưa tốt|Yếu)\s*:\s*(.*)$/i)
+    const childMatch = line.match(/^\s*-\s*(Tốt|Chưa tốt|Yếu|Làm được|Còn hạn chế|Chưa có dữ liệu)\s*:\s*(.*)$/i)
     if (childMatch && currentSkill) {
       output.push(`  - ${childMatch[1]}: ${childMatch[2].trim()}`)
       continue
@@ -591,12 +594,18 @@ function RadarChart({ payload }: { payload: LessonRadarPayload }) {
         <polygon points={polygonPoints} className="radar-shape" />
       </svg>
       <ul className="radar-legend">
-        {payload.competencies.map((item) => (
-          <li key={item.key}>
-            <strong>{item.label}</strong>: {item.score}
-            {item.insufficient_data ? ' (chua du du lieu)' : ''}
-          </li>
-        ))}
+        {payload.competencies.map((item) => {
+          const levelDisplay = item.insufficient_data
+            ? 'chưa đủ dữ liệu'
+            : item.level_text
+              ? `${item.score} — ${item.level_text}`
+              : String(item.score)
+          return (
+            <li key={item.key}>
+              <strong>{item.label}</strong>: {levelDisplay}
+            </li>
+          )
+        })}
       </ul>
     </section>
   )

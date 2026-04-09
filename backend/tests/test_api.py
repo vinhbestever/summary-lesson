@@ -257,9 +257,9 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
     assert '- nghe:' in system_prompt
     assert '- nói:' in system_prompt
     assert '- đọc:' in system_prompt
-    assert 'tốt:' in system_prompt
-    assert 'chưa tốt:' in system_prompt
-    assert 'yếu:' in system_prompt
+    assert 'làm được:' in system_prompt
+    assert 'còn hạn chế:' in system_prompt
+    assert 'chưa có dữ liệu:' in system_prompt
     assert 'reading_fluency' in system_prompt
     assert 'lesson_skill_context' in system_prompt
     assert '4 tiêu chí' in system_prompt

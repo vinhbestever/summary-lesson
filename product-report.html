@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>LLM Quality Audit — Summary Lesson</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,600;1,300&family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&display=swap');
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --ink:      #111010;
+  --paper:    #faf8f3;
+  --warm:     #f0ebe0;
+  --rule:     #ddd8cc;
+  --deep:     #1a1815;
+  --red:      #c0392b;
+  --amber:    #d97706;
+  --green:    #166534;
+  --blue:     #1e40af;
+  --red-bg:   #fef2f2;
+  --amber-bg: #fffbeb;
+  --green-bg: #f0fdf4;
+  --blue-bg:  #eff6ff;
+  --mono:     'IBM Plex Mono', monospace;
+  --serif:    'Playfair Display', Georgia, serif;
+}
+
+html { font-size: 14px; }
+body {
+  font-family: var(--mono);
+  background: var(--paper);
+  color: var(--ink);
+  line-height: 1.65;
+  padding: 32px 40px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+/* MASTHEAD */
+.mast {
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 32px;
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 24px;
+  margin-bottom: 36px;
+}
+.mast__label {
+  font-size: .65rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 8px;
+}
+.mast__title {
+  font-family: var(--serif);
+  font-size: clamp(2.4rem, 4vw, 3.8rem);
+  font-weight: 900;
+  line-height: 1.0;
+  letter-spacing: -.02em;
+}
+.mast__sub {
+  font-size: .8rem;
+  color: #666;
+  margin-top: 10px;
+  line-height: 1.8;
+}
+.mast__verdict {
+  background: var(--deep);
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.mast__verdict-label { font-size: .62rem; letter-spacing: .14em; text-transform: uppercase; color: #aaa; margin-bottom: 8px; }
+.mast__verdict-score {
+  font-family: var(--serif);
+  font-size: 4rem;
+  font-weight: 900;
+  line-height: 1;
+  color: var(--amber);
+}
+.mast__verdict-note { font-size: .72rem; color: #ccc; margin-top: 8px; line-height: 1.5; }
+
+/* SECTION */
+.sec-label {
+  font-size: .62rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: #999;
+  border-top: 1px solid var(--rule);
+  padding-top: 8px;
+  margin-bottom: 14px;
+  margin-top: 36px;
+}
+
+/* GRID */
+.g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+.g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px; }
+.g4 { display: grid; grid-template-columns: 1fr 1fr 1fr 1fr; gap: 16px; }
+.span2 { grid-column: span 2; }
+
+/* LESSON CARD */
+.lesson-card {
+  border: 1px solid var(--rule);
+  background: #fff;
+}
+.lesson-card__head {
+  background: var(--deep);
+  color: #fff;
+  padding: 12px 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lesson-card__id { font-size: .65rem; letter-spacing: .1em; text-transform: uppercase; color: #aaa; }
+.lesson-card__type { font-family: var(--serif); font-size: 1rem; font-weight: 700; }
+.lesson-card__tag {
+  font-size: .6rem;
+  padding: 2px 8px;
+  border: 1px solid;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+.tag--good   { border-color: #4ade80; color: #4ade80; }
+.tag--medium { border-color: #fbbf24; color: #fbbf24; }
+.tag--poor   { border-color: #f87171; color: #f87171; }
+
+.lesson-card__body { padding: 16px; }
+
+/* CRITERION ROW */
+.crit-grid {
+  display: grid;
+  grid-template-columns: 90px 1fr 100px 100px;
+  gap: 8px;
+  font-size: .75rem;
+  align-items: start;
+  padding: 8px 0;
+  border-bottom: 1px dotted var(--rule);
+}
+.crit-grid:last-child { border-bottom: none; }
+.crit-name { font-weight: 600; }
+.crit-data { color: #555; font-size: .7rem; line-height: 1.5; }
+.crit-level {
+  font-size: .65rem;
+  font-weight: 600;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 7px;
+  text-align: center;
+  border: 1px solid;
+}
+.level-ee    { color: var(--green);  border-color: var(--green);  background: var(--green-bg); }
+.level-me    { color: var(--blue);   border-color: var(--blue);   background: var(--blue-bg); }
+.level-ni    { color: var(--red);    border-color: var(--red);    background: var(--red-bg); }
+.level-nd    { color: #999;          border-color: #ddd;          background: #f9f9f9; }
+.crit-verdict {
+  font-size: .65rem;
+  line-height: 1.5;
+}
+.verdict--ok   { color: var(--green); }
+.verdict--warn { color: var(--amber); }
+.verdict--bad  { color: var(--red); }
+.verdict--na   { color: #999; font-style: italic; }
+
+/* QUALITY BADGE */
+.qbadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: .65rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border: 1px solid;
+  font-weight: 600;
+}
+.qbadge--a { color: var(--green); border-color: var(--green); background: var(--green-bg); }
+.qbadge--b { color: var(--blue);  border-color: var(--blue);  background: var(--blue-bg); }
+.qbadge--c { color: var(--amber); border-color: var(--amber); background: var(--amber-bg); }
+.qbadge--d { color: var(--red);   border-color: var(--red);   background: var(--red-bg); }
+.qbadge--e { color: #999;         border-color: #ddd;         background: #f9f9f9; }
+
+/* HEATMAP */
+.heatmap { border: 1px solid var(--rule); background: #fff; overflow: hidden; }
+.heatmap__head {
+  background: var(--deep);
+  color: #fff;
+  padding: 10px 14px;
+  font-size: .65rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  display: grid;
+  grid-template-columns: 100px repeat(4, 1fr);
+  gap: 8px;
+}
+.hm-row {
+  display: grid;
+  grid-template-columns: 100px repeat(4, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.hm-row:last-child { border-bottom: none; }
+.hm-cell {
+  padding: 10px 12px;
+  font-size: .72rem;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.hm-label { font-weight: 600; color: #333; }
+.hm-score { font-family: var(--serif); font-size: 1.4rem; font-weight: 700; }
+.hm-note  { font-size: .62rem; color: #888; line-height: 1.4; }
+.hm-issue { font-size: .62rem; color: var(--red); }
+.bg-ee    { background: #dcfce7; }
+.bg-me    { background: #dbeafe; }
+.bg-ni    { background: #fee2e2; }
+.bg-nd    { background: #f4f4f5; }
+.bg-warn  { background: #fef3c7; }
+
+/* SCORE BAR */
+.score-section { background: var(--warm); border: 1px solid var(--rule); padding: 18px 20px; }
+.score-section__title { font-family: var(--serif); font-size: 1rem; font-weight: 700; margin-bottom: 14px; }
+.score-bar-row { margin-bottom: 12px; }
+.score-bar-label { font-size: .72rem; display: flex; justify-content: space-between; margin-bottom: 3px; }
+.score-bar-label .qbadge { transform: translateY(-1px); }
+.score-track { height: 10px; background: #e5e0d8; position: relative; }
+.score-fill { height: 100%; position: absolute; left: 0; }
+.fill-a { background: var(--green); }
+.fill-b { background: var(--blue); }
+.fill-c { background: var(--amber); }
+.fill-d { background: var(--red); }
+
+/* ISSUE BOX */
+.issue-box {
+  border: 1px solid;
+  padding: 14px 16px;
+  font-size: .78rem;
+}
+.issue-box--red    { border-color: #fca5a5; background: var(--red-bg); }
+.issue-box--amber  { border-color: #fcd34d; background: var(--amber-bg); }
+.issue-box--blue   { border-color: #93c5fd; background: var(--blue-bg); }
+.issue-box--green  { border-color: #86efac; background: var(--green-bg); }
+.issue-box__label {
+  font-size: .62rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+.issue-box__title { font-family: var(--serif); font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+.issue-box ul { padding-left: 14px; line-height: 1.9; color: #444; }
+
+/* QUOTE */
+.quote-block {
+  border-left: 3px solid var(--rule);
+  padding: 8px 14px;
+  margin: 8px 0;
+  font-size: .73rem;
+  color: #555;
+  font-style: italic;
+  line-height: 1.6;
+  background: #fafaf8;
+}
+.quote-block strong { color: var(--red); font-style: normal; }
+
+/* RECOMMENDATION */
+.rec-card {
+  border: 1px solid var(--rule);
+  background: #fff;
+  padding: 16px;
+}
+.rec-card__num {
+  font-family: var(--serif);
+  font-size: 2rem;
+  font-weight: 900;
+  color: var(--rule);
+  line-height: 1;
+  margin-bottom: 4px;
+}
+.rec-card__priority {
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.pri-p1 { color: var(--red); }
+.pri-p2 { color: var(--amber); }
+.pri-p3 { color: var(--blue); }
+.rec-card__title { font-family: var(--serif); font-size: .95rem; font-weight: 700; margin-bottom: 6px; }
+.rec-card__body { font-size: .73rem; color: #555; line-height: 1.6; }
+.rec-card__impact {
+  margin-top: 8px;
+  font-size: .65rem;
+  padding: 3px 8px;
+  border: 1px solid var(--rule);
+  display: inline-block;
+  color: #666;
+}
+
+/* DATA TABLE */
+.data-table { width: 100%; border-collapse: collapse; font-size: .75rem; }
+.data-table th {
+  font-size: .6rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: #777;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-bottom: 2px solid var(--rule);
+  text-align: left;
+}
+.data-table td { padding: 8px 10px; border-bottom: 1px dotted var(--rule); vertical-align: top; }
+.data-table tr:last-child td { border-bottom: none; }
+.data-table .mono { color: #888; font-size: .68rem; }
+.cross { color: var(--red); font-weight: bold; }
+.check { color: var(--green); font-weight: bold; }
+.warn  { color: var(--amber); font-weight: bold; }
+
+footer {
+  margin-top: 48px;
+  border-top: 1px solid var(--rule);
+  padding-top: 12px;
+  display: flex;
+  justify-content: space-between;
+  font-size: .65rem;
+  color: #bbb;
+}
+
+@media (max-width: 900px) {
+  body { padding: 16px; }
+  .mast { grid-template-columns: 1fr; }
+  .g2, .g3, .g4 { grid-template-columns: 1fr; }
+  .span2 { grid-column: 1; }
+  .heatmap__head, .hm-row { grid-template-columns: 80px repeat(4, 1fr); }
+  .crit-grid { grid-template-columns: 1fr 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- MASTHEAD -->
+<div class="mast">
+  <div>
+    <p class="mast__label">LLM Output Quality Audit · summary-lesson.vercel.app</p>
+    <h1 class="mast__title">Đánh giá<br><em>chất lượng</em><br>nhận xét AI</h1>
+    <p class="mast__sub">
+      Thử nghiệm trực tiếp trên production · 3 buổi học đại diện<br>
+      Backend: summary-lesson.onrender.com · Model: GPT-4.1-mini<br>
+      Đánh giá theo rubric 4 tiêu chí in-class · 09/04/2026
+    </p>
+  </div>
+  <div class="mast__verdict">
+    <div>
+      <p class="mast__verdict-label">Overall quality score</p>
+      <p class="mast__verdict-score">C+</p>
+      <p class="mast__verdict-note">
+        Proficiency tốt · Dữ liệu nền phong phú<br>
+        Capacity/Engagement/Self-reg thiếu tin cậy<br>
+        Mâu thuẫn nội bộ trong output
+      </p>
+    </div>
+  </div>
+</div>
+
+<!-- 3 LESSON SAMPLES -->
+<p class="sec-label">Ba mẫu thử nghiệm thực tế</p>
+<div class="g3">
+
+  <!-- LESSON 1: EXCELLENT -->
+  <div class="lesson-card">
+    <div class="lesson-card__head">
+      <div>
+        <p class="lesson-card__id">Lesson 3448746</p>
+        <p class="lesson-card__type">Buổi học tốt</p>
+      </div>
+      <span class="lesson-card__tag tag--good">Full data</span>
+    </div>
+    <div class="lesson-card__body">
+      <div style="font-size:.7rem;color:#666;margin-bottom:12px;line-height:1.7">
+        speakingTurn=39 · completion=100% · pron=89.15<br>
+        teacherComment: "Tuyệt vời! Bé học rất chủ động…"<br>
+        reactionTime=1508ms
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Proficiency</div>
+        <div class="crit-data">activity_depth=51 · pron=89 · vocab+grammar đủ</div>
+        <span class="crit-level level-ee">EE · 90</span>
+        <span class="verdict--ok">✓ Đúng</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Capacity</div>
+        <div class="crit-data">completion=100% · reaction=1508ms</div>
+        <span class="crit-level level-me">ME · 70</span>
+        <span class="verdict--warn">⚠ Mâu thuẫn</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Engagement</div>
+        <div class="crit-data">turns=39 · teacher praise</div>
+        <span class="crit-level level-me">ME · 75</span>
+        <span class="verdict--warn">⚠ Mâu thuẫn</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Self-reg</div>
+        <div class="crit-data">teacher: "chủ động, không nhắc nhở"</div>
+        <span class="crit-level level-ni">NI · 35</span>
+        <span class="verdict--bad">✗ Sai</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 2: IMMEDIATE EXIT -->
+  <div class="lesson-card">
+    <div class="lesson-card__head">
+      <div>
+        <p class="lesson-card__id">Lesson 3448739</p>
+        <p class="lesson-card__type">Thoát ngay</p>
+      </div>
+      <span class="lesson-card__tag tag--poor">No moments</span>
+    </div>
+    <div class="lesson-card__body">
+      <div style="font-size:.7rem;color:#666;margin-bottom:12px;line-height:1.7">
+        speakingTurn=1 · completion=5% · moments=[]<br>
+        vocab=[] · grammar=[] · IMMEDIATE_EXIT<br>
+        Không có teacherComment
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Proficiency</div>
+        <div class="crit-data">moments rỗng · vocab/grammar=0</div>
+        <span class="crit-level level-ni">NI · 30</span>
+        <span class="verdict--ok">✓ Hợp lý</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Capacity</div>
+        <div class="crit-data">completion=5% · reaction=2652ms</div>
+        <span class="crit-level level-ni">NI · 25</span>
+        <span class="verdict--ok">✓ Đúng</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Engagement</div>
+        <div class="crit-data">turns=1 · thoát sớm</div>
+        <span class="crit-level level-ni">NI · 20</span>
+        <span class="verdict--ok">✓ Hợp lý</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Self-reg</div>
+        <div class="crit-data">Thoát ngay · không ghi chú</div>
+        <span class="crit-level level-ni">NI · 20</span>
+        <span class="verdict--warn">⚠ Suy diễn</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- LESSON 3: MEDIUM -->
+  <div class="lesson-card">
+    <div class="lesson-card__head">
+      <div>
+        <p class="lesson-card__id">Lesson 3767001</p>
+        <p class="lesson-card__type">Buổi học trung bình</p>
+      </div>
+      <span class="lesson-card__tag tag--medium">Partial data</span>
+    </div>
+    <div class="lesson-card__body">
+      <div style="font-size:.7rem;color:#666;margin-bottom:12px;line-height:1.7">
+        speakingTurn=27 · completion=? · pron=70.88<br>
+        64 lượt nói · 8 listening · 49 đọc<br>
+        Không có teacherComment
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Proficiency</div>
+        <div class="crit-data">vocab+gram đủ · pron=70.88</div>
+        <span class="crit-level level-me">ME · 75</span>
+        <span class="verdict--ok">✓ Đúng</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Capacity</div>
+        <div class="crit-data">LLM: "hoàn thành 100%, nhanh" → NI</div>
+        <span class="crit-level level-ni">NI · 35</span>
+        <span class="verdict--bad">✗ Mâu thuẫn</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Engagement</div>
+        <div class="crit-data">turns=27 · "chủ động" → NI</div>
+        <span class="crit-level level-ni">NI · 30</span>
+        <span class="verdict--bad">✗ Mâu thuẫn</span>
+      </div>
+      <div class="crit-grid" style="grid-template-columns:80px 1fr 90px 90px">
+        <div class="crit-name">Self-reg</div>
+        <div class="crit-data">Không có ghi chú GV</div>
+        <span class="crit-level level-ni">NI · 25</span>
+        <span class="verdict--na">— Không thể biết</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- HEATMAP -->
+<p class="sec-label">Ma trận chất lượng output — LLM vs dữ liệu thực</p>
+<div class="heatmap">
+  <div class="heatmap__head">
+    <div></div>
+    <div>A. Proficiency</div>
+    <div>B. Capacity</div>
+    <div>C. Engagement</div>
+    <div>D. Self-regulation</div>
+  </div>
+  <div class="hm-row">
+    <div class="hm-cell"><span class="hm-label">Buổi tốt<br>3448746</span></div>
+    <div class="hm-cell bg-ee">
+      <span class="hm-score" style="color:var(--green)">EE 90</span>
+      <span class="hm-note">Data đủ · LLM đúng · EE hợp lệ với Proficiency</span>
+    </div>
+    <div class="hm-cell bg-warn">
+      <span class="hm-score" style="color:var(--amber)">ME 70</span>
+      <span class="hm-note">LLM đọc đúng từ JSON<br>nhưng phụ lục nói "thiếu data"</span>
+      <span class="hm-issue">⚠ Mâu thuẫn nội bộ</span>
+    </div>
+    <div class="hm-cell bg-warn">
+      <span class="hm-score" style="color:var(--amber)">ME 75</span>
+      <span class="hm-note">39 turns → ME đúng · rồi tự nói "thiếu speakingTurnCount"</span>
+      <span class="hm-issue">⚠ Tự phủ nhận</span>
+    </div>
+    <div class="hm-cell bg-ni">
+      <span class="hm-score" style="color:var(--red)">NI 35</span>
+      <span class="hm-note">Teacher: "Tuyệt vời! Chủ động"<br>→ vẫn gán Needs Improvement</span>
+      <span class="hm-issue">✗ Sai hoàn toàn</span>
+    </div>
+  </div>
+  <div class="hm-row">
+    <div class="hm-cell"><span class="hm-label">Thoát ngay<br>3448739</span></div>
+    <div class="hm-cell bg-ni">
+      <span class="hm-score" style="color:var(--red)">NI 30</span>
+      <span class="hm-note">vocab/gram=0 · hợp lý</span>
+    </div>
+    <div class="hm-cell bg-ni">
+      <span class="hm-score" style="color:var(--red)">NI 25</span>
+      <span class="hm-note">completion=5% · đúng</span>
+    </div>
+    <div class="hm-cell bg-ni">
+      <span class="hm-score" style="color:var(--red)">NI 20</span>
+      <span class="hm-note">turns=1 · hợp lý</span>
+    </div>
+    <div class="hm-cell bg-nd">
+      <span class="hm-score" style="color:#999">NI 20</span>
+      <span class="hm-note">Không có data · không thể xác nhận</span>
+    </div>
+  </div>
+  <div class="hm-row">
+    <div class="hm-cell"><span class="hm-label">Trung bình<br>3767001</span></div>
+    <div class="hm-cell bg-me">
+      <span class="hm-score" style="color:var(--blue)">ME 75</span>
+      <span class="hm-note">pron=70.88 · vocab đủ · đúng</span>
+    </div>
+    <div class="hm-cell bg-ni">
+      <span class="hm-score" style="color:var(--red)">NI 35</span>
+      <span class="hm-note">LLM viết "hoàn thành 100%, nhanh" → rồi gán NI</span>
+      <span class="hm-issue">✗ Tự mâu thuẫn</span>
+    </div>
+    <div class="hm-cell bg-ni">
+      <span class="hm-score" style="color:var(--red)">NI 30</span>
+      <span class="hm-note">LLM viết "chủ động tham gia" → rồi gán NI và "thiếu data"</span>
+      <span class="hm-issue">✗ Tự mâu thuẫn</span>
+    </div>
+    <div class="hm-cell bg-nd">
+      <span class="hm-score" style="color:#999">NI 25</span>
+      <span class="hm-note">Không có teacherComment · không thể đánh giá</span>
+    </div>
+  </div>
+</div>
+
+<!-- QUALITY SCORES + ANALYSIS -->
+<p class="sec-label">Đánh giá chất lượng theo tiêu chí</p>
+<div class="g2">
+
+  <div class="score-section">
+    <p class="score-section__title">Điểm chất lượng từng tiêu chí</p>
+
+    <div class="score-bar-row">
+      <div class="score-bar-label">
+        <span>A. Proficiency <span class="qbadge qbadge--a">A</span></span>
+        <span>85 / 100</span>
+      </div>
+      <div class="score-track"><div class="score-fill fill-a" style="width:85%"></div></div>
+      <div style="font-size:.68rem;color:#666;margin-top:3px">LLM đọc đúng vocab/grammar/pronunciation · xếp loại chính xác cả 3 buổi · evidence cụ thể</div>
+    </div>
+
+    <div class="score-bar-row">
+      <div class="score-bar-label">
+        <span>B. Capacity <span class="qbadge qbadge--c">C</span></span>
+        <span>45 / 100</span>
+      </div>
+      <div class="score-track"><div class="score-fill fill-c" style="width:45%"></div></div>
+      <div style="font-size:.68rem;color:#666;margin-top:3px">LLM đọc đúng data từ JSON, nhưng phụ lục báo "thiếu data" → mâu thuẫn · xếp loại không nhất quán</div>
+    </div>
+
+    <div class="score-bar-row">
+      <div class="score-bar-label">
+        <span>C. Engagement <span class="qbadge qbadge--d">D</span></span>
+        <span>35 / 100</span>
+      </div>
+      <div class="score-track"><div class="score-fill fill-d" style="width:35%"></div></div>
+      <div style="font-size:.68rem;color:#666;margin-top:3px">speakingTurnCount là signal duy nhất · rubric đòi quan sát trực tiếp · tự phủ nhận trong 2/3 mẫu</div>
+    </div>
+
+    <div class="score-bar-row">
+      <div class="score-bar-label">
+        <span>D. Self-regulation <span class="qbadge qbadge--d">D</span></span>
+        <span>20 / 100</span>
+      </div>
+      <div class="score-track"><div class="score-fill fill-d" style="width:20%"></div></div>
+      <div style="font-size:.68rem;color:#666;margin-top:3px">Gán NI 100% — kể cả khi teacher nói "tuyệt vời, chủ động" · không có signal LMS · kết luận không đáng tin</div>
+    </div>
+
+    <div class="score-bar-row" style="margin-top:16px">
+      <div class="score-bar-label">
+        <span style="font-weight:600">Tổng thể <span class="qbadge qbadge--c">C+</span></span>
+        <span>55 / 100</span>
+      </div>
+      <div class="score-track"><div class="score-fill" style="width:55%;background:var(--ink)"></div></div>
+    </div>
+  </div>
+
+  <div>
+    <!-- ISSUES -->
+    <div class="issue-box issue-box--red" style="margin-bottom:12px">
+      <p class="issue-box__label" style="color:var(--red)">Vấn đề nghiêm trọng nhất</p>
+      <p class="issue-box__title">Self-regulation luôn là Needs Improvement</p>
+      <ul>
+        <li>3/3 buổi đều được gán NI bất kể bằng chứng thực tế</li>
+        <li>Buổi tốt nhất: teacher viết "Tuyệt vời! Chủ động" → vẫn bị NI 35</li>
+        <li>Không có signal LMS trực tiếp nào cho tiêu chí này</li>
+        <li>Kết quả: phụ huynh nhận nhận xét sai về hành vi con</li>
+      </ul>
+    </div>
+    <div class="issue-box issue-box--amber">
+      <p class="issue-box__label" style="color:var(--amber)">Mâu thuẫn nội bộ</p>
+      <p class="issue-box__title">LLM viết đúng → phụ lục nói ngược lại</p>
+      <ul>
+        <li>Capacity: LLM ghi "hoàn thành 100%, nhanh" nhưng phụ lục nói "thiếu data"</li>
+        <li>Engagement: LLM ghi "39 lượt nói" nhưng phụ lục nói "không có speakingTurnCount"</li>
+        <li>Người đọc không biết tin vào phần nào</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- WHAT WORKS WELL -->
+<p class="sec-label">Điểm mạnh của output hiện tại</p>
+<div class="g3">
+  <div class="issue-box issue-box--green">
+    <p class="issue-box__label" style="color:var(--green)">Tốt</p>
+    <p class="issue-box__title">Proficiency chính xác</p>
+    <ul>
+      <li>Đọc đúng từ vựng còn yếu theo tên cụ thể ("nurse", "clown", "handbag")</li>
+      <li>Xếp loại đúng với bằng chứng rõ ràng</li>
+      <li>Score range hợp lý: EE cho buổi tốt, NI cho buổi exit</li>
+    </ul>
+  </div>
+  <div class="issue-box issue-box--green">
+    <p class="issue-box__label" style="color:var(--green)">Tốt</p>
+    <p class="issue-box__title">Dữ liệu nền Nghe–Nói–Đọc</p>
+    <ul>
+      <li>Evidence cụ thể: trích dẫn câu hỏi thực, điểm số thực</li>
+      <li>"pretty" → "prettyy", "She's pretty" → "she's ready" — hallucination thấp</li>
+      <li>Phân tách tốt theo điểm số cao/thấp</li>
+    </ul>
+  </div>
+  <div class="issue-box issue-box--green">
+    <p class="issue-box__label" style="color:var(--green)">Tốt</p>
+    <p class="issue-box__title">Giọng văn & So sánh</p>
+    <ul>
+      <li>Ấm áp, phù hợp với phụ huynh tiểu học</li>
+      <li>So sánh đúng lesson ID, đúng từ vựng chủ đề</li>
+      <li>Kế hoạch buổi sau cụ thể, actionable</li>
+    </ul>
+  </div>
+</div>
+
+<!-- ROOT CAUSE TABLE -->
+<p class="sec-label">Nguyên nhân gốc rễ theo tiêu chí</p>
+<div style="border:1px solid var(--rule);background:#fff">
+  <table class="data-table">
+    <thead>
+      <tr>
+        <th>Tiêu chí</th>
+        <th>Dữ liệu LMS có</th>
+        <th>LLM nhận được</th>
+        <th>Vấn đề</th>
+        <th>Kết quả thực tế</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>A. Proficiency</strong></td>
+        <td>vocab_attempts, grammar_attempts, pronunciation, moments</td>
+        <td class="check">✓ Đầy đủ qua lesson_skill_context</td>
+        <td>Không có</td>
+        <td class="check">✓ Đáng tin cậy</td>
+      </tr>
+      <tr>
+        <td><strong>B. Capacity</strong></td>
+        <td>sectionsCompletionPercent, averageReactionTimeMs</td>
+        <td class="warn">⚠ LLM đọc được từ raw JSON, nhưng rubric_quality bị lỗi key</td>
+        <td>Phụ lục hệ thống báo "thiếu data" dù data tồn tại → LLM viết mâu thuẫn, xếp loại sai chiều</td>
+        <td class="warn">⚠ Không nhất quán</td>
+      </tr>
+      <tr>
+        <td><strong>C. Engagement</strong></td>
+        <td>speakingTurnCount (duy nhất từ LMS)</td>
+        <td class="warn">⚠ LLM đọc được từ raw JSON, nhưng rubric_quality đọc sai key</td>
+        <td>Phụ lục báo "không có speakingTurnCount" dù có 39 turns → tự phủ nhận. Rubric gốc đòi quan sát trực tiếp (giơ tay, đặt câu hỏi) — không capture được qua LMS.</td>
+        <td class="cross">✗ Không tin cậy</td>
+      </tr>
+      <tr>
+        <td><strong>D. Self-regulation</strong></td>
+        <td>teacherComment (optional), sessionSummary (optional)</td>
+        <td class="cross">✗ Thường rỗng · LLM không có bằng chứng</td>
+        <td>Không có signal → LLM default gán NI. Rubric đòi "bắt đầu ngay, tự kiểm tra, không bỏ task" — không thể đo qua LMS hiện tại.</td>
+        <td class="cross">✗ Sai hệ thống</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- RECOMMENDATIONS -->
+<p class="sec-label">Đề xuất cải thiện chất lượng</p>
+<div class="g4">
+
+  <div class="rec-card">
+    <p class="rec-card__num">01</p>
+    <p class="rec-card__priority pri-p1">P1 · Dữ liệu</p>
+    <p class="rec-card__title">Bắt buộc GV điền structured observation</p>
+    <p class="rec-card__body">Thay teacherComment tự do bằng form checkbox sau buổi. Ví dụ: "✓ Tự vào bài không nhắc", "✓ Duy trì tập trung tốt". Map trực tiếp vào rubric indicators → loại bỏ suy diễn AI.</p>
+    <span class="rec-card__impact">Impact: Engagement + Self-reg từ D → B</span>
+  </div>
+
+  <div class="rec-card">
+    <p class="rec-card__num">02</p>
+    <p class="rec-card__priority pri-p1">P1 · LMS</p>
+    <p class="rec-card__title">Đồng bộ đầy đủ sectionsCompletion + reactionTime</p>
+    <p class="rec-card__body">Hiện tại sectionsCompletionPercent và averageReactionTimeMs bị thiếu cho nhiều buổi. Đây là signal trực tiếp nhất cho Capacity — khi có đủ, xếp loại Capacity sẽ chính xác và nhất quán.</p>
+    <span class="rec-card__impact">Impact: Capacity từ C → A</span>
+  </div>
+
+  <div class="rec-card">
+    <p class="rec-card__num">03</p>
+    <p class="rec-card__priority pri-p2">P2 · Prompt</p>
+    <p class="rec-card__title">Khi không đủ data: ghi "Chưa thể xếp loại"</p>
+    <p class="rec-card__body">Thay vì gán NI khi thiếu data (hiện tại: Self-reg luôn NI), LLM nên ghi rõ "Không đủ dữ liệu để xếp loại — cần GV quan sát trực tiếp". Tránh nhận xét sai gây hiểu lầm cho phụ huynh.</p>
+    <span class="rec-card__impact">Impact: Loại bỏ kết luận sai hệ thống</span>
+  </div>
+
+  <div class="rec-card">
+    <p class="rec-card__num">04</p>
+    <p class="rec-card__priority pri-p2">P2 · Prompt</p>
+    <p class="rec-card__title">Dùng 1 nguồn duy nhất cho Capacity/Engagement</p>
+    <p class="rec-card__body">Hiện tại LLM đọc raw JSON và rubric_quality signal cho cùng một tiêu chí → mâu thuẫn. Chỉ dùng rubric_quality.system_confidence để viết mức xếp loại. Nếu system_confidence=low → không xếp loại, chỉ mô tả.</p>
+    <span class="rec-card__impact">Impact: Loại bỏ self-contradiction</span>
+  </div>
+
+</div>
+
+<div class="g2" style="margin-top:0">
+  <div class="issue-box issue-box--blue">
+    <p class="issue-box__label" style="color:var(--blue)">Phân tích dữ liệu hiện có</p>
+    <p class="issue-box__title">Kết luận về bộ dữ liệu 50 buổi</p>
+    <ul>
+      <li><strong>Proficiency signal:</strong> Phong phú — moments đầy đủ, vocab/grammar/pronunciation log tốt</li>
+      <li><strong>Capacity signal:</strong> Thiếu ổn định — sectionsCompletion không có trong nhiều buổi cũ</li>
+      <li><strong>Engagement signal:</strong> Chỉ có count — speakingTurnCount không phản ánh chất lượng tương tác</li>
+      <li><strong>Self-regulation signal:</strong> Gần như không có — teacherComment điền rất ít và không chuẩn hóa</li>
+      <li><strong>Kết luận:</strong> Bộ dữ liệu hiện tại chỉ đủ để đánh giá tin cậy 1/4 tiêu chí (Proficiency)</li>
+    </ul>
+  </div>
+  <div class="issue-box issue-box--blue">
+    <p class="issue-box__label" style="color:var(--blue)">Ưu tiên để đạt chất lượng 3/4 tiêu chí</p>
+    <p class="issue-box__title">Lộ trình cải thiện thực tế</p>
+    <ul>
+      <li><strong>Tuần 1–2:</strong> Chuẩn hóa teacherComment → structured fields cho Engagement + Self-reg</li>
+      <li><strong>Tuần 2–3:</strong> Xác nhận LMS đang log đầy đủ sectionsCompletion cho buổi mới</li>
+      <li><strong>Tuần 3–4:</strong> Cập nhật prompt — "Chưa thể xếp loại" thay vì default NI khi thiếu data</li>
+      <li><strong>Kết quả kỳ vọng:</strong> Proficiency A+ · Capacity B · Engagement C (structured) · Self-reg B (structured)</li>
+    </ul>
+  </div>
+</div>
+
+<footer>
+  <span>LLM Quality Audit · Summary Lesson · RinoEdu</span>
+  <span>3 mẫu production · summary-lesson.onrender.com · GPT-4.1-mini · 09/04/2026</span>
+</footer>
+
+</body>
+</html>
