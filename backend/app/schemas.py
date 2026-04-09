@@ -68,15 +68,16 @@ class SessionCriterion(BaseModel):
 
 
 class SessionBreakdown(BaseModel):
-    participation: SessionCriterion
-    pronunciation: SessionCriterion
-    vocabulary: SessionCriterion
-    grammar: SessionCriterion
-    reaction_confidence: SessionCriterion
+    """In-class performance rubric (4 criteria)."""
+
+    proficiency: SessionCriterion
+    capacity: SessionCriterion
+    engagement: SessionCriterion
+    self_regulation: SessionCriterion
 
 
 class PriorityImprovement(BaseModel):
-    skill: Literal['pronunciation', 'vocabulary', 'grammar', 'reaction_confidence', 'participation']
+    skill: Literal['proficiency', 'capacity', 'engagement', 'self_regulation']
     priority: Literal['high', 'medium', 'low']
     current_state: str
     target_next_lesson: str
@@ -130,15 +131,14 @@ class SkillTrend(BaseModel):
 
 
 class PortfolioSkillTrends(BaseModel):
-    participation: SkillTrend
-    pronunciation: SkillTrend
-    vocabulary: SkillTrend
-    grammar: SkillTrend
-    reaction_confidence: SkillTrend
+    proficiency: SkillTrend
+    capacity: SkillTrend
+    engagement: SkillTrend
+    self_regulation: SkillTrend
 
 
 class PortfolioPriorityImprovement(BaseModel):
-    skill: Literal['pronunciation', 'vocabulary', 'grammar', 'reaction_confidence', 'participation']
+    skill: Literal['proficiency', 'capacity', 'engagement', 'self_regulation']
     priority: Literal['high', 'medium', 'low']
     reason: str
     next_2_weeks_target: str

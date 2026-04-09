@@ -88,16 +88,15 @@ Response nhan xet lesson:
   "teacher_tone": "warm_encouraging",
   "overall_comment": "...",
   "session_breakdown": {
-    "participation": { "score": 85, "comment": "...", "evidence": ["..."] },
-    "pronunciation": { "score": 72, "comment": "...", "evidence": ["..."] },
-    "vocabulary": { "score": 80, "comment": "...", "evidence": ["..."] },
-    "grammar": { "score": 78, "comment": "...", "evidence": ["..."] },
-    "reaction_confidence": { "score": 88, "comment": "...", "evidence": ["..."] }
+    "proficiency": { "score": 72, "comment": "...", "evidence": ["..."] },
+    "capacity": { "score": 78, "comment": "...", "evidence": ["..."] },
+    "engagement": { "score": 85, "comment": "...", "evidence": ["..."] },
+    "self_regulation": { "score": 70, "comment": "...", "evidence": ["..."] }
   },
   "strengths": ["..."],
   "priority_improvements": [
     {
-      "skill": "pronunciation",
+      "skill": "proficiency",
       "priority": "high",
       "current_state": "...",
       "target_next_lesson": "...",
@@ -126,16 +125,15 @@ Response nhan xet chung:
   "date_range": { "from_date": "2026-03-01", "to_date": "2026-03-31" },
   "overall_assessment": "...",
   "skill_trends": {
-    "participation": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." },
-    "pronunciation": { "current_level": "...", "trend": "stable", "evidence": ["..."], "recommendation": "..." },
-    "vocabulary": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." },
-    "grammar": { "current_level": "...", "trend": "mixed", "evidence": ["..."], "recommendation": "..." },
-    "reaction_confidence": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." }
+    "proficiency": { "current_level": "...", "trend": "stable", "evidence": ["..."], "recommendation": "..." },
+    "capacity": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." },
+    "engagement": { "current_level": "...", "trend": "improving", "evidence": ["..."], "recommendation": "..." },
+    "self_regulation": { "current_level": "...", "trend": "mixed", "evidence": ["..."], "recommendation": "..." }
   },
   "top_strengths": ["..."],
   "top_priorities": [
     {
-      "skill": "pronunciation",
+      "skill": "proficiency",
       "priority": "high",
       "reason": "...",
       "next_2_weeks_target": "...",

@@ -190,6 +190,16 @@ function parseSseEvent(rawEvent: string): ParsedSseEvent {
 }
 
 const levelScoreMap: Record<string, number> = {
+  'exceeds expectation': 90,
+  'vuot ky vong': 90,
+  'vượt kỳ vọng': 90,
+  'meets expectation': 60,
+  'dat ky vong': 60,
+  'đạt kỳ vọng': 60,
+  'needs improvement': 25,
+  'can cai thien': 25,
+  'cần cải thiện': 25,
+  'rat can ho tro': 20,
   'rất cần hỗ trợ': 20,
   'can ho tro': 40,
   'cần hỗ trợ': 40,
@@ -202,13 +212,28 @@ const levelScoreMap: Record<string, number> = {
 }
 
 const competencySpecs = [
-  { key: 'learn', code: 'A', name: 'Learn' },
-  { key: 'recognize', code: 'B', name: 'Recognize' },
-  { key: 'apply', code: 'C', name: 'Apply' },
-  { key: 'retain', code: 'D', name: 'Retain' },
-  { key: 'focus', code: 'E', name: 'Focus' },
-  { key: 'express', code: 'F', name: 'Express' },
+  { key: 'proficiency', code: 'A', name: 'Proficiency' },
+  { key: 'capacity', code: 'B', name: 'Capacity' },
+  { key: 'engagement', code: 'C', name: 'Engagement' },
+  { key: 'self_regulation', code: 'D', name: 'Self-regulation' },
 ]
+
+const competencyNameToKey: Record<string, string> = {
+  proficiency: 'proficiency',
+  capacity: 'capacity',
+  engagement: 'engagement',
+  'self-regulation': 'self_regulation',
+  'self regulation': 'self_regulation',
+}
+
+const legacyCompetencyToKey: Record<string, string> = {
+  learn: 'proficiency',
+  recognize: 'proficiency',
+  apply: 'proficiency',
+  retain: 'capacity',
+  focus: 'self_regulation',
+  express: 'engagement',
+}
 
 function normalizeForCompare(value: string): string {
   return value
@@ -245,8 +270,11 @@ function parseScoreFromResultLine(line: string): { score: number; levelText: str
 }
 
 function parseLessonRadarFromMarkdown(markdown: string): LessonRadarPayload {
-  const sectionStartRegex = /^##\s*(Đánh giá 6 năng lực|Danh gia 6 nang luc)\b/im
+  const sectionStartRegex =
+    /^##\s*(Đánh giá 4 tiêu chí|Danh gia 4 tieu chi|Đánh giá 6 năng lực|Danh gia 6 nang luc)\b/im
   const competencyLineRegex =
+    /^\s*-\s*(?:([A-D])\.\s*)?(?:\*\*)?(Proficiency|Capacity|Engagement|Self-regulation|Self regulation)(?:\*\*)?\b/i
+  const legacyCompetencyLineRegex =
     /^\s*-\s*(?:([A-F])\.\s*)?(?:\*\*)?(Learn|Recognize|Apply|Retain|Focus|Express)(?:\*\*)?\b/i
   const resultLineRegex = /kết quả hiện tại|ket qua hien tai/i
   const lines = markdown.split('\n')
@@ -269,12 +297,18 @@ function parseLessonRadarFromMarkdown(markdown: string): LessonRadarPayload {
 
     const competencyMatch = line.match(competencyLineRegex)
     if (competencyMatch) {
-      const keyFromName = competencySpecs.find(
-        (item) =>
-          item.code.toLowerCase() === (competencyMatch[1] ?? '').toLowerCase() ||
-          item.name.toLowerCase() === competencyMatch[2].toLowerCase(),
-      )?.key
-      currentKey = keyFromName ?? ''
+      const rawName = competencyMatch[2].replace(/\s+/g, ' ').trim()
+      const normalizedName = rawName.toLowerCase()
+      currentKey =
+        competencyNameToKey[normalizedName] ??
+        competencySpecs.find((item) => item.code.toLowerCase() === (competencyMatch[1] ?? '').toLowerCase())?.key ??
+        ''
+      continue
+    }
+    const legacyMatch = line.match(legacyCompetencyLineRegex)
+    if (legacyMatch) {
+      const legacyName = legacyMatch[2].toLowerCase()
+      currentKey = legacyCompetencyToKey[legacyName] ?? ''
       continue
     }
 
@@ -321,12 +355,18 @@ function normalizeMarkdownLineBreaks(raw: string): string {
     .replace(/\s*\|\s*Chưa tốt:\s*/g, '\n  - Chưa tốt: ')
     .replace(/\s*\|\s*Yếu:\s*/g, '\n  - Yếu: ')
     .replace(
+      /-\s*([A-D])\.\s*(Proficiency|Capacity|Engagement|Self-regulation|Self regulation)\s*[–-]\s*([^\n]+?)\s*-\s*Đo lường:\s*/gi,
+      '- $1. $2 - $3\n  - Đo lường: ',
+    )
+    .replace(
       /-\s*([A-F])\.\s*(Learn|Recognize|Apply|Retain|Focus|Express)\s*[–-]\s*([^\n]+?)\s*-\s*Đo lường:\s*/g,
       '- $1. $2 - $3\n  - Đo lường: ',
     )
     .replace(/\s*\|\s*Kết quả hiện tại:\s*/g, '\n  - Kết quả hiện tại: ')
     .replace(/\s*\|\s*Nhận xét:\s*/g, '\n  - Nhận xét: ')
     .replace(/\s*\|\s*Khuyến nghị:\s*/g, '\n  - Khuyến nghị: ')
+    .replace(/\s*\|\s*Độ tin cậy kết luận:\s*/g, '\n  - Độ tin cậy kết luận: ')
+    .replace(/\s*\|\s*Cách củng cố đánh giá:\s*/g, '\n  - Cách củng cố đánh giá: ')
     .replace(/-\s*(Tuần\s*[12])\s*:\s*(?=\S)/g, '- $1:\n  - ')
     .replace(/([.!?])\s*-\s+/g, '$1\n- ')
     .replace(/\n-\s*\n-/g, '\n- ')
@@ -338,6 +378,11 @@ function normalizeMarkdownLineBreaks(raw: string): string {
   let insideCompetencySection = false
   let currentCompetency: string | null = null
   const competencyNameToCode: Record<string, string> = {
+    proficiency: 'A',
+    capacity: 'B',
+    engagement: 'C',
+    'self-regulation': 'D',
+    'self regulation': 'D',
     learn: 'A',
     recognize: 'B',
     apply: 'C',
@@ -361,7 +406,11 @@ function normalizeMarkdownLineBreaks(raw: string): string {
       continue
     }
 
-    if (/^##\s*(Đánh giá 6 năng lực|Danh gia 6 nang luc)/i.test(line.trim())) {
+    if (
+      /^##\s*(Đánh giá 4 tiêu chí|Danh gia 4 tieu chi|Đánh giá 6 năng lực|Danh gia 6 nang luc)/i.test(
+        line.trim(),
+      )
+    ) {
       insideCompetencySection = true
       currentCompetency = null
       output.push(line)
@@ -377,13 +426,28 @@ function normalizeMarkdownLineBreaks(raw: string): string {
 
     if (insideCompetencySection) {
       const competencyMatch = line.match(
+        /^\s*-\s*(?:([A-D])\.\s*)?(Proficiency|Capacity|Engagement|Self-regulation|Self regulation)\s*(?:[–-]\s*(.*))?$/i,
+      )
+      const legacyCompetencyMatch = line.match(
         /^\s*-\s*(?:([A-F])\.\s*)?(Learn|Recognize|Apply|Retain|Focus|Express)\s*(?:[–-]\s*(.*))?$/i,
       )
       if (competencyMatch) {
-        const rawName = competencyMatch[2]
+        const rawName = competencyMatch[2].replace(/\s+/g, ' ').trim()
         const normalizedName = rawName.toLowerCase()
-        const code = (competencyMatch[1] ?? competencyNameToCode[normalizedName] ?? '').toUpperCase()
+        const code =
+          (competencyMatch[1] ?? competencyNameToCode[normalizedName] ?? '').toUpperCase() ||
+          competencySpecs.find((s) => s.name.toLowerCase() === normalizedName)?.code
         const description = (competencyMatch[3] ?? '').trim()
+        const label = code ? `${code}. ${rawName}` : rawName
+        output.push(`- ${label}${description ? ` - ${description}` : ''}`)
+        currentCompetency = rawName
+        continue
+      }
+      if (legacyCompetencyMatch) {
+        const rawName = legacyCompetencyMatch[2]
+        const normalizedName = rawName.toLowerCase()
+        const code = (legacyCompetencyMatch[1] ?? competencyNameToCode[normalizedName] ?? '').toUpperCase()
+        const description = (legacyCompetencyMatch[3] ?? '').trim()
         const label = code ? `${code}. ${rawName}` : rawName
         output.push(`- ${label}${description ? ` - ${description}` : ''}`)
         currentCompetency = rawName
@@ -391,15 +455,17 @@ function normalizeMarkdownLineBreaks(raw: string): string {
       }
 
       const competencyChildMatch = line.match(
-        /^\s*-\s*(Đo lường|Do lường|Kết quả hiện tại|Ket qua hien tai|Nhận xét|Nhan xet|Khuyến nghị|Khuyen nghi)\s*:\s*(.*)$/i,
+        /^\s*-\s*(Đo lường|Do lường|Kết quả hiện tại|Ket qua hien tai|Nhận xét|Nhan xet|Khuyến nghị|Khuyen nghi|Độ tin cậy kết luận|Do tin cay ket luan|Cách củng cố đánh giá|Cach cung co danh gia)\s*:\s*(.*)$/i,
       )
       if (competencyChildMatch && currentCompetency) {
         const rawKey = competencyChildMatch[1].toLowerCase()
         let normalizedKey = competencyChildMatch[1]
         if (rawKey.includes('do l')) normalizedKey = 'Đo lường'
         if (rawKey.includes('ket qua')) normalizedKey = 'Kết quả hiện tại'
-        if (rawKey.includes('nhan')) normalizedKey = 'Nhận xét'
+        if (rawKey.includes('nhan') && !rawKey.includes('tin')) normalizedKey = 'Nhận xét'
         if (rawKey.includes('khuyen')) normalizedKey = 'Khuyến nghị'
+        if (rawKey.includes('do tin') || rawKey.includes('độ tin')) normalizedKey = 'Độ tin cậy kết luận'
+        if (rawKey.includes('cach cung') || rawKey.includes('cách củng')) normalizedKey = 'Cách củng cố đánh giá'
         output.push(`  - ${normalizedKey}: ${competencyChildMatch[2].trim()}`)
         continue
       }
@@ -435,6 +501,19 @@ function normalizeMarkdownLineBreaks(raw: string): string {
     const childMatch = line.match(/^\s*-\s*(Tốt|Chưa tốt|Yếu)\s*:\s*(.*)$/i)
     if (childMatch && currentSkill) {
       output.push(`  - ${childMatch[1]}: ${childMatch[2].trim()}`)
+      continue
+    }
+
+    const skillConfidenceMatch = line.match(
+      /^\s*-\s*(Độ tin cậy kết luận|Do tin cay ket luan|Cách củng cố đánh giá|Cach cung co danh gia)\s*:\s*(.*)$/i,
+    )
+    if (skillConfidenceMatch && currentSkill) {
+      const raw = skillConfidenceMatch[1].toLowerCase()
+      const label =
+        raw.includes('do tin') || raw.includes('độ tin')
+          ? 'Độ tin cậy kết luận'
+          : 'Cách củng cố đánh giá'
+      output.push(`  - ${label}: ${skillConfidenceMatch[2].trim()}`)
       continue
     }
 
@@ -480,8 +559,8 @@ function RadarChart({ payload }: { payload: LessonRadarPayload }) {
   const polygonPoints = points.map((point) => `${point.x},${point.y}`).join(' ')
 
   return (
-    <section className="radar-card" aria-label="Radar 6 nang luc">
-      <svg viewBox={`0 0 ${size} ${size}`} role="img" aria-label="Bieu do radar 6 nang luc">
+    <section className="radar-card" aria-label="Radar 4 tieu chi in-class">
+      <svg viewBox={`0 0 ${size} ${size}`} role="img" aria-label="Bieu do radar 4 tieu chi in-class">
         {levels.map((level) => {
           const ringPoints = payload.competencies.map((_item, index) => {
             const angle = (-Math.PI / 2) + (index * 2 * Math.PI) / payload.competencies.length
@@ -643,7 +722,7 @@ function App() {
               if (parsed?.type === 'lesson_radar' && Array.isArray(parsed.competencies)) {
                 setLessonRadarPayload(parsed)
               }
-            } catch (_error) {
+            } catch {
               // Ignore invalid result payload and rely on markdown fallback parser.
             }
           } else if (eventName === 'error') {
@@ -653,7 +732,7 @@ function App() {
           }
         }
       }
-    } catch (_requestError) {
+    } catch {
       setFeedbackError('Chua tao duoc nhan xet. Vui long thu lai.')
       setFeedbackStreamingStatus(null)
     } finally {
@@ -733,7 +812,7 @@ function App() {
               if (parsed?.type === 'lesson_radar' && Array.isArray(parsed.competencies)) {
                 setLessonRadarPayload(parsed)
               }
-            } catch (_error) {
+            } catch {
               // Ignore invalid result payload and rely on markdown fallback parser.
             }
           } else if (eventName === 'error') {
@@ -743,7 +822,7 @@ function App() {
           }
         }
       }
-    } catch (_requestError) {
+    } catch {
       setFeedbackError('Chua tao duoc nhan xet. Vui long thu lai.')
       setFeedbackStreamingStatus(null)
     } finally {

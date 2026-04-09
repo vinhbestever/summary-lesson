@@ -107,16 +107,15 @@ def _feedback_payload() -> dict:
         'teacher_tone': 'warm_encouraging',
         'overall_comment': 'Con hoc rat tap trung.',
         'session_breakdown': {
-            'participation': {'score': 85, 'comment': 'Tuong tac tot', 'evidence': ['45 luot noi']},
-            'pronunciation': {'score': 72, 'comment': 'Can luyen am cuoi', 'evidence': ['diem trung binh 72']},
-            'vocabulary': {'score': 80, 'comment': 'Nho tu kha tot', 'evidence': ['5 tu dat muc tot']},
-            'grammar': {'score': 78, 'comment': 'Dung mau cau co ban', 'evidence': ['3 cau dat muc dat']},
-            'reaction_confidence': {'score': 88, 'comment': 'Phan xa nhanh', 'evidence': ['reaction 1.5s']},
+            'proficiency': {'score': 72, 'comment': 'Nen tang con dao dong', 'evidence': ['diem noi/doc trung binh 72']},
+            'capacity': {'score': 78, 'comment': 'Theo kip tien do co ban', 'evidence': ['sections_completion 78%']},
+            'engagement': {'score': 85, 'comment': 'Tuong tac tot', 'evidence': ['45 luot noi']},
+            'self_regulation': {'score': 70, 'comment': 'Can nhac nhap bai', 'evidence': ['it dau hieu tu kiem tra']},
         },
         'strengths': ['Tu tin phat bieu', 'Nho tu nhanh'],
         'priority_improvements': [
             {
-                'skill': 'pronunciation',
+                'skill': 'proficiency',
                 'priority': 'high',
                 'current_state': 'Am cuoi con bo sot',
                 'target_next_lesson': 'Dat >=80',
@@ -138,44 +137,38 @@ def _portfolio_feedback_payload() -> dict:
         'date_range': {'from_date': '2026-03-01', 'to_date': '2026-03-31'},
         'overall_assessment': 'Hoc vien tien bo on dinh qua cac buoi.',
         'skill_trends': {
-            'participation': {
-                'current_level': 'kha',
-                'trend': 'improving',
-                'evidence': ['Tang so luot phat bieu'],
-                'recommendation': 'Duy tri hoi dap ngan moi ngay',
-            },
-            'pronunciation': {
-                'current_level': 'trung binh',
+            'proficiency': {
+                'current_level': 'meets_expectation',
                 'trend': 'stable',
-                'evidence': ['Con bo sot am cuoi o 1 so tu'],
-                'recommendation': 'Luyen shadowing 10 phut',
+                'evidence': ['Diem noi/doc on dinh qua cac buoi'],
+                'recommendation': 'Cung co tu va cau mau trong tam',
             },
-            'vocabulary': {
-                'current_level': 'kha',
+            'capacity': {
+                'current_level': 'meets_expectation',
                 'trend': 'improving',
-                'evidence': ['Nho va dung duoc nhieu tu moi'],
-                'recommendation': 'On tap bang flashcard',
+                'evidence': ['Hoan thanh phan co ban dung tien do'],
+                'recommendation': 'Tang nhip tiep thu khi co hoat dong moi',
             },
-            'grammar': {
-                'current_level': 'trung binh kha',
+            'engagement': {
+                'current_level': 'exceeds_expectation',
+                'trend': 'improving',
+                'evidence': ['Tang so luot phat bieu va hoi dap nhanh'],
+                'recommendation': 'Duy tri tham gia chu dong',
+            },
+            'self_regulation': {
+                'current_level': 'needs_improvement',
                 'trend': 'mixed',
-                'evidence': ['Dung tot cau don, nham o thi hien tai tiep dien'],
-                'recommendation': 'On 1 diem ngu phap moi buoi',
-            },
-            'reaction_confidence': {
-                'current_level': 'kha',
-                'trend': 'improving',
-                'evidence': ['Thoi gian phan hoi nhanh hon'],
-                'recommendation': 'Luyen phan xa theo tinh huong',
+                'evidence': ['Doi khi can nhac de vao bai'],
+                'recommendation': 'Luyen tu kiem tra truoc khi nop bai',
             },
         },
         'top_strengths': ['Tu tin phat bieu', 'Nho tu nhanh'],
         'top_priorities': [
             {
-                'skill': 'pronunciation',
+                'skill': 'proficiency',
                 'priority': 'high',
-                'reason': 'Am cuoi chua on dinh',
-                'next_2_weeks_target': 'Dat do chinh xac am cuoi >= 80%',
+                'reason': 'Nen tang ki thuat con dao dong',
+                'next_2_weeks_target': 'On dinh diem noi/doc va giam loi lap lai',
                 'coach_tip': 'Luyen cap toi thieu 10 phut moi ngay',
             }
         ],
@@ -191,8 +184,8 @@ def test_portfolio_feedback_response_schema() -> None:
 
     payload = PortfolioFeedbackResponse(**_portfolio_feedback_payload())
     assert payload.total_lessons == 2
-    assert payload.skill_trends.participation.trend == 'improving'
-    assert payload.top_priorities[0].skill == 'pronunciation'
+    assert payload.skill_trends.proficiency.trend == 'stable'
+    assert payload.top_priorities[0].skill == 'proficiency'
 
 
 def test_create_lesson_feedback_returns_markdown_text_response(monkeypatch) -> None:
@@ -222,13 +215,12 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
             class _Message:
                 content = (
                     '{"lesson_label":"Lesson 1","teacher_tone":"warm_encouraging","overall_comment":"ok",'
-                    '"session_breakdown":{"participation":{"score":80,"comment":"ok","evidence":["e1"]},'
-                    '"pronunciation":{"score":70,"comment":"ok","evidence":["e2"]},'
-                    '"vocabulary":{"score":75,"comment":"ok","evidence":["e3"]},'
-                    '"grammar":{"score":78,"comment":"ok","evidence":["e4"]},'
-                    '"reaction_confidence":{"score":82,"comment":"ok","evidence":["e5"]}},'
+                    '"session_breakdown":{"proficiency":{"score":70,"comment":"ok","evidence":["e1"]},'
+                    '"capacity":{"score":75,"comment":"ok","evidence":["e2"]},'
+                    '"engagement":{"score":80,"comment":"ok","evidence":["e3"]},'
+                    '"self_regulation":{"score":72,"comment":"ok","evidence":["e4"]}},'
                     '"strengths":["s1"],'
-                    '"priority_improvements":[{"skill":"pronunciation","priority":"high","current_state":"c",'
+                    '"priority_improvements":[{"skill":"proficiency","priority":"high","current_state":"c",'
                     '"target_next_lesson":"t","coach_tip":"tip"}],'
                     '"next_lesson_plan":[{"step":"step1","duration_minutes":10}],"parent_message":"msg"}'
                 )
@@ -270,6 +262,11 @@ def test_generate_lesson_feedback_uses_warm_teacher_prompt(monkeypatch) -> None:
     assert 'yếu:' in system_prompt
     assert 'reading_fluency' in system_prompt
     assert 'lesson_skill_context' in system_prompt
+    assert '4 tiêu chí' in system_prompt
+    assert 'proficiency' in system_prompt
+    assert 'self-regulation' in system_prompt or 'self regulation' in system_prompt
+    assert 'độ tin cậy' in system_prompt
+    assert 'củng cố đánh giá' in system_prompt
     assert isinstance(user_payload.get('lesson_input'), str)
     assert isinstance(result, str)
     assert result
@@ -433,15 +430,17 @@ def test_build_portfolio_feedback_messages_has_deep_detail_contract() -> None:
     user_payload = json.loads(messages[1]['content'])
 
     assert 'Chỉ trả về markdown' in system_prompt
-    assert '## Đánh giá 6 năng lực' in system_prompt
+    assert '## Đánh giá 4 tiêu chí in-class' in system_prompt
     assert '## Kế hoạch 2 tuần' in system_prompt
-    assert 'A->F' in system_prompt
+    assert 'A->D' in system_prompt
     assert 'Kết quả hiện tại' in system_prompt
     assert '## Ưu tiên can thiệp' in system_prompt
     assert '## Xu hướng tiến bộ' in system_prompt
     assert '## Phong cách học hiện tại' in system_prompt
     assert 'portfolio_context' in user_payload
     assert user_payload['portfolio_context']['total_lessons'] == 1
+    assert 'Độ tin cậy kết luận' in system_prompt
+    assert 'Cách củng cố đánh giá' in system_prompt
 
 
 def test_select_recent_portfolio_lessons_excludes_trial_and_limits_to_8() -> None:
@@ -504,12 +503,11 @@ def test_stream_portfolio_feedback_emits_chunk_events(monkeypatch) -> None:
                         _Chunk(
                             '{"portfolio_label":"Tong hop","total_lessons":2,'
                             '"date_range":{"from_date":"2026-03-01","to_date":"2026-03-31"},'
-                            '"overall_assessment":"Tien bo on dinh","skill_trends":{"participation":{"current_level":"kha","trend":"improving","evidence":["e1"],"recommendation":"r1"},'
-                            '"pronunciation":{"current_level":"tb","trend":"stable","evidence":["e2"],"recommendation":"r2"},'
-                            '"vocabulary":{"current_level":"kha","trend":"improving","evidence":["e3"],"recommendation":"r3"},'
-                            '"grammar":{"current_level":"tb","trend":"mixed","evidence":["e4"],"recommendation":"r4"},'
-                            '"reaction_confidence":{"current_level":"kha","trend":"improving","evidence":["e5"],"recommendation":"r5"}},'
-                            '"top_strengths":["s1"],"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],'
+                            '"overall_assessment":"Tien bo on dinh","skill_trends":{"proficiency":{"current_level":"meets","trend":"improving","evidence":["e1"],"recommendation":"r1"},'
+                            '"capacity":{"current_level":"meets","trend":"stable","evidence":["e2"],"recommendation":"r2"},'
+                            '"engagement":{"current_level":"exceeds","trend":"improving","evidence":["e3"],"recommendation":"r3"},'
+                            '"self_regulation":{"current_level":"needs","trend":"mixed","evidence":["e4"],"recommendation":"r4"}},'
+                            '"top_strengths":["s1"],"top_priorities":[{"skill":"proficiency","priority":"high","reason":"x","next_2_weeks_target":"y","coach_tip":"z"}],'
                             '"study_plan_2_weeks":['
                             '{"step":"On tu","frequency":"4 buoi/tuan","duration_minutes":10},'
                             '{"step":"Luyen am cuoi","frequency":"4 buoi/tuan","duration_minutes":12},'
@@ -557,11 +555,10 @@ def test_generate_portfolio_feedback_single_call_no_repair(monkeypatch) -> None:
                         '"date_range":{"from_date":"","to_date":""},'
                         '"overall_assessment":"Du lieu con thieu o mot so muc, can theo doi them de ket luan chac chan.",'
                         '"skill_trends":{'
-                        '"participation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                        '"pronunciation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                        '"vocabulary":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                        '"grammar":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
-                        '"reaction_confidence":{"current_level":"","trend":"stable","evidence":[],"recommendation":""}'
+                        '"proficiency":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                        '"capacity":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                        '"engagement":{"current_level":"","trend":"stable","evidence":[],"recommendation":""},'
+                        '"self_regulation":{"current_level":"","trend":"stable","evidence":[],"recommendation":""}'
                         '},'
                         '"top_strengths":[],'
                         '"top_priorities":[],'
@@ -574,14 +571,13 @@ def test_generate_portfolio_feedback_single_call_no_repair(monkeypatch) -> None:
                         '"date_range":{"from_date":"","to_date":""},'
                         '"overall_assessment":"Da bo sung ke hoach tu du lieu co san.",'
                         '"skill_trends":{'
-                        '"participation":{"current_level":"kha","trend":"stable","evidence":["lesson_1 speaking turn 20"],"recommendation":"Tang luot hoi dap"},'
-                        '"pronunciation":{"current_level":"tb","trend":"stable","evidence":["lesson_1 pronunciation 65"],"recommendation":"Luyen shadowing"},'
-                        '"vocabulary":{"current_level":"kha","trend":"stable","evidence":["lesson_1 tu moi 5"],"recommendation":"On flashcard"},'
-                        '"grammar":{"current_level":"tb","trend":"stable","evidence":["lesson_1 cau mau co ban"],"recommendation":"On cau mau"},'
-                        '"reaction_confidence":{"current_level":"kha","trend":"stable","evidence":["lesson_1 reaction 1800"],"recommendation":"Luyen phan xa"}'
+                        '"proficiency":{"current_level":"meets","trend":"stable","evidence":["lesson_1 pronunciation 65"],"recommendation":"Cung co noi doc"},'
+                        '"capacity":{"current_level":"meets","trend":"stable","evidence":["lesson_1 completion 78"],"recommendation":"Theo kip tien do"},'
+                        '"engagement":{"current_level":"kha","trend":"stable","evidence":["lesson_1 speaking turn 20"],"recommendation":"Tang luot hoi dap"},'
+                        '"self_regulation":{"current_level":"tb","trend":"stable","evidence":["lesson_1 reaction 1800"],"recommendation":"Tu vao bai nhanh hon"}'
                         '},'
                         '"top_strengths":["Con phan xa kha nhanh"],'
-                        '"top_priorities":[{"skill":"pronunciation","priority":"high","reason":"Can tang do on dinh","next_2_weeks_target":"Dat 75+","coach_tip":"10 phut moi ngay"}],'
+                        '"top_priorities":[{"skill":"proficiency","priority":"high","reason":"Can tang do on dinh","next_2_weeks_target":"Dat 75+","coach_tip":"10 phut moi ngay"}],'
                         '"study_plan_2_weeks":['
                         '{"step":"Ngay 1-2: Luyen phat am am cuoi theo shadowing","frequency":"4 buoi/tuan","duration_minutes":12},'
                         '{"step":"Ngay 3-4: On tu vung theo speaking turn hien tai","frequency":"4 buoi/tuan","duration_minutes":10},'
@@ -667,8 +663,9 @@ def test_create_lesson_feedback_writes_cache_and_reuses(monkeypatch) -> None:
 
     assert first.status_code == 200
     assert second.status_code == 200
-    assert first.text.strip() == '# Generated lesson markdown'
-    assert second.text.strip() == '# Generated lesson markdown'
+    assert first.text.strip().startswith('# Generated lesson markdown')
+    assert 'Phụ lục (hệ thống)' in first.text
+    assert first.text.strip() == second.text.strip()
     assert call_count['count'] == 1
 
 
@@ -740,7 +737,7 @@ def test_create_portfolio_feedback_success(monkeypatch) -> None:
     )
     monkeypatch.setattr(
         'app.main.generate_portfolio_feedback',
-        lambda _lessons, _label: '# Nhan xet chung qua trinh hoc\n\n- Tong so buoi: 2',
+        lambda _lessons, _label, **_kwargs: '# Nhan xet chung qua trinh hoc\n\n- Tong so buoi: 2',
         raising=False,
     )
 
@@ -771,7 +768,7 @@ def test_create_portfolio_feedback_stream_returns_events(monkeypatch) -> None:
         lambda: [{'lesson_id': '3724970', 'source_file': 'lesson_3724970.json', 'raw_json_text': '{"ok":true}'}],
     )
 
-    def _fake_stream(_lessons, _label):
+    def _fake_stream(_lessons, _label, **_kwargs):
         yield {'type': 'status', 'message': 'Dang phan tich'}
         yield {'type': 'result', 'data': _portfolio_feedback_payload()}
 
@@ -790,7 +787,7 @@ def test_create_portfolio_feedback_stream_writes_cache_and_reuses(monkeypatch) -
     )
     call_count = {'count': 0}
 
-    def _fake_stream(_lessons, _label):
+    def _fake_stream(_lessons, _label, **_kwargs):
         call_count['count'] += 1
         yield {'type': 'status', 'message': 'Dang tao'}
         yield {'type': 'chunk', 'content': '# Generated portfolio markdown'}
@@ -841,7 +838,7 @@ def test_create_portfolio_feedback_returns_markdown(monkeypatch) -> None:
     )
     monkeypatch.setattr(
         'app.main.generate_portfolio_feedback',
-        lambda _payload, _label: '# Tong ket\n\n- Noi dung',
+        lambda _payload, _label, **_kwargs: '# Tong ket\n\n- Noi dung',
         raising=False,
     )
 
@@ -875,12 +872,12 @@ def test_build_lesson_radar_payload_extracts_scores_and_levels() -> None:
     from app.main import _build_lesson_radar_payload
 
     markdown = (
-        '## Đánh giá 6 năng lực\n\n'
-        '- A. Learn - Hoc va tiep thu kien thuc moi\n'
-        '  - Kết quả hiện tại: 76/100\n\n'
-        '- B. Recognize - Nhan biet ngon ngu\n'
-        '  - Kết quả hiện tại: Khá vững\n\n'
-        '- C. Apply - Van dung\n'
+        '## Đánh giá 4 tiêu chí in-class\n\n'
+        '- A. Proficiency - Nen tang kien thuc\n'
+        '  - Kết quả hiện tại: Meets Expectation (65/100)\n\n'
+        '- B. Capacity - Tiep thu va tien do\n'
+        '  - Kết quả hiện tại: Exceeds Expectation\n\n'
+        '- C. Engagement - Tuong tac\n'
         '  - Kết quả hiện tại: chưa đủ dữ liệu\n'
     )
 
@@ -888,29 +885,47 @@ def test_build_lesson_radar_payload_extracts_scores_and_levels() -> None:
     competencies = {item['key']: item for item in payload['competencies']}
 
     assert payload['type'] == 'lesson_radar'
-    assert competencies['learn']['score'] == 76
-    assert competencies['learn']['insufficient_data'] is False
-    assert competencies['recognize']['score'] == 80
-    assert competencies['recognize']['level_text'] == 'Khá vững'
-    assert competencies['apply']['score'] == 0
-    assert competencies['apply']['insufficient_data'] is True
+    assert len(payload['competencies']) == 4
+    assert competencies['proficiency']['score'] == 65
+    assert competencies['proficiency']['insufficient_data'] is False
+    assert competencies['capacity']['score'] == 90
+    assert competencies['capacity']['level_text'] == 'Exceeds Expectation'
+    assert competencies['engagement']['score'] == 0
+    assert competencies['engagement']['insufficient_data'] is True
 
 
 def test_build_lesson_radar_payload_accepts_competency_without_letter_prefix() -> None:
     from app.main import _build_lesson_radar_payload
 
     markdown = (
-        '## Đánh giá 6 năng lực\n\n'
-        '- Learn – Học và tiếp thu kiến thức mới\n'
-        '  - Kết quả hiện tại: Khá vững\n\n'
-        '- Recognize – Nhận biết ngôn ngữ\n'
+        '## Đánh giá 4 tiêu chí in-class\n\n'
+        '- Proficiency – Năng lực kiến thức\n'
+        '  - Kết quả hiện tại: Needs Improvement\n\n'
+        '- Self-regulation – Tự điều chỉnh\n'
         '  - Kết quả hiện tại: 74/100\n'
     )
 
     payload = _build_lesson_radar_payload(markdown)
     competencies = {item['key']: item for item in payload['competencies']}
-    assert competencies['learn']['score'] == 80
-    assert competencies['recognize']['score'] == 74
+    assert competencies['proficiency']['score'] == 25
+    assert competencies['self_regulation']['score'] == 74
+
+
+def test_build_lesson_radar_payload_maps_legacy_six_competencies_to_four() -> None:
+    from app.main import _build_lesson_radar_payload
+
+    markdown = (
+        '## Đánh giá 6 năng lực\n\n'
+        '- Learn – Học và tiếp thu\n'
+        '  - Kết quả hiện tại: 76/100\n\n'
+        '- Focus – Chú ý\n'
+        '  - Kết quả hiện tại: Khá vững\n'
+    )
+
+    payload = _build_lesson_radar_payload(markdown)
+    competencies = {item['key']: item for item in payload['competencies']}
+    assert competencies['proficiency']['score'] == 76
+    assert competencies['self_regulation']['score'] == 80
 
 
 def test_portfolio_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
@@ -919,7 +934,7 @@ def test_portfolio_feedback_stream_emits_raw_text_chunks(monkeypatch) -> None:
         lambda: [{'lesson_id': '1', 'source_file': 'a.json', 'raw_json_text': '{}'}],
     )
 
-    def _fake_stream(_payload, _label):
+    def _fake_stream(_payload, _label, **_kwargs):
         yield {'type': 'status', 'message': 'Dang tao'}
         yield {'type': 'chunk', 'content': '# Tong ket'}
 
@@ -1138,6 +1153,9 @@ def test_create_lesson_feedback_passes_recent_lesson_context_to_llm(monkeypatch)
     assert 'current_lesson_data' in sent_payload
     assert 'lesson_progress_context' in sent_payload
     assert 'lesson_skill_context' in sent_payload
+    assert 'rubric_data_quality' in sent_payload
+    assert 'skill_pillars' in sent_payload['rubric_data_quality']
+    assert 'rubric_criteria' in sent_payload['rubric_data_quality']
     assert isinstance(sent_payload['current_lesson_data'], dict)
     assert len(sent_payload['lesson_progress_context']['recent_lessons']) == 2
     assert sent_payload['lesson_progress_context']['progress_context']['is_first_lesson'] is False
